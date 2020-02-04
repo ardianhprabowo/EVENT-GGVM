@@ -381,7 +381,7 @@
     <Compile Include="FrmLPJ.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SummaryEvent.vb">
+    <Compile Include="Reports\SummaryEvent.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SummaryEvent.rpt</DependentUpon>
@@ -519,7 +519,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrpPengajuanAll-Pic.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SummaryEvent.rpt">
+    <EmbeddedResource Include="Reports\SummaryEvent.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SummaryEvent.vb</LastGenOutput>
     </EmbeddedResource>
