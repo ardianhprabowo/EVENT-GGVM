@@ -108,6 +108,7 @@ Public Class FrmKontrak
 		DTStart.Enabled = False
 		DTEnd.Enabled = False
 		BBatal.Enabled = False
+		BSimpanKontrak.Enabled = False
 	End Sub
 	Private Sub KondisiBersih()
 		TidKlien.Clear()
@@ -115,6 +116,7 @@ Public Class FrmKontrak
 		TidK.Clear()
 		TNilaiKontrak.Clear()
 		TKontrak.Clear()
+		BSimpanKontrak.Enabled = False
 	End Sub
 	Private Sub KondisiTambah()
 		TKlien.Enabled = True
@@ -126,6 +128,7 @@ Public Class FrmKontrak
 		DTPrint.Enabled = True
 		DTStart.Enabled = True
 		DTEnd.Enabled = True
+		BSimpanKontrak.Enabled = True
 		BBatal.Enabled = True
 	End Sub
 	Private Sub AmbilXLFile()

@@ -279,6 +279,7 @@ Partial Class FrmKontrak
 		'
 		'BSimpanKontrak
 		'
+		Me.BSimpanKontrak.Enabled = False
 		Me.BSimpanKontrak.ImageOptions.SvgImage = CType(resources.GetObject("BSimpanKontrak.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		Me.BSimpanKontrak.ImageOptions.SvgImageSize = New System.Drawing.Size(25, 25)
 		Me.BSimpanKontrak.Location = New System.Drawing.Point(439, 153)

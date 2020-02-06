@@ -25,7 +25,7 @@ Partial Public Class FrmPEEvn
     ''' </summary>
     Private Sub InitializeComponent()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPEEvn))
-		Dim SimpleContextButton2 As DevExpress.Utils.SimpleContextButton = New DevExpress.Utils.SimpleContextButton()
+		Dim SimpleContextButton1 As DevExpress.Utils.SimpleContextButton = New DevExpress.Utils.SimpleContextButton()
 		Me.mainRibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
 		Me.BuatPE = New DevExpress.XtraBars.BarButtonItem()
 		Me.EditPE = New DevExpress.XtraBars.BarButtonItem()
@@ -368,12 +368,12 @@ Partial Public Class FrmPEEvn
 		'
 		Me.RepositoryItemComboBox1.AutoHeight = False
 		Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-		SimpleContextButton2.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center
-		SimpleContextButton2.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far
-		SimpleContextButton2.Caption = "simpleContextButton1"
-		SimpleContextButton2.Id = New System.Guid("bb0dcc66-a49e-4c24-a91c-2a976c8a586f")
-		SimpleContextButton2.Name = "simpleContextButton1"
-		Me.RepositoryItemComboBox1.ContextButtons.Add(SimpleContextButton2)
+		SimpleContextButton1.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center
+		SimpleContextButton1.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far
+		SimpleContextButton1.Caption = "simpleContextButton1"
+		SimpleContextButton1.Id = New System.Guid("bb0dcc66-a49e-4c24-a91c-2a976c8a586f")
+		SimpleContextButton1.Name = "simpleContextButton1"
+		Me.RepositoryItemComboBox1.ContextButtons.Add(SimpleContextButton1)
 		Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
 		'
 		'BtnKeluar
@@ -1275,6 +1275,7 @@ Partial Public Class FrmPEEvn
 		Me.TInfoKlien.PreventEnterBeep = True
 		Me.TInfoKlien.Size = New System.Drawing.Size(32, 21)
 		Me.TInfoKlien.TabIndex = 22
+		Me.TInfoKlien.Visible = False
 		'
 		'TInfoKontrak
 		'
@@ -1288,6 +1289,7 @@ Partial Public Class FrmPEEvn
 		Me.TInfoKontrak.PreventEnterBeep = True
 		Me.TInfoKontrak.Size = New System.Drawing.Size(32, 21)
 		Me.TInfoKontrak.TabIndex = 21
+		Me.TInfoKontrak.Visible = False
 		'
 		'BtnTutup
 		'
@@ -1342,6 +1344,7 @@ Partial Public Class FrmPEEvn
 		Me.idInpBarang.PreventEnterBeep = True
 		Me.idInpBarang.Size = New System.Drawing.Size(32, 21)
 		Me.idInpBarang.TabIndex = 14
+		Me.idInpBarang.Visible = False
 		'
 		'iddetail
 		'
@@ -1355,6 +1358,7 @@ Partial Public Class FrmPEEvn
 		Me.iddetail.PreventEnterBeep = True
 		Me.iddetail.Size = New System.Drawing.Size(32, 21)
 		Me.iddetail.TabIndex = 13
+		Me.iddetail.Visible = False
 		'
 		'NoMaterial
 		'
@@ -1368,6 +1372,7 @@ Partial Public Class FrmPEEvn
 		Me.NoMaterial.PreventEnterBeep = True
 		Me.NoMaterial.Size = New System.Drawing.Size(32, 21)
 		Me.NoMaterial.TabIndex = 12
+		Me.NoMaterial.Visible = False
 		'
 		'idKontrak
 		'
@@ -1381,6 +1386,7 @@ Partial Public Class FrmPEEvn
 		Me.idKontrak.PreventEnterBeep = True
 		Me.idKontrak.Size = New System.Drawing.Size(32, 21)
 		Me.idKontrak.TabIndex = 11
+		Me.idKontrak.Visible = False
 		'
 		'TMaterials
 		'
