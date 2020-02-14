@@ -1186,17 +1186,23 @@ Partial Public Class FrmPEEvn
 		End Select
 	End Sub
 	Private Sub TambahDetail_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles TambahDetail.ItemClick
-		If DivUser = "17" Then
-			TDay.Visible = False
-			CSDay.Visible = False
-		ElseIf DivUser = "2" Then
-			TMaterials.Visible = False
-			TDimensi.Visible = False
-		Else
-			Return
-		End If
-		PInput.Visible = True
-		Call CompleteBarangPE()
+        If DivUser = "17" Then
+            TDay.Visible = False
+            CSDay.Visible = False
+        ElseIf DivUser = "2" Then
+            TMaterials.Visible = False
+            TDimensi.Visible = False
+        Else
+            Return
+        End If
+        If EditPE.Enabled = True Then
+            BtnOK.Text = "Input"
+        Else
+            BtnOK.Text = "Tambah"
+        End If
+        PInput.Visible = True
+
+        Call CompleteBarangPE()
 		Call LoadSatuan()
 		TCari.Select()
 	End Sub
