@@ -25,7 +25,7 @@ Partial Public Class FrmPEEvn
     ''' </summary>
     Private Sub InitializeComponent()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPEEvn))
-		Dim SimpleContextButton2 As DevExpress.Utils.SimpleContextButton = New DevExpress.Utils.SimpleContextButton()
+		Dim SimpleContextButton3 As DevExpress.Utils.SimpleContextButton = New DevExpress.Utils.SimpleContextButton()
 		Me.mainRibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
 		Me.BuatPE = New DevExpress.XtraBars.BarButtonItem()
 		Me.EditPE = New DevExpress.XtraBars.BarButtonItem()
@@ -368,12 +368,12 @@ Partial Public Class FrmPEEvn
 		'
 		Me.RepositoryItemComboBox1.AutoHeight = False
 		Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-		SimpleContextButton2.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center
-		SimpleContextButton2.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far
-		SimpleContextButton2.Caption = "simpleContextButton1"
-		SimpleContextButton2.Id = New System.Guid("bb0dcc66-a49e-4c24-a91c-2a976c8a586f")
-		SimpleContextButton2.Name = "simpleContextButton1"
-		Me.RepositoryItemComboBox1.ContextButtons.Add(SimpleContextButton2)
+		SimpleContextButton3.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center
+		SimpleContextButton3.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far
+		SimpleContextButton3.Caption = "simpleContextButton1"
+		SimpleContextButton3.Id = New System.Guid("bb0dcc66-a49e-4c24-a91c-2a976c8a586f")
+		SimpleContextButton3.Name = "simpleContextButton1"
+		Me.RepositoryItemComboBox1.ContextButtons.Add(SimpleContextButton3)
 		Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
 		'
 		'BtnKeluar
@@ -565,6 +565,7 @@ Partial Public Class FrmPEEvn
 		Me.DTTanggal.Name = "DTTanggal"
 		Me.DTTanggal.Size = New System.Drawing.Size(83, 21)
 		Me.DTTanggal.TabIndex = 53
+		Me.DTTanggal.Visible = False
 		'
 		'CJenisPE
 		'
