@@ -467,7 +467,7 @@ Partial Public Class FrmLPJ
             ProsesCetak = "lpj"
             GGVM_conn_close()
             Me.Cursor = Cursors.Default
-            'f.ShowDialog()
+            f.ShowDialog()
         ElseIf e.Button.Properties.Caption = "Keluar" Then
             Me.Close()
             Exit Sub
