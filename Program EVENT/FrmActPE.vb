@@ -1166,7 +1166,7 @@ Public Class FrmActPE
 			.FullRowSelect = True
 			.MultiSelect = False
 			.View = View.Details
-			.CheckBoxes = False
+			.CheckBoxes = True
 			.Columns.Clear()
 			.Items.Clear()
 			.Columns.Add("ITEMS", 200, HorizontalAlignment.Left)
