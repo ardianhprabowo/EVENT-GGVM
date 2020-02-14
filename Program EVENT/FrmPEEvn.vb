@@ -592,8 +592,8 @@ Partial Public Class FrmPEEvn
 		ElseIf DivUser = "18" Then
 			c = " update counter set nope_activation = '" & TCounter.Text & "'"
 		End If
-		cmd = New Odbc.OdbcCommand(c, conn)
-		cmd.ExecuteNonQuery()
+        cmd = New OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
 		GGVM_conn_close()
 	End Sub
 	Private Sub CounterLoad()
