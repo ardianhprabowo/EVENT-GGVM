@@ -327,8 +327,8 @@ Partial Public Class FrmPEEvn
 		PPN.EditValue = "0"
 		TApprov.Clear()
 		TJabatan.Clear()
-		' DTTanggal.Value = DateTime.Now
-		TidPE.Clear()
+        DTTanggal.Value = DateTime.Now
+        TidPE.Clear()
 		TidProject.Clear()
 		TidKlien.Clear()
 		TidVenue.Clear()
@@ -412,8 +412,8 @@ Partial Public Class FrmPEEvn
 		PPN.EditValue = "0"
 		TApprov.Clear()
 		TJabatan.Clear()
-		' DTTanggal.Value = DateTime.Now
-		TidPE.Clear()
+        DTTanggal.Value = DateTime.Now
+        TidPE.Clear()
 		TidProject.Clear()
 		TidKlien.Clear()
 		TidVenue.Clear()
