@@ -327,7 +327,7 @@ Partial Public Class FrmPEEvn
 		PPN.EditValue = "0"
 		TApprov.Clear()
 		TJabatan.Clear()
-		' DTTanggal.Value = DateTime.Now
+		DTTanggal.Value = DateTime.Now
 		TidPE.Clear()
 		TidProject.Clear()
 		TidKlien.Clear()
@@ -412,7 +412,7 @@ Partial Public Class FrmPEEvn
 		PPN.EditValue = "0"
 		TApprov.Clear()
 		TJabatan.Clear()
-		' DTTanggal.Value = DateTime.Now
+		DTTanggal.Value = DateTime.Now
 		TidPE.Clear()
 		TidProject.Clear()
 		TidKlien.Clear()
@@ -1243,7 +1243,6 @@ Partial Public Class FrmPEEvn
 		End Try
 	End Sub
 	Private Sub ProsesInput_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles ProsesInput.ItemClick
-		Call Data()
 		GGVM_conn()
 		If Me.CJenisPE.Text = "" Then
 			MsgBox("Pilih jenis PE !", MsgBoxStyle.Critical, "Message !!")
@@ -1255,6 +1254,7 @@ Partial Public Class FrmPEEvn
 			MsgBox("Masukkan Project !", MsgBoxStyle.Critical, "Message !!")
 			Exit Sub
 		Else
+			Call Data()
 			sql = "select * from evn_penawaran where nope = '" & TNoPE.Text & "'"
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader

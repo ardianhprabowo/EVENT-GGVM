@@ -74,23 +74,20 @@ Module PE
         Else : Return selContent.Replace(selNewLineStringToUse, vbNewLine)
         End If
     End Function
-    Public Function monthDifference(ByVal startDate As DateTime, ByVal endDate As DateTime) As Integer
-        Dim systemStartDate As DateTime = New DateTime()
-        Dim timeDifference As TimeSpan
+	Public Function monthDifference(ByVal startDate As DateTime, ByVal endDate As DateTime) As Integer
+		Dim systemStartDate As DateTime = New DateTime()
+		Dim timeDifference As TimeSpan
 
-        If endDate > startDate Then
-            timeDifference = endDate.Subtract(startDate)
-        Else
-            timeDifference = startDate.Subtract(endDate)
-        End If
+		If endDate > startDate Then
+			timeDifference = endDate.Subtract(startDate)
+		Else
+			timeDifference = startDate.Subtract(endDate)
+		End If
 
-        Dim generatedDate As DateTime = systemStartDate.Add(timeDifference)
-        Dim noOfYears As Integer = generatedDate.Year - 1
-        Dim noOfMonths As Integer = generatedDate.Month - 1
-        noOfMonths = noOfMonths + (noOfYears * 12)
-        Return noOfMonths
-    End Function
-
-
-
+		Dim generatedDate As DateTime = systemStartDate.Add(timeDifference)
+		Dim noOfYears As Integer = generatedDate.Year - 1
+		Dim noOfMonths As Integer = generatedDate.Month - 1
+		noOfMonths = noOfMonths + (noOfYears * 12)
+		Return noOfMonths
+	End Function
 End Module
