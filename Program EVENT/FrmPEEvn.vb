@@ -592,8 +592,8 @@ Partial Public Class FrmPEEvn
 		ElseIf DivUser = "18" Then
 			c = " update counter set nope_activation = '" & TCounter.Text & "'"
 		End If
-        cmd = New OdbcCommand(c, conn)
-        cmd.ExecuteNonQuery()
+		cmd = New OdbcCommand(c, conn)
+		cmd.ExecuteNonQuery()
 		GGVM_conn_close()
 	End Sub
 	Private Sub CounterLoad()
@@ -709,8 +709,8 @@ Partial Public Class FrmPEEvn
 				TTotalEvent.Text = FormatNumber(dt.Rows(0)("total"), 0, , , TriState.True)
 				TJabatan.Text = dt.Rows(0)("jabatan").ToString
 				TApprov.Text = dt.Rows(0)("approved_by").ToString
-				Else
-					TKlien.Text = ""
+			Else
+				TKlien.Text = ""
 				TidJenisPE.Text = ""
 				TProject.Text = ""
 				TVenue.Text = ""
@@ -1186,23 +1186,23 @@ Partial Public Class FrmPEEvn
 		End Select
 	End Sub
 	Private Sub TambahDetail_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles TambahDetail.ItemClick
-        If DivUser = "17" Then
-            TDay.Visible = False
-            CSDay.Visible = False
-        ElseIf DivUser = "2" Then
-            TMaterials.Visible = False
-            TDimensi.Visible = False
-        Else
-            Return
-        End If
-        If EditPE.Enabled = True Then
-            BtnOK.Text = "Input"
-        Else
-            BtnOK.Text = "Tambah"
-        End If
-        PInput.Visible = True
+		If DivUser = "17" Then
+			TDay.Visible = False
+			CSDay.Visible = False
+		ElseIf DivUser = "2" Then
+			TMaterials.Visible = False
+			TDimensi.Visible = False
+		Else
+			Return
+		End If
+		If EditPE.Enabled = True Then
+			BtnOK.Text = "Input"
+		Else
+			BtnOK.Text = "Tambah"
+		End If
+		PInput.Visible = True
 
-        Call CompleteBarangPE()
+		Call CompleteBarangPE()
 		Call LoadSatuan()
 		TCari.Select()
 	End Sub
