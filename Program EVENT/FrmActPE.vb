@@ -6,6 +6,8 @@ Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Navigation
 
 Public Class FrmActPE
+
+	Private ItemsBackup As New List(Of ListViewItem)
 	Private Panel1Captured As Boolean
 	Private Panel1Grabbed As Point
 	Private strName As String
@@ -279,6 +281,7 @@ Public Class FrmActPE
 			dr = Nothing
 			cmd = Nothing
 		Next
+		ListBiayaEvn.Items.Clear()
 	End Sub
 	Private Sub UpdateEvent()
 		For Each item As ListViewItem In ListBiayaEvn.Items
@@ -831,6 +834,7 @@ Public Class FrmActPE
 		RevisiPE.Enabled = False
 		BatalTools.Enabled = False
 		BtnInpEvn.Enabled = False
+		BtnSimpanEvn.Enabled = False
 		ListBiayaEvn.Enabled = False
 	End Sub
 	Private Sub KondisiTambahEvn()
@@ -845,6 +849,7 @@ Public Class FrmActPE
 		RevisiPE.Enabled = False
 		BatalTools.Enabled = True
 		BtnInpEvn.Enabled = True
+		BtnSimpanEvn.Enabled = True
 		ListBiayaEvn.Enabled = True
 	End Sub
 	Private Sub KondisiBersihEvn()
@@ -904,6 +909,7 @@ Public Class FrmActPE
 		RevisiPE.Enabled = False
 		BatalTools.Enabled = True
 		BtnInpEvn.Enabled = True
+		BtnSimpanEvn.Enabled = True
 		ListBiayaEvn.Enabled = True
 	End Sub
 	Private Sub KondisiAwalHR()
@@ -1067,7 +1073,7 @@ Public Class FrmActPE
 		GGVM_conn()
 		ListPEActivation.Items.Clear()
 		sql = ""
-		sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.jmlevent, a.periode,a.region,a.tgl_pe,a.total,a.rp_ppn,a.grandtotal,a.approved_by, a.idpe "
+		sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.jmlevent, a.periode,a.region,a.tgl_pe,a.total,a.rp_ppn,a.grandtotal,a.approved_by, a.idpe,a.idsubdivisi "
 		sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and c.idjenis_pe = '" & TidJenisPE.Text & "' and a.userid_input = '" & userid & "' "
 		da = New OdbcDataAdapter(sql, conn)
 		ds = New DataSet
@@ -1099,6 +1105,7 @@ Public Class FrmActPE
 					End If
 					.Add(dt.Rows(j)("tgl_pe"))
 					.Add(dt.Rows(j)("idpe"))
+					.Add(dt.Rows(j)("idsubdivisi"))
 				End With
 			End With
 		Next
@@ -1478,7 +1485,7 @@ Public Class FrmActPE
 						cmd = New OdbcCommand(sql, conn)
 						cmd.ExecuteNonQuery()
 
-						Dim sql1, sql2, sql3, sql4 As String
+						Dim sql1, sql2, sql3, sql4, sql5, sql6 As String
 						sql1 = "insert into evn_buffer_penawaran select * from evn_penawaran where idpe = ? "
 						cmd = New OdbcCommand
 						With cmd
@@ -1527,10 +1534,40 @@ Public Class FrmActPE
 						End While
 						Console.ReadLine()
 
-						sql4 = "DELETE FROM evn_penawaran WHERE idpe = ?"
+						sql4 = "DELETE FROM subdivisi WHERE idsubdivisi = ? "
 						cmd = New OdbcCommand
 						With cmd
 							.CommandText = (sql4)
+							.Parameters.Add("@idsubdivisi", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
+							.Connection = conn
+						End With
+						dr = cmd.ExecuteReader
+						Console.WriteLine(cmd.CommandText.ToString)
+						While dr.Read
+							Console.WriteLine(dr(0))
+							Console.WriteLine()
+						End While
+						Console.ReadLine()
+
+						sql5 = "DELETE FROM act_detail_penawaran WHERE idpe = ? "
+						cmd = New OdbcCommand
+						With cmd
+							.CommandText = (sql5)
+							.Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(8).Text)
+							.Connection = conn
+						End With
+						dr = cmd.ExecuteReader
+						Console.WriteLine(cmd.CommandText.ToString)
+						While dr.Read
+							Console.WriteLine(dr(0))
+							Console.WriteLine()
+						End While
+						Console.ReadLine()
+
+						sql6 = "DELETE FROM evn_penawaran WHERE idpe = ?"
+						cmd = New OdbcCommand
+						With cmd
+							.CommandText = (sql6)
 							.Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(8).Text)
 							.Connection = conn
 						End With
@@ -1551,26 +1588,17 @@ Public Class FrmActPE
 						Call KondisiAwalPE()
 					Next
 				End If
-			Else
-				MsgBox("Tidak ada data Penawaran yang akan di-HAPUS, Pilih dulu datanya!!...", MsgBoxStyle.Information, "Information")
-				ListPEActivation.Focus()
-				Exit Sub
 			End If
 		Next I
+		Call BacaPE()
+		Call KondisiBersihPE()
+		Call KondisiAwalPE()
 		ListPEActivation.EndUpdate()
 	End Sub
 	Private Sub SimpanPE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles SimpanPE.ItemClick
 		Dim c As String
 		Select Case KondisiSimpan
 			Case "Event"
-				Call SimpanEvent()
-
-				c = ""
-				c = c & "update evn_detail_penawaran set unitcost = '" & TTotalEvn.EditValue & "',sub_totalcost = '" & TTotalEvn.EditValue & "'"
-				c = c & "where iddetail = '" & TidDetailCL.Text & "'"
-				cmd = New OdbcCommand(c, conn)
-				cmd.ExecuteNonQuery()
-
 				Call BacaMainDetail()
 				Call HitungMainDetail()
 				MsgBox("Data Telah diSimpan !", MsgBoxStyle.Information, "Information")
@@ -2112,6 +2140,7 @@ Public Class FrmActPE
 		Call LoadSatuan()
 		Call LoadBarangEvn()
 		BtnInpEvn.Enabled = False
+		BtnSimpanEvn.Enabled = False
 	End Sub
 	Private Sub BInputEvn_Click(sender As Object, e As EventArgs) Handles BInputEvn.Click
 		'Dim c As String
@@ -2254,11 +2283,15 @@ Public Class FrmActPE
 			HapusDetailEvent = "Baru"
 			Call KondisiBersihEvn()
 		End If
+		For Each item As ListViewItem In ListBiayaEvn.Items
+			ItemsBackup.Add(item)
+		Next
 	End Sub
 	Private Sub BtnTutupEvn_Click(sender As Object, e As EventArgs) Handles BtnTutupEvn.Click
 		PInpEvent.Visible = False
 		Call KondisiBersihEvn()
 		BtnInpEvn.Enabled = True
+		BtnSimpanEvn.Enabled = True
 	End Sub
 	Private Sub BtnInpProj_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnInpProj.ItemClick
 		PInpProject.Visible = True
@@ -3815,6 +3848,19 @@ Public Class FrmActPE
 	Private Sub TAtk_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TAtkHR.KeyPress
 		AturanInput(e)
 	End Sub
+
+	Private Sub BtnSimpanEvn_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtnSimpanEvn.ItemClick
+		Call SimpanEvent()
+		c = ""
+		c = c & "update evn_detail_penawaran set unitcost = '" & TTotalEvn.EditValue & "',sub_totalcost = '" & TTotalEvn.EditValue & "'"
+		c = c & "where iddetail = '" & TidDetailCL.Text & "'"
+		cmd = New OdbcCommand(c, conn)
+		cmd.ExecuteNonQuery()
+
+		NavigationPane1.SelectedPage = DetailPE
+		Call BacaMainDetail()
+	End Sub
+
 	Private Sub TAgentFeeHR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TAgentFeeHR.KeyPress
 		AturanInput(e)
 	End Sub
@@ -3851,6 +3897,7 @@ Public Class FrmActPE
 		Call NominalBiaya()
 	End Sub
 	Private Sub ListDetailPEAct_DoubleClick(sender As Object, e As EventArgs) Handles ListDetailPEAct.DoubleClick
+
 		If Me.ListDetailPEAct.SelectedItems.Count > 0 Then
 			Dim lvi As ListViewItem = Me.ListDetailPEAct.SelectedItems(0)
 			Me.TidDetailCL.Text = lvi.SubItems(6).Text
@@ -3963,17 +4010,21 @@ Public Class FrmActPE
 			BtnInpDetail.Enabled = False
 			If TidJenisPE.Text = "5" Then
 				BtnInpEvn.Enabled = True
+				BtnSimpanEvn.Enabled = True
 				BtnInpProj.Enabled = False
 			ElseIf TidJenisPE.Text = "6" Then
+				BtnSimpanEvn.Enabled = False
 				BtnInpEvn.Enabled = False
 				BtnInpProj.Enabled = True
 			Else
 				BtnInpEvn.Enabled = False
+				BtnSimpanEvn.Enabled = False
 				BtnInpProj.Enabled = False
 			End If
 		Else
 			BtnInpDetail.Enabled = True
 			BtnInpEvn.Enabled = False
+			BtnSimpanEvn.Enabled = False
 			BtnInpProj.Enabled = False
 		End If
 	End Sub
@@ -4016,7 +4067,6 @@ Public Class FrmActPE
 		Else
 			MsgBox("Hubungi Administrator !!", MsgBoxStyle.Critical, "Eror !!")
 		End If
-
 		MsgBox("Klik Revisi Untuk Merubah Data !!", MsgBoxStyle.Information, "Pemberitahuan !!")
 		CetakPE.Enabled = True
 		RevisiPE.Enabled = True

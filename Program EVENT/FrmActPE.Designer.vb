@@ -414,6 +414,7 @@ Partial Class FrmActPE
 		Me.ContextPE = New System.Windows.Forms.ContextMenuStrip(Me.components)
 		Me.CxKuartalPE = New System.Windows.Forms.ToolStripMenuItem()
 		Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+		Me.BtnSimpanEvn = New DevExpress.XtraBars.BarButtonItem()
 		CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
 		CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
 		CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -486,9 +487,9 @@ Partial Class FrmActPE
 		'
 		Me.RibbonControl.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
 		Me.RibbonControl.ExpandCollapseItem.Id = 0
-		Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.TambahPE, Me.RevisiPE, Me.HapusPE, Me.SimpanPE, Me.BatalTools, Me.CetakPE, Me.BtnInpDetail, Me.BtnInpEvn, Me.TTotalEvn, Me.TAgentFeeEvn, Me.TTotalVATEvn, Me.TPPNEvn, Me.TGrandTotalEvn, Me.TQuartalPE, Me.BtnInpProj, Me.BtnKeluar, Me.AdaPPN})
+		Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.TambahPE, Me.RevisiPE, Me.HapusPE, Me.SimpanPE, Me.BatalTools, Me.CetakPE, Me.BtnInpDetail, Me.BtnInpEvn, Me.TTotalEvn, Me.TAgentFeeEvn, Me.TTotalVATEvn, Me.TPPNEvn, Me.TGrandTotalEvn, Me.TQuartalPE, Me.BtnInpProj, Me.BtnKeluar, Me.AdaPPN, Me.BtnSimpanEvn})
 		Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-		Me.RibbonControl.MaxItemId = 4
+		Me.RibbonControl.MaxItemId = 5
 		Me.RibbonControl.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.OnlyWhenMaximized
 		Me.RibbonControl.Name = "RibbonControl"
 		Me.RibbonControl.PageCategories.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageCategory() {Me.RbPenawaran, Me.RbDetail})
@@ -733,6 +734,7 @@ Partial Class FrmActPE
 		'RibbonPageGroup4
 		'
 		Me.RibbonPageGroup4.ItemLinks.Add(Me.BtnInpEvn)
+		Me.RibbonPageGroup4.ItemLinks.Add(Me.BtnSimpanEvn)
 		Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
 		Me.RibbonPageGroup4.Text = "RibbonPageGroup4"
 		'
@@ -785,7 +787,7 @@ Partial Class FrmActPE
 		Me.RibbonStatusBar2.ItemLinks.Add(Me.TRpPPNProj)
 		Me.RibbonStatusBar2.ItemLinks.Add(Me.TGrandTotalProj)
 		Me.RibbonStatusBar2.ItemLinks.Add(Me.BarEditItem6)
-		Me.RibbonStatusBar2.Location = New System.Drawing.Point(0, 595)
+		Me.RibbonStatusBar2.Location = New System.Drawing.Point(0, 579)
 		Me.RibbonStatusBar2.Name = "RibbonStatusBar2"
 		Me.RibbonStatusBar2.Ribbon = Me.RibbonControl
 		Me.RibbonStatusBar2.Size = New System.Drawing.Size(1225, 28)
@@ -863,7 +865,7 @@ Partial Class FrmActPE
 		Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.PanelControl1.Location = New System.Drawing.Point(0, 102)
 		Me.PanelControl1.Name = "PanelControl1"
-		Me.PanelControl1.Size = New System.Drawing.Size(1272, 669)
+		Me.PanelControl1.Size = New System.Drawing.Size(1272, 685)
 		Me.PanelControl1.TabIndex = 2
 		'
 		'NavigationFrame1
@@ -875,7 +877,7 @@ Partial Class FrmActPE
 		Me.NavigationFrame1.Name = "NavigationFrame1"
 		Me.NavigationFrame1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavBuatPE, Me.NavDetailPE})
 		Me.NavigationFrame1.SelectedPage = Me.NavBuatPE
-		Me.NavigationFrame1.Size = New System.Drawing.Size(1268, 665)
+		Me.NavigationFrame1.Size = New System.Drawing.Size(1268, 681)
 		Me.NavigationFrame1.TabIndex = 5
 		Me.NavigationFrame1.Text = "NavigationFrame1"
 		'
@@ -885,7 +887,7 @@ Partial Class FrmActPE
 		Me.NavBuatPE.Controls.Add(Me.ListPEActivation)
 		Me.NavBuatPE.Controls.Add(Me.GroupControl1)
 		Me.NavBuatPE.Name = "NavBuatPE"
-		Me.NavBuatPE.Size = New System.Drawing.Size(1268, 665)
+		Me.NavBuatPE.Size = New System.Drawing.Size(1268, 681)
 		'
 		'PKuartal
 		'
@@ -1193,7 +1195,7 @@ Partial Class FrmActPE
 		Me.ListPEActivation.HideSelection = False
 		Me.ListPEActivation.Location = New System.Drawing.Point(0, 138)
 		Me.ListPEActivation.Name = "ListPEActivation"
-		Me.ListPEActivation.Size = New System.Drawing.Size(1268, 527)
+		Me.ListPEActivation.Size = New System.Drawing.Size(1268, 543)
 		Me.ListPEActivation.TabIndex = 5
 		Me.ListPEActivation.UseCompatibleStateImageBehavior = False
 		Me.ListPEActivation.View = System.Windows.Forms.View.Details
@@ -2087,7 +2089,7 @@ Partial Class FrmActPE
 		'
 		Me.NavDetailPE.Controls.Add(Me.NavigationPane1)
 		Me.NavDetailPE.Name = "NavDetailPE"
-		Me.NavDetailPE.Size = New System.Drawing.Size(1268, 665)
+		Me.NavDetailPE.Size = New System.Drawing.Size(1268, 681)
 		'
 		'NavigationPane1
 		'
@@ -2103,7 +2105,7 @@ Partial Class FrmActPE
 		Me.NavigationPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.DetailPE, Me.DetailEvent, Me.DetailProject, Me.DetailInstore})
 		Me.NavigationPane1.RegularSize = New System.Drawing.Size(1268, 681)
 		Me.NavigationPane1.SelectedPage = Me.DetailPE
-		Me.NavigationPane1.Size = New System.Drawing.Size(1268, 665)
+		Me.NavigationPane1.Size = New System.Drawing.Size(1268, 681)
 		Me.NavigationPane1.TabIndex = 0
 		Me.NavigationPane1.Text = "NavigationPane1"
 		'
@@ -2112,7 +2114,7 @@ Partial Class FrmActPE
 		Me.DetailPE.Caption = "Detail Penawaran"
 		Me.DetailPE.Controls.Add(Me.SplitContainer1)
 		Me.DetailPE.Name = "DetailPE"
-		Me.DetailPE.Size = New System.Drawing.Size(1225, 607)
+		Me.DetailPE.Size = New System.Drawing.Size(1225, 623)
 		'
 		'SplitContainer1
 		'
@@ -2146,7 +2148,7 @@ Partial Class FrmActPE
 		Me.SplitContainer1.Panel2.Controls.Add(Me.LabelX44)
 		Me.SplitContainer1.Panel2.Controls.Add(Me.TAgentFeeCL)
 		Me.SplitContainer1.Panel2.Controls.Add(Me.LabelX43)
-		Me.SplitContainer1.Size = New System.Drawing.Size(1225, 607)
+		Me.SplitContainer1.Size = New System.Drawing.Size(1225, 623)
 		Me.SplitContainer1.SplitterDistance = 765
 		Me.SplitContainer1.TabIndex = 217
 		'
@@ -2185,8 +2187,8 @@ Partial Class FrmActPE
 		'SplitContainer2.Panel2
 		'
 		Me.SplitContainer2.Panel2.Controls.Add(Me.ListDetailPEAct)
-		Me.SplitContainer2.Size = New System.Drawing.Size(765, 607)
-		Me.SplitContainer2.SplitterDistance = 139
+		Me.SplitContainer2.Size = New System.Drawing.Size(765, 623)
+		Me.SplitContainer2.SplitterDistance = 142
 		Me.SplitContainer2.TabIndex = 0
 		'
 		'PKuartalEventCL
@@ -2198,7 +2200,7 @@ Partial Class FrmActPE
 		Me.PKuartalEventCL.Controls.Add(Me.LabelX153)
 		Me.PKuartalEventCL.Controls.Add(Me.LabelX150)
 		Me.PKuartalEventCL.Dock = System.Windows.Forms.DockStyle.Bottom
-		Me.PKuartalEventCL.Location = New System.Drawing.Point(0, 112)
+		Me.PKuartalEventCL.Location = New System.Drawing.Point(0, 115)
 		Me.PKuartalEventCL.Name = "PKuartalEventCL"
 		Me.PKuartalEventCL.Size = New System.Drawing.Size(765, 27)
 		Me.PKuartalEventCL.TabIndex = 163
@@ -2532,6 +2534,7 @@ Partial Class FrmActPE
 		'
 		Me.TPeriodeCL.Border.Class = "TextBoxBorder"
 		Me.TPeriodeCL.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+		Me.TPeriodeCL.Enabled = False
 		Me.TPeriodeCL.Location = New System.Drawing.Point(108, 11)
 		Me.TPeriodeCL.Name = "TPeriodeCL"
 		Me.TPeriodeCL.PreventEnterBeep = True
@@ -2571,7 +2574,7 @@ Partial Class FrmActPE
 		Me.ListDetailPEAct.HideSelection = False
 		Me.ListDetailPEAct.Location = New System.Drawing.Point(0, 0)
 		Me.ListDetailPEAct.Name = "ListDetailPEAct"
-		Me.ListDetailPEAct.Size = New System.Drawing.Size(765, 464)
+		Me.ListDetailPEAct.Size = New System.Drawing.Size(765, 477)
 		Me.ListDetailPEAct.TabIndex = 150
 		Me.ListDetailPEAct.UseCompatibleStateImageBehavior = False
 		'
@@ -2950,6 +2953,7 @@ Partial Class FrmActPE
 		Me.TidDetailActEvn.PreventEnterBeep = True
 		Me.TidDetailActEvn.Size = New System.Drawing.Size(24, 21)
 		Me.TidDetailActEvn.TabIndex = 28
+		Me.TidDetailActEvn.Visible = False
 		'
 		'idFreqEvn
 		'
@@ -2963,6 +2967,7 @@ Partial Class FrmActPE
 		Me.idFreqEvn.PreventEnterBeep = True
 		Me.idFreqEvn.Size = New System.Drawing.Size(24, 21)
 		Me.idFreqEvn.TabIndex = 25
+		Me.idFreqEvn.Visible = False
 		'
 		'CSubkelEvn
 		'
@@ -2976,6 +2981,7 @@ Partial Class FrmActPE
 		Me.CSubkelEvn.Size = New System.Drawing.Size(104, 22)
 		Me.CSubkelEvn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
 		Me.CSubkelEvn.TabIndex = 22
+		Me.CSubkelEvn.Visible = False
 		'
 		'ComboItem1
 		'
@@ -3001,6 +3007,7 @@ Partial Class FrmActPE
 		Me.idQtyEvn.PreventEnterBeep = True
 		Me.idQtyEvn.Size = New System.Drawing.Size(24, 21)
 		Me.idQtyEvn.TabIndex = 24
+		Me.idQtyEvn.Visible = False
 		'
 		'TidSubkelEvn
 		'
@@ -3014,6 +3021,7 @@ Partial Class FrmActPE
 		Me.TidSubkelEvn.PreventEnterBeep = True
 		Me.TidSubkelEvn.Size = New System.Drawing.Size(24, 21)
 		Me.TidSubkelEvn.TabIndex = 27
+		Me.TidSubkelEvn.Visible = False
 		'
 		'idBarangEvn
 		'
@@ -3027,6 +3035,7 @@ Partial Class FrmActPE
 		Me.idBarangEvn.PreventEnterBeep = True
 		Me.idBarangEvn.Size = New System.Drawing.Size(32, 21)
 		Me.idBarangEvn.TabIndex = 23
+		Me.idBarangEvn.Visible = False
 		'
 		'TidJenisDetail
 		'
@@ -3040,6 +3049,7 @@ Partial Class FrmActPE
 		Me.TidJenisDetail.PreventEnterBeep = True
 		Me.TidJenisDetail.Size = New System.Drawing.Size(24, 21)
 		Me.TidJenisDetail.TabIndex = 26
+		Me.TidJenisDetail.Visible = False
 		'
 		'BInputEvn
 		'
@@ -3223,7 +3233,7 @@ Partial Class FrmActPE
 		Me.DetailProject.Controls.Add(Me.RibbonStatusBar2)
 		Me.DetailProject.Name = "DetailProject"
 		Me.DetailProject.PageVisible = False
-		Me.DetailProject.Size = New System.Drawing.Size(1225, 623)
+		Me.DetailProject.Size = New System.Drawing.Size(1225, 607)
 		'
 		'PInpProject
 		'
@@ -3418,7 +3428,7 @@ Partial Class FrmActPE
 		Me.ListBiayaProject.HideSelection = False
 		Me.ListBiayaProject.Location = New System.Drawing.Point(0, 0)
 		Me.ListBiayaProject.Name = "ListBiayaProject"
-		Me.ListBiayaProject.Size = New System.Drawing.Size(1225, 595)
+		Me.ListBiayaProject.Size = New System.Drawing.Size(1225, 579)
 		Me.ListBiayaProject.TabIndex = 54
 		Me.ListBiayaProject.UseCompatibleStateImageBehavior = False
 		'
@@ -3441,7 +3451,7 @@ Partial Class FrmActPE
 		Me.DetailInstore.Controls.Add(Me.Panel2)
 		Me.DetailInstore.Name = "DetailInstore"
 		Me.DetailInstore.PageVisible = False
-		Me.DetailInstore.Size = New System.Drawing.Size(1225, 623)
+		Me.DetailInstore.Size = New System.Drawing.Size(1225, 607)
 		'
 		'SplitContainer4
 		'
@@ -3457,7 +3467,7 @@ Partial Class FrmActPE
 		'
 		Me.SplitContainer4.Panel2.Controls.Add(Me.DGInputHR)
 		Me.SplitContainer4.Panel2.Controls.Add(Me.GroupPanel4)
-		Me.SplitContainer4.Size = New System.Drawing.Size(1225, 564)
+		Me.SplitContainer4.Size = New System.Drawing.Size(1225, 548)
 		Me.SplitContainer4.SplitterDistance = 840
 		Me.SplitContainer4.TabIndex = 1
 		'
@@ -3475,8 +3485,8 @@ Partial Class FrmActPE
 		'SplitContainer3.Panel2
 		'
 		Me.SplitContainer3.Panel2.Controls.Add(Me.GroupPanel3)
-		Me.SplitContainer3.Size = New System.Drawing.Size(840, 564)
-		Me.SplitContainer3.SplitterDistance = 336
+		Me.SplitContainer3.Size = New System.Drawing.Size(840, 548)
+		Me.SplitContainer3.SplitterDistance = 326
 		Me.SplitContainer3.TabIndex = 0
 		'
 		'SplitContainer5
@@ -3492,7 +3502,7 @@ Partial Class FrmActPE
 		'SplitContainer5.Panel2
 		'
 		Me.SplitContainer5.Panel2.Controls.Add(Me.GroupControl3)
-		Me.SplitContainer5.Size = New System.Drawing.Size(840, 336)
+		Me.SplitContainer5.Size = New System.Drawing.Size(840, 326)
 		Me.SplitContainer5.SplitterDistance = 410
 		Me.SplitContainer5.TabIndex = 0
 		'
@@ -3527,7 +3537,7 @@ Partial Class FrmActPE
 		Me.GroupControl2.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.GroupControl2.Location = New System.Drawing.Point(0, 0)
 		Me.GroupControl2.Name = "GroupControl2"
-		Me.GroupControl2.Size = New System.Drawing.Size(410, 336)
+		Me.GroupControl2.Size = New System.Drawing.Size(410, 326)
 		Me.GroupControl2.TabIndex = 0
 		Me.GroupControl2.Text = "Salary / Month"
 		'
@@ -4036,7 +4046,7 @@ Partial Class FrmActPE
 		Me.GroupControl3.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.GroupControl3.Location = New System.Drawing.Point(0, 0)
 		Me.GroupControl3.Name = "GroupControl3"
-		Me.GroupControl3.Size = New System.Drawing.Size(426, 336)
+		Me.GroupControl3.Size = New System.Drawing.Size(426, 326)
 		Me.GroupControl3.TabIndex = 1
 		Me.GroupControl3.Text = "Benefits"
 		'
@@ -4544,7 +4554,7 @@ Partial Class FrmActPE
 		Me.GroupPanel3.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.GroupPanel3.Location = New System.Drawing.Point(0, 0)
 		Me.GroupPanel3.Name = "GroupPanel3"
-		Me.GroupPanel3.Size = New System.Drawing.Size(840, 224)
+		Me.GroupPanel3.Size = New System.Drawing.Size(840, 218)
 		'
 		'
 		'
@@ -4987,7 +4997,7 @@ Partial Class FrmActPE
 		Me.DGInputHR.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.DGInputHR.Location = New System.Drawing.Point(0, 154)
 		Me.DGInputHR.Name = "DGInputHR"
-		Me.DGInputHR.Size = New System.Drawing.Size(381, 410)
+		Me.DGInputHR.Size = New System.Drawing.Size(381, 394)
 		Me.DGInputHR.TabIndex = 139
 		'
 		'GroupPanel4
@@ -5690,11 +5700,19 @@ Partial Class FrmActPE
 		Me.RibbonPage2.Name = "RibbonPage2"
 		Me.RibbonPage2.Text = "RibbonPage2"
 		'
+		'BtnSimpanEvn
+		'
+		Me.BtnSimpanEvn.Caption = "Simpan Event"
+		Me.BtnSimpanEvn.Enabled = False
+		Me.BtnSimpanEvn.Id = 4
+		Me.BtnSimpanEvn.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+		Me.BtnSimpanEvn.Name = "BtnSimpanEvn"
+		'
 		'FrmActPE
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(1272, 771)
+		Me.ClientSize = New System.Drawing.Size(1272, 787)
 		Me.ControlBox = False
 		Me.Controls.Add(Me.PanelControl1)
 		Me.Controls.Add(Me.RibbonControl)
@@ -6172,4 +6190,5 @@ Partial Class FrmActPE
 	Friend WithEvents LabelX153 As DevComponents.DotNetBar.LabelX
 	Friend WithEvents PKuartalEventCL As Panel
 	Friend WithEvents ListPEActivation As DevComponents.DotNetBar.Controls.ListViewEx
+	Friend WithEvents BtnSimpanEvn As DevExpress.XtraBars.BarButtonItem
 End Class
