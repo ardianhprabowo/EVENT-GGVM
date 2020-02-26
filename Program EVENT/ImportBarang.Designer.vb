@@ -22,20 +22,23 @@ Partial Class ImportBarang
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ImportBarang))
 		Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
 		Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+		Me.BtnContoh = New DevExpress.XtraEditors.SimpleButton()
+		Me.TLokasiExcel = New DevComponents.DotNetBar.Controls.TextBoxX()
 		Me.BtnCari = New DevExpress.XtraEditors.SimpleButton()
+		Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+		Me.Panel1 = New System.Windows.Forms.Panel()
+		Me.BtnKeluar = New DevExpress.XtraEditors.SimpleButton()
 		Me.BtnImport = New DevExpress.XtraEditors.SimpleButton()
 		Me.BtnBatal = New DevExpress.XtraEditors.SimpleButton()
-		Me.BtnKeluar = New DevExpress.XtraEditors.SimpleButton()
-		Me.TLokasiExcel = New DevComponents.DotNetBar.Controls.TextBoxX()
-		Me.Panel1 = New System.Windows.Forms.Panel()
-		Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-		Me.BtnContoh = New DevExpress.XtraEditors.SimpleButton()
+		Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
 		CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SplitContainer1.Panel1.SuspendLayout()
 		Me.SplitContainer1.Panel2.SuspendLayout()
 		Me.SplitContainer1.SuspendLayout()
-		Me.Panel1.SuspendLayout()
 		CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.Panel1.SuspendLayout()
+		CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.GroupControl1.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'OpenFileDialog1
@@ -57,11 +60,34 @@ Partial Class ImportBarang
 		'
 		'SplitContainer1.Panel2
 		'
-		Me.SplitContainer1.Panel2.Controls.Add(Me.DataGridView1)
+		Me.SplitContainer1.Panel2.Controls.Add(Me.GroupControl1)
 		Me.SplitContainer1.Panel2.Controls.Add(Me.Panel1)
 		Me.SplitContainer1.Size = New System.Drawing.Size(854, 345)
 		Me.SplitContainer1.SplitterDistance = 44
 		Me.SplitContainer1.TabIndex = 0
+		'
+		'BtnContoh
+		'
+		Me.BtnContoh.ImageOptions.SvgImage = CType(resources.GetObject("BtnContoh.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+		Me.BtnContoh.ImageOptions.SvgImageSize = New System.Drawing.Size(25, 25)
+		Me.BtnContoh.Location = New System.Drawing.Point(682, 9)
+		Me.BtnContoh.Name = "BtnContoh"
+		Me.BtnContoh.Size = New System.Drawing.Size(118, 23)
+		Me.BtnContoh.TabIndex = 5
+		Me.BtnContoh.Text = "Contoh Excel"
+		'
+		'TLokasiExcel
+		'
+		'
+		'
+		'
+		Me.TLokasiExcel.Border.Class = "TextBoxBorder"
+		Me.TLokasiExcel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+		Me.TLokasiExcel.Location = New System.Drawing.Point(12, 11)
+		Me.TLokasiExcel.Name = "TLokasiExcel"
+		Me.TLokasiExcel.PreventEnterBeep = True
+		Me.TLokasiExcel.Size = New System.Drawing.Size(278, 21)
+		Me.TLokasiExcel.TabIndex = 4
 		'
 		'BtnCari
 		'
@@ -72,6 +98,35 @@ Partial Class ImportBarang
 		Me.BtnCari.Size = New System.Drawing.Size(122, 23)
 		Me.BtnCari.TabIndex = 0
 		Me.BtnCari.Text = "Cari Data"
+		'
+		'DataGridView1
+		'
+		Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+		Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+		Me.DataGridView1.Location = New System.Drawing.Point(2, 22)
+		Me.DataGridView1.Name = "DataGridView1"
+		Me.DataGridView1.Size = New System.Drawing.Size(850, 220)
+		Me.DataGridView1.TabIndex = 1
+		'
+		'Panel1
+		'
+		Me.Panel1.Controls.Add(Me.BtnKeluar)
+		Me.Panel1.Controls.Add(Me.BtnImport)
+		Me.Panel1.Controls.Add(Me.BtnBatal)
+		Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+		Me.Panel1.Location = New System.Drawing.Point(0, 244)
+		Me.Panel1.Name = "Panel1"
+		Me.Panel1.Size = New System.Drawing.Size(854, 53)
+		Me.Panel1.TabIndex = 0
+		'
+		'BtnKeluar
+		'
+		Me.BtnKeluar.ImageOptions.SvgImage = CType(resources.GetObject("BtnKeluar.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+		Me.BtnKeluar.Location = New System.Drawing.Point(755, 11)
+		Me.BtnKeluar.Name = "BtnKeluar"
+		Me.BtnKeluar.Size = New System.Drawing.Size(87, 34)
+		Me.BtnKeluar.TabIndex = 3
+		Me.BtnKeluar.Text = "Keluar"
 		'
 		'BtnImport
 		'
@@ -93,60 +148,20 @@ Partial Class ImportBarang
 		Me.BtnBatal.TabIndex = 2
 		Me.BtnBatal.Text = "Batal"
 		'
-		'BtnKeluar
+		'GroupControl1
 		'
-		Me.BtnKeluar.ImageOptions.SvgImage = CType(resources.GetObject("BtnKeluar.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-		Me.BtnKeluar.Location = New System.Drawing.Point(755, 11)
-		Me.BtnKeluar.Name = "BtnKeluar"
-		Me.BtnKeluar.Size = New System.Drawing.Size(87, 34)
-		Me.BtnKeluar.TabIndex = 3
-		Me.BtnKeluar.Text = "Keluar"
-		'
-		'TLokasiExcel
-		'
-		'
-		'
-		'
-		Me.TLokasiExcel.Border.Class = "TextBoxBorder"
-		Me.TLokasiExcel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-		Me.TLokasiExcel.Location = New System.Drawing.Point(12, 11)
-		Me.TLokasiExcel.Name = "TLokasiExcel"
-		Me.TLokasiExcel.PreventEnterBeep = True
-		Me.TLokasiExcel.Size = New System.Drawing.Size(278, 21)
-		Me.TLokasiExcel.TabIndex = 4
-		'
-		'Panel1
-		'
-		Me.Panel1.Controls.Add(Me.BtnKeluar)
-		Me.Panel1.Controls.Add(Me.BtnImport)
-		Me.Panel1.Controls.Add(Me.BtnBatal)
-		Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-		Me.Panel1.Location = New System.Drawing.Point(0, 244)
-		Me.Panel1.Name = "Panel1"
-		Me.Panel1.Size = New System.Drawing.Size(854, 53)
-		Me.Panel1.TabIndex = 0
-		'
-		'DataGridView1
-		'
-		Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-		Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-		Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
-		Me.DataGridView1.Name = "DataGridView1"
-		Me.DataGridView1.Size = New System.Drawing.Size(854, 244)
-		Me.DataGridView1.TabIndex = 1
-		'
-		'BtnContoh
-		'
-		Me.BtnContoh.ImageOptions.SvgImage = CType(resources.GetObject("BtnContoh.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-		Me.BtnContoh.ImageOptions.SvgImageSize = New System.Drawing.Size(25, 25)
-		Me.BtnContoh.Location = New System.Drawing.Point(682, 9)
-		Me.BtnContoh.Name = "BtnContoh"
-		Me.BtnContoh.Size = New System.Drawing.Size(118, 23)
-		Me.BtnContoh.TabIndex = 5
-		Me.BtnContoh.Text = "Contoh Excel"
+		Me.GroupControl1.Controls.Add(Me.DataGridView1)
+		Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Fill
+		Me.GroupControl1.Location = New System.Drawing.Point(0, 0)
+		Me.GroupControl1.Name = "GroupControl1"
+		Me.GroupControl1.Size = New System.Drawing.Size(854, 244)
+		Me.GroupControl1.TabIndex = 2
+		Me.GroupControl1.Text = "Data dari Excel"
 		'
 		'ImportBarang
 		'
+		Me.Appearance.BackColor = System.Drawing.Color.CornflowerBlue
+		Me.Appearance.Options.UseBackColor = True
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.ClientSize = New System.Drawing.Size(854, 345)
@@ -159,8 +174,10 @@ Partial Class ImportBarang
 		Me.SplitContainer1.Panel2.ResumeLayout(False)
 		CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.SplitContainer1.ResumeLayout(False)
-		Me.Panel1.ResumeLayout(False)
 		CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.Panel1.ResumeLayout(False)
+		CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.GroupControl1.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -175,4 +192,5 @@ Partial Class ImportBarang
 	Friend WithEvents DataGridView1 As DataGridView
 	Friend WithEvents Panel1 As Panel
 	Friend WithEvents BtnContoh As DevExpress.XtraEditors.SimpleButton
+	Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
 End Class
