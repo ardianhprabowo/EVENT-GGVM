@@ -2725,7 +2725,7 @@ Public Class FrmActPE
 			TProject.Text = dt.Rows(0)("project").ToString
 			TVenue.Text = dt.Rows(0)("venue").ToString
 			TJmlEvent.Text = dt.Rows(0)("jmlevent").ToString
-			TJmlEvnCL.Text = TJmlEvent.Text
+			'TJmlEvnCL.Text = TJmlEvent.Text
 			TRegion.Text = dt.Rows(0)("region").ToString
 			StartPeriod.CustomFormat = "dd/MMMM/yyyy"
 			StartPeriod.Value = dt.Rows(0)("start_event")
@@ -3914,12 +3914,12 @@ Public Class FrmActPE
 			If dr.HasRows = True Then
 				NavigationPane1.SelectedPage = DetailEvent
 				CJenisDetail.Text = TBarangCL.Text
-				TRegionEvn.Text = TJmlEvent.Text
+				TRegionEvn.Text = TJmlEvnCL.Text
 				Call BacaDetailBiayaEvn()
 			Else
 				NavigationPane1.SelectedPage = DetailEvent
 				CJenisDetail.Text = TBarangCL.Text
-				TRegionEvn.Text = TJmlEvent.Text
+				TRegionEvn.Text = TJmlEvnCL.Text
 			End If
 		ElseIf TidJenisPE.Text = "6" Then
 			NavigationPane1.SelectedPage = DetailProject
