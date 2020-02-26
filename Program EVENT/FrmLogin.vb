@@ -85,8 +85,8 @@ Public Class FrmLogin
             End If
         Else
             MsgBox("Username Salah...coba lagi !!!")
-			TUsername.Select()
-			ProgressBar.Value = "0"
+            TUsername.Focus()
+            ProgressBar.Value = "0"
         End If
     End Sub
 
@@ -95,9 +95,9 @@ Public Class FrmLogin
         For i As Integer = 1 To 100
             Thread.Sleep(40)
         Next
-		SplashScreenManager.CloseForm()
-		TUsername.Focus()
-	End Sub
+        SplashScreenManager.CloseForm()
+        TUsername.Focus()
+    End Sub
     Private Sub FrmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If MsgBox("Are you sure you want to exit?",
                 MsgBoxStyle.YesNo, "Exit") = MsgBoxResult.No Then
