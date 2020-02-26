@@ -561,29 +561,47 @@ Public Class FrmActPE
 		cmd.ExecuteNonQuery()
 
 		If TidJenisPE.Text = "5" Then
-			sql = ""
-			sql = sql & " Select max(iddetail)As id from evn_detail_penawaran "
-			da = New OdbcDataAdapter(sql, conn)
-			dt = New DataTable
-			da.Fill(dt)
-			If dt.Rows.Count > 0 Then
-				detailid = dt.Rows(0)("id")
-			End If
+			If TJmlEvnCL.Text = "" Then
+				MsgBox("Jumlah Event Tidak Boleh Kosong", MsgBoxStyle.Critical, "Unable to save")
+				sql = ""
+				sql = sql & " Select max(iddetail)As id from evn_detail_penawaran "
+				da = New OdbcDataAdapter(sql, conn)
+				dt = New DataTable
+				da.Fill(dt)
+				If dt.Rows.Count > 0 Then
+					detailid = dt.Rows(0)("id")
+				End If
 
-			c = "SELECT idjenis_detail from act_jenis_detail where jenis_detail = '" & TBarangCL.Text & "'"
-			da = New OdbcDataAdapter(c, conn)
-			dt = New DataTable
-			da.Fill(dt)
-			If dt.Rows.Count > 0 Then
-				idjnsdet = dt.Rows(0)("idjenis_detail")
-			End If
+				c = "Delete from evn_detail_penawaran where iddetail = '" & detailid & "'"
+				cmd = New OdbcCommand(c, conn)
+				cmd.ExecuteNonQuery()
+				Exit Sub
+				TJmlEvnCL.Select()
+			Else
+				sql = ""
+				sql = sql & " Select max(iddetail)As id from evn_detail_penawaran "
+				da = New OdbcDataAdapter(sql, conn)
+				dt = New DataTable
+				da.Fill(dt)
+				If dt.Rows.Count > 0 Then
+					detailid = dt.Rows(0)("id")
+				End If
 
-			sql = ""
-			sql = sql & "insert act_kuartal_pe (idpe,iddetail,idjenis_detail,jmlevent,subtotal,kuartalke) "
-			sql = sql & " values ('" & TidPE.Text & "','" & detailid & "','" & idjnsdet & "','" & TJmlEvnCL.Text & "','" & TSubTotalCL.Text & "', "
-			sql = sql & "'1')"
-			cmd = New OdbcCommand(sql, conn)
-			cmd.ExecuteNonQuery()
+				c = "SELECT idjenis_detail from act_jenis_detail where jenis_detail = '" & TBarangCL.Text & "'"
+				da = New OdbcDataAdapter(c, conn)
+				dt = New DataTable
+				da.Fill(dt)
+				If dt.Rows.Count > 0 Then
+					idjnsdet = dt.Rows(0)("idjenis_detail")
+				End If
+
+				sql = ""
+				sql = sql & "insert act_kuartal_pe (idpe,iddetail,idjenis_detail,jmlevent,subtotal,kuartalke) "
+				sql = sql & " values ('" & TidPE.Text & "','" & detailid & "','" & idjnsdet & "','" & TJmlEvnCL.Text & "','" & TSubTotalCL.Text & "', "
+				sql = sql & "'1')"
+				cmd = New OdbcCommand(sql, conn)
+				cmd.ExecuteNonQuery()
+			End If
 		End If
 
 		Call BacaMainDetail()
@@ -2725,7 +2743,7 @@ Public Class FrmActPE
 			TProject.Text = dt.Rows(0)("project").ToString
 			TVenue.Text = dt.Rows(0)("venue").ToString
 			TJmlEvent.Text = dt.Rows(0)("jmlevent").ToString
-			TJmlEvnCL.Text = TJmlEvent.Text
+			'TJmlEvnCL.Text = TJmlEvent.Text
 			TRegion.Text = dt.Rows(0)("region").ToString
 			StartPeriod.CustomFormat = "dd/MMMM/yyyy"
 			StartPeriod.Value = dt.Rows(0)("start_event")
@@ -2747,7 +2765,7 @@ Public Class FrmActPE
 			TProject.Text = ""
 			TVenue.Text = ""
 			TJmlEvent.Text = ""
-			TJmlEvnCL.Text = ""
+			'TJmlEvnCL.Text = ""
 			TRegion.Text = ""
 			StartPeriod.Value = DateTime.Now
 			EndPeriod.Value = DateTime.Now
@@ -3858,6 +3876,8 @@ Public Class FrmActPE
 		cmd.ExecuteNonQuery()
 
 		NavigationPane1.SelectedPage = DetailPE
+		TidDetailCL.Text = ""
+		TBarangCL.Select()
 		Call BacaMainDetail()
 	End Sub
 
@@ -3914,12 +3934,12 @@ Public Class FrmActPE
 			If dr.HasRows = True Then
 				NavigationPane1.SelectedPage = DetailEvent
 				CJenisDetail.Text = TBarangCL.Text
-				TRegionEvn.Text = TJmlEvent.Text
+				TRegionEvn.Text = TJmlEvnCL.Text
 				Call BacaDetailBiayaEvn()
 			Else
 				NavigationPane1.SelectedPage = DetailEvent
 				CJenisDetail.Text = TBarangCL.Text
-				TRegionEvn.Text = TJmlEvent.Text
+				TRegionEvn.Text = TJmlEvnCL.Text
 			End If
 		ElseIf TidJenisPE.Text = "6" Then
 			NavigationPane1.SelectedPage = DetailProject

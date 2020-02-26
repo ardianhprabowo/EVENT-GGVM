@@ -11,10 +11,11 @@ Public Class FrmBarang
             Call AutoCompKontrak()
             Call ComboSatuan()
             Call ListHeaderBarangPenawaran()
-            Call ListHeaderAktual()
-            'Call TampilBarangAktual()
-            'Call TampilBarangPenawaran()
-        Catch ex As Exception
+			Call ListHeaderAktual()
+			Call BersihBarang()
+			'Call TampilBarangAktual()
+			'Call TampilBarangPenawaran()
+		Catch ex As Exception
             MsgBox("Terjadi kesalahan! " & ex.Message)
         End Try
     End Sub
@@ -196,8 +197,9 @@ Public Class FrmBarang
         CSubKat.Text = ""
         CKategori.Text = ""
         SimpanBarangPE.Enabled = False
-        CKategori.Enabled = False
-        CSubKat.Enabled = False
+		CKategori.Enabled = False
+		TMaterial.Enabled = False
+		CSubKat.Enabled = False
         TBarangInp.Enabled = True
         TKet.Enabled = False
         THargaUnit.Enabled = False
@@ -212,8 +214,9 @@ Public Class FrmBarang
         CSubKat.Enabled = True
         TBarangInp.Enabled = True
         TKet.Enabled = True
-        THargaUnit.Enabled = True
-        TT.Enabled = True
+		THargaUnit.Enabled = True
+		TMaterial.Enabled = True
+		TT.Enabled = True
         TP.Enabled = True
         TL.Enabled = True
         BtnHasilX.Enabled = True
@@ -223,8 +226,9 @@ Public Class FrmBarang
         CKategori.Enabled = True
         CSubKat.Enabled = True
         TBarangInp.Enabled = False
-        THargaUnit.Enabled = True
-        TKet.Enabled = True
+		THargaUnit.Enabled = True
+		TMaterial.Enabled = True
+		TKet.Enabled = True
         TT.Enabled = True
         TP.Enabled = True
         TL.Enabled = True
@@ -981,22 +985,30 @@ Public Class FrmBarang
 		Next i
     End Sub
 
-    Private Sub TidSatuan_TextChanged(sender As Object, e As EventArgs) Handles TidSatuan.TextChanged
-        Try
-            GGVM_conn()
-            s = ""
-            s = s & "Select * from satuan where idsatuan = '" & TidSatuan.Text & "'"
-            cmd = New OdbcCommand(s, conn)
-            dr = cmd.ExecuteReader
-            dr.Read()
-            If Not dr.HasRows Then
-                CSatuan.Text = ""
-            Else
-                CSatuan.Text = dr.Item("satuan")
-            End If
-        Catch ex As Exception
-            MsgBox("Terjadi kesalahan! " & ex.Message)
-        End Try
-        GGVM_conn_close()
-    End Sub
+	Private Sub Import_Click(sender As Object, e As EventArgs) Handles Import.Click
+		Dim f As New ImportBarang
+		'f.TopLevel = False
+		f.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+		f.BringToFront()
+		f.ShowDialog()
+	End Sub
+
+	Private Sub TidSatuan_TextChanged(sender As Object, e As EventArgs) Handles TidSatuan.TextChanged
+		Try
+			GGVM_conn()
+			s = ""
+			s = s & "Select * from satuan where idsatuan = '" & TidSatuan.Text & "'"
+			cmd = New OdbcCommand(s, conn)
+			dr = cmd.ExecuteReader
+			dr.Read()
+			If Not dr.HasRows Then
+				CSatuan.Text = ""
+			Else
+				CSatuan.Text = dr.Item("satuan")
+			End If
+		Catch ex As Exception
+			MsgBox("Terjadi kesalahan! " & ex.Message)
+		End Try
+		GGVM_conn_close()
+	End Sub
 End Class
