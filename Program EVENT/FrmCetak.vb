@@ -33,7 +33,7 @@ Public Class FrmCetak
 				cryRpt.Load(Application.StartupPath + "\\Reports\\CrpPengajuanAll-pic.rpt")
 				cryRpt.SetParameterValue("myidpengajuan", tampilIdMajuAll)
 			Case "majupaket"
-				cryRpt.Load(Application.StartupPath + "\\Reports\\CrPengajuanPkt.rpt")
+				cryRpt.Load(Application.StartupPath + "\\Reports\\CrpPengajuanPkt.rpt")
 				cryRpt.SetParameterValue("myidpengajuan", tampilIdMajuSPG)
 			Case "lpj"
 				cryRpt.Load(Application.StartupPath + "\\Reports\\crpLPJ.rpt")

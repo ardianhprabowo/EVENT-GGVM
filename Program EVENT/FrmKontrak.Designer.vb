@@ -66,6 +66,7 @@ Partial Class FrmKontrak
 		Me.Panel4 = New System.Windows.Forms.Panel()
 		Me.ListImport = New DevComponents.DotNetBar.Controls.ListViewEx()
 		Me.Panel3 = New System.Windows.Forms.Panel()
+		Me.CSubKel = New DevComponents.DotNetBar.Controls.ComboBoxEx()
 		Me.ImportBtn = New DevComponents.DotNetBar.ButtonX()
 		Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
 		Me.InputSheetName = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -78,6 +79,8 @@ Partial Class FrmKontrak
 		Me.BBatal = New DevExpress.XtraEditors.SimpleButton()
 		Me.TambahKontrak = New DevExpress.XtraEditors.SimpleButton()
 		Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+		Me.TidSubkel = New DevComponents.DotNetBar.Controls.TextBoxX()
+		Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
 		CType(Me.NavKontrak, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.NavKontrak.SuspendLayout()
 		Me.NavDetailKontrak.SuspendLayout()
@@ -104,6 +107,7 @@ Partial Class FrmKontrak
 		Me.NavKontrak.RegularSize = New System.Drawing.Size(856, 464)
 		Me.NavKontrak.SelectedPage = Me.NavDetailKontrak
 		Me.NavKontrak.Size = New System.Drawing.Size(856, 464)
+		Me.NavKontrak.State = DevExpress.XtraBars.Navigation.NavigationPaneState.Expanded
 		Me.NavKontrak.TabIndex = 0
 		Me.NavKontrak.Text = "Daftar Kontrak"
 		'
@@ -182,7 +186,7 @@ Partial Class FrmKontrak
 		Me.PDaftar.Controls.Add(Me.LabelX20)
 		Me.PDaftar.Controls.Add(Me.LabelX21)
 		Me.PDaftar.Controls.Add(Me.TCariKontrak)
-		Me.PDaftar.Location = New System.Drawing.Point(160, 11)
+		Me.PDaftar.Location = New System.Drawing.Point(138, 17)
 		Me.PDaftar.Name = "PDaftar"
 		Me.PDaftar.Size = New System.Drawing.Size(446, 179)
 		Me.PDaftar.TabIndex = 32
@@ -374,6 +378,7 @@ Partial Class FrmKontrak
 		Me.TidKlien.PreventEnterBeep = True
 		Me.TidKlien.Size = New System.Drawing.Size(28, 21)
 		Me.TidKlien.TabIndex = 3
+		Me.TidKlien.Visible = False
 		'
 		'DTEnd
 		'
@@ -467,6 +472,7 @@ Partial Class FrmKontrak
 		Me.TidK.PreventEnterBeep = True
 		Me.TidK.Size = New System.Drawing.Size(28, 21)
 		Me.TidK.TabIndex = 7
+		Me.TidK.Visible = False
 		'
 		'LabelX6
 		'
@@ -644,15 +650,15 @@ Partial Class FrmKontrak
 		Me.NavImportKontrak.Controls.Add(Me.Panel3)
 		Me.NavImportKontrak.Name = "NavImportKontrak"
 		Me.NavImportKontrak.PageVisible = False
-		Me.NavImportKontrak.Size = New System.Drawing.Size(856, 464)
+		Me.NavImportKontrak.Size = New System.Drawing.Size(755, 406)
 		'
 		'Panel4
 		'
 		Me.Panel4.Controls.Add(Me.ListImport)
 		Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-		Me.Panel4.Location = New System.Drawing.Point(0, 83)
+		Me.Panel4.Location = New System.Drawing.Point(0, 95)
 		Me.Panel4.Name = "Panel4"
-		Me.Panel4.Size = New System.Drawing.Size(856, 381)
+		Me.Panel4.Size = New System.Drawing.Size(755, 311)
 		Me.Panel4.TabIndex = 1
 		'
 		'ListImport
@@ -667,13 +673,16 @@ Partial Class FrmKontrak
 		Me.ListImport.HideSelection = False
 		Me.ListImport.Location = New System.Drawing.Point(0, 0)
 		Me.ListImport.Name = "ListImport"
-		Me.ListImport.Size = New System.Drawing.Size(856, 381)
+		Me.ListImport.Size = New System.Drawing.Size(755, 311)
 		Me.ListImport.TabIndex = 1
 		Me.ListImport.UseCompatibleStateImageBehavior = False
 		Me.ListImport.View = System.Windows.Forms.View.Details
 		'
 		'Panel3
 		'
+		Me.Panel3.Controls.Add(Me.LabelX22)
+		Me.Panel3.Controls.Add(Me.TidSubkel)
+		Me.Panel3.Controls.Add(Me.CSubKel)
 		Me.Panel3.Controls.Add(Me.ImportBtn)
 		Me.Panel3.Controls.Add(Me.LabelX19)
 		Me.Panel3.Controls.Add(Me.InputSheetName)
@@ -682,14 +691,26 @@ Partial Class FrmKontrak
 		Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
 		Me.Panel3.Location = New System.Drawing.Point(0, 0)
 		Me.Panel3.Name = "Panel3"
-		Me.Panel3.Size = New System.Drawing.Size(856, 83)
+		Me.Panel3.Size = New System.Drawing.Size(755, 95)
 		Me.Panel3.TabIndex = 0
+		'
+		'CSubKel
+		'
+		Me.CSubKel.DisplayMember = "Text"
+		Me.CSubKel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+		Me.CSubKel.FormattingEnabled = True
+		Me.CSubKel.ItemHeight = 16
+		Me.CSubKel.Location = New System.Drawing.Point(91, 61)
+		Me.CSubKel.Name = "CSubKel"
+		Me.CSubKel.Size = New System.Drawing.Size(197, 22)
+		Me.CSubKel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+		Me.CSubKel.TabIndex = 9
 		'
 		'ImportBtn
 		'
 		Me.ImportBtn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
 		Me.ImportBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-		Me.ImportBtn.Location = New System.Drawing.Point(531, 34)
+		Me.ImportBtn.Location = New System.Drawing.Point(531, 33)
 		Me.ImportBtn.Name = "ImportBtn"
 		Me.ImportBtn.Size = New System.Drawing.Size(176, 23)
 		Me.ImportBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -720,6 +741,7 @@ Partial Class FrmKontrak
 		Me.InputSheetName.PreventEnterBeep = True
 		Me.InputSheetName.Size = New System.Drawing.Size(197, 21)
 		Me.InputSheetName.TabIndex = 6
+		Me.InputSheetName.Text = "Sheet1"
 		'
 		'TCari
 		'
@@ -815,6 +837,32 @@ Partial Class FrmKontrak
 		'
 		Me.OpenFileDialog1.FileName = "OpenFileDialog1"
 		'
+		'TidSubkel
+		'
+		'
+		'
+		'
+		Me.TidSubkel.Border.Class = "TextBoxBorder"
+		Me.TidSubkel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+		Me.TidSubkel.Location = New System.Drawing.Point(294, 61)
+		Me.TidSubkel.Name = "TidSubkel"
+		Me.TidSubkel.PreventEnterBeep = True
+		Me.TidSubkel.Size = New System.Drawing.Size(29, 21)
+		Me.TidSubkel.TabIndex = 10
+		Me.TidSubkel.Visible = False
+		'
+		'LabelX22
+		'
+		'
+		'
+		'
+		Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+		Me.LabelX22.Location = New System.Drawing.Point(10, 59)
+		Me.LabelX22.Name = "LabelX22"
+		Me.LabelX22.Size = New System.Drawing.Size(75, 23)
+		Me.LabelX22.TabIndex = 11
+		Me.LabelX22.Text = "Subkelompok"
+		'
 		'FrmKontrak
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -898,4 +946,7 @@ Partial Class FrmKontrak
 	Friend WithEvents BDaftarKontrak As DevExpress.XtraEditors.SimpleButton
 	Friend WithEvents OpenFileDialog1 As OpenFileDialog
 	Friend WithEvents BTutupKontrak As DevExpress.XtraEditors.SimpleButton
+	Friend WithEvents CSubKel As DevComponents.DotNetBar.Controls.ComboBoxEx
+	Friend WithEvents LabelX22 As DevComponents.DotNetBar.LabelX
+	Friend WithEvents TidSubkel As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

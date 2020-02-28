@@ -158,7 +158,12 @@ Public Class FrmKontrak
 			.GridLines = True
 			.Columns.Clear()
 			.Items.Clear()
-
+			.Columns.Add("ITEM", 100, HorizontalAlignment.Left)
+			.Columns.Add("MATERIAL NO.", 100, HorizontalAlignment.Left)
+			.Columns.Add("DESKRIPSI", 250, HorizontalAlignment.Left)
+			.Columns.Add("PRICE", 170, HorizontalAlignment.Left)
+			.Columns.Add("QUANTITY", 100, HorizontalAlignment.Left)
+			.Columns.Add("PERIODE", 100, HorizontalAlignment.Left)
 
 			If strDestination <> "" And InputSheetName.Text <> "" Then
 				xlApp = New Excel.Application
@@ -170,22 +175,19 @@ Public Class FrmKontrak
 				If xlRange.Columns.Count > 0 Then
 					If xlRange.Rows.Count > 0 Then
 
-						'Header
-						For xlCol = 1 To xlRange.Columns.Count
-							.Columns.Add("Column" & xlCol)
-						Next
-
-
+						''Header
+						'For xlCol = 1 To xlRange.Columns.Count
+						'	.Columns.Add("Column" & xlCol)
+						'Next
 
 						'Detail
-						For xlRow = 1 To xlRange.Rows.Count
+						For xlRow = 2 To xlRange.Rows.Count
 							For xlCol = 1 To xlRange.Columns.Count
 								Data(xlCol) = xlRange.Cells(xlRow, xlCol).text
-
 								If xlCol = 1 Then
 									.Items.Add(Data(xlCol).ToString)
 								Else
-									.Items(xlRow - 1).SubItems.Add(Data(xlCol).ToString)
+									.Items(xlRow - 2).SubItems.Add(Data(xlCol).ToString)
 								End If
 							Next
 						Next
@@ -223,6 +225,21 @@ Public Class FrmKontrak
 		ListKontrak.EndUpdate()
 		GGVM_conn_close()
 	End Sub
+	Private Sub ComboSubKategori()
+		GGVM_conn()
+		Try
+			CSubKel.Items.Clear()
+
+			cmd = New OdbcCommand("select * from subkelompok where idsubkel in ('71','110')", conn)
+			dr = cmd.ExecuteReader
+			Do While dr.Read
+				CSubKel.Items.Add(dr("subkel"))
+			Loop
+		Catch ex As Exception
+			MsgBox("Terjadi kesalahan! " & ex.Message)
+		End Try
+		GGVM_conn_close()
+	End Sub
 #End Region
 
 	Private Sub FrmKontrak_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -231,6 +248,7 @@ Public Class FrmKontrak
 		Call BacaKontrak()
 		Call AutoCompKlien()
 		Call ListHeaderMaterial()
+		Call ComboSubKategori()
 	End Sub
 
 	Private Sub TidKlien_TextChanged(sender As Object, e As EventArgs) Handles TidKlien.TextChanged
@@ -296,23 +314,28 @@ Public Class FrmKontrak
 		End Try
 	End Sub
 	Private Sub ImportBtn_Click(sender As Object, e As EventArgs) Handles ImportBtn.Click
+		Dim c, kd, s As String
+		Dim ratecard_gg As Double = 0
+		Dim fee_barang As Double = 0
+		Dim pph23_barang As Double = 0
+		Dim idsubkel, idkelompok, idbarang As Integer
 		For Each item As ListViewItem In ListImport.Items
 			Dim harga As Double
-			Double.TryParse(item.SubItems(5).Text, harga)
+			Double.TryParse(item.SubItems(3).Text, harga)
 			GGVM_conn()
 			sql = ""
-			sql = sql & "insert barang (idsubkel,kdbarang,barang,"
+			sql = sql & "insert barang_penawaran (idsubkel,barang,"
 			sql = sql & "idsatuan,harga,idkontrak)"
-			sql = sql & "values (?,?,?,?,?,?)"
+			sql = sql & "values ('" & TidSubkel.Text & "',?,?,?,?,'" & TidKontrak.Text & "')"
 			cmd = New OdbcCommand
 			With cmd
 				.CommandText = (sql)
-				.Parameters.Add("@idsubkel", OdbcType.Int).Value = Convert.ToInt32("71")
-				.Parameters.Add("@kdbarang", OdbcType.Char).Value = item.Text
-				.Parameters.Add("@brg", OdbcType.VarChar).Value = item.SubItems(4).Text
+				'.Parameters.Add("@idsubkel", OdbcType.Int).Value = Convert.ToInt32("71")
+				'.Parameters.Add("@kdbarang", OdbcType.Char).Value = item.Text
+				.Parameters.Add("@brg", OdbcType.VarChar).Value = item.SubItems(2).Text
 				.Parameters.Add("@idsat", OdbcType.Int).Value = Convert.ToInt32("1")
-				.Parameters.Add("@harga", OdbcType.Double).Value = harga
-				.Parameters.Add("@kontrak", OdbcType.BigInt).Value = Convert.ToInt32("1")
+				.Parameters.Add("@harga", OdbcType.Double).Value = item.SubItems(3).Text
+				'.Parameters.Add("@kontrak", OdbcType.BigInt).Value = Convert.ToInt32("1")
 				.Connection = conn
 			End With
 			dr = cmd.ExecuteReader
@@ -326,24 +349,60 @@ Public Class FrmKontrak
 			dr = Nothing
 			cmd = Nothing
 
+			'Count Kode Barang
+			s = ""
+			s = s & " Select max(idbarang)As id from barang_penawaran "
+			cmd = New OdbcCommand(s, conn)
+			dr = cmd.ExecuteReader
+			dr.Read()
+			kd = "000000" + dr.GetString(0)
+			kd = Microsoft.VisualBasic.Right(kd, 6)
+			idbarang = dr.Item("id")
+
+			'Fill ID Barang
+			sql = ""
+			sql = sql & " Select max(idbarang)As id from barang_penawaran "
+			da = New OdbcDataAdapter(sql, conn)
+			dt = New DataTable
+			da.Fill(dt)
+			If dt.Rows.Count > 0 Then
+				idbarang = dt.Rows(0)("id")
+			End If
+			'Fill Kode Barang
+			ratecard_gg = Math.Round(Val(CDbl(item.SubItems(3).Text) * 0.98) / 1.1)
+			fee_barang = Math.Round(Val(CDbl(ratecard_gg) * 1.1) - Val(CDbl(ratecard_gg)))
+			pph23_barang = Math.Round(Val(CDbl(item.SubItems(3).Text))) - Math.Round(Val(CDbl(ratecard_gg) * 1.1))
+
+			c = ""
+			c = c & " update barang_penawaran Set"
+			c = c & " kdbarang ='" & kd & "', ratecard_gg = '" & ratecard_gg & "', fee = '" & fee_barang & "',"
+			c = c & " pph23 = '" & pph23_barang & "'"
+			c = c & " where idbarang ='" & idbarang & "'"
+			cmd = New OdbcCommand(c, conn)
+			cmd.ExecuteNonQuery()
+
+			GGVM_conn_close()
+
 			Dim itemno, idbrg As Integer
 			Dim price As Decimal
-			Integer.TryParse(item.SubItems(4).Text, itemno)
-			Integer.TryParse(item.SubItems(6).Text, idbrg)
-			Decimal.TryParse(item.SubItems(5).Text, price)
+			Integer.TryParse(item.SubItems(0).Text, itemno)
+			'	Integer.TryParse(item.SubItems(6).Text, idbrg)
+			Decimal.TryParse(item.SubItems(3).Text, price)
 			GGVM_conn()
 			sql = ""
 			sql = sql & "insert evn_material (idkontrak,idbarang,item_no,"
-			sql = sql & "material_no,price)"
-			sql = sql & "values (?,?,?,?,?)"
+			sql = sql & "material_no,price,qty,periode)"
+			sql = sql & "values ('" & TidKontrak.Text & "','" & idbarang & "',?,?,?,?,?)"
 			cmd = New OdbcCommand
 			With cmd
 				.CommandText = (sql)
-				.Parameters.Add("@kontrak", OdbcType.BigInt).Value = Convert.ToInt32("1")
-				.Parameters.Add("@idbarang", OdbcType.BigInt).Value = idbrg
-				.Parameters.Add("@item_no", OdbcType.Int).Value = item.SubItems(4)
-				.Parameters.Add("@material", OdbcType.VarChar).Value = item.SubItems(2).Text
-				.Parameters.Add("@price", OdbcType.Decimal).Value = price
+				'	.Parameters.Add("@kontrak", OdbcType.BigInt).Value = Convert.ToInt32(" & TKontrak.Text & ")
+				'.Parameters.Add("@idbarang", OdbcType.BigInt).Value = idbrg
+				.Parameters.Add("@item_no", OdbcType.Int).Value = item.Text
+				.Parameters.Add("@material", OdbcType.VarChar).Value = item.SubItems(1).Text
+				.Parameters.Add("@price", OdbcType.Decimal).Value = item.SubItems(3).Text
+				.Parameters.Add("@qty", OdbcType.Double).Value = item.SubItems(4).Text
+				.Parameters.Add("@periode", OdbcType.Double).Value = item.SubItems(5).Text
 				.Connection = conn
 			End With
 			dr = cmd.ExecuteReader
@@ -385,8 +444,8 @@ Public Class FrmKontrak
 			For Each subItem As ListViewItem.ListViewSubItem In ListKontrak.Items(i).SubItems
 				Dim myString As String = ListKontrak.Items(i).SubItems(innercounter).Text
 				Select Case innercounter
-					Case 2
-						TidKlien.Text = myString
+					Case 3
+						TidKontrak.Text = myString
 				End Select
 				innercounter += 1
 
@@ -406,6 +465,7 @@ Public Class FrmKontrak
 					With .Items(.Items.Count - 1).SubItems
 						.Add(dt.Rows(j)("nama"))
 						.Add(dt.Rows(j)("idklien"))
+						.Add(dt.Rows(j)("idkontrak"))
 					End With
 				End With
 			Next
@@ -422,15 +482,23 @@ Public Class FrmKontrak
 	End Sub
 	Private Sub BSimpanKontrak_Click(sender As Object, e As EventArgs) Handles BSimpanKontrak.Click
 		GGVM_conn()
-		Dim periode As String
+		Dim periode, c As String
 		periode = Microsoft.VisualBasic.Right(DTEnd.Text, 4)
 		sql = ""
 		sql = sql & "insert into evn_kontrak (valuecontract,idklien,start_date,end_date,periode,printed,contract_value)"
 		sql = sql & "values ('" & TKontrak.Text & "','" & TidK.Text & "','" & Format(DTStart.Value, "yyyy/MM/dd") & "','" & Format(DTEnd.Value, "yyyy/MM/dd") & "',"
-		sql = sql & "'" & periode & "','" & TNilaiKontrak.Text & "')"
+		sql = sql & "'" & periode & "','" & Format(DTPrint.Value, "yyyy/MM/dd") & "','" & TNilaiKontrak.Text & "')"
 		cmd = New OdbcCommand(sql, conn)
 		cmd.ExecuteNonQuery()
 
+		c = ""
+		c = c & " Select max(idkontrak)As id from evn_kontrak "
+		da = New OdbcDataAdapter(c, conn)
+		dt = New DataTable
+		da.Fill(dt)
+		If dt.Rows.Count > 0 Then
+			TidKontrak.Text = dt.Rows(0)("id")
+		End If
 		GGVM_conn_close()
 		conn.Dispose()
 	End Sub
@@ -474,5 +542,25 @@ Public Class FrmKontrak
 			Dim form As Form = System.Windows.Forms.Application.OpenForms(i)
 			Me.Close()
 		Next i
+	End Sub
+
+	Private Sub CSubKel_TextChanged(sender As Object, e As EventArgs) Handles CSubKel.TextChanged
+		Try
+			GGVM_conn()
+			sql = ""
+			sql = sql & "Select * from subkelompok"
+			cmd = New OdbcCommand(sql, conn)
+			dr = cmd.ExecuteReader
+			dr.Read()
+			If Not dr.HasRows Then
+				TidSubkel.Text = ""
+			Else
+				TidSubkel.Text = dr.Item("idsubkel")
+			End If
+		Catch ex As Exception
+			MsgBox("Terjadi kesalahan! " & ex.Message)
+		Finally
+			GGVM_conn_close()
+		End Try
 	End Sub
 End Class

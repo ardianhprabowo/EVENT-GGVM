@@ -59,6 +59,7 @@ Partial Class FrmActPE
 		Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
 		Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
 		Me.RepositoryItemCheckEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+		Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
 		Me.RibbonStatusBar2 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
 		Me.TTotalProj = New DevExpress.XtraBars.BarEditItem()
 		Me.TAgentFeeProj = New DevExpress.XtraBars.BarEditItem()
@@ -66,7 +67,6 @@ Partial Class FrmActPE
 		Me.TRpPPNProj = New DevExpress.XtraBars.BarEditItem()
 		Me.TGrandTotalProj = New DevExpress.XtraBars.BarEditItem()
 		Me.BarEditItem6 = New DevExpress.XtraBars.BarEditItem()
-		Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
 		Me.BarCheckItem1 = New DevExpress.XtraBars.BarCheckItem()
 		Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
 		Me.NavigationFrame1 = New DevExpress.XtraBars.Navigation.NavigationFrame()
@@ -502,7 +502,7 @@ Partial Class FrmActPE
 		Me.RibbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.[False]
 		Me.RibbonControl.ShowToolbarCustomizeItem = False
 		Me.RibbonControl.Size = New System.Drawing.Size(1272, 102)
-		Me.RibbonControl.StatusBar = Me.RibbonStatusBar1
+		Me.RibbonControl.StatusBar = Me.RibbonStatusBar2
 		Me.RibbonControl.Toolbar.ShowCustomizeItem = False
 		'
 		'TambahPE
@@ -773,6 +773,20 @@ Partial Class FrmActPE
 		Me.RepositoryItemCheckEdit3.AutoHeight = False
 		Me.RepositoryItemCheckEdit3.Name = "RepositoryItemCheckEdit3"
 		'
+		'RibbonStatusBar1
+		'
+		Me.RibbonStatusBar1.ItemLinks.Add(Me.TTotalEvn)
+		Me.RibbonStatusBar1.ItemLinks.Add(Me.TAgentFeeEvn)
+		Me.RibbonStatusBar1.ItemLinks.Add(Me.TTotalVATEvn)
+		Me.RibbonStatusBar1.ItemLinks.Add(Me.AdaPPN)
+		Me.RibbonStatusBar1.ItemLinks.Add(Me.TPPNEvn)
+		Me.RibbonStatusBar1.ItemLinks.Add(Me.TGrandTotalEvn)
+		Me.RibbonStatusBar1.ItemLinks.Add(Me.TQuartalPE)
+		Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 595)
+		Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
+		Me.RibbonStatusBar1.Ribbon = Me.RibbonControl
+		Me.RibbonStatusBar1.Size = New System.Drawing.Size(1225, 28)
+		'
 		'RibbonStatusBar2
 		'
 		Me.RibbonStatusBar2.ItemLinks.Add(Me.TTotalProj)
@@ -846,20 +860,6 @@ Partial Class FrmActPE
 		Me.BarEditItem6.Id = 17
 		Me.BarEditItem6.Name = "BarEditItem6"
 		'
-		'RibbonStatusBar1
-		'
-		Me.RibbonStatusBar1.ItemLinks.Add(Me.TTotalEvn)
-		Me.RibbonStatusBar1.ItemLinks.Add(Me.TAgentFeeEvn)
-		Me.RibbonStatusBar1.ItemLinks.Add(Me.TTotalVATEvn)
-		Me.RibbonStatusBar1.ItemLinks.Add(Me.AdaPPN)
-		Me.RibbonStatusBar1.ItemLinks.Add(Me.TPPNEvn)
-		Me.RibbonStatusBar1.ItemLinks.Add(Me.TGrandTotalEvn)
-		Me.RibbonStatusBar1.ItemLinks.Add(Me.TQuartalPE)
-		Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 595)
-		Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
-		Me.RibbonStatusBar1.Ribbon = Me.RibbonControl
-		Me.RibbonStatusBar1.Size = New System.Drawing.Size(1225, 28)
-		'
 		'BarCheckItem1
 		'
 		Me.BarCheckItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
@@ -884,7 +884,7 @@ Partial Class FrmActPE
 		Me.NavigationFrame1.Location = New System.Drawing.Point(2, 2)
 		Me.NavigationFrame1.Name = "NavigationFrame1"
 		Me.NavigationFrame1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavBuatPE, Me.NavDetailPE})
-		Me.NavigationFrame1.SelectedPage = Me.NavBuatPE
+		Me.NavigationFrame1.SelectedPage = Me.NavDetailPE
 		Me.NavigationFrame1.Size = New System.Drawing.Size(1268, 665)
 		Me.NavigationFrame1.TabIndex = 5
 		Me.NavigationFrame1.Text = "NavigationFrame1"
@@ -2112,7 +2112,7 @@ Partial Class FrmActPE
 		Me.NavigationPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText
 		Me.NavigationPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.DetailPE, Me.DetailEvent, Me.DetailProject, Me.DetailInstore})
 		Me.NavigationPane1.RegularSize = New System.Drawing.Size(1268, 681)
-		Me.NavigationPane1.SelectedPage = Me.DetailPE
+		Me.NavigationPane1.SelectedPage = Me.DetailInstore
 		Me.NavigationPane1.Size = New System.Drawing.Size(1268, 665)
 		Me.NavigationPane1.TabIndex = 0
 		Me.NavigationPane1.Text = "NavigationPane1"
