@@ -13,6 +13,7 @@ Public Class FrmKontrak
 			.Columns.Add("No.Kontrak", 150, HorizontalAlignment.Left)
 			.Columns.Add("Klien", 249, HorizontalAlignment.Left)
 			.Columns.Add("idklien", 0, HorizontalAlignment.Left)
+			.Columns.Add("idkontrak", 0, HorizontalAlignment.Left)
 		End With
 	End Sub
 	Private Sub ListHeaderMaterial()
@@ -33,7 +34,7 @@ Public Class FrmKontrak
 		GGVM_conn()
 		sql = ""
 		sql = sql & "SELECT a.*,b.barang from evn_material a "
-		sql = sql & " JOIN barang b on b.idbarang = a.idbarang "
+		sql = sql & " JOIN barang_penawaran b on b.idbarang = a.idbarang "
 		sql = sql & " where a.idkontrak = '" & TidKontrak.Text & "' and a.idkontrak = b.idkontrak"
 		da = New OdbcDataAdapter(sql, conn)
 		ds = New DataSet
@@ -113,7 +114,6 @@ Public Class FrmKontrak
 	Private Sub KondisiBersih()
 		TidKlien.Clear()
 		TKlien.Clear()
-		TidK.Clear()
 		TNilaiKontrak.Clear()
 		TKontrak.Clear()
 		BSimpanKontrak.Enabled = False
@@ -219,6 +219,7 @@ Public Class FrmKontrak
 				With .Items(.Items.Count - 1).SubItems
 					.Add(dt.Rows(j)("nama"))
 					.Add(dt.Rows(j)("idklien"))
+					.Add(dt.Rows(j)("idkontrak"))
 				End With
 			End With
 		Next
@@ -252,41 +253,21 @@ Public Class FrmKontrak
 	End Sub
 
 	Private Sub TidKlien_TextChanged(sender As Object, e As EventArgs) Handles TidKlien.TextChanged
-		Try
-			GGVM_conn()
-			sql = "Select a.*,b.* from klien a, evn_kontrak b where a.id = b.idklien and a.id = '" & TidKlien.Text & "'"
-			da = New OdbcDataAdapter(sql, conn)
-			dt = New DataTable
-			da.Fill(dt)
-			If dt.Rows.Count > 0 Then
-				TKlien.Text = dt.Rows(0)("nama")
-				TAlamat.Text = dt.Rows(0)("alamat")
-				TKota.Text = dt.Rows(0)("kota")
-				TKontrak.Text = dt.Rows(0)("valuecontract")
-				TNilaiKontrak.Text = dt.Rows(0)("contract_value")
-				DTStart.CustomFormat = "yyyy/MM/dd"
-				DTStart.Value = dt.Rows(0)("start_date")
-				DTEnd.CustomFormat = "yyyy/MM/dd"
-				DTEnd.Value = dt.Rows(0)("end_date")
-				DTPrint.CustomFormat = "yyyy/MM/dd"
-				DTPrint.Value = dt.Rows(0)("printed")
-				TidKontrak.Text = dt.Rows(0)("idkontrak")
-			Else
-				TKlien.Text = ""
-				TKota.Text = ""
-				TAlamat.Text = ""
-				TKontrak.Text = ""
-				TNilaiKontrak.Text = ""
-				DTStart.Value = DateTime.Now
-				DTEnd.Value = DateTime.Now
-				DTPrint.Value = DateTime.Now
-				TidKontrak.Text = ""
-			End If
-		Catch ex As Exception
-			MsgBox("Terjadi kesalahan! " & ex.Message)
-		Finally
-			GGVM_conn_close()
-		End Try
+		GGVM_conn()
+		sql = "select * from klien where id='" & TidKlien.Text & "'"
+		cmd = New OdbcCommand(sql, conn)
+		dr = cmd.ExecuteReader
+		dr.Read()
+		If Not dr.HasRows Then
+			TKlien.Text = ""
+			TAlamat.Text = ""
+			'TKota.Text = ""
+		Else
+			TKlien.Text = dr.Item("nama")
+			TAlamat.Text = dr.Item("alamat")
+			TKota.Text = dr.Item("kota")
+		End If
+		GGVM_conn_close()
 	End Sub
 	Private Sub TKlien_TextChanged(sender As Object, e As EventArgs) Handles TKlien.TextChanged
 		Try
@@ -296,9 +277,9 @@ Public Class FrmKontrak
 			dr = cmd.ExecuteReader
 			dr.Read()
 			If Not dr.HasRows Then
-				TidK.Text = ""
+				TidKlien.Text = ""
 			Else
-				TidK.Text = dr.Item("id")
+				TidKlien.Text = dr.Item("id")
 			End If
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
@@ -318,15 +299,15 @@ Public Class FrmKontrak
 		Dim ratecard_gg As Double = 0
 		Dim fee_barang As Double = 0
 		Dim pph23_barang As Double = 0
-		Dim idsubkel, idkelompok, idbarang As Integer
+		Dim idbarang As Integer
 		For Each item As ListViewItem In ListImport.Items
 			Dim harga As Double
 			Double.TryParse(item.SubItems(3).Text, harga)
 			GGVM_conn()
 			sql = ""
 			sql = sql & "insert barang_penawaran (idsubkel,barang,"
-			sql = sql & "idsatuan,harga,idkontrak)"
-			sql = sql & "values ('" & TidSubkel.Text & "',?,?,?,?,'" & TidKontrak.Text & "')"
+			sql = sql & "idsatuan,harga_pe,idkontrak)"
+			sql = sql & "values ('" & TidSubkel.Text & "',?,?,?,'" & TidKontrak.Text & "')"
 			cmd = New OdbcCommand
 			With cmd
 				.CommandText = (sql)
@@ -334,7 +315,7 @@ Public Class FrmKontrak
 				'.Parameters.Add("@kdbarang", OdbcType.Char).Value = item.Text
 				.Parameters.Add("@brg", OdbcType.VarChar).Value = item.SubItems(2).Text
 				.Parameters.Add("@idsat", OdbcType.Int).Value = Convert.ToInt32("1")
-				.Parameters.Add("@harga", OdbcType.Double).Value = item.SubItems(3).Text
+				.Parameters.Add("@harga_pe", OdbcType.Double).Value = item.SubItems(3).Text
 				'.Parameters.Add("@kontrak", OdbcType.BigInt).Value = Convert.ToInt32("1")
 				.Connection = conn
 			End With
@@ -345,9 +326,7 @@ Public Class FrmKontrak
 				Console.WriteLine()
 			End While
 			Console.ReadLine()
-			conn.Close()
-			dr = Nothing
-			cmd = Nothing
+
 
 			'Count Kode Barang
 			s = ""
@@ -381,9 +360,9 @@ Public Class FrmKontrak
 			cmd = New OdbcCommand(c, conn)
 			cmd.ExecuteNonQuery()
 
-			GGVM_conn_close()
+			'GGVM_conn_close()
 
-			Dim itemno, idbrg As Integer
+			Dim itemno As Integer
 			Dim price As Decimal
 			Integer.TryParse(item.SubItems(0).Text, itemno)
 			'	Integer.TryParse(item.SubItems(6).Text, idbrg)
@@ -486,7 +465,7 @@ Public Class FrmKontrak
 		periode = Microsoft.VisualBasic.Right(DTEnd.Text, 4)
 		sql = ""
 		sql = sql & "insert into evn_kontrak (valuecontract,idklien,start_date,end_date,periode,printed,contract_value)"
-		sql = sql & "values ('" & TKontrak.Text & "','" & TidK.Text & "','" & Format(DTStart.Value, "yyyy/MM/dd") & "','" & Format(DTEnd.Value, "yyyy/MM/dd") & "',"
+		sql = sql & "values ('" & TKontrak.Text & "','" & TidKlien.Text & "','" & Format(DTStart.Value, "yyyy/MM/dd") & "','" & Format(DTEnd.Value, "yyyy/MM/dd") & "',"
 		sql = sql & "'" & periode & "','" & Format(DTPrint.Value, "yyyy/MM/dd") & "','" & TNilaiKontrak.Text & "')"
 		cmd = New OdbcCommand(sql, conn)
 		cmd.ExecuteNonQuery()
@@ -502,18 +481,8 @@ Public Class FrmKontrak
 		GGVM_conn_close()
 		conn.Dispose()
 	End Sub
-	Private Sub TidK_TextChanged(sender As Object, e As EventArgs) Handles TidK.TextChanged
-		sql = "select * from klien where id='" & TidK.Text & "'"
-		cmd = New OdbcCommand(sql, conn)
-		dr = cmd.ExecuteReader
-		dr.Read()
-		If Not dr.HasRows Then
-			TAlamat.Text = ""
-			TKota.Text = ""
-		Else
-			TAlamat.Text = dr.Item("alamat")
-			TKota.Text = dr.Item("kota")
-		End If
+	Private Sub TidK_TextChanged(sender As Object, e As EventArgs)
+
 	End Sub
 	Private Sub TambahKontrak_Click(sender As Object, e As EventArgs) Handles TambahKontrak.Click
 		Try
@@ -556,6 +525,44 @@ Public Class FrmKontrak
 				TidSubkel.Text = ""
 			Else
 				TidSubkel.Text = dr.Item("idsubkel")
+			End If
+		Catch ex As Exception
+			MsgBox("Terjadi kesalahan! " & ex.Message)
+		Finally
+			GGVM_conn_close()
+		End Try
+	End Sub
+
+	Private Sub TidKontrak_TextChanged(sender As Object, e As EventArgs) Handles TidKontrak.TextChanged
+		Try
+			GGVM_conn()
+			sql = "Select a.nama,a.alamat,a.kota,a.id,b.* from klien a, evn_kontrak b where a.id = b.idklien and b.idkontrak =  '" & TidKontrak.Text & "'"
+			da = New OdbcDataAdapter(sql, conn)
+			dt = New DataTable
+			da.Fill(dt)
+			If dt.Rows.Count > 0 Then
+				TKlien.Text = dt.Rows(0)("nama")
+				TAlamat.Text = dt.Rows(0)("alamat")
+				TKota.Text = dt.Rows(0)("kota")
+				TKontrak.Text = dt.Rows(0)("valuecontract")
+				TNilaiKontrak.Text = dt.Rows(0)("contract_value")
+				DTStart.CustomFormat = "yyyy/MM/dd"
+				DTStart.Value = dt.Rows(0)("start_date")
+				DTEnd.CustomFormat = "yyyy/MM/dd"
+				DTEnd.Value = dt.Rows(0)("end_date")
+				DTPrint.CustomFormat = "yyyy/MM/dd"
+				DTPrint.Value = dt.Rows(0)("printed")
+				TidKlien.Text = dt.Rows(0)("id")
+			Else
+				TKlien.Text = ""
+				TKota.Text = ""
+				TAlamat.Text = ""
+				TKontrak.Text = ""
+				TNilaiKontrak.Text = ""
+				DTStart.Value = DateTime.Now
+				DTEnd.Value = DateTime.Now
+				DTPrint.Value = DateTime.Now
+				TidKlien.Text = ""
 			End If
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)

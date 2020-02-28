@@ -48,7 +48,6 @@ Partial Class FrmKontrak
 		Me.DTKontrak = New System.Windows.Forms.DateTimePicker()
 		Me.TAlamat = New DevComponents.DotNetBar.Controls.TextBoxX()
 		Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
-		Me.TidK = New DevComponents.DotNetBar.Controls.TextBoxX()
 		Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
 		Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
 		Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
@@ -66,6 +65,8 @@ Partial Class FrmKontrak
 		Me.Panel4 = New System.Windows.Forms.Panel()
 		Me.ListImport = New DevComponents.DotNetBar.Controls.ListViewEx()
 		Me.Panel3 = New System.Windows.Forms.Panel()
+		Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
+		Me.TidSubkel = New DevComponents.DotNetBar.Controls.TextBoxX()
 		Me.CSubKel = New DevComponents.DotNetBar.Controls.ComboBoxEx()
 		Me.ImportBtn = New DevComponents.DotNetBar.ButtonX()
 		Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
@@ -79,8 +80,6 @@ Partial Class FrmKontrak
 		Me.BBatal = New DevExpress.XtraEditors.SimpleButton()
 		Me.TambahKontrak = New DevExpress.XtraEditors.SimpleButton()
 		Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-		Me.TidSubkel = New DevComponents.DotNetBar.Controls.TextBoxX()
-		Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
 		CType(Me.NavKontrak, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.NavKontrak.SuspendLayout()
 		Me.NavDetailKontrak.SuspendLayout()
@@ -158,7 +157,6 @@ Partial Class FrmKontrak
 		Me.Panel1.Controls.Add(Me.DTKontrak)
 		Me.Panel1.Controls.Add(Me.TAlamat)
 		Me.Panel1.Controls.Add(Me.LabelX15)
-		Me.Panel1.Controls.Add(Me.TidK)
 		Me.Panel1.Controls.Add(Me.LabelX6)
 		Me.Panel1.Controls.Add(Me.LabelX13)
 		Me.Panel1.Controls.Add(Me.LabelX5)
@@ -186,7 +184,7 @@ Partial Class FrmKontrak
 		Me.PDaftar.Controls.Add(Me.LabelX20)
 		Me.PDaftar.Controls.Add(Me.LabelX21)
 		Me.PDaftar.Controls.Add(Me.TCariKontrak)
-		Me.PDaftar.Location = New System.Drawing.Point(138, 17)
+		Me.PDaftar.Location = New System.Drawing.Point(145, 3)
 		Me.PDaftar.Name = "PDaftar"
 		Me.PDaftar.Size = New System.Drawing.Size(446, 179)
 		Me.PDaftar.TabIndex = 32
@@ -267,6 +265,7 @@ Partial Class FrmKontrak
 		Me.TidKontrak.PreventEnterBeep = True
 		Me.TidKontrak.Size = New System.Drawing.Size(28, 21)
 		Me.TidKontrak.TabIndex = 31
+		Me.TidKontrak.Visible = False
 		'
 		'LabelX16
 		'
@@ -459,20 +458,6 @@ Partial Class FrmKontrak
 		Me.LabelX15.Size = New System.Drawing.Size(10, 20)
 		Me.LabelX15.TabIndex = 24
 		Me.LabelX15.Text = ":"
-		'
-		'TidK
-		'
-		'
-		'
-		'
-		Me.TidK.Border.Class = "TextBoxBorder"
-		Me.TidK.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-		Me.TidK.Location = New System.Drawing.Point(30, 72)
-		Me.TidK.Name = "TidK"
-		Me.TidK.PreventEnterBeep = True
-		Me.TidK.Size = New System.Drawing.Size(28, 21)
-		Me.TidK.TabIndex = 7
-		Me.TidK.Visible = False
 		'
 		'LabelX6
 		'
@@ -694,6 +679,31 @@ Partial Class FrmKontrak
 		Me.Panel3.Size = New System.Drawing.Size(755, 95)
 		Me.Panel3.TabIndex = 0
 		'
+		'LabelX22
+		'
+		'
+		'
+		'
+		Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+		Me.LabelX22.Location = New System.Drawing.Point(10, 59)
+		Me.LabelX22.Name = "LabelX22"
+		Me.LabelX22.Size = New System.Drawing.Size(75, 23)
+		Me.LabelX22.TabIndex = 11
+		Me.LabelX22.Text = "Subkelompok"
+		'
+		'TidSubkel
+		'
+		'
+		'
+		'
+		Me.TidSubkel.Border.Class = "TextBoxBorder"
+		Me.TidSubkel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+		Me.TidSubkel.Location = New System.Drawing.Point(294, 61)
+		Me.TidSubkel.Name = "TidSubkel"
+		Me.TidSubkel.PreventEnterBeep = True
+		Me.TidSubkel.Size = New System.Drawing.Size(29, 21)
+		Me.TidSubkel.TabIndex = 10
+		'
 		'CSubKel
 		'
 		Me.CSubKel.DisplayMember = "Text"
@@ -837,32 +847,6 @@ Partial Class FrmKontrak
 		'
 		Me.OpenFileDialog1.FileName = "OpenFileDialog1"
 		'
-		'TidSubkel
-		'
-		'
-		'
-		'
-		Me.TidSubkel.Border.Class = "TextBoxBorder"
-		Me.TidSubkel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-		Me.TidSubkel.Location = New System.Drawing.Point(294, 61)
-		Me.TidSubkel.Name = "TidSubkel"
-		Me.TidSubkel.PreventEnterBeep = True
-		Me.TidSubkel.Size = New System.Drawing.Size(29, 21)
-		Me.TidSubkel.TabIndex = 10
-		Me.TidSubkel.Visible = False
-		'
-		'LabelX22
-		'
-		'
-		'
-		'
-		Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-		Me.LabelX22.Location = New System.Drawing.Point(10, 59)
-		Me.LabelX22.Name = "LabelX22"
-		Me.LabelX22.Size = New System.Drawing.Size(75, 23)
-		Me.LabelX22.TabIndex = 11
-		Me.LabelX22.Text = "Subkelompok"
-		'
 		'FrmKontrak
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -915,7 +899,6 @@ Partial Class FrmKontrak
 	Friend WithEvents DTKontrak As DateTimePicker
 	Friend WithEvents TAlamat As DevComponents.DotNetBar.Controls.TextBoxX
 	Friend WithEvents LabelX15 As DevComponents.DotNetBar.LabelX
-	Friend WithEvents TidK As DevComponents.DotNetBar.Controls.TextBoxX
 	Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
 	Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
 	Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
