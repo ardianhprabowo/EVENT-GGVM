@@ -42,6 +42,17 @@ Public Class FrmActPE
 		Loop
 		GGVM_conn_close()
 	End Sub
+	Private Sub ComboKontrak()
+		GGVM_conn()
+		CKontrak.Items.Clear()
+		sql = "Select * From evn_kontrak Where iddivisi = '" & DivUser & "' "
+		cmd = New OdbcCommand(sql, conn)
+		dr = cmd.ExecuteReader
+		Do While dr.Read
+			CKontrak.Items.Add(dr.Item("valuecontract"))
+		Loop
+		GGVM_conn_close()
+	End Sub
 	Private Sub LoadVenue()
 		sql = ""
 		sql = sql & "SELECT * FROM kota"
@@ -1117,7 +1128,7 @@ Public Class FrmActPE
 			.FullRowSelect = True
 			.MultiSelect = False
 			.View = View.Details
-			.CheckBoxes = False
+			.CheckBoxes = True
 			.Columns.Clear()
 			.Items.Clear()
 			.Columns.Add("PERIODE", 140, HorizontalAlignment.Left)
@@ -1396,6 +1407,7 @@ Public Class FrmActPE
 		Call KondisiTambahPE()
 		Call LoadSubdivisi()
 		Call KondisiTambahDetail()
+		Call ComboKontrak()
 		If TidJenisPE.Text = "5" Then
 			TRegion.Enabled = False
 			ProsesPE = "Event"
@@ -2949,6 +2961,7 @@ Public Class FrmActPE
 			cmd = Nothing
 
 			MsgBox("Barang Berhasil diHapus")
+			Call KondisiBersihDetail()
 			Call BacaMainDetail()
 			Call NominalBiaya()
 		Next
@@ -3306,6 +3319,7 @@ Public Class FrmActPE
 		cmd = New OdbcCommand(c, conn)
 		cmd.ExecuteNonQuery()
 
+		Call BacaMainDetail()
 		TidJenisDetail.Text = TKidJenisDetailPE.Text
 		NavigationFrame1.SelectedPage = NavDetailPE
 		RibbonControl.SelectedPage = DetailPanel
@@ -4093,5 +4107,19 @@ Public Class FrmActPE
 		CetakPE.Enabled = True
 		BatalTools.Enabled = True
 		HapusPE.Enabled = True
+	End Sub
+
+	Private Sub CKontrak_TextChanged(sender As Object, e As EventArgs) Handles CKontrak.TextChanged
+		GGVM_conn()
+		sql = ""
+		sql = sql & "select * from evn_kontrak where valuecontract = '" & CKontrak.Text & "' and iddivisi = '" & DivUser & "' "
+		cmd = New OdbcCommand(sql, conn)
+		dr = cmd.ExecuteReader
+		dr.Read()
+		If Not dr.HasRows Then
+			TidKontrakAct.Text = ""
+		Else
+			TidKontrakAct.Text = dr.Item("idkontrak")
+		End If
 	End Sub
 End Class

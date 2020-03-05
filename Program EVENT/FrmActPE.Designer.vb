@@ -95,6 +95,8 @@ Partial Class FrmActPE
 		Me.LabelX141 = New DevComponents.DotNetBar.LabelX()
 		Me.TKNoPE = New DevComponents.DotNetBar.Controls.TextBoxX()
 		Me.ListPEActivation = New DevComponents.DotNetBar.Controls.ListViewEx()
+		Me.ContextPE = New System.Windows.Forms.ContextMenuStrip(Me.components)
+		Me.CxKuartalPE = New System.Windows.Forms.ToolStripMenuItem()
 		Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
 		Me.TidKuartalPE = New DevComponents.DotNetBar.Controls.TextBoxX()
 		Me.PAlasan = New DevExpress.XtraEditors.GroupControl()
@@ -412,8 +414,6 @@ Partial Class FrmActPE
 		Me.LabelX119 = New DevComponents.DotNetBar.LabelX()
 		Me.LabelX118 = New DevComponents.DotNetBar.LabelX()
 		Me.LabelX117 = New DevComponents.DotNetBar.LabelX()
-		Me.ContextPE = New System.Windows.Forms.ContextMenuStrip(Me.components)
-		Me.CxKuartalPE = New System.Windows.Forms.ToolStripMenuItem()
 		Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
 		CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
 		CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -432,6 +432,7 @@ Partial Class FrmActPE
 		Me.NavBuatPE.SuspendLayout()
 		CType(Me.PKuartal, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.PKuartal.SuspendLayout()
+		Me.ContextPE.SuspendLayout()
 		CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.GroupControl1.SuspendLayout()
 		CType(Me.PAlasan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -480,7 +481,6 @@ Partial Class FrmActPE
 		CType(Me.DGInputHR, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.GroupPanel4.SuspendLayout()
 		Me.Panel2.SuspendLayout()
-		Me.ContextPE.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'RibbonControl
@@ -884,7 +884,7 @@ Partial Class FrmActPE
 		Me.NavigationFrame1.Location = New System.Drawing.Point(2, 2)
 		Me.NavigationFrame1.Name = "NavigationFrame1"
 		Me.NavigationFrame1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavBuatPE, Me.NavDetailPE})
-		Me.NavigationFrame1.SelectedPage = Me.NavDetailPE
+		Me.NavigationFrame1.SelectedPage = Me.NavBuatPE
 		Me.NavigationFrame1.Size = New System.Drawing.Size(1268, 665)
 		Me.NavigationFrame1.TabIndex = 5
 		Me.NavigationFrame1.Text = "NavigationFrame1"
@@ -1198,6 +1198,7 @@ Partial Class FrmActPE
 		'
 		Me.ListPEActivation.Border.Class = "ListViewBorder"
 		Me.ListPEActivation.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+		Me.ListPEActivation.ContextMenuStrip = Me.ContextPE
 		Me.ListPEActivation.DisabledBackColor = System.Drawing.Color.Empty
 		Me.ListPEActivation.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.ListPEActivation.HideSelection = False
@@ -1207,6 +1208,19 @@ Partial Class FrmActPE
 		Me.ListPEActivation.TabIndex = 5
 		Me.ListPEActivation.UseCompatibleStateImageBehavior = False
 		Me.ListPEActivation.View = System.Windows.Forms.View.Details
+		'
+		'ContextPE
+		'
+		Me.ContextPE.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CxKuartalPE})
+		Me.ContextPE.Name = "ContextPE"
+		Me.ContextPE.Size = New System.Drawing.Size(157, 26)
+		'
+		'CxKuartalPE
+		'
+		Me.CxKuartalPE.Enabled = False
+		Me.CxKuartalPE.Name = "CxKuartalPE"
+		Me.CxKuartalPE.Size = New System.Drawing.Size(156, 22)
+		Me.CxKuartalPE.Text = "Buat PE/Kuartal"
 		'
 		'GroupControl1
 		'
@@ -2111,9 +2125,10 @@ Partial Class FrmActPE
 		Me.NavigationPane1.Name = "NavigationPane1"
 		Me.NavigationPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText
 		Me.NavigationPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.DetailPE, Me.DetailEvent, Me.DetailProject, Me.DetailInstore})
-		Me.NavigationPane1.RegularSize = New System.Drawing.Size(1268, 681)
-		Me.NavigationPane1.SelectedPage = Me.DetailInstore
+		Me.NavigationPane1.RegularSize = New System.Drawing.Size(1268, 665)
+		Me.NavigationPane1.SelectedPage = Me.DetailPE
 		Me.NavigationPane1.Size = New System.Drawing.Size(1268, 665)
+		Me.NavigationPane1.State = DevExpress.XtraBars.Navigation.NavigationPaneState.Collapsed
 		Me.NavigationPane1.TabIndex = 0
 		Me.NavigationPane1.Text = "NavigationPane1"
 		'
@@ -2122,7 +2137,7 @@ Partial Class FrmActPE
 		Me.DetailPE.Caption = "Detail Penawaran"
 		Me.DetailPE.Controls.Add(Me.SplitContainer1)
 		Me.DetailPE.Name = "DetailPE"
-		Me.DetailPE.Size = New System.Drawing.Size(1225, 607)
+		Me.DetailPE.Size = New System.Drawing.Size(0, 0)
 		'
 		'SplitContainer1
 		'
@@ -2156,7 +2171,7 @@ Partial Class FrmActPE
 		Me.SplitContainer1.Panel2.Controls.Add(Me.LabelX44)
 		Me.SplitContainer1.Panel2.Controls.Add(Me.TAgentFeeCL)
 		Me.SplitContainer1.Panel2.Controls.Add(Me.LabelX43)
-		Me.SplitContainer1.Size = New System.Drawing.Size(1225, 607)
+		Me.SplitContainer1.Size = New System.Drawing.Size(0, 0)
 		Me.SplitContainer1.SplitterDistance = 765
 		Me.SplitContainer1.TabIndex = 217
 		'
@@ -5690,19 +5705,6 @@ Partial Class FrmActPE
 		Me.LabelX117.TabIndex = 142
 		Me.LabelX117.Text = "POSITION"
 		'
-		'ContextPE
-		'
-		Me.ContextPE.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CxKuartalPE})
-		Me.ContextPE.Name = "ContextPE"
-		Me.ContextPE.Size = New System.Drawing.Size(157, 26)
-		'
-		'CxKuartalPE
-		'
-		Me.CxKuartalPE.Enabled = False
-		Me.CxKuartalPE.Name = "CxKuartalPE"
-		Me.CxKuartalPE.Size = New System.Drawing.Size(156, 22)
-		Me.CxKuartalPE.Text = "Buat PE/Kuartal"
-		'
 		'RibbonPage2
 		'
 		Me.RibbonPage2.Name = "RibbonPage2"
@@ -5742,6 +5744,7 @@ Partial Class FrmActPE
 		Me.NavBuatPE.ResumeLayout(False)
 		CType(Me.PKuartal, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.PKuartal.ResumeLayout(False)
+		Me.ContextPE.ResumeLayout(False)
 		CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.GroupControl1.ResumeLayout(False)
 		CType(Me.PAlasan, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5791,7 +5794,6 @@ Partial Class FrmActPE
 		CType(Me.DGInputHR, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.GroupPanel4.ResumeLayout(False)
 		Me.Panel2.ResumeLayout(False)
-		Me.ContextPE.ResumeLayout(False)
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 

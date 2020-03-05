@@ -517,7 +517,7 @@ Public Class FrmKontrak
 		Try
 			GGVM_conn()
 			sql = ""
-			sql = sql & "Select * from subkelompok"
+			sql = sql & "Select * from subkelompok where subkel = '" & CSubKel.Text & "'"
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
