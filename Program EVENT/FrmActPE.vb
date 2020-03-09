@@ -1051,8 +1051,8 @@ Public Class FrmActPE
 		TOvertime.Text = "0"
 		TUangHadir.Text = "0"
 		TTahunHR.Text = "0"
-		TPositionHR.Clear()
-		TRegionHR.Clear()
+		TPositionHR.Text = "0"
+		TRegionHR.Text = ""
 		CAreaHR.Text = ""
 		CKotaHR.Text = ""
 		TPeopleHR.Text = "0"

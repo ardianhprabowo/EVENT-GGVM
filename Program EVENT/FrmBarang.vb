@@ -128,9 +128,8 @@ Public Class FrmBarang
     Private Sub ComboSubKategori()
         GGVM_conn()
         Try
-            CSubKat.Items.Clear()
-
-            cmd = New OdbcCommand("select * from subkelompok where idkelompok = '" & TidKel.Text & "'", conn)
+			CSubKat.Items.Clear()
+			cmd = New OdbcCommand("select * from subkelompok where idkelompok = '" & TidKel.Text & "'", conn)
             dr = cmd.ExecuteReader
             Do While dr.Read
                 CSubKat.Items.Add(dr("subkel"))
