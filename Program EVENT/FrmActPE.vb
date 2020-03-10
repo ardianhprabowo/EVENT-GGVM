@@ -45,8 +45,8 @@ Public Class FrmActPE
 	Private Sub ComboKontrak()
 		GGVM_conn()
 		CKontrak.Items.Clear()
-		sql = "Select * From evn_kontrak Where iddivisi = '" & DivUser & "' "
-		cmd = New OdbcCommand(sql, conn)
+        sql = "Select * From evn_kontrak where iddivisi = '" & DivUser & "'"
+        cmd = New OdbcCommand(sql, conn)
 		dr = cmd.ExecuteReader
 		Do While dr.Read
 			CKontrak.Items.Add(dr.Item("valuecontract"))
