@@ -45,8 +45,8 @@ Public Class FrmActPE
 	Private Sub ComboKontrak()
 		GGVM_conn()
 		CKontrak.Items.Clear()
-        sql = "Select * From evn_kontrak where iddivisi = '" & DivUser & "'"
-        cmd = New OdbcCommand(sql, conn)
+		sql = "Select * From evn_kontrak where iddivisi = '" & DivUser & "'"
+		cmd = New OdbcCommand(sql, conn)
 		dr = cmd.ExecuteReader
 		Do While dr.Read
 			CKontrak.Items.Add(dr.Item("valuecontract"))
@@ -3128,9 +3128,10 @@ Public Class FrmActPE
 						ada = True
 						brs = I
 						jmldt = jmldt + 1
-						Nominal = Val(ListBiayaEvn.Items(I).SubItems(7).Text - Nominal)
-						ListBiayaEvn.Items.RemoveAt(I)
+
 					End If
+					Nominal = Val(ListBiayaEvn.Items(I).SubItems(7).Text - Nominal)
+					ListBiayaEvn.Items.RemoveAt(I)
 				Next I
 				ListBiayaEvn.EndUpdate()
 				Call NominalBiaya()
