@@ -1085,7 +1085,10 @@ Public Class FrmActPE
 		ListPEActivation.Items.Clear()
 		sql = ""
 		sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.jmlevent, a.periode,a.region,a.tgl_pe,a.total,a.rp_ppn,a.grandtotal,a.approved_by, a.idpe,a.idsubdivisi "
-		sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and c.idjenis_pe = '" & TidJenisPE.Text & "' and a.userid_input = '" & userid & "' "
+		sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and c.idjenis_pe = '" & TidJenisPE.Text & "' "
+		If LevelUser = "1" Then
+			sql = sql & " And a.userid_input = '" & userid & "' "
+		End If
 		da = New OdbcDataAdapter(sql, conn)
 		ds = New DataSet
 		da.Fill(ds)
