@@ -1,5 +1,6 @@
 ﻿Option Strict Off
 Imports System.Threading
+Imports AutoUpdaterDotNET
 Public Class MainMenu
     Inherits DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     Public Sub New()
@@ -8,8 +9,14 @@ Public Class MainMenu
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MenuActive()
         Label1.Text = ShowVertical(Label1.Text)
-        Timer1.Enabled = True
-    End Sub
+		Timer1.Enabled = True
+		AutoUpdater.Start("http://update.keacoal.co.id/version.xml")
+		AutoUpdater.ShowUpdateForm()
+		AutoUpdater.DownloadPath = Environment.CurrentDirectory
+		AutoUpdater.LetUserSelectRemindLater = False
+		AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Days
+		AutoUpdater.RemindLaterAt = 2
+	End Sub
     Private m_intMarqueeCounter As Integer = 1
     Private m_bolMarqueeIncrementUp As Boolean = True
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
@@ -542,5 +549,9 @@ Public Class MainMenu
 		Else
 			Return
 		End If
+	End Sub
+
+	Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
 	End Sub
 End Class
