@@ -1918,7 +1918,6 @@ Partial Public Class FrmPEEvn
 
 		End With
 	End Sub
-
 	Private Sub CKontrak_EditValueChanged(sender As Object, e As EventArgs) Handles CKontrak.EditValueChanged
 		GGVM_conn()
 		sql = ""

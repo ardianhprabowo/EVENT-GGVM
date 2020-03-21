@@ -1119,7 +1119,7 @@ Public Class FrmActPE
 					End If
 					.Add(dt.Rows(j)("tgl_pe"))
 					.Add(dt.Rows(j)("idpe"))
-					.Add(dt.Rows(j)("idsubdivisi"))
+					.Add(dt.Rows(j)("idsubdivisi").ToString)
 				End With
 			End With
 		Next
@@ -1150,12 +1150,16 @@ Public Class FrmActPE
 		sql = sql & "Join barang_penawaran b ON b.idbarang = a.idbarang "
 		sql = sql & " Join subkelompok c on c.idsubkel = b.idsubkel "
 		sql = sql & " join evn_penawaran d on d.idpe = a.idpe"
-		If CKuartal.Text <> "" Then
-			sql = sql & " LEFT JOIN act_kuartal_pe e on e.iddetail = a.iddetail"
+		If TidJenisPE.Text = "5" Then
+			If CKuartal.Text <> "" Then
+				sql = sql & " LEFT JOIN act_kuartal_pe e on e.iddetail = a.iddetail"
+			End If
 		End If
 		sql = sql & " where a.idpe = '" & TidPE.Text & "'"
-		If CKuartal.Text <> "" Then
-			sql = sql & " and e.kuartalke = '" & CKuartal.Text & "'"
+		If TidJenisPE.Text = "5" Then
+			If CKuartal.Text <> "" Then
+				sql = sql & " and e.kuartalke = '" & CKuartal.Text & "'"
+			End If
 		End If
 		da = New OdbcDataAdapter(sql, conn)
 		ds = New DataSet
@@ -2136,6 +2140,8 @@ Public Class FrmActPE
 					Return
 				End If
 			Else
+				Call InputMainDetail()
+				Call BacaMainDetail()
 				Return
 			End If
 		ElseIf TidBarangCL.Text <> "" Then
@@ -2494,7 +2500,7 @@ Public Class FrmActPE
 			c = c & " userid_edit = '" & userid & "',"
 			c = c & " timeupdate = now()"
 			c = c & " where idpe = '" & TidPE.Text & "'"
-			cmd = New Odbc.OdbcCommand(c, conn)
+			cmd = New OdbcCommand(c, conn)
 			cmd.ExecuteNonQuery()
 
 			c = ""
@@ -2506,7 +2512,7 @@ Public Class FrmActPE
 
 			sql = ""
 			sql = sql & " select max(revisike) as revisike ,max(idrevisi)as id  from evn_revisi_penawaran where idpe = '" & TidPE.Text & "'"
-			da = New Odbc.OdbcDataAdapter(sql, conn)
+			da = New OdbcDataAdapter(sql, conn)
 			dt = New DataTable
 			dt.Clear()
 			da.Fill(dt)
@@ -2593,9 +2599,9 @@ Public Class FrmActPE
 
 					Call BacaMainDetail()
 
-
-					MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
 					Call SimpanTotalPE()
+					MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+
 					ListBiayaEvn.Items.Clear()
 					Call KondisiAwalPE()
 					Call KondisiBersihPE()
@@ -2613,8 +2619,8 @@ Public Class FrmActPE
 					If dr.HasRows = True Then
 						sql = ""
 						sql = sql & "INSERT INTO act_revisi_detail_penawaran"
-						sql = sql & "SELECT a.*, b.revisike FROM (SELECT * FROM act_dp_temp) a"
-						sql = sql & "LEFT JOIN evn_revisi_penawaran b on a.Idpe = b.idpe "
+						sql = sql & "SELECT a.*, b.revisike FROM (SELECT * FROM act_dp_temp) a "
+						sql = sql & " LEFT JOIN evn_revisi_penawaran b on a.Idpe = b.idpe "
 						sql = sql & " where a.idpe='" & TidPE.Text & "'"
 						cmd = New OdbcCommand(sql, conn)
 						cmd.ExecuteNonQuery()
@@ -2632,11 +2638,10 @@ Public Class FrmActPE
 					cmd.ExecuteNonQuery()
 
 					Call BacaMainDetail()
-
-
+					Call SimpanTotalPE()
 					'Call SaveTotal()
 					MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-					Call SimpanTotalPE()
+
 					ListBiayaProject.Items.Clear()
 					Call KondisiAwalPE()
 					Call KondisiBersihPE()
@@ -2804,11 +2809,16 @@ Public Class FrmActPE
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
-			TidKlien.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("id"), Int32))
+			If Not dr.HasRows Then
+				TidKlien.Text = ""
+			Else
+				TidKlien.Text = dr.Item("id")
+			End If
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
+		Finally
+			GGVM_conn_close()
 		End Try
-		GGVM_conn_close()
 	End Sub
 	Private Sub TidKlien_TextChanged(sender As Object, e As EventArgs) Handles TidKlien.TextChanged
 		Try
@@ -2817,11 +2827,16 @@ Public Class FrmActPE
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
-			TKlien.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("nama"), String))
+			If Not dr.HasRows Then
+				TKlien.Text = ""
+			Else
+				TKlien.Text = dr.Item("nama")
+			End If
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
+		Finally
+			GGVM_conn_close()
 		End Try
-		GGVM_conn_close()
 	End Sub
 	Private Sub TAgentFee_TextChanged(sender As Object, e As EventArgs) Handles TAgentFee.TextChanged
 		PersenASF_1.Text = If(TAgentFee.Text <> "", TAgentFee.Text, "0")
@@ -2846,10 +2861,12 @@ Public Class FrmActPE
 				TBarangCL.Text = dt.Rows(0)("barang")
 				TQtyCL.Text = dt.Rows(0)("qty")
 				TSubTotalCL.Text = dt.Rows(0)("unitcost")
-				TJmlEvnCL.Text = dt.Rows(0)("jmlevent").ToString
+				If TidJenisPE.Text = "5" Then
+					TJmlEvnCL.Text = dt.Rows(0)("jmlevent").ToString
+				End If
 				TKetCL.Text = dt.Rows(0)("remaks").ToString
-			Else
-				TBarangCL.Text = ""
+				Else
+					TBarangCL.Text = ""
 				TQtyCL.Text = ""
 				TSubTotalCL.Text = ""
 				TJmlEvnCL.Text = ""
@@ -2942,8 +2959,8 @@ Public Class FrmActPE
 			End While
 			Console.ReadLine()
 			'conn.Close()
-			'dr = Nothing
-			'cmd = Nothing
+			dr = Nothing
+			cmd = Nothing
 
 			sql3 = "DELETE FROM evn_detail_penawaran WHERE iddetail = ?"
 			cmd = New OdbcCommand
@@ -3398,7 +3415,12 @@ Public Class FrmActPE
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
-			TidBarangProj.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("idbarang"), Int32))
+			If Not dr.HasRows Then
+				TidBarangProj.Text = ""
+			Else
+				TidBarangProj.Text = dr.Item("idbarang")
+			End If
+			'TidBarangProj.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("idbarang"), Int32))
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
 		Finally
@@ -4056,6 +4078,8 @@ Public Class FrmActPE
 				ada = True
 				brs = i
 				jmldt = jmldt + 1
+
+				TidPE.Text = ListPEActivation.Items(brs).SubItems(8).Text
 			End If
 		Next
 		If ada = False Then
@@ -4070,6 +4094,7 @@ Public Class FrmActPE
 		End If
 		TidPE.Text = ListPEActivation.Items(brs).SubItems(8).Text
 		RevisiPE.Enabled = True
+		'Call BacaMainDetail()
 		If TidJenisPE.Text = "5" Then
 			CKuartal.Text = "1"
 			Call BacaMainDetail()
@@ -4107,6 +4132,7 @@ Public Class FrmActPE
 				TidPE.Text = ListPEActivation.Items(brs).SubItems(8).Text
 			End If
 		Next
+		Call BacaMainDetail()
 		RevisiPE.Enabled = True
 		CetakPE.Enabled = True
 		BatalTools.Enabled = True
