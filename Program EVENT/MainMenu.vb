@@ -136,15 +136,17 @@ Public Class MainMenu
         End If
     End Sub
     Private Sub MainMenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-        For i = System.Windows.Forms.Application.OpenForms.Count - 1 To 1 Step -1
-            Dim form As Form = System.Windows.Forms.Application.OpenForms(i)
-            form.Close()
-        Next i
-    End Sub
+		For i = System.Windows.Forms.Application.OpenForms.Count - 1 To 1 Step -1
+			Dim form As Form = System.Windows.Forms.Application.OpenForms(i)
+			form.Close()
+		Next i
+		FrmLogin.Close()
+	End Sub
 
     Private Sub MainMenu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Environment.Exit(1)
-    End Sub
+		Environment.Exit(1)
+		FrmLogin.Close()
+	End Sub
 
     Private Sub PE_RegExh_Click(sender As Object, e As EventArgs) Handles PE_RegExh.Click
         For Each frm As Form In Application.OpenForms
