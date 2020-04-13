@@ -66,6 +66,7 @@ Partial Class MainMenu
 		Me.Panel1 = New System.Windows.Forms.Panel()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+		Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
 		CType(Me.RepositoryItemHypertextLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
 		CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).BeginInit()
 		CType(Me.FluentDesignFormControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -377,6 +378,9 @@ Partial Class MainMenu
 		'Timer1
 		'
 		'
+		'Timer2
+		'
+		'
 		'MainMenu
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -445,4 +449,5 @@ Partial Class MainMenu
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Label1 As Label
+	Friend WithEvents Timer2 As Timer
 End Class

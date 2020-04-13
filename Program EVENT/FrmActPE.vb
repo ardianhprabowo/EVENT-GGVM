@@ -45,8 +45,8 @@ Public Class FrmActPE
 	Private Sub ComboKontrak()
 		GGVM_conn()
 		CKontrak.Items.Clear()
-        sql = "Select * From evn_kontrak where iddivisi = '" & DivUser & "'"
-        cmd = New OdbcCommand(sql, conn)
+		sql = "Select * From evn_kontrak where iddivisi = '" & DivUser & "'"
+		cmd = New OdbcCommand(sql, conn)
 		dr = cmd.ExecuteReader
 		Do While dr.Read
 			CKontrak.Items.Add(dr.Item("valuecontract"))
@@ -390,9 +390,9 @@ Public Class FrmActPE
 		End If
 	End Sub
 	Private Sub DataBaruHR()
-		Try
-			Call HitungInpHR()
 
+		Call HitungInpHR()
+		Try
 			GGVM_conn()
 			sql = ""
 			sql = sql & "insert act_detail_sdm (idpe,iddetail,idjenis_detail,idjabatan,idarea,idregion,idkota,tahun,"
@@ -657,12 +657,10 @@ Public Class FrmActPE
 		Dim TotPotPrib As Double = 0
 		Double.TryParse(TPeopleHR.Text, people)
 		Double.TryParse(TPeriodeHR.Text, periode)
-		TotSalary = Val(CDbl(TBasicSalaryHR.Text)) + Val(CDbl(TBpjsMed.Text)) + Val(CDbl(TBpjsEmp.Text)) + Val(CDbl(TUangHadir.Text))
-		TotSalary = TotSalary + Val(CDbl(TRentComp.Text)) + Val(CDbl(TIncentive.Text)) + Val(CDbl(TThr.Text)) + Val(CDbl(TPostAllow.Text))
-		TotSalary = TotSalary + Val(CDbl(TMeal.Text)) + Val(CDbl(TTransport.Text)) + Val(CDbl(TMotor.Text)) + Val(CDbl(TPulse.Text)) + Val(CDbl(TMakeUp.Text))
+		TotSalary = Val(CDbl(TBasicSalaryHR.Text)) + Val(CDbl(TBpjsMed.Text)) + Val(CDbl(TBpjsEmp.Text)) + Val(CDbl(TUangHadir.Text)) + Val(CDbl(TRentComp.Text)) + Val(CDbl(TIncentive.Text)) + Val(CDbl(TThr.Text)) + Val(CDbl(TPostAllow.Text)) + Val(CDbl(TMeal.Text)) + Val(CDbl(TTransport.Text)) + Val(CDbl(TMotor.Text)) + Val(CDbl(TPulse.Text)) + Val(CDbl(TMakeUp.Text))
 		TotOprs = Val(CDbl(TMeetingCost.Text)) + Val(CDbl(TAtkHR.Text)) + Val(CDbl(TEventHR.Text)) + Val(CDbl(TTelemarketingHR.Text)) + Val(CDbl(TTravellingHR.Text))
 		TotPotPrib = Val(CDbl(TPotBpjsMed.Text)) + Val(CDbl(TPotBpjsEmp.Text))
-		TTotPersonHR.Text =
+		TTotPersonHR.Text = TotSalary
 		TPersonMonthHR.Text = TotSalary + TotOprs
 		TGross1HR.Text = Math.Round(Val(CDbl(periode)) * Val(CDbl(people)) * Val(CDbl(TPersonMonthHR.Text)))
 		TAgentFeeHR.Text = Math.Round(Val(CDbl(TPersonMonthHR.Text) * Val(CDbl(TAgentFee.Text)) / 100))
@@ -943,7 +941,7 @@ Public Class FrmActPE
 		TPositionHR.Enabled = False
 		TRegionHR.Enabled = False
 		TSubColl.Enabled = False
-		TTrainingCost.Text = False
+		TTrainingCost.Enabled = False
 		TOvertime.Text = False
 		TPotBpjsEmp.Enabled = False
 		TPotBpjsMed.Enabled = False
@@ -985,8 +983,8 @@ Public Class FrmActPE
 		TTravellingHR.Enabled = True
 		TEventHR.Enabled = True
 		TSubColl.Enabled = True
-		TTrainingCost.Text = True
-		TOvertime.Text = True
+		TTrainingCost.Enabled = True
+		TOvertime.Enabled = True
 		TTelemarketingHR.Enabled = True
 		TPeriodeHR.Enabled = False
 		TTakeHomePay.Enabled = False
@@ -1013,8 +1011,8 @@ Public Class FrmActPE
 		TPeopleHR.Enabled = True
 		TUmk.Enabled = True
 		TSubColl.Enabled = True
-		TTrainingCost.Text = True
-		TOvertime.Text = True
+		TTrainingCost.Enabled = True
+		TOvertime.Enabled = True
 		TPotBpjsEmp.Enabled = True
 		TPotBpjsMed.Enabled = True
 		TTravellingHR.Enabled = True
@@ -1051,8 +1049,8 @@ Public Class FrmActPE
 		TOvertime.Text = "0"
 		TUangHadir.Text = "0"
 		TTahunHR.Text = "0"
-		TPositionHR.Clear()
-		TRegionHR.Clear()
+		TPositionHR.Text = ""
+		TRegionHR.Text = ""
 		CAreaHR.Text = ""
 		CKotaHR.Text = ""
 		TPeopleHR.Text = "0"
@@ -1085,7 +1083,10 @@ Public Class FrmActPE
 		ListPEActivation.Items.Clear()
 		sql = ""
 		sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.jmlevent, a.periode,a.region,a.tgl_pe,a.total,a.rp_ppn,a.grandtotal,a.approved_by, a.idpe,a.idsubdivisi "
-		sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and c.idjenis_pe = '" & TidJenisPE.Text & "' and a.userid_input = '" & userid & "' "
+		sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and c.idjenis_pe = '" & TidJenisPE.Text & "' "
+		If LevelUser = "1" Then
+			sql = sql & " And a.userid_input = '" & userid & "' "
+		End If
 		da = New OdbcDataAdapter(sql, conn)
 		ds = New DataSet
 		da.Fill(ds)
@@ -1116,7 +1117,7 @@ Public Class FrmActPE
 					End If
 					.Add(dt.Rows(j)("tgl_pe"))
 					.Add(dt.Rows(j)("idpe"))
-					.Add(dt.Rows(j)("idsubdivisi"))
+					.Add(dt.Rows(j)("idsubdivisi").ToString)
 				End With
 			End With
 		Next
@@ -1147,12 +1148,16 @@ Public Class FrmActPE
 		sql = sql & "Join barang_penawaran b ON b.idbarang = a.idbarang "
 		sql = sql & " Join subkelompok c on c.idsubkel = b.idsubkel "
 		sql = sql & " join evn_penawaran d on d.idpe = a.idpe"
-		If CKuartal.Text <> "" Then
-			sql = sql & " LEFT JOIN act_kuartal_pe e on e.iddetail = a.iddetail"
+		If TidJenisPE.Text = "5" Then
+			If CKuartal.Text <> "" Then
+				sql = sql & " LEFT JOIN act_kuartal_pe e on e.iddetail = a.iddetail"
+			End If
 		End If
 		sql = sql & " where a.idpe = '" & TidPE.Text & "'"
-		If CKuartal.Text <> "" Then
-			sql = sql & " and e.kuartalke = '" & CKuartal.Text & "'"
+		If TidJenisPE.Text = "5" Then
+			If CKuartal.Text <> "" Then
+				sql = sql & " and e.kuartalke = '" & CKuartal.Text & "'"
+			End If
 		End If
 		da = New OdbcDataAdapter(sql, conn)
 		ds = New DataSet
@@ -1669,11 +1674,6 @@ Public Class FrmActPE
 				GGVM_conn_close()
 			Case "InStore"
 				GGVM_conn()
-				sql = ""
-				sql = sql & " update evn_detail_penawaran set unitcost = '" & TGrandTotalHR.Text & "',sub_totalcost= '" & TGrandTotalHR.Text & "'"
-				sql = sql & " where iddetail = '" & TidDetailCL.Text & "'"
-				cmd = New OdbcCommand(sql, conn)
-				cmd.ExecuteNonQuery()
 
 				Call BacaMainDetail()
 				Call HitungMainDetail()
@@ -1938,7 +1938,7 @@ Public Class FrmActPE
 				Case "Instore"
 					PeriodeHR = monthDifference(StartPeriod.Value, EndPeriod.Value)
 					TPeriodeHR.Text = PeriodeHR
-
+					GGVM_conn()
 					sql = ""
 					sql = sql & "insert evn_penawaran (nope,idklien,idjenis_pe,project,"
 					If TRegion.Text <> "" Then
@@ -1955,43 +1955,50 @@ Public Class FrmActPE
 					cmd = New OdbcCommand(sql, conn)
 					cmd.ExecuteNonQuery()
 
-					c = ""
-					c = c & "insert subdivisi (id_divisi,subdivisi)"
-					c = c & "values ('3', 'ACTIVATION' ' ' '" & TProject.Text & "')"
-					cmd = New OdbcCommand(c, conn)
-					cmd.ExecuteNonQuery()
+					If TidSubdivisi.Text = "" Then
+						c = ""
+						c = c & "insert subdivisi (id_divisi,subdivisi)"
+						c = c & "values ('18', 'ACTIVATION' ' ' '" & TProject.Text & "')"
+						cmd = New OdbcCommand(c, conn)
+						cmd.ExecuteNonQuery()
 
-					c = ""
-					c = c & " Select max(idsubdivisi) As id from subdivisi "
-					da = New OdbcDataAdapter(c, conn)
-					dt = New DataTable
-					da.Fill(dt)
-					If dt.Rows.Count > 0 Then
-						TidSubdivisi.Text = dt.Rows(0)("id")
+						c = ""
+						c = c & " Select max(idsubdivisi) As id from subdivisi "
+						da = New OdbcDataAdapter(c, conn)
+						dt = New DataTable
+						da.Fill(dt)
+						If dt.Rows.Count > 0 Then
+							TidSubdivisi.Text = dt.Rows(0)("id")
+						End If
+
+						sql = ""
+						sql = sql & "update subdivisi set fee = '" & TAgentFee.Text & "'"
+						sql = sql & " where subdivisi = '" & CSubDivisi.Text & "'"
+						cmd = New OdbcCommand(sql, conn)
+						cmd.ExecuteNonQuery()
 					End If
 
-					sql = ""
-					sql = sql & "update subdivisi set fee = '" & TAgentFee.Text & "'"
-					sql = sql & " where idsubdivisi = '" & TidSubdivisi.Text & "'"
-					cmd = New OdbcCommand(sql, conn)
-					cmd.ExecuteNonQuery()
-
 					MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-
+					Dim idno As Integer
 					c = ""
 					c = c & " Select max(idpe)As id from evn_penawaran "
 					da = New OdbcDataAdapter(c, conn)
 					dt = New DataTable
 					da.Fill(dt)
 					If dt.Rows.Count > 0 Then
-						TidPE.Text = dt.Rows(0)("id")
+						idno = dt.Rows(0)("id")
 					End If
 
 					c = ""
 					c = c & "update evn_penawaran set idsubdivisi = '" & TidSubdivisi.Text & "'"
-					c = c & " where idpe = '" & TidPE.Text & "'"
+					c = c & " where idpe = '" & idno & "'"
 					cmd = New OdbcCommand(c, conn)
 					cmd.ExecuteNonQuery()
+
+					MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+
+
+
 
 					Call KondisiTampilPE()
 					Call BacaPE()
@@ -2005,6 +2012,7 @@ Public Class FrmActPE
 							Call LoadRegion()
 							Call LoadKota()
 							Call LoadJabatan()
+							Call LoadPropinsi()
 						End With
 					End With
 			End Select
@@ -2133,6 +2141,8 @@ Public Class FrmActPE
 					Return
 				End If
 			Else
+				Call InputMainDetail()
+				Call BacaMainDetail()
 				Return
 			End If
 		ElseIf TidBarangCL.Text <> "" Then
@@ -2374,13 +2384,7 @@ Public Class FrmActPE
 		BtnInpProj.Enabled = True
 	End Sub
 	Private Sub BtnInpHR_Click(sender As Object, e As EventArgs) Handles BtnInpHR.Click
-		If TTotPersonHR.Text = "0" Then
-			MsgBox("Klik Tombol Hitung Biaya !!", MsgBoxStyle.Information, "Information")
-			Exit Sub
-		ElseIf TGrandTotalHR.Text = "0" Then
-			MsgBox("Klik Tombol Hitung Biaya !!", MsgBoxStyle.Information, "Information")
-			Exit Sub
-		ElseIf Me.TBasicSalaryHR.Text = "0" Then
+		If Me.TBasicSalaryHR.Text = "0" Then
 			MsgBox("Please, Insert Basic Salary !", MsgBoxStyle.Critical, "Message !!")
 			Exit Sub
 		ElseIf Me.TUmk.Text = "0" Then
@@ -2394,6 +2398,15 @@ Public Class FrmActPE
 				Case "DataBaru"
 					If MsgBox("Apakah data ingin disimpan??", MsgBoxStyle.Information Or MsgBoxStyle.YesNo, "Pemberitahuan !!") = MsgBoxResult.Yes Then
 						Call DataBaruHR()
+						GGVM_conn()
+
+						sql = ""
+						sql = sql & " update evn_detail_penawaran set unitcost = '" & TGrandTotalHR.Text & "',sub_totalcost= '" & TGrandTotalHR.Text & "'"
+						sql = sql & " where iddetail = '" & TidDetailCL.Text & "'"
+						cmd = New OdbcCommand(sql, conn)
+						cmd.ExecuteNonQuery()
+
+						Call BacaDetailHR()
 					Else
 						MsgBox("Data Tidak Disimpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
 						Return
@@ -2491,7 +2504,7 @@ Public Class FrmActPE
 			c = c & " userid_edit = '" & userid & "',"
 			c = c & " timeupdate = now()"
 			c = c & " where idpe = '" & TidPE.Text & "'"
-			cmd = New Odbc.OdbcCommand(c, conn)
+			cmd = New OdbcCommand(c, conn)
 			cmd.ExecuteNonQuery()
 
 			c = ""
@@ -2503,7 +2516,7 @@ Public Class FrmActPE
 
 			sql = ""
 			sql = sql & " select max(revisike) as revisike ,max(idrevisi)as id  from evn_revisi_penawaran where idpe = '" & TidPE.Text & "'"
-			da = New Odbc.OdbcDataAdapter(sql, conn)
+			da = New OdbcDataAdapter(sql, conn)
 			dt = New DataTable
 			dt.Clear()
 			da.Fill(dt)
@@ -2590,9 +2603,9 @@ Public Class FrmActPE
 
 					Call BacaMainDetail()
 
-
-					MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
 					Call SimpanTotalPE()
+					MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+
 					ListBiayaEvn.Items.Clear()
 					Call KondisiAwalPE()
 					Call KondisiBersihPE()
@@ -2610,8 +2623,8 @@ Public Class FrmActPE
 					If dr.HasRows = True Then
 						sql = ""
 						sql = sql & "INSERT INTO act_revisi_detail_penawaran"
-						sql = sql & "SELECT a.*, b.revisike FROM (SELECT * FROM act_dp_temp) a"
-						sql = sql & "LEFT JOIN evn_revisi_penawaran b on a.Idpe = b.idpe "
+						sql = sql & "SELECT a.*, b.revisike FROM (SELECT * FROM act_dp_temp) a "
+						sql = sql & " LEFT JOIN evn_revisi_penawaran b on a.Idpe = b.idpe "
 						sql = sql & " where a.idpe='" & TidPE.Text & "'"
 						cmd = New OdbcCommand(sql, conn)
 						cmd.ExecuteNonQuery()
@@ -2629,11 +2642,10 @@ Public Class FrmActPE
 					cmd.ExecuteNonQuery()
 
 					Call BacaMainDetail()
-
-
+					Call SimpanTotalPE()
 					'Call SaveTotal()
 					MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-					Call SimpanTotalPE()
+
 					ListBiayaProject.Items.Clear()
 					Call KondisiAwalPE()
 					Call KondisiBersihPE()
@@ -2801,11 +2813,16 @@ Public Class FrmActPE
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
-			TidKlien.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("id"), Int32))
+			If Not dr.HasRows Then
+				TidKlien.Text = ""
+			Else
+				TidKlien.Text = dr.Item("id")
+			End If
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
+		Finally
+			GGVM_conn_close()
 		End Try
-		GGVM_conn_close()
 	End Sub
 	Private Sub TidKlien_TextChanged(sender As Object, e As EventArgs) Handles TidKlien.TextChanged
 		Try
@@ -2814,14 +2831,23 @@ Public Class FrmActPE
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
-			TKlien.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("nama"), String))
+			If Not dr.HasRows Then
+				TKlien.Text = ""
+			Else
+				TKlien.Text = dr.Item("nama")
+			End If
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
+		Finally
+			GGVM_conn_close()
 		End Try
-		GGVM_conn_close()
 	End Sub
 	Private Sub TAgentFee_TextChanged(sender As Object, e As EventArgs) Handles TAgentFee.TextChanged
-		PersenASF_1.Text = If(TAgentFee.Text <> "", TAgentFee.Text, "0")
+		If TAgentFee.Text <> "" Then
+			PersenASF_1.Text = TAgentFee.Text
+		Else
+			PersenASF_1.Text = "0"
+		End If
 	End Sub
 	'End Textbox Menu PE
 	'Textbox Detail PE
@@ -2843,10 +2869,12 @@ Public Class FrmActPE
 				TBarangCL.Text = dt.Rows(0)("barang")
 				TQtyCL.Text = dt.Rows(0)("qty")
 				TSubTotalCL.Text = dt.Rows(0)("unitcost")
-				TJmlEvnCL.Text = dt.Rows(0)("jmlevent").ToString
+				If TidJenisPE.Text = "5" Then
+					TJmlEvnCL.Text = dt.Rows(0)("jmlevent").ToString
+				End If
 				TKetCL.Text = dt.Rows(0)("remaks").ToString
-			Else
-				TBarangCL.Text = ""
+				Else
+					TBarangCL.Text = ""
 				TQtyCL.Text = ""
 				TSubTotalCL.Text = ""
 				TJmlEvnCL.Text = ""
@@ -2939,8 +2967,8 @@ Public Class FrmActPE
 			End While
 			Console.ReadLine()
 			'conn.Close()
-			'dr = Nothing
-			'cmd = Nothing
+			dr = Nothing
+			cmd = Nothing
 
 			sql3 = "DELETE FROM evn_detail_penawaran WHERE iddetail = ?"
 			cmd = New OdbcCommand
@@ -3128,9 +3156,10 @@ Public Class FrmActPE
 						ada = True
 						brs = I
 						jmldt = jmldt + 1
-						Nominal = Val(ListBiayaEvn.Items(I).SubItems(7).Text - Nominal)
-						ListBiayaEvn.Items.RemoveAt(I)
+
 					End If
+					Nominal = Val(ListBiayaEvn.Items(I).SubItems(7).Text - Nominal)
+					ListBiayaEvn.Items.RemoveAt(I)
 				Next I
 				ListBiayaEvn.EndUpdate()
 				Call NominalBiaya()
@@ -3394,7 +3423,12 @@ Public Class FrmActPE
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
-			TidBarangProj.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("idbarang"), Int32))
+			If Not dr.HasRows Then
+				TidBarangProj.Text = ""
+			Else
+				TidBarangProj.Text = dr.Item("idbarang")
+			End If
+			'TidBarangProj.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("idbarang"), Int32))
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
 		Finally
@@ -3627,7 +3661,12 @@ Public Class FrmActPE
 		cmd = New OdbcCommand(sql, conn)
 		dr = cmd.ExecuteReader
 		dr.Read()
-		TidPositionHR.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("idjabatan"), Int32))
+		If Not dr.HasRows Then
+			TidPositionHR.Text = ""
+		Else
+			TidPositionHR.Text = dr.Item("idjabatan")
+		End If
+		'TidPositionHR.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("idjabatan"), Int32))
 		GGVM_conn_close()
 		dr.Close()
 	End Sub
@@ -3638,7 +3677,12 @@ Public Class FrmActPE
 		cmd = New OdbcCommand(sql, conn)
 		dr = cmd.ExecuteReader
 		dr.Read()
-		TPositionHR.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("jabatan"), String))
+		If Not dr.HasRows Then
+			TPositionHR.Text = ""
+		Else
+			TPositionHR.Text = dr.Item("jabatan")
+		End If
+		'TPositionHR.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("jabatan"), String))
 		GGVM_conn_close()
 		dr.Close()
 	End Sub
@@ -3649,7 +3693,12 @@ Public Class FrmActPE
 			da = New OdbcDataAdapter(sql, conn)
 			dt = New DataTable
 			da.Fill(dt)
-			TidRegionHR.Text = If(dt.Rows.Count > 0, DirectCast(dt.Rows(0)("idregion"), Int32), "")
+			If dt.Rows.Count > 0 Then
+				TidRegionHR.Text = dt.Rows(0)("idregion")
+			Else
+				TidRegionHR.Text = ""
+			End If
+			'TidRegionHR.Text = If(dt.Rows.Count > 0, DirectCast(dt.Rows(0)("idregion"), Int32), "")
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
 		Finally
@@ -3663,7 +3712,12 @@ Public Class FrmActPE
 			cmd = New OdbcCommand(sql, conn)
 			dr = cmd.ExecuteReader
 			dr.Read()
-			TRegionHR.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("region"), String))
+			If Not dr.HasRows Then
+				TRegionHR.Text = ""
+			Else
+				TRegionHR.Text = dr.Item("region")
+			End If
+			'TRegionHR.Text = If(Not dr.HasRows, "", DirectCast(dr.Item("region"), String))
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
 		Finally
@@ -3679,7 +3733,12 @@ Public Class FrmActPE
 		da = New OdbcDataAdapter(sql, conn)
 		dt = New DataTable
 		da.Fill(dt)
-		TUmk.Text = If(dt.Rows.Count > 0, DirectCast(dt.Rows(0)("basicsalary"), Double), "")
+		If dt.Rows.Count > 0 Then
+			TUmk.Text = dt.Rows(0)("basicsalary")
+		Else
+			TUmk.Text = ""
+		End If
+		'TUmk.Text = If(dt.Rows.Count > 0, DirectCast(dt.Rows(0)("basicsalary"), Double), "")
 		GGVM_conn_close()
 		dt.Clear()
 	End Sub
@@ -3712,7 +3771,12 @@ Public Class FrmActPE
 			da = New OdbcDataAdapter(sql, conn)
 			dt = New DataTable
 			da.Fill(dt)
-			TidKotaHR.Text = If(dt.Rows.Count > 0, DirectCast(dt.Rows(0)("idkota"), Int32), "")
+			If dt.Rows.Count > 0 Then
+				TidKotaHR.Text = dt.Rows(0)("idkota")
+			Else
+				TidKotaHR.Text = ""
+			End If
+			'TidKotaHR.Text = If(dt.Rows.Count > 0, DirectCast(dt.Rows(0)("idkota"), Int32), "")
 		Catch ex As Exception
 			MsgBox("Terjadi kesalahan! " & ex.Message)
 		Finally
@@ -4052,6 +4116,8 @@ Public Class FrmActPE
 				ada = True
 				brs = i
 				jmldt = jmldt + 1
+
+				TidPE.Text = ListPEActivation.Items(brs).SubItems(8).Text
 			End If
 		Next
 		If ada = False Then
@@ -4066,6 +4132,7 @@ Public Class FrmActPE
 		End If
 		TidPE.Text = ListPEActivation.Items(brs).SubItems(8).Text
 		RevisiPE.Enabled = True
+		'Call BacaMainDetail()
 		If TidJenisPE.Text = "5" Then
 			CKuartal.Text = "1"
 			Call BacaMainDetail()
@@ -4103,6 +4170,7 @@ Public Class FrmActPE
 				TidPE.Text = ListPEActivation.Items(brs).SubItems(8).Text
 			End If
 		Next
+		Call BacaMainDetail()
 		RevisiPE.Enabled = True
 		CetakPE.Enabled = True
 		BatalTools.Enabled = True
