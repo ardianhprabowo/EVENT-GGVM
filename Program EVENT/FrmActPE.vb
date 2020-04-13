@@ -1938,7 +1938,7 @@ Public Class FrmActPE
 				Case "Instore"
 					PeriodeHR = monthDifference(StartPeriod.Value, EndPeriod.Value)
 					TPeriodeHR.Text = PeriodeHR
-
+					GGVM_conn()
 					sql = ""
 					sql = sql & "insert evn_penawaran (nope,idklien,idjenis_pe,project,"
 					If TRegion.Text <> "" Then
@@ -1955,43 +1955,50 @@ Public Class FrmActPE
 					cmd = New OdbcCommand(sql, conn)
 					cmd.ExecuteNonQuery()
 
-					c = ""
-					c = c & "insert subdivisi (id_divisi,subdivisi)"
-					c = c & "values ('3', 'ACTIVATION' ' ' '" & TProject.Text & "')"
-					cmd = New OdbcCommand(c, conn)
-					cmd.ExecuteNonQuery()
+					If TidSubdivisi.Text = "" Then
+						c = ""
+						c = c & "insert subdivisi (id_divisi,subdivisi)"
+						c = c & "values ('18', 'ACTIVATION' ' ' '" & TProject.Text & "')"
+						cmd = New OdbcCommand(c, conn)
+						cmd.ExecuteNonQuery()
 
-					c = ""
-					c = c & " Select max(idsubdivisi) As id from subdivisi "
-					da = New OdbcDataAdapter(c, conn)
-					dt = New DataTable
-					da.Fill(dt)
-					If dt.Rows.Count > 0 Then
-						TidSubdivisi.Text = dt.Rows(0)("id")
+						c = ""
+						c = c & " Select max(idsubdivisi) As id from subdivisi "
+						da = New OdbcDataAdapter(c, conn)
+						dt = New DataTable
+						da.Fill(dt)
+						If dt.Rows.Count > 0 Then
+							TidSubdivisi.Text = dt.Rows(0)("id")
+						End If
+
+						sql = ""
+						sql = sql & "update subdivisi set fee = '" & TAgentFee.Text & "'"
+						sql = sql & " where subdivisi = '" & CSubDivisi.Text & "'"
+						cmd = New OdbcCommand(sql, conn)
+						cmd.ExecuteNonQuery()
 					End If
 
-					sql = ""
-					sql = sql & "update subdivisi set fee = '" & TAgentFee.Text & "'"
-					sql = sql & " where idsubdivisi = '" & TidSubdivisi.Text & "'"
-					cmd = New OdbcCommand(sql, conn)
-					cmd.ExecuteNonQuery()
-
 					MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-
+					Dim idno As Integer
 					c = ""
 					c = c & " Select max(idpe)As id from evn_penawaran "
 					da = New OdbcDataAdapter(c, conn)
 					dt = New DataTable
 					da.Fill(dt)
 					If dt.Rows.Count > 0 Then
-						TidPE.Text = dt.Rows(0)("id")
+						idno = dt.Rows(0)("id")
 					End If
 
 					c = ""
 					c = c & "update evn_penawaran set idsubdivisi = '" & TidSubdivisi.Text & "'"
-					c = c & " where idpe = '" & TidPE.Text & "'"
+					c = c & " where idpe = '" & idno & "'"
 					cmd = New OdbcCommand(c, conn)
 					cmd.ExecuteNonQuery()
+
+					MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+
+
+
 
 					Call KondisiTampilPE()
 					Call BacaPE()
