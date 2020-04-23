@@ -1043,7 +1043,7 @@ Public Class FrmActPE
 		TEventHR.Text = "0"
 		TTelemarketingHR.Text = "0"
 		TTakeHomePay.Text = "0"
-		TPeriodeHR.Text = "0"
+		'TPeriodeHR.Text = "0"
 		TSubColl.Text = "0"
 		TTrainingCost.Text = "0"
 		TOvertime.Text = "0"
@@ -1056,6 +1056,10 @@ Public Class FrmActPE
 		TPeopleHR.Text = "0"
 		TUmk.Text = "0"
 		TidDetailSDM.Text = ""
+		CAdaBPJS.Checked = False
+		CPotBPJS.Checked = False
+		CTHR.Checked = False
+		CSesuaiUMK.Checked = False
 	End Sub
 #End Region
 #Region "List View"
@@ -1474,6 +1478,7 @@ Public Class FrmActPE
 			KondisiSimpan = "Revisi"
 			KondisiSimpanAlasan = "InStore"
 			KondisiInputHR = "RevisiData"
+			Call KondisiEditHR()
 			Call LoadRegion()
 			Call LoadJabatan()
 			Call LoadPropinsi()
@@ -1979,26 +1984,23 @@ Public Class FrmActPE
 					End If
 
 					MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-					Dim idno As Integer
+					'Dim idno As Integer
 					c = ""
 					c = c & " Select max(idpe)As id from evn_penawaran "
 					da = New OdbcDataAdapter(c, conn)
 					dt = New DataTable
 					da.Fill(dt)
 					If dt.Rows.Count > 0 Then
-						idno = dt.Rows(0)("id")
+						TidPE.Text = dt.Rows(0)("id")
 					End If
 
 					c = ""
 					c = c & "update evn_penawaran set idsubdivisi = '" & TidSubdivisi.Text & "'"
-					c = c & " where idpe = '" & idno & "'"
+					c = c & " where idpe = '" & TidPE.Text & "'"
 					cmd = New OdbcCommand(c, conn)
 					cmd.ExecuteNonQuery()
 
 					MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-
-
-
 
 					Call KondisiTampilPE()
 					Call BacaPE()
@@ -2137,10 +2139,9 @@ Public Class FrmActPE
 					Call InputMainDetail()
 					Call BacaMainDetail()
 					GGVM_conn_close()
-				Else
-					Return
 				End If
 			Else
+				'GGVM_conn()
 				Call InputMainDetail()
 				Call BacaMainDetail()
 				Return
