@@ -99,10 +99,11 @@ Public Class FrmLogin
         TUsername.Focus()
     End Sub
     Private Sub FrmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If MsgBox("Are you sure you want to exit?",
-                MsgBoxStyle.YesNo, "Exit") = MsgBoxResult.No Then
-            e.Cancel = True
-        End If
+        'If MsgBox("Are you sure you want to exit?",
+        '        MsgBoxStyle.YesNo, "Exit") = MsgBoxResult.No Then
+        '    e.Cancel = True
+        'End If
+        Me.Close()
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click

@@ -11,12 +11,10 @@ Public Class MainMenu
         Label1.Text = ShowVertical(Label1.Text)
 		Timer1.Enabled = True
 		AutoUpdater.Start("http://update.keacoal.co.id/version.xml")
-		AutoUpdater.ShowUpdateForm()
-		AutoUpdater.DownloadPath = Environment.CurrentDirectory
-		AutoUpdater.LetUserSelectRemindLater = False
-		AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Days
-		AutoUpdater.RemindLaterAt = 2
-	End Sub
+        'AutoUpdater.ShowUpdateForm()
+        AutoUpdater.DownloadPath = Environment.CurrentDirectory
+        AutoUpdater.Mandatory = True
+    End Sub
     Private m_intMarqueeCounter As Integer = 1
     Private m_bolMarqueeIncrementUp As Boolean = True
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
