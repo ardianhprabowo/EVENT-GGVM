@@ -10,7 +10,7 @@ Public Class MainMenu
         MenuActive()
         Label1.Text = ShowVertical(Label1.Text)
 		Timer1.Enabled = True
-		AutoUpdater.Start("http://update.keacoal.co.id/version.xml")
+        AutoUpdater.Start("http://helpdesk.geogiven.co.id/program/version.xml")
         'AutoUpdater.ShowUpdateForm()
         AutoUpdater.DownloadPath = Environment.CurrentDirectory
         AutoUpdater.Mandatory = True

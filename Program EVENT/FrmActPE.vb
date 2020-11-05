@@ -1377,38 +1377,37 @@ Public Class FrmActPE
 		DGInputHR.Columns(16).Width = 0
 		DGInputHR.Columns(17).Width = 0
 		GGVM_conn_close()
-		If DGInputHR.RowCount = 1 Then
-			'MsgBox("Data tidak ada !!..", MsgBoxStyle.Information, "Information")
-			BtnInpHR.Focus()
-		End If
-		DGInputHR.Refresh()
+        If DGInputHR.RowCount = 1 Then
+            BtnInpHR.Focus()
+        End If
+        DGInputHR.Refresh()
 		DGInputHR.Focus()
 	End Sub
 #End Region
-	Private Sub FrmActPE_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-		Call KondisiAwalPE()
-		Call KondisiAwalEvn()
-		Call KondisiAwalHR()
-		Call ListHeaderPE()
-		Call BacaPE()
-		Call ListHeaderMainDetailPE()
-		Call KondisiTampilDetail()
-		If TidJenisPE.Text = "5" Then
-			Call ListHeaderEvn()
-			Call KondisiBersihEvn()
-			PKuartalEventCL.Visible = True
-			CxKuartalPE.Enabled = True
-		ElseIf TidJenisPE.Text = "6" Then
-			Call ListHeaderProject()
-			Call KondisiBersihProject()
-		ElseIf TidJenisPE.Text = "7" Then
-			Call KondisiBersihHR()
-		Else
-			MsgBox("Terjadi Kesalahan ! Hubungi Administrator")
-		End If
-	End Sub
-	'Header Main Button
-	Private Sub TambahPE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles TambahPE.ItemClick
+    Private Sub FrmActPE_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call KondisiAwalPE()
+        Call KondisiAwalEvn()
+        Call KondisiAwalHR()
+        Call ListHeaderPE()
+        Call BacaPE()
+        Call ListHeaderMainDetailPE()
+        Call KondisiTampilDetail()
+        If TidJenisPE.Text = "5" Then
+            Call ListHeaderEvn()
+            Call KondisiBersihEvn()
+            PKuartalEventCL.Visible = True
+            CxKuartalPE.Enabled = True
+        ElseIf TidJenisPE.Text = "6" Then
+            Call ListHeaderProject()
+            Call KondisiBersihProject()
+        ElseIf TidJenisPE.Text = "7" Then
+            Call KondisiBersihHR()
+        Else
+            MsgBox("Terjadi Kesalahan ! Hubungi Administrator")
+        End If
+    End Sub
+    'Header Main Button
+    Private Sub TambahPE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles TambahPE.ItemClick
 		Call LoadKlien()
 		Call LoadRegion()
 		Call LoadVenue()
@@ -1522,11 +1521,11 @@ Public Class FrmActPE
 							Console.WriteLine()
 						End While
 						Console.ReadLine()
-						'conn.Close()
-						'dr = Nothing
-						'cmd = Nothing
-
-						sql2 = "insert into evn_tmp_dp select * from evn_detail_penawaran where idpe = ? "
+                        'conn.Close()
+                        'dr = Nothing
+                        'cmd = Nothing
+                        GGVM_conn()
+                        sql2 = "insert into evn_tmp_dp select * from evn_detail_penawaran where idpe = ? "
 						cmd = New OdbcCommand
 						With cmd
 							.CommandText = (sql2)
@@ -1540,8 +1539,8 @@ Public Class FrmActPE
 							Console.WriteLine()
 						End While
 						Console.ReadLine()
-
-						sql3 = "insert into act_dp_temp select * from act_detail_penawaran where idpe = ? "
+                        GGVM_conn()
+                        sql3 = "insert into act_dp_temp select * from act_detail_penawaran where idpe = ? "
 						cmd = New OdbcCommand
 						With cmd
 							.CommandText = (sql3)
@@ -1555,8 +1554,8 @@ Public Class FrmActPE
 							Console.WriteLine()
 						End While
 						Console.ReadLine()
-
-						sql4 = "DELETE FROM subdivisi WHERE idsubdivisi = ? "
+                        GGVM_conn()
+                        sql4 = "DELETE FROM subdivisi WHERE idsubdivisi = ? "
 						cmd = New OdbcCommand
 						With cmd
 							.CommandText = (sql4)
@@ -1570,8 +1569,8 @@ Public Class FrmActPE
 							Console.WriteLine()
 						End While
 						Console.ReadLine()
-
-						sql5 = "DELETE FROM act_detail_penawaran WHERE idpe = ? "
+                        GGVM_conn()
+                        sql5 = "DELETE FROM act_detail_penawaran WHERE idpe = ? "
 						cmd = New OdbcCommand
 						With cmd
 							.CommandText = (sql5)
@@ -1585,8 +1584,8 @@ Public Class FrmActPE
 							Console.WriteLine()
 						End While
 						Console.ReadLine()
-
-						sql6 = "DELETE FROM evn_penawaran WHERE idpe = ?"
+                        GGVM_conn()
+                        sql6 = "DELETE FROM evn_penawaran WHERE idpe = ?"
 						cmd = New OdbcCommand
 						With cmd
 							.CommandText = (sql6)
@@ -1603,8 +1602,8 @@ Public Class FrmActPE
 						conn.Close()
 						dr = Nothing
 						cmd = Nothing
-
-						MsgBox("Penawaran Berhasil diHapus")
+                        GGVM_conn_close()
+                        MsgBox("Penawaran Berhasil diHapus")
 						Call BacaPE()
 						Call KondisiBersihPE()
 						Call KondisiAwalPE()

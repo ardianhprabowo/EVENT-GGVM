@@ -9,7 +9,7 @@
     End Sub
 
     Private Sub SplashScreen_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-
+        FrmLogin.TUsername.Focus()
     End Sub
 
     Public Enum SplashScreenCommand

@@ -97,6 +97,7 @@ Public Class FrmLogin
         Next
         SplashScreenManager.CloseForm()
         TUsername.Focus()
+        TUsername.Select()
     End Sub
     Private Sub FrmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'If MsgBox("Are you sure you want to exit?",
