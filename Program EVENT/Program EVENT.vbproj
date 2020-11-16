@@ -201,6 +201,12 @@
     <Compile Include="FrmAccPengajuan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmActivation.Designer.vb">
+      <DependentUpon>FrmActivation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmActivation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmActPE.Designer.vb">
       <DependentUpon>FrmActPE.vb</DependentUpon>
     </Compile>
@@ -241,6 +247,12 @@
       <DependentUpon>FrmLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPEEvent.Designer.vb">
+      <DependentUpon>FrmPEEvent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPEEvent.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPengajuan.Designer.vb">
@@ -289,6 +301,12 @@
       <DependentUpon>MainMenu.vb</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIGeoGiven.designer.vb">
+      <DependentUpon>MDIGeoGiven.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MDIGeoGiven.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\Application.Designer.vb">
@@ -448,6 +466,9 @@
     <EmbeddedResource Include="FrmAccPengajuan.resx">
       <DependentUpon>FrmAccPengajuan.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmActivation.resx">
+      <DependentUpon>FrmActivation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmActPE.resx">
       <DependentUpon>FrmActPE.vb</DependentUpon>
     </EmbeddedResource>
@@ -475,6 +496,9 @@
     <EmbeddedResource Include="FrmMaintPO.resx">
       <DependentUpon>FrmMaintPO.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPEEvent.resx">
+      <DependentUpon>FrmPEEvent.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPEEvn.resx">
       <DependentUpon>FrmPEEvn.vb</DependentUpon>
     </EmbeddedResource>
@@ -501,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIGeoGiven.resx">
+      <DependentUpon>MDIGeoGiven.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -614,6 +641,7 @@
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -622,6 +650,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo.ico" />
+    <None Include="Resources\Caribbean-beach-1536x864.jpg" />
     <None Include="Resources\Contoh.bmp" />
     <None Include="Resources\deal.png" />
     <None Include="Resources\ggvm.jpg" />

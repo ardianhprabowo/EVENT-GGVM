@@ -500,7 +500,7 @@ Partial Class FrmActPE
         Me.RibbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.RibbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.RibbonControl.ShowToolbarCustomizeItem = False
-        Me.RibbonControl.Size = New System.Drawing.Size(1272, 102)
+        Me.RibbonControl.Size = New System.Drawing.Size(1272, 94)
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar1
         Me.RibbonControl.Toolbar.ShowCustomizeItem = False
         '
@@ -780,10 +780,10 @@ Partial Class FrmActPE
         Me.RibbonStatusBar2.ItemLinks.Add(Me.TRpPPNProj)
         Me.RibbonStatusBar2.ItemLinks.Add(Me.TGrandTotalProj)
         Me.RibbonStatusBar2.ItemLinks.Add(Me.BarEditItem6)
-        Me.RibbonStatusBar2.Location = New System.Drawing.Point(0, 579)
+        Me.RibbonStatusBar2.Location = New System.Drawing.Point(0, 585)
         Me.RibbonStatusBar2.Name = "RibbonStatusBar2"
         Me.RibbonStatusBar2.Ribbon = Me.RibbonControl
-        Me.RibbonStatusBar2.Size = New System.Drawing.Size(1226, 28)
+        Me.RibbonStatusBar2.Size = New System.Drawing.Size(1226, 22)
         '
         'TTotalProj
         '
@@ -854,10 +854,10 @@ Partial Class FrmActPE
         Me.RibbonStatusBar1.ItemLinks.Add(Me.TPPNEvn)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.TGrandTotalEvn)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.TQuartalPE)
-        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 594)
+        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 600)
         Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
         Me.RibbonStatusBar1.Ribbon = Me.RibbonControl
-        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1224, 28)
+        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1224, 22)
         '
         'BarCheckItem1
         '
@@ -870,9 +870,9 @@ Partial Class FrmActPE
         '
         Me.PanelControl1.Controls.Add(Me.NavigationFrame1)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelControl1.Location = New System.Drawing.Point(0, 102)
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 94)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(1272, 669)
+        Me.PanelControl1.Size = New System.Drawing.Size(1272, 677)
         Me.PanelControl1.TabIndex = 2
         '
         'NavigationFrame1
@@ -884,7 +884,7 @@ Partial Class FrmActPE
         Me.NavigationFrame1.Name = "NavigationFrame1"
         Me.NavigationFrame1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavBuatPE, Me.NavDetailPE})
         Me.NavigationFrame1.SelectedPage = Me.NavBuatPE
-        Me.NavigationFrame1.Size = New System.Drawing.Size(1268, 665)
+        Me.NavigationFrame1.Size = New System.Drawing.Size(1268, 673)
         Me.NavigationFrame1.TabIndex = 5
         Me.NavigationFrame1.Text = "NavigationFrame1"
         '
@@ -894,7 +894,7 @@ Partial Class FrmActPE
         Me.NavBuatPE.Controls.Add(Me.ListPEActivation)
         Me.NavBuatPE.Controls.Add(Me.GroupControl1)
         Me.NavBuatPE.Name = "NavBuatPE"
-        Me.NavBuatPE.Size = New System.Drawing.Size(1268, 665)
+        Me.NavBuatPE.Size = New System.Drawing.Size(1268, 673)
         '
         'PKuartal
         '
@@ -961,7 +961,7 @@ Partial Class FrmActPE
         Me.TKKet.Location = New System.Drawing.Point(17, 166)
         Me.TKKet.Name = "TKKet"
         Me.TKKet.PreventEnterBeep = True
-        Me.TKKet.Size = New System.Drawing.Size(350, 20)
+        Me.TKKet.Size = New System.Drawing.Size(350, 22)
         Me.TKKet.TabIndex = 80
         Me.TKKet.WatermarkText = "Masukkan Keterangan Detail"
         '
@@ -975,7 +975,7 @@ Partial Class FrmActPE
         Me.TKidJenisDetailPE.Location = New System.Drawing.Point(102, 89)
         Me.TKidJenisDetailPE.Name = "TKidJenisDetailPE"
         Me.TKidJenisDetailPE.PreventEnterBeep = True
-        Me.TKidJenisDetailPE.Size = New System.Drawing.Size(26, 20)
+        Me.TKidJenisDetailPE.Size = New System.Drawing.Size(26, 22)
         Me.TKidJenisDetailPE.TabIndex = 79
         Me.TKidJenisDetailPE.Visible = False
         '
@@ -1003,7 +1003,7 @@ Partial Class FrmActPE
         Me.TKidPE.Location = New System.Drawing.Point(102, 37)
         Me.TKidPE.Name = "TKidPE"
         Me.TKidPE.PreventEnterBeep = True
-        Me.TKidPE.Size = New System.Drawing.Size(26, 20)
+        Me.TKidPE.Size = New System.Drawing.Size(26, 22)
         Me.TKidPE.TabIndex = 77
         Me.TKidPE.Visible = False
         '
@@ -1054,7 +1054,7 @@ Partial Class FrmActPE
         Me.TKJmlEvent.Location = New System.Drawing.Point(150, 116)
         Me.TKJmlEvent.Name = "TKJmlEvent"
         Me.TKJmlEvent.PreventEnterBeep = True
-        Me.TKJmlEvent.Size = New System.Drawing.Size(128, 20)
+        Me.TKJmlEvent.Size = New System.Drawing.Size(128, 22)
         Me.TKJmlEvent.TabIndex = 73
         '
         'CKDetailPE
@@ -1062,11 +1062,11 @@ Partial Class FrmActPE
         Me.CKDetailPE.DisplayMember = "Text"
         Me.CKDetailPE.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CKDetailPE.FormattingEnabled = True
-        Me.CKDetailPE.ItemHeight = 15
+        Me.CKDetailPE.ItemHeight = 17
         Me.CKDetailPE.Items.AddRange(New Object() {Me.CIBEksekusi, Me.CIBManSuper, Me.CIBProduksi})
         Me.CKDetailPE.Location = New System.Drawing.Point(150, 89)
         Me.CKDetailPE.Name = "CKDetailPE"
-        Me.CKDetailPE.Size = New System.Drawing.Size(201, 21)
+        Me.CKDetailPE.Size = New System.Drawing.Size(201, 23)
         Me.CKDetailPE.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CKDetailPE.TabIndex = 69
         '
@@ -1147,7 +1147,7 @@ Partial Class FrmActPE
         Me.TKKuartal.Location = New System.Drawing.Point(150, 62)
         Me.TKKuartal.Name = "TKKuartal"
         Me.TKKuartal.PreventEnterBeep = True
-        Me.TKKuartal.Size = New System.Drawing.Size(128, 20)
+        Me.TKKuartal.Size = New System.Drawing.Size(128, 22)
         Me.TKKuartal.TabIndex = 63
         '
         'LabelX140
@@ -1187,7 +1187,7 @@ Partial Class FrmActPE
         Me.TKNoPE.Location = New System.Drawing.Point(150, 35)
         Me.TKNoPE.Name = "TKNoPE"
         Me.TKNoPE.PreventEnterBeep = True
-        Me.TKNoPE.Size = New System.Drawing.Size(201, 20)
+        Me.TKNoPE.Size = New System.Drawing.Size(201, 22)
         Me.TKNoPE.TabIndex = 0
         '
         'ListPEActivation
@@ -1203,7 +1203,7 @@ Partial Class FrmActPE
         Me.ListPEActivation.HideSelection = False
         Me.ListPEActivation.Location = New System.Drawing.Point(0, 138)
         Me.ListPEActivation.Name = "ListPEActivation"
-        Me.ListPEActivation.Size = New System.Drawing.Size(1268, 527)
+        Me.ListPEActivation.Size = New System.Drawing.Size(1268, 535)
         Me.ListPEActivation.TabIndex = 5
         Me.ListPEActivation.UseCompatibleStateImageBehavior = False
         Me.ListPEActivation.View = System.Windows.Forms.View.Details
@@ -1299,7 +1299,7 @@ Partial Class FrmActPE
         Me.TidKuartalPE.Location = New System.Drawing.Point(1027, 110)
         Me.TidKuartalPE.Name = "TidKuartalPE"
         Me.TidKuartalPE.PreventEnterBeep = True
-        Me.TidKuartalPE.Size = New System.Drawing.Size(25, 20)
+        Me.TidKuartalPE.Size = New System.Drawing.Size(25, 22)
         Me.TidKuartalPE.TabIndex = 63
         Me.TidKuartalPE.Visible = False
         '
@@ -1308,7 +1308,7 @@ Partial Class FrmActPE
         Me.PAlasan.Controls.Add(Me.TidRevisi)
         Me.PAlasan.Controls.Add(Me.BtnSimpanAlasan)
         Me.PAlasan.Controls.Add(Me.TAlasanRevisi)
-        Me.PAlasan.Location = New System.Drawing.Point(278, 8)
+        Me.PAlasan.Location = New System.Drawing.Point(278, 132)
         Me.PAlasan.LookAndFeel.SkinMaskColor = System.Drawing.Color.Firebrick
         Me.PAlasan.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PAlasan.Name = "PAlasan"
@@ -1327,7 +1327,7 @@ Partial Class FrmActPE
         Me.TidRevisi.Location = New System.Drawing.Point(12, 71)
         Me.TidRevisi.Name = "TidRevisi"
         Me.TidRevisi.PreventEnterBeep = True
-        Me.TidRevisi.Size = New System.Drawing.Size(30, 20)
+        Me.TidRevisi.Size = New System.Drawing.Size(30, 22)
         Me.TidRevisi.TabIndex = 2
         Me.TidRevisi.Visible = False
         '
@@ -1352,7 +1352,7 @@ Partial Class FrmActPE
         Me.TAlasanRevisi.Location = New System.Drawing.Point(12, 36)
         Me.TAlasanRevisi.Name = "TAlasanRevisi"
         Me.TAlasanRevisi.PreventEnterBeep = True
-        Me.TAlasanRevisi.Size = New System.Drawing.Size(461, 20)
+        Me.TAlasanRevisi.Size = New System.Drawing.Size(461, 22)
         Me.TAlasanRevisi.TabIndex = 0
         '
         'TJenisPE
@@ -1418,7 +1418,7 @@ Partial Class FrmActPE
         Me.TAgentFee.Location = New System.Drawing.Point(752, 81)
         Me.TAgentFee.Name = "TAgentFee"
         Me.TAgentFee.PreventEnterBeep = True
-        Me.TAgentFee.Size = New System.Drawing.Size(31, 20)
+        Me.TAgentFee.Size = New System.Drawing.Size(31, 22)
         Me.TAgentFee.TabIndex = 14
         Me.TAgentFee.Text = "0"
         '
@@ -1432,7 +1432,7 @@ Partial Class FrmActPE
         Me.TJmlEvent.Location = New System.Drawing.Point(170, 79)
         Me.TJmlEvent.Name = "TJmlEvent"
         Me.TJmlEvent.PreventEnterBeep = True
-        Me.TJmlEvent.Size = New System.Drawing.Size(66, 20)
+        Me.TJmlEvent.Size = New System.Drawing.Size(66, 22)
         Me.TJmlEvent.TabIndex = 7
         Me.TJmlEvent.WatermarkText = "Event"
         '
@@ -1459,7 +1459,7 @@ Partial Class FrmActPE
         Me.TidSubdivisi.Location = New System.Drawing.Point(820, 83)
         Me.TidSubdivisi.Name = "TidSubdivisi"
         Me.TidSubdivisi.PreventEnterBeep = True
-        Me.TidSubdivisi.Size = New System.Drawing.Size(25, 20)
+        Me.TidSubdivisi.Size = New System.Drawing.Size(25, 22)
         Me.TidSubdivisi.TabIndex = 54
         Me.TidSubdivisi.Visible = False
         '
@@ -1473,7 +1473,7 @@ Partial Class FrmActPE
         Me.TidJenisPE.Location = New System.Drawing.Point(865, 83)
         Me.TidJenisPE.Name = "TidJenisPE"
         Me.TidJenisPE.PreventEnterBeep = True
-        Me.TidJenisPE.Size = New System.Drawing.Size(25, 20)
+        Me.TidJenisPE.Size = New System.Drawing.Size(25, 22)
         Me.TidJenisPE.TabIndex = 53
         Me.TidJenisPE.Visible = False
         '
@@ -1487,7 +1487,7 @@ Partial Class FrmActPE
         Me.TidKontrakAct.Location = New System.Drawing.Point(855, 26)
         Me.TidKontrakAct.Name = "TidKontrakAct"
         Me.TidKontrakAct.PreventEnterBeep = True
-        Me.TidKontrakAct.Size = New System.Drawing.Size(25, 20)
+        Me.TidKontrakAct.Size = New System.Drawing.Size(25, 22)
         Me.TidKontrakAct.TabIndex = 52
         Me.TidKontrakAct.Visible = False
         '
@@ -1501,7 +1501,7 @@ Partial Class FrmActPE
         Me.TidKlien.Location = New System.Drawing.Point(41, 54)
         Me.TidKlien.Name = "TidKlien"
         Me.TidKlien.PreventEnterBeep = True
-        Me.TidKlien.Size = New System.Drawing.Size(25, 20)
+        Me.TidKlien.Size = New System.Drawing.Size(25, 22)
         Me.TidKlien.TabIndex = 50
         Me.TidKlien.Visible = False
         '
@@ -1515,7 +1515,7 @@ Partial Class FrmActPE
         Me.TidPE.Location = New System.Drawing.Point(41, 27)
         Me.TidPE.Name = "TidPE"
         Me.TidPE.PreventEnterBeep = True
-        Me.TidPE.Size = New System.Drawing.Size(25, 20)
+        Me.TidPE.Size = New System.Drawing.Size(25, 22)
         Me.TidPE.TabIndex = 49
         Me.TidPE.Visible = False
         '
@@ -1686,7 +1686,7 @@ Partial Class FrmActPE
         Me.TTotalVAT.Location = New System.Drawing.Point(633, 108)
         Me.TTotalVAT.Name = "TTotalVAT"
         Me.TTotalVAT.PreventEnterBeep = True
-        Me.TTotalVAT.Size = New System.Drawing.Size(168, 20)
+        Me.TTotalVAT.Size = New System.Drawing.Size(168, 22)
         Me.TTotalVAT.TabIndex = 36
         '
         'LabelX20
@@ -1726,7 +1726,7 @@ Partial Class FrmActPE
         Me.TAgencyRP.Location = New System.Drawing.Point(633, 81)
         Me.TAgencyRP.Name = "TAgencyRP"
         Me.TAgencyRP.PreventEnterBeep = True
-        Me.TAgencyRP.Size = New System.Drawing.Size(113, 20)
+        Me.TAgencyRP.Size = New System.Drawing.Size(113, 22)
         Me.TAgencyRP.TabIndex = 33
         '
         'LabelX18
@@ -1766,7 +1766,7 @@ Partial Class FrmActPE
         Me.TRpPPN.Location = New System.Drawing.Point(633, 54)
         Me.TRpPPN.Name = "TRpPPN"
         Me.TRpPPN.PreventEnterBeep = True
-        Me.TRpPPN.Size = New System.Drawing.Size(168, 20)
+        Me.TRpPPN.Size = New System.Drawing.Size(168, 22)
         Me.TRpPPN.TabIndex = 30
         '
         'LabelX16
@@ -1806,7 +1806,7 @@ Partial Class FrmActPE
         Me.TTotal.Location = New System.Drawing.Point(633, 27)
         Me.TTotal.Name = "TTotal"
         Me.TTotal.PreventEnterBeep = True
-        Me.TTotal.Size = New System.Drawing.Size(168, 20)
+        Me.TTotal.Size = New System.Drawing.Size(168, 22)
         Me.TTotal.TabIndex = 27
         '
         'LabelX14
@@ -1846,7 +1846,7 @@ Partial Class FrmActPE
         Me.TPIC.Location = New System.Drawing.Point(342, 81)
         Me.TPIC.Name = "TPIC"
         Me.TPIC.PreventEnterBeep = True
-        Me.TPIC.Size = New System.Drawing.Size(168, 20)
+        Me.TPIC.Size = New System.Drawing.Size(168, 22)
         Me.TPIC.TabIndex = 13
         '
         'LabelX11
@@ -1946,7 +1946,7 @@ Partial Class FrmActPE
         Me.TProject.Location = New System.Drawing.Point(342, 27)
         Me.TProject.Name = "TProject"
         Me.TProject.PreventEnterBeep = True
-        Me.TProject.Size = New System.Drawing.Size(168, 20)
+        Me.TProject.Size = New System.Drawing.Size(168, 22)
         Me.TProject.TabIndex = 10
         '
         'LabelX3
@@ -2024,7 +2024,7 @@ Partial Class FrmActPE
         Me.TRegion.Location = New System.Drawing.Point(83, 106)
         Me.TRegion.Name = "TRegion"
         Me.TRegion.PreventEnterBeep = True
-        Me.TRegion.Size = New System.Drawing.Size(153, 20)
+        Me.TRegion.Size = New System.Drawing.Size(153, 22)
         Me.TRegion.TabIndex = 9
         '
         'LabelX6
@@ -2050,7 +2050,7 @@ Partial Class FrmActPE
         Me.TVenue.Location = New System.Drawing.Point(83, 79)
         Me.TVenue.Name = "TVenue"
         Me.TVenue.PreventEnterBeep = True
-        Me.TVenue.Size = New System.Drawing.Size(66, 20)
+        Me.TVenue.Size = New System.Drawing.Size(66, 22)
         Me.TVenue.TabIndex = 6
         Me.TVenue.WatermarkText = "Region"
         '
@@ -2077,7 +2077,7 @@ Partial Class FrmActPE
         Me.TKlien.Location = New System.Drawing.Point(83, 52)
         Me.TKlien.Name = "TKlien"
         Me.TKlien.PreventEnterBeep = True
-        Me.TKlien.Size = New System.Drawing.Size(153, 20)
+        Me.TKlien.Size = New System.Drawing.Size(153, 22)
         Me.TKlien.TabIndex = 3
         '
         'LabelX1
@@ -2103,14 +2103,14 @@ Partial Class FrmActPE
         Me.TNoPE.Location = New System.Drawing.Point(83, 25)
         Me.TNoPE.Name = "TNoPE"
         Me.TNoPE.PreventEnterBeep = True
-        Me.TNoPE.Size = New System.Drawing.Size(153, 20)
+        Me.TNoPE.Size = New System.Drawing.Size(153, 22)
         Me.TNoPE.TabIndex = 0
         '
         'NavDetailPE
         '
         Me.NavDetailPE.Controls.Add(Me.NavigationPane1)
         Me.NavDetailPE.Name = "NavDetailPE"
-        Me.NavDetailPE.Size = New System.Drawing.Size(1268, 665)
+        Me.NavDetailPE.Size = New System.Drawing.Size(1268, 673)
         '
         'NavigationPane1
         '
@@ -2126,7 +2126,7 @@ Partial Class FrmActPE
         Me.NavigationPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.DetailPE, Me.DetailEvent, Me.DetailProject, Me.DetailInstore})
         Me.NavigationPane1.RegularSize = New System.Drawing.Size(1268, 683)
         Me.NavigationPane1.SelectedPage = Me.DetailPE
-        Me.NavigationPane1.Size = New System.Drawing.Size(1268, 665)
+        Me.NavigationPane1.Size = New System.Drawing.Size(1268, 673)
         Me.NavigationPane1.TabIndex = 0
         Me.NavigationPane1.Text = "NavigationPane1"
         '
@@ -2135,7 +2135,7 @@ Partial Class FrmActPE
         Me.DetailPE.Caption = "Detail Penawaran"
         Me.DetailPE.Controls.Add(Me.SplitContainer1)
         Me.DetailPE.Name = "DetailPE"
-        Me.DetailPE.Size = New System.Drawing.Size(1226, 607)
+        Me.DetailPE.Size = New System.Drawing.Size(1206, 600)
         '
         'SplitContainer1
         '
@@ -2169,8 +2169,8 @@ Partial Class FrmActPE
         Me.SplitContainer1.Panel2.Controls.Add(Me.LabelX44)
         Me.SplitContainer1.Panel2.Controls.Add(Me.TAgentFeeCL)
         Me.SplitContainer1.Panel2.Controls.Add(Me.LabelX43)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1226, 607)
-        Me.SplitContainer1.SplitterDistance = 795
+        Me.SplitContainer1.Size = New System.Drawing.Size(1206, 600)
+        Me.SplitContainer1.SplitterDistance = 782
         Me.SplitContainer1.TabIndex = 217
         '
         'SplitContainer2
@@ -2208,8 +2208,8 @@ Partial Class FrmActPE
         'SplitContainer2.Panel2
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.ListDetailPEAct)
-        Me.SplitContainer2.Size = New System.Drawing.Size(795, 607)
-        Me.SplitContainer2.SplitterDistance = 172
+        Me.SplitContainer2.Size = New System.Drawing.Size(782, 600)
+        Me.SplitContainer2.SplitterDistance = 170
         Me.SplitContainer2.TabIndex = 0
         '
         'PKuartalEventCL
@@ -2221,9 +2221,9 @@ Partial Class FrmActPE
         Me.PKuartalEventCL.Controls.Add(Me.LabelX153)
         Me.PKuartalEventCL.Controls.Add(Me.LabelX150)
         Me.PKuartalEventCL.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PKuartalEventCL.Location = New System.Drawing.Point(0, 145)
+        Me.PKuartalEventCL.Location = New System.Drawing.Point(0, 143)
         Me.PKuartalEventCL.Name = "PKuartalEventCL"
-        Me.PKuartalEventCL.Size = New System.Drawing.Size(795, 27)
+        Me.PKuartalEventCL.Size = New System.Drawing.Size(782, 27)
         Me.PKuartalEventCL.TabIndex = 163
         Me.PKuartalEventCL.Visible = False
         '
@@ -2237,7 +2237,7 @@ Partial Class FrmActPE
         Me.TJmlEvnCL.Location = New System.Drawing.Point(354, 3)
         Me.TJmlEvnCL.Name = "TJmlEvnCL"
         Me.TJmlEvnCL.PreventEnterBeep = True
-        Me.TJmlEvnCL.Size = New System.Drawing.Size(153, 20)
+        Me.TJmlEvnCL.Size = New System.Drawing.Size(153, 22)
         Me.TJmlEvnCL.TabIndex = 160
         '
         'CKuartal
@@ -2246,10 +2246,10 @@ Partial Class FrmActPE
         Me.CKuartal.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CKuartal.Enabled = False
         Me.CKuartal.FormattingEnabled = True
-        Me.CKuartal.ItemHeight = 15
+        Me.CKuartal.ItemHeight = 17
         Me.CKuartal.Location = New System.Drawing.Point(108, 2)
         Me.CKuartal.Name = "CKuartal"
-        Me.CKuartal.Size = New System.Drawing.Size(121, 21)
+        Me.CKuartal.Size = New System.Drawing.Size(121, 23)
         Me.CKuartal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CKuartal.TabIndex = 159
         Me.CKuartal.Text = "1"
@@ -2317,7 +2317,7 @@ Partial Class FrmActPE
         Me.TidDetailCL.Location = New System.Drawing.Point(688, 63)
         Me.TidDetailCL.Name = "TidDetailCL"
         Me.TidDetailCL.PreventEnterBeep = True
-        Me.TidDetailCL.Size = New System.Drawing.Size(25, 20)
+        Me.TidDetailCL.Size = New System.Drawing.Size(25, 22)
         Me.TidDetailCL.TabIndex = 156
         Me.TidDetailCL.Visible = False
         '
@@ -2331,7 +2331,7 @@ Partial Class FrmActPE
         Me.TMaterialNoCL.Location = New System.Drawing.Point(688, 34)
         Me.TMaterialNoCL.Name = "TMaterialNoCL"
         Me.TMaterialNoCL.PreventEnterBeep = True
-        Me.TMaterialNoCL.Size = New System.Drawing.Size(25, 20)
+        Me.TMaterialNoCL.Size = New System.Drawing.Size(25, 22)
         Me.TMaterialNoCL.TabIndex = 155
         Me.TMaterialNoCL.Visible = False
         '
@@ -2345,7 +2345,7 @@ Partial Class FrmActPE
         Me.TItemNoCL.Location = New System.Drawing.Point(688, 8)
         Me.TItemNoCL.Name = "TItemNoCL"
         Me.TItemNoCL.PreventEnterBeep = True
-        Me.TItemNoCL.Size = New System.Drawing.Size(25, 20)
+        Me.TItemNoCL.Size = New System.Drawing.Size(25, 22)
         Me.TItemNoCL.TabIndex = 154
         Me.TItemNoCL.Visible = False
         '
@@ -2359,7 +2359,7 @@ Partial Class FrmActPE
         Me.TidDetail.Location = New System.Drawing.Point(324, 35)
         Me.TidDetail.Name = "TidDetail"
         Me.TidDetail.PreventEnterBeep = True
-        Me.TidDetail.Size = New System.Drawing.Size(24, 20)
+        Me.TidDetail.Size = New System.Drawing.Size(24, 22)
         Me.TidDetail.TabIndex = 153
         Me.TidDetail.Visible = False
         '
@@ -2373,7 +2373,7 @@ Partial Class FrmActPE
         Me.TidBarangCL.Location = New System.Drawing.Point(324, 9)
         Me.TidBarangCL.Name = "TidBarangCL"
         Me.TidBarangCL.PreventEnterBeep = True
-        Me.TidBarangCL.Size = New System.Drawing.Size(24, 20)
+        Me.TidBarangCL.Size = New System.Drawing.Size(24, 22)
         Me.TidBarangCL.TabIndex = 152
         Me.TidBarangCL.Visible = False
         '
@@ -2387,7 +2387,7 @@ Partial Class FrmActPE
         Me.TSubTotalCL.Location = New System.Drawing.Point(529, 36)
         Me.TSubTotalCL.Name = "TSubTotalCL"
         Me.TSubTotalCL.PreventEnterBeep = True
-        Me.TSubTotalCL.Size = New System.Drawing.Size(153, 20)
+        Me.TSubTotalCL.Size = New System.Drawing.Size(153, 22)
         Me.TSubTotalCL.TabIndex = 27
         Me.TSubTotalCL.Text = "0"
         '
@@ -2440,7 +2440,7 @@ Partial Class FrmActPE
         Me.TBarangCL.Location = New System.Drawing.Point(529, 9)
         Me.TBarangCL.Name = "TBarangCL"
         Me.TBarangCL.PreventEnterBeep = True
-        Me.TBarangCL.Size = New System.Drawing.Size(153, 20)
+        Me.TBarangCL.Size = New System.Drawing.Size(153, 22)
         Me.TBarangCL.TabIndex = 24
         '
         'TKetCL
@@ -2453,7 +2453,7 @@ Partial Class FrmActPE
         Me.TKetCL.Location = New System.Drawing.Point(108, 65)
         Me.TKetCL.Name = "TKetCL"
         Me.TKetCL.PreventEnterBeep = True
-        Me.TKetCL.Size = New System.Drawing.Size(574, 20)
+        Me.TKetCL.Size = New System.Drawing.Size(574, 22)
         Me.TKetCL.TabIndex = 21
         '
         'LabelX40
@@ -2544,7 +2544,7 @@ Partial Class FrmActPE
         Me.TQtyCL.Location = New System.Drawing.Point(108, 38)
         Me.TQtyCL.Name = "TQtyCL"
         Me.TQtyCL.PreventEnterBeep = True
-        Me.TQtyCL.Size = New System.Drawing.Size(80, 20)
+        Me.TQtyCL.Size = New System.Drawing.Size(80, 22)
         Me.TQtyCL.TabIndex = 18
         Me.TQtyCL.Text = "1"
         '
@@ -2559,7 +2559,7 @@ Partial Class FrmActPE
         Me.TPeriodeCL.Location = New System.Drawing.Point(108, 11)
         Me.TPeriodeCL.Name = "TPeriodeCL"
         Me.TPeriodeCL.PreventEnterBeep = True
-        Me.TPeriodeCL.Size = New System.Drawing.Size(153, 20)
+        Me.TPeriodeCL.Size = New System.Drawing.Size(153, 22)
         Me.TPeriodeCL.TabIndex = 15
         '
         'LabelX32
@@ -2595,7 +2595,7 @@ Partial Class FrmActPE
         Me.ListDetailPEAct.HideSelection = False
         Me.ListDetailPEAct.Location = New System.Drawing.Point(0, 0)
         Me.ListDetailPEAct.Name = "ListDetailPEAct"
-        Me.ListDetailPEAct.Size = New System.Drawing.Size(795, 431)
+        Me.ListDetailPEAct.Size = New System.Drawing.Size(782, 426)
         Me.ListDetailPEAct.TabIndex = 150
         Me.ListDetailPEAct.UseCompatibleStateImageBehavior = False
         '
@@ -2766,7 +2766,7 @@ Partial Class FrmActPE
         Me.TGrandTotalCL.Location = New System.Drawing.Point(226, 116)
         Me.TGrandTotalCL.Name = "TGrandTotalCL"
         Me.TGrandTotalCL.PreventEnterBeep = True
-        Me.TGrandTotalCL.Size = New System.Drawing.Size(149, 20)
+        Me.TGrandTotalCL.Size = New System.Drawing.Size(149, 22)
         Me.TGrandTotalCL.TabIndex = 204
         Me.TGrandTotalCL.Text = "0"
         '
@@ -2793,7 +2793,7 @@ Partial Class FrmActPE
         Me.TPph23CL.Location = New System.Drawing.Point(226, 90)
         Me.TPph23CL.Name = "TPph23CL"
         Me.TPph23CL.PreventEnterBeep = True
-        Me.TPph23CL.Size = New System.Drawing.Size(149, 20)
+        Me.TPph23CL.Size = New System.Drawing.Size(149, 22)
         Me.TPph23CL.TabIndex = 205
         Me.TPph23CL.Text = "0"
         '
@@ -2820,7 +2820,7 @@ Partial Class FrmActPE
         Me.TRpPPNCL.Location = New System.Drawing.Point(226, 63)
         Me.TRpPPNCL.Name = "TRpPPNCL"
         Me.TRpPPNCL.PreventEnterBeep = True
-        Me.TRpPPNCL.Size = New System.Drawing.Size(149, 20)
+        Me.TRpPPNCL.Size = New System.Drawing.Size(149, 22)
         Me.TRpPPNCL.TabIndex = 206
         Me.TRpPPNCL.Text = "0"
         '
@@ -2847,7 +2847,7 @@ Partial Class FrmActPE
         Me.TTotalCostCL.Location = New System.Drawing.Point(226, 11)
         Me.TTotalCostCL.Name = "TTotalCostCL"
         Me.TTotalCostCL.PreventEnterBeep = True
-        Me.TTotalCostCL.Size = New System.Drawing.Size(149, 20)
+        Me.TTotalCostCL.Size = New System.Drawing.Size(149, 22)
         Me.TTotalCostCL.TabIndex = 207
         Me.TTotalCostCL.Text = "0"
         '
@@ -2874,7 +2874,7 @@ Partial Class FrmActPE
         Me.TAgentFeeCL.Location = New System.Drawing.Point(226, 36)
         Me.TAgentFeeCL.Name = "TAgentFeeCL"
         Me.TAgentFeeCL.PreventEnterBeep = True
-        Me.TAgentFeeCL.Size = New System.Drawing.Size(149, 20)
+        Me.TAgentFeeCL.Size = New System.Drawing.Size(149, 22)
         Me.TAgentFeeCL.TabIndex = 208
         Me.TAgentFeeCL.Text = "0"
         '
@@ -2947,7 +2947,7 @@ Partial Class FrmActPE
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(260, 49)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.Size = New System.Drawing.Size(40, 13)
         Me.Label1.TabIndex = 30
         Me.Label1.Text = "Label1"
         Me.Label1.Visible = False
@@ -2972,7 +2972,7 @@ Partial Class FrmActPE
         Me.TidDetailActEvn.Location = New System.Drawing.Point(587, 39)
         Me.TidDetailActEvn.Name = "TidDetailActEvn"
         Me.TidDetailActEvn.PreventEnterBeep = True
-        Me.TidDetailActEvn.Size = New System.Drawing.Size(24, 20)
+        Me.TidDetailActEvn.Size = New System.Drawing.Size(24, 22)
         Me.TidDetailActEvn.TabIndex = 28
         Me.TidDetailActEvn.Visible = False
         '
@@ -2986,7 +2986,7 @@ Partial Class FrmActPE
         Me.idFreqEvn.Location = New System.Drawing.Point(557, 40)
         Me.idFreqEvn.Name = "idFreqEvn"
         Me.idFreqEvn.PreventEnterBeep = True
-        Me.idFreqEvn.Size = New System.Drawing.Size(24, 20)
+        Me.idFreqEvn.Size = New System.Drawing.Size(24, 22)
         Me.idFreqEvn.TabIndex = 25
         Me.idFreqEvn.Visible = False
         '
@@ -2995,11 +2995,11 @@ Partial Class FrmActPE
         Me.CSubkelEvn.DisplayMember = "Text"
         Me.CSubkelEvn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSubkelEvn.FormattingEnabled = True
-        Me.CSubkelEvn.ItemHeight = 15
+        Me.CSubkelEvn.ItemHeight = 17
         Me.CSubkelEvn.Items.AddRange(New Object() {Me.ComboItem1, Me.ComboItem2, Me.ComboItem3})
         Me.CSubkelEvn.Location = New System.Drawing.Point(617, 39)
         Me.CSubkelEvn.Name = "CSubkelEvn"
-        Me.CSubkelEvn.Size = New System.Drawing.Size(104, 21)
+        Me.CSubkelEvn.Size = New System.Drawing.Size(104, 23)
         Me.CSubkelEvn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSubkelEvn.TabIndex = 22
         Me.CSubkelEvn.Visible = False
@@ -3026,7 +3026,7 @@ Partial Class FrmActPE
         Me.idQtyEvn.Location = New System.Drawing.Point(527, 40)
         Me.idQtyEvn.Name = "idQtyEvn"
         Me.idQtyEvn.PreventEnterBeep = True
-        Me.idQtyEvn.Size = New System.Drawing.Size(24, 20)
+        Me.idQtyEvn.Size = New System.Drawing.Size(24, 22)
         Me.idQtyEvn.TabIndex = 24
         Me.idQtyEvn.Visible = False
         '
@@ -3040,7 +3040,7 @@ Partial Class FrmActPE
         Me.TidSubkelEvn.Location = New System.Drawing.Point(727, 40)
         Me.TidSubkelEvn.Name = "TidSubkelEvn"
         Me.TidSubkelEvn.PreventEnterBeep = True
-        Me.TidSubkelEvn.Size = New System.Drawing.Size(24, 20)
+        Me.TidSubkelEvn.Size = New System.Drawing.Size(24, 22)
         Me.TidSubkelEvn.TabIndex = 27
         Me.TidSubkelEvn.Visible = False
         '
@@ -3054,7 +3054,7 @@ Partial Class FrmActPE
         Me.idBarangEvn.Location = New System.Drawing.Point(489, 40)
         Me.idBarangEvn.Name = "idBarangEvn"
         Me.idBarangEvn.PreventEnterBeep = True
-        Me.idBarangEvn.Size = New System.Drawing.Size(32, 20)
+        Me.idBarangEvn.Size = New System.Drawing.Size(32, 22)
         Me.idBarangEvn.TabIndex = 23
         Me.idBarangEvn.Visible = False
         '
@@ -3068,7 +3068,7 @@ Partial Class FrmActPE
         Me.TidJenisDetail.Location = New System.Drawing.Point(768, 40)
         Me.TidJenisDetail.Name = "TidJenisDetail"
         Me.TidJenisDetail.PreventEnterBeep = True
-        Me.TidJenisDetail.Size = New System.Drawing.Size(24, 20)
+        Me.TidJenisDetail.Size = New System.Drawing.Size(24, 22)
         Me.TidJenisDetail.TabIndex = 26
         Me.TidJenisDetail.Visible = False
         '
@@ -3087,10 +3087,10 @@ Partial Class FrmActPE
         Me.CJenisDetail.DisplayMember = "Text"
         Me.CJenisDetail.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CJenisDetail.FormattingEnabled = True
-        Me.CJenisDetail.ItemHeight = 15
+        Me.CJenisDetail.ItemHeight = 17
         Me.CJenisDetail.Location = New System.Drawing.Point(955, 11)
         Me.CJenisDetail.Name = "CJenisDetail"
-        Me.CJenisDetail.Size = New System.Drawing.Size(120, 21)
+        Me.CJenisDetail.Size = New System.Drawing.Size(120, 23)
         Me.CJenisDetail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CJenisDetail.TabIndex = 20
         '
@@ -3099,10 +3099,10 @@ Partial Class FrmActPE
         Me.CSatQtyEvn.DisplayMember = "Text"
         Me.CSatQtyEvn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSatQtyEvn.FormattingEnabled = True
-        Me.CSatQtyEvn.ItemHeight = 15
+        Me.CSatQtyEvn.ItemHeight = 17
         Me.CSatQtyEvn.Location = New System.Drawing.Point(249, 12)
         Me.CSatQtyEvn.Name = "CSatQtyEvn"
-        Me.CSatQtyEvn.Size = New System.Drawing.Size(51, 21)
+        Me.CSatQtyEvn.Size = New System.Drawing.Size(51, 23)
         Me.CSatQtyEvn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSatQtyEvn.TabIndex = 13
         '
@@ -3111,10 +3111,10 @@ Partial Class FrmActPE
         Me.CSatFreqEvn.DisplayMember = "Text"
         Me.CSatFreqEvn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSatFreqEvn.FormattingEnabled = True
-        Me.CSatFreqEvn.ItemHeight = 15
+        Me.CSatFreqEvn.ItemHeight = 17
         Me.CSatFreqEvn.Location = New System.Drawing.Point(371, 12)
         Me.CSatFreqEvn.Name = "CSatFreqEvn"
-        Me.CSatFreqEvn.Size = New System.Drawing.Size(51, 21)
+        Me.CSatFreqEvn.Size = New System.Drawing.Size(51, 23)
         Me.CSatFreqEvn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSatFreqEvn.TabIndex = 15
         '
@@ -3128,7 +3128,7 @@ Partial Class FrmActPE
         Me.TKetPEvn.Location = New System.Drawing.Point(768, 12)
         Me.TKetPEvn.Name = "TKetPEvn"
         Me.TKetPEvn.PreventEnterBeep = True
-        Me.TKetPEvn.Size = New System.Drawing.Size(182, 20)
+        Me.TKetPEvn.Size = New System.Drawing.Size(182, 22)
         Me.TKetPEvn.TabIndex = 19
         Me.TKetPEvn.WatermarkText = "Remaks"
         '
@@ -3142,7 +3142,7 @@ Partial Class FrmActPE
         Me.TQtyEvn.Location = New System.Drawing.Point(188, 12)
         Me.TQtyEvn.Name = "TQtyEvn"
         Me.TQtyEvn.PreventEnterBeep = True
-        Me.TQtyEvn.Size = New System.Drawing.Size(57, 20)
+        Me.TQtyEvn.Size = New System.Drawing.Size(57, 22)
         Me.TQtyEvn.TabIndex = 12
         Me.TQtyEvn.WatermarkText = "Qty"
         '
@@ -3156,7 +3156,7 @@ Partial Class FrmActPE
         Me.TSubTotalEvn.Location = New System.Drawing.Point(654, 12)
         Me.TSubTotalEvn.Name = "TSubTotalEvn"
         Me.TSubTotalEvn.PreventEnterBeep = True
-        Me.TSubTotalEvn.Size = New System.Drawing.Size(110, 20)
+        Me.TSubTotalEvn.Size = New System.Drawing.Size(110, 22)
         Me.TSubTotalEvn.TabIndex = 18
         Me.TSubTotalEvn.WatermarkText = "Sub Total"
         '
@@ -3170,7 +3170,7 @@ Partial Class FrmActPE
         Me.THargaUnitEvn.Location = New System.Drawing.Point(528, 12)
         Me.THargaUnitEvn.Name = "THargaUnitEvn"
         Me.THargaUnitEvn.PreventEnterBeep = True
-        Me.THargaUnitEvn.Size = New System.Drawing.Size(120, 20)
+        Me.THargaUnitEvn.Size = New System.Drawing.Size(120, 22)
         Me.THargaUnitEvn.TabIndex = 17
         Me.THargaUnitEvn.WatermarkText = "Unit Cost"
         '
@@ -3184,7 +3184,7 @@ Partial Class FrmActPE
         Me.TRegionEvn.Location = New System.Drawing.Point(428, 12)
         Me.TRegionEvn.Name = "TRegionEvn"
         Me.TRegionEvn.PreventEnterBeep = True
-        Me.TRegionEvn.Size = New System.Drawing.Size(94, 20)
+        Me.TRegionEvn.Size = New System.Drawing.Size(94, 22)
         Me.TRegionEvn.TabIndex = 16
         Me.TRegionEvn.WatermarkText = "Region/Event"
         '
@@ -3198,7 +3198,7 @@ Partial Class FrmActPE
         Me.TFreqEvn.Location = New System.Drawing.Point(304, 12)
         Me.TFreqEvn.Name = "TFreqEvn"
         Me.TFreqEvn.PreventEnterBeep = True
-        Me.TFreqEvn.Size = New System.Drawing.Size(62, 20)
+        Me.TFreqEvn.Size = New System.Drawing.Size(62, 22)
         Me.TFreqEvn.TabIndex = 14
         Me.TFreqEvn.WatermarkText = "Freq"
         '
@@ -3212,7 +3212,7 @@ Partial Class FrmActPE
         Me.TBarangEvn.Location = New System.Drawing.Point(16, 12)
         Me.TBarangEvn.Name = "TBarangEvn"
         Me.TBarangEvn.PreventEnterBeep = True
-        Me.TBarangEvn.Size = New System.Drawing.Size(166, 20)
+        Me.TBarangEvn.Size = New System.Drawing.Size(166, 22)
         Me.TBarangEvn.TabIndex = 11
         Me.TBarangEvn.WatermarkText = "Items"
         '
@@ -3241,7 +3241,7 @@ Partial Class FrmActPE
         Me.ListBiayaEvn.LabelEdit = True
         Me.ListBiayaEvn.Location = New System.Drawing.Point(0, 0)
         Me.ListBiayaEvn.Name = "ListBiayaEvn"
-        Me.ListBiayaEvn.Size = New System.Drawing.Size(1224, 594)
+        Me.ListBiayaEvn.Size = New System.Drawing.Size(1224, 600)
         Me.ListBiayaEvn.TabIndex = 1
         Me.ListBiayaEvn.UseCompatibleStateImageBehavior = False
         Me.ListBiayaEvn.View = System.Windows.Forms.View.Details
@@ -3297,7 +3297,7 @@ Partial Class FrmActPE
         Me.TidJenisDetailProj.Location = New System.Drawing.Point(472, 25)
         Me.TidJenisDetailProj.Name = "TidJenisDetailProj"
         Me.TidJenisDetailProj.PreventEnterBeep = True
-        Me.TidJenisDetailProj.Size = New System.Drawing.Size(33, 20)
+        Me.TidJenisDetailProj.Size = New System.Drawing.Size(33, 22)
         Me.TidJenisDetailProj.TabIndex = 60
         Me.TidJenisDetailProj.Text = "6"
         Me.TidJenisDetailProj.Visible = False
@@ -3312,7 +3312,7 @@ Partial Class FrmActPE
         Me.TidDetailProj.Location = New System.Drawing.Point(433, 25)
         Me.TidDetailProj.Name = "TidDetailProj"
         Me.TidDetailProj.PreventEnterBeep = True
-        Me.TidDetailProj.Size = New System.Drawing.Size(33, 20)
+        Me.TidDetailProj.Size = New System.Drawing.Size(33, 22)
         Me.TidDetailProj.TabIndex = 59
         Me.TidDetailProj.Visible = False
         '
@@ -3326,7 +3326,7 @@ Partial Class FrmActPE
         Me.TidDetailActProj.Location = New System.Drawing.Point(345, 22)
         Me.TidDetailActProj.Name = "TidDetailActProj"
         Me.TidDetailActProj.PreventEnterBeep = True
-        Me.TidDetailActProj.Size = New System.Drawing.Size(33, 20)
+        Me.TidDetailActProj.Size = New System.Drawing.Size(33, 22)
         Me.TidDetailActProj.TabIndex = 58
         Me.TidDetailActProj.Visible = False
         '
@@ -3340,7 +3340,7 @@ Partial Class FrmActPE
         Me.TidSatuanQtyProj.Location = New System.Drawing.Point(242, 22)
         Me.TidSatuanQtyProj.Name = "TidSatuanQtyProj"
         Me.TidSatuanQtyProj.PreventEnterBeep = True
-        Me.TidSatuanQtyProj.Size = New System.Drawing.Size(33, 20)
+        Me.TidSatuanQtyProj.Size = New System.Drawing.Size(33, 22)
         Me.TidSatuanQtyProj.TabIndex = 57
         Me.TidSatuanQtyProj.Visible = False
         '
@@ -3354,7 +3354,7 @@ Partial Class FrmActPE
         Me.TidBarangProj.Location = New System.Drawing.Point(169, 25)
         Me.TidBarangProj.Name = "TidBarangProj"
         Me.TidBarangProj.PreventEnterBeep = True
-        Me.TidBarangProj.Size = New System.Drawing.Size(33, 20)
+        Me.TidBarangProj.Size = New System.Drawing.Size(33, 22)
         Me.TidBarangProj.TabIndex = 56
         Me.TidBarangProj.Visible = False
         '
@@ -3378,7 +3378,7 @@ Partial Class FrmActPE
         Me.TSubTotalProj.Location = New System.Drawing.Point(553, 12)
         Me.TSubTotalProj.Name = "TSubTotalProj"
         Me.TSubTotalProj.PreventEnterBeep = True
-        Me.TSubTotalProj.Size = New System.Drawing.Size(166, 20)
+        Me.TSubTotalProj.Size = New System.Drawing.Size(166, 22)
         Me.TSubTotalProj.TabIndex = 16
         Me.TSubTotalProj.WatermarkText = "Sub Total"
         '
@@ -3392,7 +3392,7 @@ Partial Class FrmActPE
         Me.TNominalProj.Location = New System.Drawing.Point(371, 12)
         Me.TNominalProj.Name = "TNominalProj"
         Me.TNominalProj.PreventEnterBeep = True
-        Me.TNominalProj.Size = New System.Drawing.Size(166, 20)
+        Me.TNominalProj.Size = New System.Drawing.Size(166, 22)
         Me.TNominalProj.TabIndex = 15
         Me.TNominalProj.WatermarkText = "Nominal"
         '
@@ -3401,10 +3401,10 @@ Partial Class FrmActPE
         Me.CQtyProj.DisplayMember = "Text"
         Me.CQtyProj.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CQtyProj.FormattingEnabled = True
-        Me.CQtyProj.ItemHeight = 15
+        Me.CQtyProj.ItemHeight = 17
         Me.CQtyProj.Location = New System.Drawing.Point(264, 12)
         Me.CQtyProj.Name = "CQtyProj"
-        Me.CQtyProj.Size = New System.Drawing.Size(91, 21)
+        Me.CQtyProj.Size = New System.Drawing.Size(91, 23)
         Me.CQtyProj.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CQtyProj.TabIndex = 14
         '
@@ -3418,7 +3418,7 @@ Partial Class FrmActPE
         Me.TQtyProj.Location = New System.Drawing.Point(197, 12)
         Me.TQtyProj.Name = "TQtyProj"
         Me.TQtyProj.PreventEnterBeep = True
-        Me.TQtyProj.Size = New System.Drawing.Size(51, 20)
+        Me.TQtyProj.Size = New System.Drawing.Size(51, 22)
         Me.TQtyProj.TabIndex = 13
         Me.TQtyProj.WatermarkText = "Qty"
         '
@@ -3432,7 +3432,7 @@ Partial Class FrmActPE
         Me.TBarangProj.Location = New System.Drawing.Point(16, 12)
         Me.TBarangProj.Name = "TBarangProj"
         Me.TBarangProj.PreventEnterBeep = True
-        Me.TBarangProj.Size = New System.Drawing.Size(166, 20)
+        Me.TBarangProj.Size = New System.Drawing.Size(166, 22)
         Me.TBarangProj.TabIndex = 12
         Me.TBarangProj.WatermarkText = "Items"
         '
@@ -3449,7 +3449,7 @@ Partial Class FrmActPE
         Me.ListBiayaProject.HideSelection = False
         Me.ListBiayaProject.Location = New System.Drawing.Point(0, 0)
         Me.ListBiayaProject.Name = "ListBiayaProject"
-        Me.ListBiayaProject.Size = New System.Drawing.Size(1226, 579)
+        Me.ListBiayaProject.Size = New System.Drawing.Size(1226, 585)
         Me.ListBiayaProject.TabIndex = 54
         Me.ListBiayaProject.UseCompatibleStateImageBehavior = False
         '
@@ -3671,7 +3671,7 @@ Partial Class FrmActPE
         Me.TPotBpjsEmp.Location = New System.Drawing.Point(149, 66)
         Me.TPotBpjsEmp.Name = "TPotBpjsEmp"
         Me.TPotBpjsEmp.PreventEnterBeep = True
-        Me.TPotBpjsEmp.Size = New System.Drawing.Size(150, 20)
+        Me.TPotBpjsEmp.Size = New System.Drawing.Size(150, 22)
         Me.TPotBpjsEmp.TabIndex = 120
         Me.TPotBpjsEmp.Text = "0"
         Me.TPotBpjsEmp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -3686,7 +3686,7 @@ Partial Class FrmActPE
         Me.TPotBpjsMed.Location = New System.Drawing.Point(149, 39)
         Me.TPotBpjsMed.Name = "TPotBpjsMed"
         Me.TPotBpjsMed.PreventEnterBeep = True
-        Me.TPotBpjsMed.Size = New System.Drawing.Size(150, 20)
+        Me.TPotBpjsMed.Size = New System.Drawing.Size(150, 22)
         Me.TPotBpjsMed.TabIndex = 119
         Me.TPotBpjsMed.Text = "0"
         Me.TPotBpjsMed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -3907,7 +3907,7 @@ Partial Class FrmActPE
         Me.TThr.Location = New System.Drawing.Point(196, 202)
         Me.TThr.Name = "TThr"
         Me.TThr.PreventEnterBeep = True
-        Me.TThr.Size = New System.Drawing.Size(150, 20)
+        Me.TThr.Size = New System.Drawing.Size(150, 22)
         Me.TThr.TabIndex = 134
         Me.TThr.Text = "0"
         Me.TThr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -3922,7 +3922,7 @@ Partial Class FrmActPE
         Me.TIncentive.Location = New System.Drawing.Point(196, 175)
         Me.TIncentive.Name = "TIncentive"
         Me.TIncentive.PreventEnterBeep = True
-        Me.TIncentive.Size = New System.Drawing.Size(150, 20)
+        Me.TIncentive.Size = New System.Drawing.Size(150, 22)
         Me.TIncentive.TabIndex = 133
         Me.TIncentive.Text = "0"
         Me.TIncentive.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -3937,7 +3937,7 @@ Partial Class FrmActPE
         Me.TRentComp.Location = New System.Drawing.Point(196, 148)
         Me.TRentComp.Name = "TRentComp"
         Me.TRentComp.PreventEnterBeep = True
-        Me.TRentComp.Size = New System.Drawing.Size(150, 20)
+        Me.TRentComp.Size = New System.Drawing.Size(150, 22)
         Me.TRentComp.TabIndex = 132
         Me.TRentComp.Text = "0"
         Me.TRentComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -3952,7 +3952,7 @@ Partial Class FrmActPE
         Me.TUangHadir.Location = New System.Drawing.Point(196, 121)
         Me.TUangHadir.Name = "TUangHadir"
         Me.TUangHadir.PreventEnterBeep = True
-        Me.TUangHadir.Size = New System.Drawing.Size(150, 20)
+        Me.TUangHadir.Size = New System.Drawing.Size(150, 22)
         Me.TUangHadir.TabIndex = 131
         Me.TUangHadir.Text = "0"
         Me.TUangHadir.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -3967,7 +3967,7 @@ Partial Class FrmActPE
         Me.TBpjsEmp.Location = New System.Drawing.Point(196, 94)
         Me.TBpjsEmp.Name = "TBpjsEmp"
         Me.TBpjsEmp.PreventEnterBeep = True
-        Me.TBpjsEmp.Size = New System.Drawing.Size(150, 20)
+        Me.TBpjsEmp.Size = New System.Drawing.Size(150, 22)
         Me.TBpjsEmp.TabIndex = 130
         Me.TBpjsEmp.Text = "0"
         Me.TBpjsEmp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -3982,7 +3982,7 @@ Partial Class FrmActPE
         Me.TBpjsMed.Location = New System.Drawing.Point(196, 67)
         Me.TBpjsMed.Name = "TBpjsMed"
         Me.TBpjsMed.PreventEnterBeep = True
-        Me.TBpjsMed.Size = New System.Drawing.Size(150, 20)
+        Me.TBpjsMed.Size = New System.Drawing.Size(150, 22)
         Me.TBpjsMed.TabIndex = 129
         Me.TBpjsMed.Text = "0"
         Me.TBpjsMed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4411,7 +4411,7 @@ Partial Class FrmActPE
         Me.TOvertime.Location = New System.Drawing.Point(188, 222)
         Me.TOvertime.Name = "TOvertime"
         Me.TOvertime.PreventEnterBeep = True
-        Me.TOvertime.Size = New System.Drawing.Size(161, 20)
+        Me.TOvertime.Size = New System.Drawing.Size(161, 22)
         Me.TOvertime.TabIndex = 136
         Me.TOvertime.Text = "0"
         Me.TOvertime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4426,7 +4426,7 @@ Partial Class FrmActPE
         Me.TAtkHR.Location = New System.Drawing.Point(188, 176)
         Me.TAtkHR.Name = "TAtkHR"
         Me.TAtkHR.PreventEnterBeep = True
-        Me.TAtkHR.Size = New System.Drawing.Size(161, 20)
+        Me.TAtkHR.Size = New System.Drawing.Size(161, 22)
         Me.TAtkHR.TabIndex = 134
         Me.TAtkHR.Text = "0"
         Me.TAtkHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4441,7 +4441,7 @@ Partial Class FrmActPE
         Me.TSubColl.Location = New System.Drawing.Point(188, 153)
         Me.TSubColl.Name = "TSubColl"
         Me.TSubColl.PreventEnterBeep = True
-        Me.TSubColl.Size = New System.Drawing.Size(161, 20)
+        Me.TSubColl.Size = New System.Drawing.Size(161, 22)
         Me.TSubColl.TabIndex = 135
         Me.TSubColl.Text = "0"
         Me.TSubColl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4456,7 +4456,7 @@ Partial Class FrmActPE
         Me.TPulse.Location = New System.Drawing.Point(188, 130)
         Me.TPulse.Name = "TPulse"
         Me.TPulse.PreventEnterBeep = True
-        Me.TPulse.Size = New System.Drawing.Size(161, 20)
+        Me.TPulse.Size = New System.Drawing.Size(161, 22)
         Me.TPulse.TabIndex = 132
         Me.TPulse.Text = "0"
         Me.TPulse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4471,7 +4471,7 @@ Partial Class FrmActPE
         Me.TMotor.Location = New System.Drawing.Point(188, 106)
         Me.TMotor.Name = "TMotor"
         Me.TMotor.PreventEnterBeep = True
-        Me.TMotor.Size = New System.Drawing.Size(161, 20)
+        Me.TMotor.Size = New System.Drawing.Size(161, 22)
         Me.TMotor.TabIndex = 131
         Me.TMotor.Text = "0"
         Me.TMotor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4486,7 +4486,7 @@ Partial Class FrmActPE
         Me.TMakeUp.Location = New System.Drawing.Point(188, 199)
         Me.TMakeUp.Name = "TMakeUp"
         Me.TMakeUp.PreventEnterBeep = True
-        Me.TMakeUp.Size = New System.Drawing.Size(161, 20)
+        Me.TMakeUp.Size = New System.Drawing.Size(161, 22)
         Me.TMakeUp.TabIndex = 133
         Me.TMakeUp.Text = "0"
         Me.TMakeUp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4501,7 +4501,7 @@ Partial Class FrmActPE
         Me.TTransport.Location = New System.Drawing.Point(188, 81)
         Me.TTransport.Name = "TTransport"
         Me.TTransport.PreventEnterBeep = True
-        Me.TTransport.Size = New System.Drawing.Size(161, 20)
+        Me.TTransport.Size = New System.Drawing.Size(161, 22)
         Me.TTransport.TabIndex = 130
         Me.TTransport.Text = "0"
         Me.TTransport.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4516,7 +4516,7 @@ Partial Class FrmActPE
         Me.TMeal.Location = New System.Drawing.Point(188, 56)
         Me.TMeal.Name = "TMeal"
         Me.TMeal.PreventEnterBeep = True
-        Me.TMeal.Size = New System.Drawing.Size(161, 20)
+        Me.TMeal.Size = New System.Drawing.Size(161, 22)
         Me.TMeal.TabIndex = 129
         Me.TMeal.Text = "0"
         Me.TMeal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4531,7 +4531,7 @@ Partial Class FrmActPE
         Me.TPostAllow.Location = New System.Drawing.Point(188, 32)
         Me.TPostAllow.Name = "TPostAllow"
         Me.TPostAllow.PreventEnterBeep = True
-        Me.TPostAllow.Size = New System.Drawing.Size(161, 20)
+        Me.TPostAllow.Size = New System.Drawing.Size(161, 22)
         Me.TPostAllow.TabIndex = 128
         Me.TPostAllow.Text = "0"
         Me.TPostAllow.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4875,7 +4875,7 @@ Partial Class FrmActPE
         Me.TTotPersonHR.Location = New System.Drawing.Point(126, 6)
         Me.TTotPersonHR.Name = "TTotPersonHR"
         Me.TTotPersonHR.PreventEnterBeep = True
-        Me.TTotPersonHR.Size = New System.Drawing.Size(150, 20)
+        Me.TTotPersonHR.Size = New System.Drawing.Size(150, 22)
         Me.TTotPersonHR.TabIndex = 161
         Me.TTotPersonHR.Text = "0"
         Me.TTotPersonHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4890,7 +4890,7 @@ Partial Class FrmActPE
         Me.TGross1HR.Location = New System.Drawing.Point(126, 60)
         Me.TGross1HR.Name = "TGross1HR"
         Me.TGross1HR.PreventEnterBeep = True
-        Me.TGross1HR.Size = New System.Drawing.Size(150, 20)
+        Me.TGross1HR.Size = New System.Drawing.Size(150, 22)
         Me.TGross1HR.TabIndex = 158
         Me.TGross1HR.Text = "0"
         Me.TGross1HR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4905,7 +4905,7 @@ Partial Class FrmActPE
         Me.TTakeHomePay.Location = New System.Drawing.Point(440, 89)
         Me.TTakeHomePay.Name = "TTakeHomePay"
         Me.TTakeHomePay.PreventEnterBeep = True
-        Me.TTakeHomePay.Size = New System.Drawing.Size(150, 20)
+        Me.TTakeHomePay.Size = New System.Drawing.Size(150, 22)
         Me.TTakeHomePay.TabIndex = 155
         Me.TTakeHomePay.Text = "0"
         Me.TTakeHomePay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4920,7 +4920,7 @@ Partial Class FrmActPE
         Me.TGrandTotalHR.Location = New System.Drawing.Point(440, 62)
         Me.TGrandTotalHR.Name = "TGrandTotalHR"
         Me.TGrandTotalHR.PreventEnterBeep = True
-        Me.TGrandTotalHR.Size = New System.Drawing.Size(150, 20)
+        Me.TGrandTotalHR.Size = New System.Drawing.Size(150, 22)
         Me.TGrandTotalHR.TabIndex = 151
         Me.TGrandTotalHR.Text = "0"
         Me.TGrandTotalHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4935,7 +4935,7 @@ Partial Class FrmActPE
         Me.TPersonMonthHR.Location = New System.Drawing.Point(126, 33)
         Me.TPersonMonthHR.Name = "TPersonMonthHR"
         Me.TPersonMonthHR.PreventEnterBeep = True
-        Me.TPersonMonthHR.Size = New System.Drawing.Size(150, 20)
+        Me.TPersonMonthHR.Size = New System.Drawing.Size(150, 22)
         Me.TPersonMonthHR.TabIndex = 139
         Me.TPersonMonthHR.Text = "0"
         Me.TPersonMonthHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4950,7 +4950,7 @@ Partial Class FrmActPE
         Me.TGross2HR.Location = New System.Drawing.Point(126, 114)
         Me.TGross2HR.Name = "TGross2HR"
         Me.TGross2HR.PreventEnterBeep = True
-        Me.TGross2HR.Size = New System.Drawing.Size(150, 20)
+        Me.TGross2HR.Size = New System.Drawing.Size(150, 22)
         Me.TGross2HR.TabIndex = 140
         Me.TGross2HR.Text = "0"
         Me.TGross2HR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4965,7 +4965,7 @@ Partial Class FrmActPE
         Me.TAgentFeeHR.Location = New System.Drawing.Point(126, 87)
         Me.TAgentFeeHR.Name = "TAgentFeeHR"
         Me.TAgentFeeHR.PreventEnterBeep = True
-        Me.TAgentFeeHR.Size = New System.Drawing.Size(149, 20)
+        Me.TAgentFeeHR.Size = New System.Drawing.Size(149, 22)
         Me.TAgentFeeHR.TabIndex = 141
         Me.TAgentFeeHR.Text = "0"
         Me.TAgentFeeHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4980,7 +4980,7 @@ Partial Class FrmActPE
         Me.TPpnHR.Location = New System.Drawing.Point(440, 8)
         Me.TPpnHR.Name = "TPpnHR"
         Me.TPpnHR.PreventEnterBeep = True
-        Me.TPpnHR.Size = New System.Drawing.Size(150, 20)
+        Me.TPpnHR.Size = New System.Drawing.Size(150, 22)
         Me.TPpnHR.TabIndex = 142
         Me.TPpnHR.Text = "0"
         Me.TPpnHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -4995,7 +4995,7 @@ Partial Class FrmActPE
         Me.TPph23HR.Location = New System.Drawing.Point(440, 35)
         Me.TPph23HR.Name = "TPph23HR"
         Me.TPph23HR.PreventEnterBeep = True
-        Me.TPph23HR.Size = New System.Drawing.Size(150, 20)
+        Me.TPph23HR.Size = New System.Drawing.Size(150, 22)
         Me.TPph23HR.TabIndex = 143
         Me.TPph23HR.Text = "0"
         Me.TPph23HR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -5234,7 +5234,7 @@ Partial Class FrmActPE
         Me.TTelemarketingHR.Location = New System.Drawing.Point(135, 106)
         Me.TTelemarketingHR.Name = "TTelemarketingHR"
         Me.TTelemarketingHR.PreventEnterBeep = True
-        Me.TTelemarketingHR.Size = New System.Drawing.Size(161, 20)
+        Me.TTelemarketingHR.Size = New System.Drawing.Size(161, 22)
         Me.TTelemarketingHR.TabIndex = 118
         Me.TTelemarketingHR.Text = "0"
         Me.TTelemarketingHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -5249,7 +5249,7 @@ Partial Class FrmActPE
         Me.TEventHR.Location = New System.Drawing.Point(135, 66)
         Me.TEventHR.Name = "TEventHR"
         Me.TEventHR.PreventEnterBeep = True
-        Me.TEventHR.Size = New System.Drawing.Size(161, 20)
+        Me.TEventHR.Size = New System.Drawing.Size(161, 22)
         Me.TEventHR.TabIndex = 121
         Me.TEventHR.Text = "0"
         Me.TEventHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -5264,7 +5264,7 @@ Partial Class FrmActPE
         Me.TTrainingCost.Location = New System.Drawing.Point(135, 3)
         Me.TTrainingCost.Name = "TTrainingCost"
         Me.TTrainingCost.PreventEnterBeep = True
-        Me.TTrainingCost.Size = New System.Drawing.Size(161, 20)
+        Me.TTrainingCost.Size = New System.Drawing.Size(161, 22)
         Me.TTrainingCost.TabIndex = 139
         Me.TTrainingCost.Text = "0"
         Me.TTrainingCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -5279,7 +5279,7 @@ Partial Class FrmActPE
         Me.TFixCostHR.Location = New System.Drawing.Point(135, 86)
         Me.TFixCostHR.Name = "TFixCostHR"
         Me.TFixCostHR.PreventEnterBeep = True
-        Me.TFixCostHR.Size = New System.Drawing.Size(161, 20)
+        Me.TFixCostHR.Size = New System.Drawing.Size(161, 22)
         Me.TFixCostHR.TabIndex = 136
         Me.TFixCostHR.Text = "0"
         Me.TFixCostHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -5294,7 +5294,7 @@ Partial Class FrmActPE
         Me.TMeetingCost.Location = New System.Drawing.Point(135, 24)
         Me.TMeetingCost.Name = "TMeetingCost"
         Me.TMeetingCost.PreventEnterBeep = True
-        Me.TMeetingCost.Size = New System.Drawing.Size(161, 20)
+        Me.TMeetingCost.Size = New System.Drawing.Size(161, 22)
         Me.TMeetingCost.TabIndex = 114
         Me.TMeetingCost.Text = "0"
         Me.TMeetingCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -5309,7 +5309,7 @@ Partial Class FrmActPE
         Me.TTravellingHR.Location = New System.Drawing.Point(135, 45)
         Me.TTravellingHR.Name = "TTravellingHR"
         Me.TTravellingHR.PreventEnterBeep = True
-        Me.TTravellingHR.Size = New System.Drawing.Size(161, 20)
+        Me.TTravellingHR.Size = New System.Drawing.Size(161, 22)
         Me.TTravellingHR.TabIndex = 110
         Me.TTravellingHR.Text = "0"
         Me.TTravellingHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -5553,10 +5553,10 @@ Partial Class FrmActPE
         Me.CAreaHR.DisplayMember = "Text"
         Me.CAreaHR.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CAreaHR.FormattingEnabled = True
-        Me.CAreaHR.ItemHeight = 15
+        Me.CAreaHR.ItemHeight = 17
         Me.CAreaHR.Location = New System.Drawing.Point(100, 28)
         Me.CAreaHR.Name = "CAreaHR"
-        Me.CAreaHR.Size = New System.Drawing.Size(150, 21)
+        Me.CAreaHR.Size = New System.Drawing.Size(150, 23)
         Me.CAreaHR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CAreaHR.TabIndex = 199
         '
@@ -5565,10 +5565,10 @@ Partial Class FrmActPE
         Me.CKotaHR.DisplayMember = "Text"
         Me.CKotaHR.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CKotaHR.FormattingEnabled = True
-        Me.CKotaHR.ItemHeight = 15
+        Me.CKotaHR.ItemHeight = 17
         Me.CKotaHR.Location = New System.Drawing.Point(326, 27)
         Me.CKotaHR.Name = "CKotaHR"
-        Me.CKotaHR.Size = New System.Drawing.Size(130, 21)
+        Me.CKotaHR.Size = New System.Drawing.Size(130, 23)
         Me.CKotaHR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CKotaHR.TabIndex = 198
         '

@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Public Class FrmPEEvn
-    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
+    Inherits DevExpress.XtraBars.ToolbarForm.ToolbarForm
     ''' <summary>
     ''' Required designer variable.
     ''' </summary>
@@ -24,6 +24,7 @@ Partial Public Class FrmPEEvn
     ''' the contents of this method with the code editor.
     ''' </summary>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPEEvn))
         Dim SimpleContextButton1 As DevExpress.Utils.SimpleContextButton = New DevExpress.Utils.SimpleContextButton()
         Me.mainRibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
@@ -157,6 +158,12 @@ Partial Public Class FrmPEEvn
         Me.Label3 = New System.Windows.Forms.Label()
         Me.BSimpanRevisi = New DevExpress.XtraEditors.SimpleButton()
         Me.TARevisi = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.ToolbarFormControl1 = New DevExpress.XtraBars.ToolbarForm.ToolbarFormControl()
+        Me.ToolbarFormManager1 = New DevExpress.XtraBars.ToolbarForm.ToolbarFormManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         CType(Me.mainRibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,11 +186,14 @@ Partial Public Class FrmPEEvn
         Me.PInput.SuspendLayout()
         Me.PApproved.SuspendLayout()
         Me.PanelAlasan.SuspendLayout()
+        CType(Me.ToolbarFormControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ToolbarFormManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'mainRibbonControl
         '
         Me.mainRibbonControl.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {New DevExpress.XtraBars.BarManagerCategory("MainMenu", New System.Guid("e6dd93d5-f8a4-432c-ab47-0d268cb08da9"))})
+        Me.mainRibbonControl.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
         Me.mainRibbonControl.ExpandCollapseItem.CategoryGuid = New System.Guid("e6dd93d5-f8a4-432c-ab47-0d268cb08da9")
         Me.mainRibbonControl.ExpandCollapseItem.Id = 0
         Me.mainRibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.mainRibbonControl.ExpandCollapseItem, Me.mainRibbonControl.SearchEditItem, Me.BuatPE, Me.EditPE, Me.ProsesInput, Me.DeletePE, Me.BatalTool, Me.CetakTool, Me.LSummary, Me.TotalBisnis, Me.DealPe, Me.TambahDetail, Me.HapusDetail, Me.SimpanDetail, Me.SelesaiDetail, Me.TotalEvent, Me.PPN, Me.TGrandTotal, Me.CKontrak, Me.BtnKeluar, Me.CekAdaPPN})
@@ -196,7 +206,7 @@ Partial Public Class FrmPEEvn
         Me.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.mainRibbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.mainRibbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.mainRibbonControl.Size = New System.Drawing.Size(1092, 166)
+        Me.mainRibbonControl.Size = New System.Drawing.Size(1596, 83)
         Me.mainRibbonControl.StatusBar = Me.RibbonStatusBar1
         '
         'BuatPE
@@ -395,7 +405,8 @@ Partial Public Class FrmPEEvn
         '
         'MainMenu
         '
-        Me.MainMenu.Color = System.Drawing.Color.Red
+        Me.MainMenu.Appearance.BackColor = System.Drawing.Color.Red
+        Me.MainMenu.Appearance.Options.UseBackColor = True
         Me.MainMenu.Name = "MainMenu"
         Me.MainMenu.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPenawaran, Me.RibbonDetailPE})
         Me.MainMenu.Text = "Main Menu"
@@ -410,6 +421,7 @@ Partial Public Class FrmPEEvn
         'mainRibbonPageGroup
         '
         Me.mainRibbonPageGroup.AllowTextClipping = False
+        Me.mainRibbonPageGroup.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.mainRibbonPageGroup.ItemLinks.Add(Me.BuatPE)
         Me.mainRibbonPageGroup.ItemLinks.Add(Me.EditPE)
         Me.mainRibbonPageGroup.ItemLinks.Add(Me.ProsesInput)
@@ -419,7 +431,6 @@ Partial Public Class FrmPEEvn
         Me.mainRibbonPageGroup.ItemLinks.Add(Me.DealPe)
         Me.mainRibbonPageGroup.ItemLinks.Add(Me.BtnKeluar)
         Me.mainRibbonPageGroup.Name = "mainRibbonPageGroup"
-        Me.mainRibbonPageGroup.ShowCaptionButton = False
         Me.mainRibbonPageGroup.Text = "Tasks"
         '
         'RibbonDetailPE
@@ -483,10 +494,10 @@ Partial Public Class FrmPEEvn
         Me.RibbonStatusBar1.ItemLinks.Add(Me.PPN)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.TGrandTotal)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.CKontrak)
-        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 558)
+        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 765)
         Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
         Me.RibbonStatusBar1.Ribbon = Me.mainRibbonControl
-        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1092, 39)
+        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1596, 22)
         '
         'ListPE
         '
@@ -494,7 +505,7 @@ Partial Public Class FrmPEEvn
         Me.ListPE.HideSelection = False
         Me.ListPE.Location = New System.Drawing.Point(0, 0)
         Me.ListPE.Name = "ListPE"
-        Me.ListPE.Size = New System.Drawing.Size(1043, 194)
+        Me.ListPE.Size = New System.Drawing.Size(1530, 381)
         Me.ListPE.TabIndex = 0
         Me.ListPE.UseCompatibleStateImageBehavior = False
         '
@@ -554,7 +565,7 @@ Partial Public Class FrmPEEvn
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1086, 107)
+        Me.Panel1.Size = New System.Drawing.Size(1590, 195)
         Me.Panel1.TabIndex = 1
         '
         'DTTanggal
@@ -563,7 +574,7 @@ Partial Public Class FrmPEEvn
         Me.DTTanggal.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DTTanggal.Location = New System.Drawing.Point(989, 69)
         Me.DTTanggal.Name = "DTTanggal"
-        Me.DTTanggal.Size = New System.Drawing.Size(83, 21)
+        Me.DTTanggal.Size = New System.Drawing.Size(83, 22)
         Me.DTTanggal.TabIndex = 53
         '
         'CJenisPE
@@ -596,7 +607,7 @@ Partial Public Class FrmPEEvn
         Me.TidVenue.Location = New System.Drawing.Point(364, 7)
         Me.TidVenue.Name = "TidVenue"
         Me.TidVenue.PreventEnterBeep = True
-        Me.TidVenue.Size = New System.Drawing.Size(23, 21)
+        Me.TidVenue.Size = New System.Drawing.Size(23, 22)
         Me.TidVenue.TabIndex = 51
         Me.TidVenue.Visible = False
         '
@@ -630,7 +641,7 @@ Partial Public Class FrmPEEvn
         Me.TCariPE.Location = New System.Drawing.Point(891, 94)
         Me.TCariPE.Name = "TCariPE"
         Me.TCariPE.PreventEnterBeep = True
-        Me.TCariPE.Size = New System.Drawing.Size(192, 21)
+        Me.TCariPE.Size = New System.Drawing.Size(192, 22)
         Me.TCariPE.TabIndex = 47
         '
         'LabelX27
@@ -667,7 +678,7 @@ Partial Public Class FrmPEEvn
         Me.TCounter.Location = New System.Drawing.Point(989, 9)
         Me.TCounter.Name = "TCounter"
         Me.TCounter.PreventEnterBeep = True
-        Me.TCounter.Size = New System.Drawing.Size(78, 21)
+        Me.TCounter.Size = New System.Drawing.Size(78, 22)
         Me.TCounter.TabIndex = 44
         '
         'TimeEnd
@@ -677,7 +688,7 @@ Partial Public Class FrmPEEvn
         Me.TimeEnd.Location = New System.Drawing.Point(509, 90)
         Me.TimeEnd.Name = "TimeEnd"
         Me.TimeEnd.ShowUpDown = True
-        Me.TimeEnd.Size = New System.Drawing.Size(83, 21)
+        Me.TimeEnd.Size = New System.Drawing.Size(83, 22)
         Me.TimeEnd.TabIndex = 43
         '
         'TimeStart
@@ -687,7 +698,7 @@ Partial Public Class FrmPEEvn
         Me.TimeStart.Location = New System.Drawing.Point(409, 90)
         Me.TimeStart.Name = "TimeStart"
         Me.TimeStart.ShowUpDown = True
-        Me.TimeStart.Size = New System.Drawing.Size(85, 21)
+        Me.TimeStart.Size = New System.Drawing.Size(85, 22)
         Me.TimeStart.TabIndex = 42
         '
         'TidKlien
@@ -700,7 +711,7 @@ Partial Public Class FrmPEEvn
         Me.TidKlien.Location = New System.Drawing.Point(61, 90)
         Me.TidKlien.Name = "TidKlien"
         Me.TidKlien.PreventEnterBeep = True
-        Me.TidKlien.Size = New System.Drawing.Size(23, 21)
+        Me.TidKlien.Size = New System.Drawing.Size(23, 22)
         Me.TidKlien.TabIndex = 41
         Me.TidKlien.Visible = False
         '
@@ -714,7 +725,7 @@ Partial Public Class FrmPEEvn
         Me.TidProject.Location = New System.Drawing.Point(61, 61)
         Me.TidProject.Name = "TidProject"
         Me.TidProject.PreventEnterBeep = True
-        Me.TidProject.Size = New System.Drawing.Size(23, 21)
+        Me.TidProject.Size = New System.Drawing.Size(23, 22)
         Me.TidProject.TabIndex = 40
         Me.TidProject.Visible = False
         '
@@ -728,7 +739,7 @@ Partial Public Class FrmPEEvn
         Me.TidJenisPE.Location = New System.Drawing.Point(61, 34)
         Me.TidJenisPE.Name = "TidJenisPE"
         Me.TidJenisPE.PreventEnterBeep = True
-        Me.TidJenisPE.Size = New System.Drawing.Size(23, 21)
+        Me.TidJenisPE.Size = New System.Drawing.Size(23, 22)
         Me.TidJenisPE.TabIndex = 39
         Me.TidJenisPE.Visible = False
         '
@@ -742,7 +753,7 @@ Partial Public Class FrmPEEvn
         Me.TidPE.Location = New System.Drawing.Point(62, 6)
         Me.TidPE.Name = "TidPE"
         Me.TidPE.PreventEnterBeep = True
-        Me.TidPE.Size = New System.Drawing.Size(23, 21)
+        Me.TidPE.Size = New System.Drawing.Size(23, 22)
         Me.TidPE.TabIndex = 38
         Me.TidPE.Visible = False
         '
@@ -752,7 +763,7 @@ Partial Public Class FrmPEEvn
         Me.EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.EndDate.Location = New System.Drawing.Point(509, 63)
         Me.EndDate.Name = "EndDate"
-        Me.EndDate.Size = New System.Drawing.Size(83, 21)
+        Me.EndDate.Size = New System.Drawing.Size(83, 22)
         Me.EndDate.TabIndex = 37
         '
         'StartDate
@@ -761,7 +772,7 @@ Partial Public Class FrmPEEvn
         Me.StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.StartDate.Location = New System.Drawing.Point(409, 63)
         Me.StartDate.Name = "StartDate"
-        Me.StartDate.Size = New System.Drawing.Size(85, 21)
+        Me.StartDate.Size = New System.Drawing.Size(85, 22)
         Me.StartDate.TabIndex = 36
         '
         'LabelX21
@@ -798,7 +809,7 @@ Partial Public Class FrmPEEvn
         Me.TJabatan.Location = New System.Drawing.Point(709, 93)
         Me.TJabatan.Name = "TJabatan"
         Me.TJabatan.PreventEnterBeep = True
-        Me.TJabatan.Size = New System.Drawing.Size(160, 21)
+        Me.TJabatan.Size = New System.Drawing.Size(160, 22)
         Me.TJabatan.TabIndex = 33
         '
         'LabelX23
@@ -835,7 +846,7 @@ Partial Public Class FrmPEEvn
         Me.TApprov.Location = New System.Drawing.Point(709, 65)
         Me.TApprov.Name = "TApprov"
         Me.TApprov.PreventEnterBeep = True
-        Me.TApprov.Size = New System.Drawing.Size(160, 21)
+        Me.TApprov.Size = New System.Drawing.Size(160, 22)
         Me.TApprov.TabIndex = 30
         '
         'LabelX17
@@ -872,7 +883,7 @@ Partial Public Class FrmPEEvn
         Me.RpPPN.Location = New System.Drawing.Point(709, 36)
         Me.RpPPN.Name = "RpPPN"
         Me.RpPPN.PreventEnterBeep = True
-        Me.RpPPN.Size = New System.Drawing.Size(160, 21)
+        Me.RpPPN.Size = New System.Drawing.Size(160, 22)
         Me.RpPPN.TabIndex = 27
         '
         'LabelX19
@@ -909,7 +920,7 @@ Partial Public Class FrmPEEvn
         Me.TTotalEvent.Location = New System.Drawing.Point(709, 8)
         Me.TTotalEvent.Name = "TTotalEvent"
         Me.TTotalEvent.PreventEnterBeep = True
-        Me.TTotalEvent.Size = New System.Drawing.Size(160, 21)
+        Me.TTotalEvent.Size = New System.Drawing.Size(160, 22)
         Me.TTotalEvent.TabIndex = 24
         '
         'LabelX9
@@ -994,7 +1005,7 @@ Partial Public Class FrmPEEvn
         Me.TPeserta.Location = New System.Drawing.Point(409, 34)
         Me.TPeserta.Name = "TPeserta"
         Me.TPeserta.PreventEnterBeep = True
-        Me.TPeserta.Size = New System.Drawing.Size(183, 21)
+        Me.TPeserta.Size = New System.Drawing.Size(183, 22)
         Me.TPeserta.TabIndex = 15
         '
         'LabelX15
@@ -1031,7 +1042,7 @@ Partial Public Class FrmPEEvn
         Me.TVenue.Location = New System.Drawing.Point(409, 6)
         Me.TVenue.Name = "TVenue"
         Me.TVenue.PreventEnterBeep = True
-        Me.TVenue.Size = New System.Drawing.Size(183, 21)
+        Me.TVenue.Size = New System.Drawing.Size(183, 22)
         Me.TVenue.TabIndex = 12
         '
         'LabelX7
@@ -1068,7 +1079,7 @@ Partial Public Class FrmPEEvn
         Me.TKlien.Location = New System.Drawing.Point(107, 89)
         Me.TKlien.Name = "TKlien"
         Me.TKlien.PreventEnterBeep = True
-        Me.TKlien.Size = New System.Drawing.Size(189, 21)
+        Me.TKlien.Size = New System.Drawing.Size(189, 22)
         Me.TKlien.TabIndex = 9
         '
         'LabelX5
@@ -1105,7 +1116,7 @@ Partial Public Class FrmPEEvn
         Me.TProject.Location = New System.Drawing.Point(107, 61)
         Me.TProject.Name = "TProject"
         Me.TProject.PreventEnterBeep = True
-        Me.TProject.Size = New System.Drawing.Size(189, 21)
+        Me.TProject.Size = New System.Drawing.Size(189, 22)
         Me.TProject.TabIndex = 6
         '
         'LabelX3
@@ -1167,7 +1178,7 @@ Partial Public Class FrmPEEvn
         Me.TNoPE.Location = New System.Drawing.Point(107, 5)
         Me.TNoPE.Name = "TNoPE"
         Me.TNoPE.PreventEnterBeep = True
-        Me.TNoPE.Size = New System.Drawing.Size(189, 21)
+        Me.TNoPE.Size = New System.Drawing.Size(189, 22)
         Me.TNoPE.TabIndex = 0
         '
         'TableLayoutPanel1
@@ -1177,13 +1188,13 @@ Partial Public Class FrmPEEvn
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.NavigasiPEEvent, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 166)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 83)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.5!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.5!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1092, 392)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1596, 682)
         Me.TableLayoutPanel1.TabIndex = 3
         '
         'NavigasiPEEvent
@@ -1196,15 +1207,15 @@ Partial Public Class FrmPEEvn
         Me.NavigasiPEEvent.Cursor = System.Windows.Forms.Cursors.Default
         Me.NavigasiPEEvent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.NavigasiPEEvent.ItemOrientation = System.Windows.Forms.Orientation.Vertical
-        Me.NavigasiPEEvent.Location = New System.Drawing.Point(3, 116)
+        Me.NavigasiPEEvent.Location = New System.Drawing.Point(3, 204)
         Me.NavigasiPEEvent.LookAndFeel.SkinName = "Office 2013 Dark Gray"
         Me.NavigasiPEEvent.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
         Me.NavigasiPEEvent.Name = "NavigasiPEEvent"
         Me.NavigasiPEEvent.PageProperties.AllowCustomHeaderButtonsGlyphSkinning = True
         Me.NavigasiPEEvent.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavPenawaran, Me.NavDetailBarang})
-        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(1086, 252)
+        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(1590, 454)
         Me.NavigasiPEEvent.SelectedPage = Me.NavPenawaran
-        Me.NavigasiPEEvent.Size = New System.Drawing.Size(1086, 252)
+        Me.NavigasiPEEvent.Size = New System.Drawing.Size(1590, 454)
         Me.NavigasiPEEvent.TabIndex = 2
         Me.NavigasiPEEvent.Text = "NavigasiPEEvent"
         '
@@ -1221,7 +1232,7 @@ Partial Public Class FrmPEEvn
         Me.NavPenawaran.Caption = "Daftar Penawaran"
         Me.NavPenawaran.Controls.Add(Me.ListPE)
         Me.NavPenawaran.Name = "NavPenawaran"
-        Me.NavPenawaran.Size = New System.Drawing.Size(1043, 194)
+        Me.NavPenawaran.Size = New System.Drawing.Size(1530, 381)
         '
         'NavDetailBarang
         '
@@ -1229,7 +1240,7 @@ Partial Public Class FrmPEEvn
         Me.NavDetailBarang.Controls.Add(Me.PInput)
         Me.NavDetailBarang.Controls.Add(Me.TampilDetail)
         Me.NavDetailBarang.Name = "NavDetailBarang"
-        Me.NavDetailBarang.Size = New System.Drawing.Size(1043, 194)
+        Me.NavDetailBarang.Size = New System.Drawing.Size(1376, 381)
         '
         'PInput
         '
@@ -1272,7 +1283,7 @@ Partial Public Class FrmPEEvn
         Me.TInfoKlien.Location = New System.Drawing.Point(649, 40)
         Me.TInfoKlien.Name = "TInfoKlien"
         Me.TInfoKlien.PreventEnterBeep = True
-        Me.TInfoKlien.Size = New System.Drawing.Size(32, 21)
+        Me.TInfoKlien.Size = New System.Drawing.Size(32, 22)
         Me.TInfoKlien.TabIndex = 22
         Me.TInfoKlien.Visible = False
         '
@@ -1286,7 +1297,7 @@ Partial Public Class FrmPEEvn
         Me.TInfoKontrak.Location = New System.Drawing.Point(613, 40)
         Me.TInfoKontrak.Name = "TInfoKontrak"
         Me.TInfoKontrak.PreventEnterBeep = True
-        Me.TInfoKontrak.Size = New System.Drawing.Size(32, 21)
+        Me.TInfoKontrak.Size = New System.Drawing.Size(32, 22)
         Me.TInfoKontrak.TabIndex = 21
         Me.TInfoKontrak.Visible = False
         '
@@ -1328,7 +1339,7 @@ Partial Public Class FrmPEEvn
         Me.NoItem.Location = New System.Drawing.Point(500, 40)
         Me.NoItem.Name = "NoItem"
         Me.NoItem.PreventEnterBeep = True
-        Me.NoItem.Size = New System.Drawing.Size(73, 21)
+        Me.NoItem.Size = New System.Drawing.Size(73, 22)
         Me.NoItem.TabIndex = 15
         '
         'idInpBarang
@@ -1341,7 +1352,7 @@ Partial Public Class FrmPEEvn
         Me.idInpBarang.Location = New System.Drawing.Point(385, 40)
         Me.idInpBarang.Name = "idInpBarang"
         Me.idInpBarang.PreventEnterBeep = True
-        Me.idInpBarang.Size = New System.Drawing.Size(32, 21)
+        Me.idInpBarang.Size = New System.Drawing.Size(32, 22)
         Me.idInpBarang.TabIndex = 14
         Me.idInpBarang.Visible = False
         '
@@ -1355,7 +1366,7 @@ Partial Public Class FrmPEEvn
         Me.iddetail.Location = New System.Drawing.Point(347, 40)
         Me.iddetail.Name = "iddetail"
         Me.iddetail.PreventEnterBeep = True
-        Me.iddetail.Size = New System.Drawing.Size(32, 21)
+        Me.iddetail.Size = New System.Drawing.Size(32, 22)
         Me.iddetail.TabIndex = 13
         Me.iddetail.Visible = False
         '
@@ -1369,7 +1380,7 @@ Partial Public Class FrmPEEvn
         Me.NoMaterial.Location = New System.Drawing.Point(103, 40)
         Me.NoMaterial.Name = "NoMaterial"
         Me.NoMaterial.PreventEnterBeep = True
-        Me.NoMaterial.Size = New System.Drawing.Size(32, 21)
+        Me.NoMaterial.Size = New System.Drawing.Size(32, 22)
         Me.NoMaterial.TabIndex = 12
         Me.NoMaterial.Visible = False
         '
@@ -1383,7 +1394,7 @@ Partial Public Class FrmPEEvn
         Me.idKontrak.Location = New System.Drawing.Point(140, 40)
         Me.idKontrak.Name = "idKontrak"
         Me.idKontrak.PreventEnterBeep = True
-        Me.idKontrak.Size = New System.Drawing.Size(32, 21)
+        Me.idKontrak.Size = New System.Drawing.Size(32, 22)
         Me.idKontrak.TabIndex = 11
         Me.idKontrak.Visible = False
         '
@@ -1397,7 +1408,7 @@ Partial Public Class FrmPEEvn
         Me.TMaterials.Location = New System.Drawing.Point(178, 40)
         Me.TMaterials.Name = "TMaterials"
         Me.TMaterials.PreventEnterBeep = True
-        Me.TMaterials.Size = New System.Drawing.Size(159, 21)
+        Me.TMaterials.Size = New System.Drawing.Size(159, 22)
         Me.TMaterials.TabIndex = 10
         Me.TMaterials.WatermarkText = "Material Barang"
         '
@@ -1411,7 +1422,7 @@ Partial Public Class FrmPEEvn
         Me.Remaks.Location = New System.Drawing.Point(853, 13)
         Me.Remaks.Name = "Remaks"
         Me.Remaks.PreventEnterBeep = True
-        Me.Remaks.Size = New System.Drawing.Size(151, 21)
+        Me.Remaks.Size = New System.Drawing.Size(151, 22)
         Me.Remaks.TabIndex = 11
         Me.Remaks.WatermarkText = "Keterangan"
         '
@@ -1425,7 +1436,7 @@ Partial Public Class FrmPEEvn
         Me.SubTotal.Location = New System.Drawing.Point(740, 13)
         Me.SubTotal.Name = "SubTotal"
         Me.SubTotal.PreventEnterBeep = True
-        Me.SubTotal.Size = New System.Drawing.Size(107, 21)
+        Me.SubTotal.Size = New System.Drawing.Size(107, 22)
         Me.SubTotal.TabIndex = 10
         Me.SubTotal.WatermarkText = "Sub Total"
         '
@@ -1439,7 +1450,7 @@ Partial Public Class FrmPEEvn
         Me.TUnitCost.Location = New System.Drawing.Point(627, 13)
         Me.TUnitCost.Name = "TUnitCost"
         Me.TUnitCost.PreventEnterBeep = True
-        Me.TUnitCost.Size = New System.Drawing.Size(107, 21)
+        Me.TUnitCost.Size = New System.Drawing.Size(107, 22)
         Me.TUnitCost.TabIndex = 9
         Me.TUnitCost.WatermarkText = "Unit Cost"
         '
@@ -1453,7 +1464,7 @@ Partial Public Class FrmPEEvn
         Me.TTotal.Location = New System.Drawing.Point(512, 13)
         Me.TTotal.Name = "TTotal"
         Me.TTotal.PreventEnterBeep = True
-        Me.TTotal.Size = New System.Drawing.Size(109, 21)
+        Me.TTotal.Size = New System.Drawing.Size(109, 22)
         Me.TTotal.TabIndex = 8
         Me.TTotal.WatermarkText = "Total Item"
         '
@@ -1467,7 +1478,7 @@ Partial Public Class FrmPEEvn
         Me.TDimensi.Location = New System.Drawing.Point(399, 27)
         Me.TDimensi.Name = "TDimensi"
         Me.TDimensi.PreventEnterBeep = True
-        Me.TDimensi.Size = New System.Drawing.Size(107, 21)
+        Me.TDimensi.Size = New System.Drawing.Size(107, 22)
         Me.TDimensi.TabIndex = 7
         Me.TDimensi.WatermarkText = "Dimensi"
         '
@@ -1481,7 +1492,7 @@ Partial Public Class FrmPEEvn
         Me.TDay.Location = New System.Drawing.Point(399, 13)
         Me.TDay.Name = "TDay"
         Me.TDay.PreventEnterBeep = True
-        Me.TDay.Size = New System.Drawing.Size(39, 21)
+        Me.TDay.Size = New System.Drawing.Size(39, 22)
         Me.TDay.TabIndex = 5
         Me.TDay.WatermarkText = "Day"
         '
@@ -1503,10 +1514,10 @@ Partial Public Class FrmPEEvn
         Me.CSFreq.DisplayMember = "Text"
         Me.CSFreq.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSFreq.FormattingEnabled = True
-        Me.CSFreq.ItemHeight = 16
+        Me.CSFreq.ItemHeight = 17
         Me.CSFreq.Location = New System.Drawing.Point(335, 12)
         Me.CSFreq.Name = "CSFreq"
-        Me.CSFreq.Size = New System.Drawing.Size(58, 22)
+        Me.CSFreq.Size = New System.Drawing.Size(58, 23)
         Me.CSFreq.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSFreq.TabIndex = 4
         '
@@ -1520,7 +1531,7 @@ Partial Public Class FrmPEEvn
         Me.TFreq.Location = New System.Drawing.Point(290, 12)
         Me.TFreq.Name = "TFreq"
         Me.TFreq.PreventEnterBeep = True
-        Me.TFreq.Size = New System.Drawing.Size(39, 21)
+        Me.TFreq.Size = New System.Drawing.Size(39, 22)
         Me.TFreq.TabIndex = 3
         Me.TFreq.WatermarkText = "Freq"
         '
@@ -1529,10 +1540,10 @@ Partial Public Class FrmPEEvn
         Me.CSQty.DisplayMember = "Text"
         Me.CSQty.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSQty.FormattingEnabled = True
-        Me.CSQty.ItemHeight = 16
+        Me.CSQty.ItemHeight = 17
         Me.CSQty.Location = New System.Drawing.Point(223, 12)
         Me.CSQty.Name = "CSQty"
-        Me.CSQty.Size = New System.Drawing.Size(59, 22)
+        Me.CSQty.Size = New System.Drawing.Size(59, 23)
         Me.CSQty.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSQty.TabIndex = 2
         '
@@ -1546,7 +1557,7 @@ Partial Public Class FrmPEEvn
         Me.TQty.Location = New System.Drawing.Point(178, 12)
         Me.TQty.Name = "TQty"
         Me.TQty.PreventEnterBeep = True
-        Me.TQty.Size = New System.Drawing.Size(39, 21)
+        Me.TQty.Size = New System.Drawing.Size(39, 22)
         Me.TQty.TabIndex = 1
         Me.TQty.WatermarkText = "Qty"
         '
@@ -1560,7 +1571,7 @@ Partial Public Class FrmPEEvn
         Me.TCari.Location = New System.Drawing.Point(13, 12)
         Me.TCari.Name = "TCari"
         Me.TCari.PreventEnterBeep = True
-        Me.TCari.Size = New System.Drawing.Size(159, 21)
+        Me.TCari.Size = New System.Drawing.Size(159, 22)
         Me.TCari.TabIndex = 0
         Me.TCari.WatermarkText = "Cari Barang Penawaran"
         '
@@ -1570,7 +1581,7 @@ Partial Public Class FrmPEEvn
         Me.TampilDetail.HideSelection = False
         Me.TampilDetail.Location = New System.Drawing.Point(0, 0)
         Me.TampilDetail.Name = "TampilDetail"
-        Me.TampilDetail.Size = New System.Drawing.Size(1043, 194)
+        Me.TampilDetail.Size = New System.Drawing.Size(1376, 381)
         Me.TampilDetail.TabIndex = 1
         Me.TampilDetail.UseCompatibleStateImageBehavior = False
         '
@@ -1641,7 +1652,7 @@ Partial Public Class FrmPEEvn
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(27, 12)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(34, 13)
+        Me.Label2.Size = New System.Drawing.Size(36, 13)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Nama"
         '
@@ -1650,7 +1661,7 @@ Partial Public Class FrmPEEvn
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(27, 54)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(46, 13)
+        Me.Label1.Size = New System.Drawing.Size(47, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Jabatan"
         '
@@ -1676,7 +1687,7 @@ Partial Public Class FrmPEEvn
         Me.TInputJabatan.Location = New System.Drawing.Point(26, 69)
         Me.TInputJabatan.Name = "TInputJabatan"
         Me.TInputJabatan.PreventEnterBeep = True
-        Me.TInputJabatan.Size = New System.Drawing.Size(262, 21)
+        Me.TInputJabatan.Size = New System.Drawing.Size(262, 22)
         Me.TInputJabatan.TabIndex = 1
         '
         'TInputApproved
@@ -1688,7 +1699,7 @@ Partial Public Class FrmPEEvn
         Me.TInputApproved.Location = New System.Drawing.Point(26, 27)
         Me.TInputApproved.Name = "TInputApproved"
         Me.TInputApproved.PreventEnterBeep = True
-        Me.TInputApproved.Size = New System.Drawing.Size(262, 15)
+        Me.TInputApproved.Size = New System.Drawing.Size(262, 16)
         Me.TInputApproved.TabIndex = 0
         '
         'PanelAlasan
@@ -1701,7 +1712,7 @@ Partial Public Class FrmPEEvn
         Me.PanelAlasan.Controls.Add(Me.BSimpanRevisi)
         Me.PanelAlasan.Controls.Add(Me.TARevisi)
         Me.PanelAlasan.DisabledBackColor = System.Drawing.Color.Empty
-        Me.PanelAlasan.Location = New System.Drawing.Point(238, 151)
+        Me.PanelAlasan.Location = New System.Drawing.Point(238, 295)
         Me.PanelAlasan.Name = "PanelAlasan"
         Me.PanelAlasan.Size = New System.Drawing.Size(457, 126)
         '
@@ -1759,7 +1770,7 @@ Partial Public Class FrmPEEvn
         Me.idrevisi.Location = New System.Drawing.Point(18, 65)
         Me.idrevisi.Name = "idrevisi"
         Me.idrevisi.PreventEnterBeep = True
-        Me.idrevisi.Size = New System.Drawing.Size(32, 21)
+        Me.idrevisi.Size = New System.Drawing.Size(32, 22)
         Me.idrevisi.TabIndex = 3
         Me.idrevisi.Visible = False
         '
@@ -1769,7 +1780,7 @@ Partial Public Class FrmPEEvn
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Location = New System.Drawing.Point(15, 23)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(167, 13)
+        Me.Label3.Size = New System.Drawing.Size(177, 13)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Tulis Alasan Revisi Dibawah Ini .. "
         '
@@ -1791,31 +1802,83 @@ Partial Public Class FrmPEEvn
         Me.TARevisi.Location = New System.Drawing.Point(15, 37)
         Me.TARevisi.Name = "TARevisi"
         Me.TARevisi.PreventEnterBeep = True
-        Me.TARevisi.Size = New System.Drawing.Size(430, 21)
+        Me.TARevisi.Size = New System.Drawing.Size(430, 22)
         Me.TARevisi.TabIndex = 0
+        '
+        'ToolbarFormControl1
+        '
+        Me.ToolbarFormControl1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolbarFormControl1.Manager = Me.ToolbarFormManager1
+        Me.ToolbarFormControl1.Name = "ToolbarFormControl1"
+        Me.ToolbarFormControl1.Size = New System.Drawing.Size(1596, 0)
+        Me.ToolbarFormControl1.TabIndex = 9
+        Me.ToolbarFormControl1.TabStop = False
+        Me.ToolbarFormControl1.ToolbarForm = Me
+        '
+        'ToolbarFormManager1
+        '
+        Me.ToolbarFormManager1.DockControls.Add(Me.barDockControlTop)
+        Me.ToolbarFormManager1.DockControls.Add(Me.barDockControlBottom)
+        Me.ToolbarFormManager1.DockControls.Add(Me.barDockControlLeft)
+        Me.ToolbarFormManager1.DockControls.Add(Me.barDockControlRight)
+        Me.ToolbarFormManager1.Form = Me
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.ToolbarFormManager1
+        Me.barDockControlTop.Size = New System.Drawing.Size(1596, 0)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 787)
+        Me.barDockControlBottom.Manager = Me.ToolbarFormManager1
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1596, 0)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlLeft.Manager = Me.ToolbarFormManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 787)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(1596, 0)
+        Me.barDockControlRight.Manager = Me.ToolbarFormManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 787)
         '
         'FrmPEEvn
         '
-        Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[True]
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
-        Me.ClientSize = New System.Drawing.Size(1092, 597)
+        Me.ClientSize = New System.Drawing.Size(1596, 787)
         Me.ControlBox = False
         Me.Controls.Add(Me.PanelAlasan)
         Me.Controls.Add(Me.PApproved)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.RibbonStatusBar1)
         Me.Controls.Add(Me.mainRibbonControl)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
+        Me.Controls.Add(Me.ToolbarFormControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("FrmPEEvn.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.ShowIcon = False
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FrmPEEvn"
-        Me.Ribbon = Me.mainRibbonControl
-        Me.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Visible
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.StatusBar = Me.RibbonStatusBar1
+        Me.ToolbarFormControl = Me.ToolbarFormControl1
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.mainRibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1841,6 +1904,8 @@ Partial Public Class FrmPEEvn
         Me.PApproved.PerformLayout()
         Me.PanelAlasan.ResumeLayout(False)
         Me.PanelAlasan.PerformLayout()
+        CType(Me.ToolbarFormControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ToolbarFormManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1978,4 +2043,10 @@ Partial Public Class FrmPEEvn
     Friend WithEvents BtnKeluar As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents MainMenu As DevExpress.XtraBars.Ribbon.RibbonPageCategory
 	Friend WithEvents CekAdaPPN As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents ToolbarFormControl1 As DevExpress.XtraBars.ToolbarForm.ToolbarFormControl
+    Friend WithEvents ToolbarFormManager1 As DevExpress.XtraBars.ToolbarForm.ToolbarFormManager
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
 End Class

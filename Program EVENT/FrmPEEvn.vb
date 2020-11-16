@@ -4,335 +4,335 @@ Imports DevExpress.XtraBars.Navigation
 Imports System.Data.Odbc
 
 Partial Public Class FrmPEEvn
-	Private Panel1Captured As Boolean
-	Private Panel1Grabbed As Point
-	Dim ProsesDetail, Tampil, HapusProses, urutpe, c, divisiid, bln, thn, InputDetail As String
-	Dim idNo, idNo1, peNo As String
-	Dim idbrng, count As Integer
-	Dim StartBln, StartThn, StartTgl, tglevent, waktuevent As String
-	Dim EndBln, EndThn, EndTgl As String
-	Dim spasi() As Char = (" ")
-	Dim Qoma() As Char = (",")
-	Private Unitcost, NilaiPPN, GrandTotal, TotalHargaEvent, totalunit, SbTotal As Double
-	Private lvwIndex As Integer
+    Private Panel1Captured As Boolean
+    Private Panel1Grabbed As Point
+    Dim ProsesDetail, Tampil, HapusProses, urutpe, c, divisiid, bln, thn, InputDetail As String
+    Dim idNo, idNo1, peNo As String
+    Dim idbrng, count As Integer
+    Dim StartBln, StartThn, StartTgl, tglevent, waktuevent As String
+    Dim EndBln, EndThn, EndTgl As String
+    Dim spasi() As Char = (" ")
+    Dim Qoma() As Char = (",")
+    Private Unitcost, NilaiPPN, GrandTotal, TotalHargaEvent, totalunit, SbTotal As Double
+    Private lvwIndex As Integer
 
-	Public Sub New()
-		InitializeComponent()
-	End Sub
+    Public Sub New()
+        InitializeComponent()
+    End Sub
 #Region "ListView"
-	Private Sub ListHeaderPE()
-		With ListPE
-			.FullRowSelect = True
-			.MultiSelect = False
-			.View = View.Details
-			.CheckBoxes = True
-			.Columns.Clear()
-			.Items.Clear()
-			.Columns.Add("NO PE", 140, HorizontalAlignment.Left)
-			.Columns.Add("CLIENT.", 200, HorizontalAlignment.Left)
-			.Columns.Add("JENIS PE", 100, HorizontalAlignment.Left)
-			.Columns.Add("PROJECT", 150, HorizontalAlignment.Left)
-			.Columns.Add("VENUE", 150, HorizontalAlignment.Left)
-			.Columns.Add("TANGGAL EVENT", 110, HorizontalAlignment.Left)
-			.Columns.Add("GrandTotal", 150, HorizontalAlignment.Left)
-			.Columns.Add("Approved By", 140, HorizontalAlignment.Left)
-			.Columns.Add("TANGGAL PE", 100, HorizontalAlignment.Left)
-			.Columns.Add("idpe", 1, HorizontalAlignment.Left)
-		End With
-	End Sub
-	Private Sub BacaPE()
-		GGVM_conn()
-		sql = ""
-		sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.peserta, a.tgl_event,a.tgl_pe, a.waktu_event,a.total,a.rp_ppn,a.grandtotal,a.approved_by,a.jabatan, a.idpe "
-		sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe  "
-		If DivUser = "2" Then
-			sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
-		ElseIf DivUser = "17" Then
-			sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
-		ElseIf DivUser = "0" Then
-			sql = sql & "and a.deal is Null and c.idjenis_pe in (1,2,3,4)"
-		Else
-			Return
-		End If
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-		dt = New DataTable
-		dt = ds.Tables(0)
-		ListPE.Items.Clear()
-		ListPE.BeginUpdate()
-		For j As Integer = 0 To dt.Rows.Count - 1
-			With ListPE
-				.Items.Add(dt.Rows(j)("nope"))
-				With .Items(.Items.Count - 1).SubItems
-					.Add(dt.Rows(j)("nama"))
-					.Add(dt.Rows(j)("jenis_pe"))
-					.Add(dt.Rows(j)("project"))
-					.Add(dt.Rows(j)("venue"))
-					.Add(dt.Rows(j)("tgl_event"))
-					If dt.Rows(j)("grandtotal") Is DBNull.Value Then
-						.Add("Belum Ada Barang")
-					Else
-						.Add(dt.Rows(j)("grandtotal"))
-					End If
+    Private Sub ListHeaderPE()
+        With ListPE
+            .FullRowSelect = True
+            .MultiSelect = False
+            .View = View.Details
+            .CheckBoxes = True
+            .Columns.Clear()
+            .Items.Clear()
+            .Columns.Add("NO PE", 140, HorizontalAlignment.Left)
+            .Columns.Add("CLIENT.", 200, HorizontalAlignment.Left)
+            .Columns.Add("JENIS PE", 100, HorizontalAlignment.Left)
+            .Columns.Add("PROJECT", 150, HorizontalAlignment.Left)
+            .Columns.Add("VENUE", 150, HorizontalAlignment.Left)
+            .Columns.Add("TANGGAL EVENT", 110, HorizontalAlignment.Left)
+            .Columns.Add("GrandTotal", 150, HorizontalAlignment.Left)
+            .Columns.Add("Approved By", 140, HorizontalAlignment.Left)
+            .Columns.Add("TANGGAL PE", 100, HorizontalAlignment.Left)
+            .Columns.Add("idpe", 1, HorizontalAlignment.Left)
+        End With
+    End Sub
+    Private Sub BacaPE()
+        GGVM_conn()
+        sql = ""
+        sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.peserta, a.tgl_event,a.tgl_pe, a.waktu_event,a.total,a.rp_ppn,a.grandtotal,a.approved_by,a.jabatan, a.idpe "
+        sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe  "
+        If DivUser = "2" Then
+            sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
+        ElseIf DivUser = "17" Then
+            sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
+        ElseIf DivUser = "0" Then
+            sql = sql & "and a.deal is Null and c.idjenis_pe in (1,2,3,4)"
+        Else
+            Return
+        End If
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+        dt = New DataTable
+        dt = ds.Tables(0)
+        ListPE.Items.Clear()
+        ListPE.BeginUpdate()
+        For j As Integer = 0 To dt.Rows.Count - 1
+            With ListPE
+                .Items.Add(dt.Rows(j)("nope"))
+                With .Items(.Items.Count - 1).SubItems
+                    .Add(dt.Rows(j)("nama"))
+                    .Add(dt.Rows(j)("jenis_pe"))
+                    .Add(dt.Rows(j)("project"))
+                    .Add(dt.Rows(j)("venue"))
+                    .Add(dt.Rows(j)("tgl_event"))
+                    If dt.Rows(j)("grandtotal") Is DBNull.Value Then
+                        .Add("Belum Ada Barang")
+                    Else
+                        .Add(dt.Rows(j)("grandtotal"))
+                    End If
 
-					If dt.Rows(j)("approved_by") Is DBNull.Value Then
-						.Add("Belum Deal")
-					Else
-						.Add(dt.Rows(j)("approved_by"))
-					End If
-					.Add(dt.Rows(j)("tgl_pe"))
-					.Add(dt.Rows(j)("idpe"))
-				End With
-			End With
-		Next
-		ListPE.EndUpdate()
-		GGVM_conn_close()
-	End Sub
-	Private Sub ListTampilDetail()
-		With TampilDetail
-			.FullRowSelect = True
-			.MultiSelect = False
-			.View = View.Details
-			.CheckBoxes = True
-			.Columns.Clear()
-			.Items.Clear()
-			.Columns.Add("Barang", 230, HorizontalAlignment.Left)
-			.Columns.Add("Item", 80, HorizontalAlignment.Left)
-			.Columns.Add("No Material", 90, HorizontalAlignment.Left)
-			.Columns.Add("Qty", 40, HorizontalAlignment.Left)
-			.Columns.Add("Satuan", 50, HorizontalAlignment.Left)
-			.Columns.Add("Freq", 40, HorizontalAlignment.Left)
-			.Columns.Add("Satuan", 50, HorizontalAlignment.Left)
-			.Columns.Add("Day", 40, HorizontalAlignment.Left)
-			.Columns.Add("Satuan", 50, HorizontalAlignment.Left)
-			.Columns.Add("Dimensi", 60, HorizontalAlignment.Left)
-			.Columns.Add("Material", 100, HorizontalAlignment.Left)
-			.Columns.Add("Total Unit", 70, HorizontalAlignment.Left)
-			.Columns.Add("Harga Unit", 120, HorizontalAlignment.Left)
-			.Columns.Add("Sub Total Cost", 120, HorizontalAlignment.Left)
-			.Columns.Add("Remaks", 150, HorizontalAlignment.Left)
-			.Columns.Add("iddetail", 1, HorizontalAlignment.Left)
-		End With
-	End Sub
-	Private Sub BacaDetailPE()
-		GGVM_conn()
-		sql = ""
-		sql = sql & "SELECT a.*,c.subkel FROM evn_detail_penawaran a "
-		sql = sql & "Join barang_penawaran b ON b.idbarang = a.idbarang "
-		sql = sql & " Join subkelompok c on c.idsubkel = b.idsubkel "
-		sql = sql & " where a.idpe = '" & TidPE.Text & "'"
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-		dt = New DataTable
-		dt = ds.Tables(0)
-		TampilDetail.Items.Clear()
-		TampilDetail.BeginUpdate()
-		For j As Integer = 0 To dt.Rows.Count - 1
-			With TampilDetail
-				.Items.Add(dt.Rows(j)("barang"))
-				With .Items(.Items.Count - 1).SubItems
-					.Add(dt.Rows(j)("item").ToString)
-					.Add(dt.Rows(j)("material_no").ToString)
-					.Add(dt.Rows(j)("qty"))
-					.Add(dt.Rows(j)("satuan_qty"))
-					.Add(dt.Rows(j)("freq"))
-					.Add(dt.Rows(j)("satuan_freq"))
-					.Add(dt.Rows(j)("day").ToString)
-					.Add(dt.Rows(j)("satuan_day").ToString)
-					.Add(dt.Rows(j)("dimensi").ToString)
-					.Add(dt.Rows(j)("materials").ToString)
-					.Add(dt.Rows(j)("total"))
-					.Add(Format(Val(dt.Rows(j)("unitcost")), "Rp, ###,###"))
-					.Add(Format(Val(dt.Rows(j)("sub_totalcost")), "Rp, ###,###"))
-					.Add(dt.Rows(j)("remaks").ToString)
-					.Add(dt.Rows(j)("iddetail"))
-				End With
-			End With
-		Next
-		TampilDetail.EndUpdate()
-		GGVM_conn_close()
-		conn.Dispose()
-	End Sub
+                    If dt.Rows(j)("approved_by") Is DBNull.Value Then
+                        .Add("Belum Deal")
+                    Else
+                        .Add(dt.Rows(j)("approved_by"))
+                    End If
+                    .Add(dt.Rows(j)("tgl_pe"))
+                    .Add(dt.Rows(j)("idpe"))
+                End With
+            End With
+        Next
+        ListPE.EndUpdate()
+        GGVM_conn_close()
+    End Sub
+    Private Sub ListTampilDetail()
+        With TampilDetail
+            .FullRowSelect = True
+            .MultiSelect = False
+            .View = View.Details
+            .CheckBoxes = True
+            .Columns.Clear()
+            .Items.Clear()
+            .Columns.Add("Barang", 230, HorizontalAlignment.Left)
+            .Columns.Add("Item", 80, HorizontalAlignment.Left)
+            .Columns.Add("No Material", 90, HorizontalAlignment.Left)
+            .Columns.Add("Qty", 40, HorizontalAlignment.Left)
+            .Columns.Add("Satuan", 50, HorizontalAlignment.Left)
+            .Columns.Add("Freq", 40, HorizontalAlignment.Left)
+            .Columns.Add("Satuan", 50, HorizontalAlignment.Left)
+            .Columns.Add("Day", 40, HorizontalAlignment.Left)
+            .Columns.Add("Satuan", 50, HorizontalAlignment.Left)
+            .Columns.Add("Dimensi", 60, HorizontalAlignment.Left)
+            .Columns.Add("Material", 100, HorizontalAlignment.Left)
+            .Columns.Add("Total Unit", 70, HorizontalAlignment.Left)
+            .Columns.Add("Harga Unit", 120, HorizontalAlignment.Left)
+            .Columns.Add("Sub Total Cost", 120, HorizontalAlignment.Left)
+            .Columns.Add("Remaks", 150, HorizontalAlignment.Left)
+            .Columns.Add("iddetail", 1, HorizontalAlignment.Left)
+        End With
+    End Sub
+    Private Sub BacaDetailPE()
+        GGVM_conn()
+        sql = ""
+        sql = sql & "SELECT a.*,c.subkel FROM evn_detail_penawaran a "
+        sql = sql & "Join barang_penawaran b ON b.idbarang = a.idbarang "
+        sql = sql & " Join subkelompok c on c.idsubkel = b.idsubkel "
+        sql = sql & " where a.idpe = '" & TidPE.Text & "'"
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+        dt = New DataTable
+        dt = ds.Tables(0)
+        TampilDetail.Items.Clear()
+        TampilDetail.BeginUpdate()
+        For j As Integer = 0 To dt.Rows.Count - 1
+            With TampilDetail
+                .Items.Add(dt.Rows(j)("barang"))
+                With .Items(.Items.Count - 1).SubItems
+                    .Add(dt.Rows(j)("item").ToString)
+                    .Add(dt.Rows(j)("material_no").ToString)
+                    .Add(dt.Rows(j)("qty"))
+                    .Add(dt.Rows(j)("satuan_qty"))
+                    .Add(dt.Rows(j)("freq"))
+                    .Add(dt.Rows(j)("satuan_freq"))
+                    .Add(dt.Rows(j)("day").ToString)
+                    .Add(dt.Rows(j)("satuan_day").ToString)
+                    .Add(dt.Rows(j)("dimensi").ToString)
+                    .Add(dt.Rows(j)("materials").ToString)
+                    .Add(dt.Rows(j)("total"))
+                    .Add(Format(Val(dt.Rows(j)("unitcost")), "Rp, ###,###"))
+                    .Add(Format(Val(dt.Rows(j)("sub_totalcost")), "Rp, ###,###"))
+                    .Add(dt.Rows(j)("remaks").ToString)
+                    .Add(dt.Rows(j)("iddetail"))
+                End With
+            End With
+        Next
+        TampilDetail.EndUpdate()
+        GGVM_conn_close()
+        conn.Dispose()
+    End Sub
 #End Region
 #Region "Auto Complete"
-	Private Sub HitungBisnis()
-		Dim NominalBisnis As Double = 0
-		For I = ListPE.Items.Count - 1 To 0 Step -1
-			NominalBisnis = ListPE.Items(I).SubItems(6).Text + NominalBisnis
-		Next
-		TotalBisnis.Caption = Format(Val(NominalBisnis), "Rp, ###,###")
-	End Sub
-	Private Sub LoadSatuan()
-		GGVM_conn()
-		CSQty.Items.Clear()
-		CSFreq.Items.Clear()
-		CSDay.Items.Clear()
+    Private Sub HitungBisnis()
+        Dim NominalBisnis As Double = 0
+        For I = ListPE.Items.Count - 1 To 0 Step -1
+            NominalBisnis = ListPE.Items(I).SubItems(6).Text + NominalBisnis
+        Next
+        TotalBisnis.Caption = Format(Val(NominalBisnis), "Rp, ###,###")
+    End Sub
+    Private Sub LoadSatuan()
+        GGVM_conn()
+        CSQty.Items.Clear()
+        CSFreq.Items.Clear()
+        CSDay.Items.Clear()
 
-		sql = ""
-		sql = sql & "SELECT * from Satuan"
-		cmd = New OdbcCommand(sql, conn)
-		dr = cmd.ExecuteReader
-		Do While dr.Read
-			CSQty.Items.Add(dr("satuan"))
-			CSFreq.Items.Add(dr("satuan"))
-			CSDay.Items.Add(dr("satuan"))
-		Loop
-		GGVM_conn_close()
-	End Sub
-	Private Sub AutoCompKlien()
-		GGVM_conn()
-		sql = "select * from klien"
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-		Dim Klien As New AutoCompleteStringCollection
-		For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
-			Klien.Add(ds.Tables(0).Rows(i)("nama").ToString())
-		Next
-		With TKlien
-			.AutoCompleteSource = AutoCompleteSource.CustomSource
-			.AutoCompleteCustomSource = Klien
-			.AutoCompleteMode = AutoCompleteMode.Suggest
-		End With
-		GGVM_conn_close()
-	End Sub
-	Private Sub AutoCompProject()
-		GGVM_conn()
-		If DivUser = "0" Then
-			sql = "select subdivisi from subdivisi"
-		Else
-			sql = "select subdivisi from subdivisi where id_divisi = '" & DivUser & "'"
-		End If
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-		Dim Project As New AutoCompleteStringCollection
-		For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
-			Project.Add(ds.Tables(0).Rows(i)("subdivisi").ToString())
-		Next
-		With TProject
-			.AutoCompleteSource = AutoCompleteSource.CustomSource
-			.AutoCompleteCustomSource = Project
-			.AutoCompleteMode = AutoCompleteMode.Suggest
-		End With
-		GGVM_conn_close()
-	End Sub
-	Private Sub AutoCompVenue()
-		GGVM_conn()
-		sql = "select * from kota"
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-		Dim Venue As New AutoCompleteStringCollection()
-		For i = 0 To ds.Tables(0).Rows.Count - 1
-			Venue.Add(ds.Tables(0).Rows(i)("kota").ToString())
-		Next
-		With TVenue
-			.AutoCompleteCustomSource = Venue
-			.AutoCompleteMode = AutoCompleteMode.Suggest
-			.AutoCompleteSource = AutoCompleteSource.CustomSource
-		End With
-		GGVM_conn_close()
-	End Sub
-	Private Sub ComboJenisPE()
-		GGVM_conn()
-		CJenisPE.Items.Clear()
-		If DivUser = "0" Then
-			sql = "select * from evn_jenis_pe"
-		Else
-			sql = "select * from evn_jenis_pe where iddivisi = '" & DivUser & "'"
-		End If
-		cmd = New OdbcCommand(sql, conn)
-		dr = cmd.ExecuteReader
-		Do While dr.Read
-			CJenisPE.Items.Add(dr("jenis_pe"))
-		Loop
-		GGVM_conn_close()
-	End Sub
-	Private Sub AutoBarangExhibition()
-		'GGVM_conn()
-		sql = ""
-		sql = sql & "SELECT a.* FROM barang_penawaran a "
-		sql = sql & " JOIN subkelompok b on a.idsubkel = b.idsubkel "
-		sql = sql & " JOIN kelompok c on b.idkelompok = c.idkelompok "
-		sql = sql & " WHERE c.idkelompok = '18'"
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-	End Sub
-	Private Sub AutoBarangEvent()
-		GGVM_conn()
-		If TInfoKontrak.Text <> "" Then
-			sql = ""
-			sql = sql & "SELECT b.item_no, b.material_no, a.barang from barang_penawaran a"
-			sql = sql & " JOIN evn_material b on a.idbarang = b.idbarang  "
-			sql = sql & " JOIN evn_kontrak c on c.idkontrak = b.idkontrak "
-			sql = sql & " WHERE c.idkontrak = '" & TInfoKontrak.Text & "'"
-		Else
-			sql = "SELECT barang from barang_penawaran where idsubkel = '71' and idkontrak is nULL"
-		End If
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-	End Sub
-	Private Sub SuperSUBarangPE()
-		sql = ""
-		sql = sql & "SELECT a.* FROM barang_penawaran a "
-		sql = sql & " JOIN subkelompok b on a.idsubkel = b.idsubkel "
-		sql = sql & " JOIN kelompok c on b.idkelompok = c.idkelompok "
-		sql = sql & " WHERE c.idkelompok in (7,18)"
-		da = New OdbcDataAdapter(sql, conn)
-		ds = New DataSet
-		da.Fill(ds)
-	End Sub
-	Private Sub CompleteBarangPE()
-		GGVM_conn()
-		If DivUser = "17" Then
-			TDay.Visible = False
-			CSDay.Visible = False
-			Call AutoBarangExhibition()
-		ElseIf DivUser = "2" Then
-			Call AutoBarangEvent()
-			TMaterials.Visible = False
-			TDimensi.Visible = False
-		Else
-			Call SuperSUBarangPE()
-		End If
-		Dim brgpen As New AutoCompleteStringCollection
-		For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
-			brgpen.Add(ds.Tables(0).Rows(i)("barang").ToString())
-		Next
-		With TCari
-			.AutoCompleteSource = AutoCompleteSource.CustomSource
-			.AutoCompleteCustomSource = brgpen
-			.AutoCompleteMode = AutoCompleteMode.Suggest
-		End With
-	End Sub
+        sql = ""
+        sql = sql & "SELECT * from Satuan"
+        cmd = New OdbcCommand(sql, conn)
+        dr = cmd.ExecuteReader
+        Do While dr.Read
+            CSQty.Items.Add(dr("satuan"))
+            CSFreq.Items.Add(dr("satuan"))
+            CSDay.Items.Add(dr("satuan"))
+        Loop
+        GGVM_conn_close()
+    End Sub
+    Private Sub AutoCompKlien()
+        GGVM_conn()
+        sql = "select * from klien"
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+        Dim Klien As New AutoCompleteStringCollection
+        For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
+            Klien.Add(ds.Tables(0).Rows(i)("nama").ToString())
+        Next
+        With TKlien
+            .AutoCompleteSource = AutoCompleteSource.CustomSource
+            .AutoCompleteCustomSource = Klien
+            .AutoCompleteMode = AutoCompleteMode.Suggest
+        End With
+        GGVM_conn_close()
+    End Sub
+    Private Sub AutoCompProject()
+        GGVM_conn()
+        If DivUser = "0" Then
+            sql = "select subdivisi from subdivisi"
+        Else
+            sql = "select subdivisi from subdivisi where id_divisi = '" & DivUser & "'"
+        End If
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+        Dim Project As New AutoCompleteStringCollection
+        For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
+            Project.Add(ds.Tables(0).Rows(i)("subdivisi").ToString())
+        Next
+        With TProject
+            .AutoCompleteSource = AutoCompleteSource.CustomSource
+            .AutoCompleteCustomSource = Project
+            .AutoCompleteMode = AutoCompleteMode.Suggest
+        End With
+        GGVM_conn_close()
+    End Sub
+    Private Sub AutoCompVenue()
+        GGVM_conn()
+        sql = "select * from kota"
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+        Dim Venue As New AutoCompleteStringCollection()
+        For i = 0 To ds.Tables(0).Rows.Count - 1
+            Venue.Add(ds.Tables(0).Rows(i)("kota").ToString())
+        Next
+        With TVenue
+            .AutoCompleteCustomSource = Venue
+            .AutoCompleteMode = AutoCompleteMode.Suggest
+            .AutoCompleteSource = AutoCompleteSource.CustomSource
+        End With
+        GGVM_conn_close()
+    End Sub
+    Private Sub ComboJenisPE()
+        GGVM_conn()
+        CJenisPE.Items.Clear()
+        If DivUser = "0" Then
+            sql = "select * from evn_jenis_pe"
+        Else
+            sql = "select * from evn_jenis_pe where iddivisi = '" & DivUser & "'"
+        End If
+        cmd = New OdbcCommand(sql, conn)
+        dr = cmd.ExecuteReader
+        Do While dr.Read
+            CJenisPE.Items.Add(dr("jenis_pe"))
+        Loop
+        GGVM_conn_close()
+    End Sub
+    Private Sub AutoBarangExhibition()
+        'GGVM_conn()
+        sql = ""
+        sql = sql & "SELECT a.* FROM barang_penawaran a "
+        sql = sql & " JOIN subkelompok b on a.idsubkel = b.idsubkel "
+        sql = sql & " JOIN kelompok c on b.idkelompok = c.idkelompok "
+        sql = sql & " WHERE c.idkelompok = '18'"
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+    End Sub
+    Private Sub AutoBarangEvent()
+        GGVM_conn()
+        If TInfoKontrak.Text <> "" Then
+            sql = ""
+            sql = sql & "SELECT b.item_no, b.material_no, a.barang from barang_penawaran a"
+            sql = sql & " JOIN evn_material b on a.idbarang = b.idbarang  "
+            sql = sql & " JOIN evn_kontrak c on c.idkontrak = b.idkontrak "
+            sql = sql & " WHERE c.idkontrak = '" & TInfoKontrak.Text & "'"
+        Else
+            sql = "SELECT barang from barang_penawaran where idsubkel = '71' and idkontrak is nULL"
+        End If
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+    End Sub
+    Private Sub SuperSUBarangPE()
+        sql = ""
+        sql = sql & "SELECT a.* FROM barang_penawaran a "
+        sql = sql & " JOIN subkelompok b on a.idsubkel = b.idsubkel "
+        sql = sql & " JOIN kelompok c on b.idkelompok = c.idkelompok "
+        sql = sql & " WHERE c.idkelompok in (7,18)"
+        da = New OdbcDataAdapter(sql, conn)
+        ds = New DataSet
+        da.Fill(ds)
+    End Sub
+    Private Sub CompleteBarangPE()
+        GGVM_conn()
+        If DivUser = "17" Then
+            TDay.Visible = False
+            CSDay.Visible = False
+            Call AutoBarangExhibition()
+        ElseIf DivUser = "2" Then
+            Call AutoBarangEvent()
+            TMaterials.Visible = False
+            TDimensi.Visible = False
+        Else
+            Call SuperSUBarangPE()
+        End If
+        Dim brgpen As New AutoCompleteStringCollection
+        For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
+            brgpen.Add(ds.Tables(0).Rows(i)("barang").ToString())
+        Next
+        With TCari
+            .AutoCompleteSource = AutoCompleteSource.CustomSource
+            .AutoCompleteCustomSource = brgpen
+            .AutoCompleteMode = AutoCompleteMode.Suggest
+        End With
+    End Sub
 #End Region
 #Region "Deklarasi Perintah"
-	Sub KondisiTambah()
-		TNoPE.Clear()
-		TProject.Clear()
-		TKlien.Clear()
-		TVenue.Clear()
-		TPeserta.Clear()
-		TTotalEvent.Text = "0"
-		RpPPN.Text = "0"
-		StartDate.Value = DateTime.Now
-		EndDate.Value = DateTime.Now
-		TimeStart.Value = DateTime.Now
-		TimeEnd.Value = DateTime.Now
-		PPN.EditValue = "0"
-		TApprov.Clear()
-		TJabatan.Clear()
+    Sub KondisiTambah()
+        TNoPE.Clear()
+        TProject.Clear()
+        TKlien.Clear()
+        TVenue.Clear()
+        TPeserta.Clear()
+        TTotalEvent.Text = "0"
+        RpPPN.Text = "0"
+        StartDate.Value = DateTime.Now
+        EndDate.Value = DateTime.Now
+        TimeStart.Value = DateTime.Now
+        TimeEnd.Value = DateTime.Now
+        PPN.EditValue = "0"
+        TApprov.Clear()
+        TJabatan.Clear()
         DTTanggal.Value = DateTime.Now
         TidPE.Clear()
         TidProject.Clear()
         TidKlien.Clear()
         TidVenue.Clear()
-        CJenisPE.Enabled = False
+        CJenisPE.Enabled = True
         TProject.Enabled = True
         TKlien.Enabled = True
         TVenue.Enabled = True
@@ -553,8 +553,8 @@ Partial Public Class FrmPEEvn
         sql = sql & "update evn_penawaran set total = '" & TotalHargaEvent & "',rp_ppn = '" & NilaiPPN & "',grandtotal = '" & GrandTotal & "' where idpe = '" & TidPE.Text & "'"
         cmd = New OdbcCommand(sql, conn)
         cmd.ExecuteNonQuery()
-        GGVM_conn()
-        conn.Dispose()
+        'GGVM_conn()
+        'conn.Dispose()
     End Sub
     Private Sub NominalPenawaran()
         Dim Nominal As Double
@@ -627,12 +627,12 @@ Partial Public Class FrmPEEvn
             EndDate.CustomFormat = "dd/MMM/yyyy"
             Call ListHeaderPE()
             Call ComboJenisPE()
+            Call CounterLoad()
             Call AwalTampil()
+            Call HitungBisnis()
             Call BersihPE()
             Call DetailTampil()
             Call BacaPE()
-            Call CounterLoad()
-            Call HitungBisnis()
 
             If DivUser = "17" Then
                 TDay.Visible = False
@@ -1167,7 +1167,7 @@ Partial Public Class FrmPEEvn
                     ListPE.Enabled = True
                     MsgBox("Data Telah diTambahkan", MsgBoxStyle.MsgBoxRight)
                 Catch ex As Exception
-                    conn.Close()
+                    'conn.Close()
                     MsgBox("Data Gagal", MsgBoxStyle.Critical, "Message !!")
                 End Try
 
@@ -1179,7 +1179,7 @@ Partial Public Class FrmPEEvn
                         PanelAlasan.Visible = True
                         TARevisi.Focus()
                     Catch ex As Exception
-                        conn.Close()
+                        'conn.Close()
                         MsgBox("Data Gagal", MsgBoxStyle.Critical, "Message !!")
                     End Try
                 End If
@@ -1210,12 +1210,15 @@ Partial Public Class FrmPEEvn
     'Ribbon Penawaran
     Private Sub BuatPE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BuatPE.ItemClick
         Try
+            GGVM_conn()
             Call KondisiTambah()
             Call DetailTambah()
             Call AutoCompKlien()
             Call AutoCompProject()
             Call AutoCompVenue()
             Call ComboJenisPE()
+            Call HitungBisnis()
+            Call BacaPE()
             ListPE.Enabled = False
             SelesaiDetail.Enabled = True
             TampilDetail.Items.Clear()
@@ -1257,682 +1260,694 @@ Partial Public Class FrmPEEvn
             Call Data()
             sql = "select * from evn_penawaran where nope = '" & TNoPE.Text & "'"
             cmd = New OdbcCommand(sql, conn)
-			dr = cmd.ExecuteReader
-			dr.Read()
-			If Not dr.HasRows = True Then
-				If MsgBox("Apakah data ingin disimpan??", MsgBoxStyle.Information Or MsgBoxStyle.YesNo, "Pemberitahuan !!") = MsgBoxResult.Yes Then
-					Try
-						If DivUser = "2" Then
-							sql = " Select a.nope_event, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi = '" & DivUser & "' "
-						ElseIf DivUser = "17" Then
-							sql = " Select a.nope_exhibition, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi = '" & DivUser & "' "
-						ElseIf DivUser = "18" Then
-							sql = " Select a.nope_activation, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi ='" & DivUser & "'"
-						End If
-						cmd = New OdbcCommand(sql, conn)
-						dr = cmd.ExecuteReader
-						dr.Read()
-						thn = Microsoft.VisualBasic.Right(DTTanggal.Text, 4)
-						If thn = dr.GetString(1) Then
-							If DivUser = "2" Then
-								count = dr.Item("nope_event")
-							ElseIf DivUser = "17" Then
-								count = dr.Item("nope_exhibition")
-							ElseIf DivUser = "18" Then
-								count = dr.Item("nope_activation")
-							End If
-						Else
-							count = 0
-						End If
-						count = count + 1
-						divisiid = dr.GetString(3)
-						If divisiid = "17" Then
-							divisiid = "4"
-						End If
-						divisiid = Microsoft.VisualBasic.Right("0" & divisiid, 2)
-						urutpe = Microsoft.VisualBasic.Right("0000" & count, 4)
+            dr = cmd.ExecuteReader
+            dr.Read()
+            If Not dr.HasRows = True Then
+                If MsgBox("Apakah data ingin disimpan??", MsgBoxStyle.Information Or MsgBoxStyle.YesNo, "Pemberitahuan !!") = MsgBoxResult.Yes Then
+                    Try
+                        If DivUser = "2" Then
+                            sql = " Select a.nope_event, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi = '" & DivUser & "' "
+                        ElseIf DivUser = "17" Then
+                            sql = " Select a.nope_exhibition, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi = '" & DivUser & "' "
+                        ElseIf DivUser = "18" Then
+                            sql = " Select a.nope_activation, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi ='" & DivUser & "'"
+                        End If
+                        cmd = New OdbcCommand(sql, conn)
+                        dr = cmd.ExecuteReader
+                        dr.Read()
+                        thn = Microsoft.VisualBasic.Right(DTTanggal.Text, 4)
+                        If thn = dr.GetString(1) Then
+                            If DivUser = "2" Then
+                                count = dr.Item("nope_event")
+                            ElseIf DivUser = "17" Then
+                                count = dr.Item("nope_exhibition")
+                            ElseIf DivUser = "18" Then
+                                count = dr.Item("nope_activation")
+                            End If
+                        Else
+                            count = 0
+                        End If
+                        count = count + 1
+                        divisiid = dr.GetString(3)
+                        If divisiid = "17" Then
+                            divisiid = "4"
+                        End If
+                        divisiid = Microsoft.VisualBasic.Right("0" & divisiid, 2)
+                        urutpe = Microsoft.VisualBasic.Right("0000" & count, 4)
 
-						bln = bulan(DTTanggal.Text)
-						thn = Microsoft.VisualBasic.Right(DTTanggal.Text, 4)
-						urutpe = urutpe + "/GGVM-" + divisiid + "/" + bln + "/" + thn
+                        bln = bulan(DTTanggal.Text)
+                        thn = Microsoft.VisualBasic.Right(DTTanggal.Text, 4)
+                        urutpe = urutpe + "/GGVM-" + divisiid + "/" + bln + "/" + thn
 
-						c = ""
-						If count = 1 Then
-							If DivUser = "2" Then
-								c = c & " update counter set nope_event = '" & count & "',"
-							ElseIf DivUser = "17" Then
-								c = c & " update counter set nope_exhibition = '" & count & "',"
-							ElseIf DivUser = "18" Then
-								c = c & " update counter set nope_activation = '" & count & "',"
-							End If
-							c = c & " thnpe_event = '" & Microsoft.VisualBasic.Right(DTTanggal.Text, 4) & "'"
-						Else
-							c = c & " update counter set nope_event = '" & count & "'"
-						End If
-						cmd = New Odbc.OdbcCommand(c, conn)
-						cmd.ExecuteNonQuery()
+                        c = ""
+                        If count = 1 Then
+                            If DivUser = "2" Then
+                                c = c & " update counter set nope_event = '" & count & "',"
+                            ElseIf DivUser = "17" Then
+                                c = c & " update counter set nope_exhibition = '" & count & "',"
+                            ElseIf DivUser = "18" Then
+                                c = c & " update counter set nope_activation = '" & count & "',"
+                            End If
+                            c = c & " thnpe_event = '" & Microsoft.VisualBasic.Right(DTTanggal.Text, 4) & "'"
+                        Else
+                            c = c & " update counter set nope_event = '" & count & "'"
+                        End If
+                        cmd = New Odbc.OdbcCommand(c, conn)
+                        cmd.ExecuteNonQuery()
 
-						sql = ""
-						sql = sql & "insert evn_penawaran (nope,idklien,idjenis_pe,project,venue,tgl_event,"
-						sql = sql & "start_event,end_event,waktu_event,starttime,endtime,peserta,tgl_pe,total,rp_ppn, "
-						If TApprov.Text <> "" Then
-							sql = sql & "approved_by,jabatan,"
-						End If
-						sql = sql & "userid_input,timeinput,iddivisi,idsubdivisi)"
-						sql = sql & "values ('" & urutpe & "','" & TidKlien.Text & "','" & TidJenisPE.Text & "','" & TProject.Text & "','" & TVenue.Text & "',"
-						sql = sql & "'" & tglevent & "','" & Format(StartDate.Value, "yyyy/MM/dd") & "','" & Format(EndDate.Value, "yyyy/MM/dd") & "','" & waktuevent & "',"
-						sql = sql & "'" & Format(TimeStart.Value, "HH:mm") & "','" & Format(TimeEnd.Value, "HH:mm") & "','" & TPeserta.Text & "','" & Format(DTTanggal.Value, "yyyy/MM/dd") & "','" & TTotalEvent.Text & "','" & RpPPN.Text & "',"
-						If TApprov.Text <> "" Then
-							sql = sql & "'" & TApprov.Text & "','" & TJabatan.Text & "',"
-						End If
-						sql = sql & "'" & userid & "',now(),'" & DivUser & "','" & TidProject.Text & "')"
-						cmd = New OdbcCommand(sql, conn)
-						cmd.ExecuteNonQuery()
+                        sql = ""
+                        sql = sql & "insert evn_penawaran (nope,idklien,idjenis_pe,project,venue,tgl_event,"
+                        sql = sql & "start_event,end_event,waktu_event,starttime,endtime,peserta,tgl_pe,total,rp_ppn, "
+                        If TApprov.Text <> "" Then
+                            sql = sql & "approved_by,jabatan,"
+                        End If
+                        sql = sql & "userid_input,timeinput,iddivisi,idsubdivisi)"
+                        sql = sql & "values ('" & urutpe & "','" & TidKlien.Text & "','" & TidJenisPE.Text & "','" & TProject.Text & "','" & TVenue.Text & "',"
+                        sql = sql & "'" & tglevent & "','" & Format(StartDate.Value, "yyyy/MM/dd") & "','" & Format(EndDate.Value, "yyyy/MM/dd") & "','" & waktuevent & "',"
+                        sql = sql & "'" & Format(TimeStart.Value, "HH:mm") & "','" & Format(TimeEnd.Value, "HH:mm") & "','" & TPeserta.Text & "','" & Format(DTTanggal.Value, "yyyy/MM/dd") & "','" & TTotalEvent.Text & "','" & RpPPN.Text & "',"
+                        If TApprov.Text <> "" Then
+                            sql = sql & "'" & TApprov.Text & "','" & TJabatan.Text & "',"
+                        End If
+                        sql = sql & "'" & userid & "',now(),'" & DivUser & "','" & TidProject.Text & "')"
+                        cmd = New OdbcCommand(sql, conn)
+                        cmd.ExecuteNonQuery()
 
-						Call BacaPE()
-						Call BersihPE()
-						MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-						ProsesDetail = "Tambah"
-						c = ""
-						c = c & " Select max(idpe)As id from evn_penawaran "
-						da = New OdbcDataAdapter(c, conn)
-						dt = New DataTable
-						da.Fill(dt)
-						If dt.Rows.Count > 0 Then
-							TidPE.Text = dt.Rows(0)("id")
-						End If
-						Call AwalTampil()
-						BuatPE.Enabled = False
-						BatalTool.Enabled = True
-					Catch ex As Exception
-						conn.Close()
-						MsgBox("Data Gagal di Simpan", MsgBoxStyle.Critical, "Message !!")
-						Exit Sub
-						GGVM_conn_close()
-					End Try
-					GGVM_conn_close()
-				Else
-					Return
-				End If
-			Else
-				Return
-			End If
-		End If
-	End Sub
-	Private Sub BatalTool_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BatalTool.ItemClick
-		Try
-			Call AwalTampil()
-			Call BersihPE()
-			BuatPE.Enabled = True
-			ListPE.Enabled = True
-			TampilDetail.Items.Clear()
-		Catch ex As Exception
-			MsgBox("Terjadi kesalahan! " & ex.Message)
-		End Try
-	End Sub
-	Private Sub CetakTool_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles CetakTool.ItemClick
-		Dim f As New FrmCetak
-		Dim ada As Boolean
-		Dim jmldt As Integer = 0
-		Dim brs As Integer
-		'ListPE.BeginUpdate()
-		For i = 0 To ListPE.Items.Count - 1
-			If ListPE.Items(i).Checked = True Then
-				ada = True
-				brs = i
-				jmldt = jmldt + 1
+                        Call BacaPE()
+                        Call BersihPE()
+                        MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+                        ProsesDetail = "Tambah"
+                        c = ""
+                        c = c & " Select max(idpe)As id from evn_penawaran "
+                        da = New OdbcDataAdapter(c, conn)
+                        dt = New DataTable
+                        da.Fill(dt)
+                        If dt.Rows.Count > 0 Then
+                            TidPE.Text = dt.Rows(0)("id")
+                        End If
+                        Call AwalTampil()
+                        BuatPE.Enabled = False
+                        BatalTool.Enabled = True
+                    Catch ex As Exception
+                        'conn.Close()
+                        MsgBox("Data Gagal di Simpan", MsgBoxStyle.Critical, "Message !!")
+                        Exit Sub
+                        GGVM_conn_close()
+                    End Try
+                    GGVM_conn_close()
+                Else
+                    Return
+                End If
+            Else
+                Return
+            End If
+        End If
+    End Sub
+    Private Sub BatalTool_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BatalTool.ItemClick
+        Try
+            Call AwalTampil()
+            Call BersihPE()
+            BuatPE.Enabled = True
+            ListPE.Enabled = True
+            TampilDetail.Items.Clear()
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan! " & ex.Message)
+        End Try
+    End Sub
+    Private Sub CetakTool_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles CetakTool.ItemClick
+        Dim f As New FrmCetak
+        Dim ada As Boolean
+        Dim jmldt As Integer = 0
+        Dim brs As Integer
+        'ListPE.BeginUpdate()
+        For i = 0 To ListPE.Items.Count - 1
+            If ListPE.Items(i).Checked = True Then
+                ada = True
+                brs = i
+                jmldt = jmldt + 1
 
-				If ada = False Then
-					MsgBox("Tidak ada data SURAT JALAN yang akan di-CETAK, Pilih dulu datanya!!...", MsgBoxStyle.Information, "Information")
-					ListPE.Focus()
-					Exit Sub
-				ElseIf jmldt > 1 Then
-					MsgBox("Hanya 1(satu) data SURAT JALAN yg bisa di-CETAK !!...", MsgBoxStyle.Information, "Information")
-					ListPE.Focus()
-					Exit Sub
-				Else
-					For Each item As ListViewItem In ListPE.CheckedItems
-						If item.Checked Then
-							CetakIdPE = item.SubItems(9).Text
-						End If
-					Next
-					If DivUser = "2" Then
-						If TidKlien.Text = "1" Then
-							ProsesCetak = "penestle"
-						Else
-							ProsesCetak = "peAll"
-						End If
-					ElseIf DivUser = "17" Then
-						ProsesCetak = "Exhibition"
-					Else
-						MsgBox("Gagal Cetak !" & MsgBoxStyle.Critical)
-					End If
-				End If
+                If ada = False Then
+                    MsgBox("Tidak ada data SURAT JALAN yang akan di-CETAK, Pilih dulu datanya!!...", MsgBoxStyle.Information, "Information")
+                    ListPE.Focus()
+                    Exit Sub
+                ElseIf jmldt > 1 Then
+                    MsgBox("Hanya 1(satu) data SURAT JALAN yg bisa di-CETAK !!...", MsgBoxStyle.Information, "Information")
+                    ListPE.Focus()
+                    Exit Sub
+                Else
+                    For Each item As ListViewItem In ListPE.CheckedItems
+                        If item.Checked Then
+                            CetakIdPE = item.SubItems(9).Text
+                        End If
+                    Next
+                    If DivUser = "2" Then
+                        If TidKlien.Text = "1" Then
+                            ProsesCetak = "penestle"
+                        Else
+                            ProsesCetak = "peAll"
+                        End If
+                    ElseIf DivUser = "17" Then
+                        ProsesCetak = "Exhibition"
+                    Else
+                        MsgBox("Gagal Cetak !" & MsgBoxStyle.Critical)
+                    End If
+                End If
 
-			End If
-		Next
-		f.ShowDialog()
-	End Sub
-	Private Sub DealPe_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles DealPe.ItemClick
-		If TidPE.Text = "" Then
-			MsgBox("Pilih Dulu Datanya !", MsgBoxStyle.Information)
-		Else
-			PApproved.Visible = True
-			TInputApproved.Focus()
-		End If
-	End Sub
-	Private Sub DeletePE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles DeletePE.ItemClick
-		Dim ada As Boolean
-		Dim brs, jmldt As Integer
-		ada = False
-		jmldt = 0
-		ListPE.BeginUpdate()
-		Dim I As Integer
-		For I = ListPE.Items.Count - 1 To 0 Step -1
-			If ListPE.Items(I).Checked = True Then
-				ada = True
-				brs = I
-				jmldt = jmldt + 1
-				For Each item As ListViewItem In ListPE.CheckedItems
-					GGVM_conn()
-					sql = " update evn_penawaran set userid_delete= '" & userid & "', timedelete=now() where idpe = '" & item.SubItems(9).Text & "'"
-					cmd = New OdbcCommand(sql, conn)
-					cmd.ExecuteNonQuery()
+            End If
+        Next
+        f.ShowDialog()
+    End Sub
+    Private Sub DealPe_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles DealPe.ItemClick
+        If TidPE.Text = "" Then
+            MsgBox("Pilih Dulu Datanya !", MsgBoxStyle.Information)
+        Else
+            PApproved.Visible = True
+            TInputApproved.Focus()
+        End If
+    End Sub
+    Private Sub DeletePE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles DeletePE.ItemClick
+        Dim ada As Boolean
+        Dim brs, jmldt As Integer
+        ada = False
+        jmldt = 0
+        ListPE.BeginUpdate()
+        Dim I As Integer
+        For I = ListPE.Items.Count - 1 To 0 Step -1
+            If ListPE.Items(I).Checked = True Then
+                ada = True
+                brs = I
+                jmldt = jmldt + 1
+                For Each item As ListViewItem In ListPE.CheckedItems
+                    GGVM_conn()
+                    sql = " update evn_penawaran set userid_delete= '" & userid & "', timedelete=now() where idpe = '" & item.SubItems(9).Text & "'"
+                    cmd = New OdbcCommand(sql, conn)
+                    cmd.ExecuteNonQuery()
 
-					Dim sql1, sql2, sql3 As String
-					sql1 = "insert into evn_buffer_penawaran select * from evn_penawaran where idpe = ? "
-					cmd = New OdbcCommand
-					With cmd
-						.CommandText = (sql1)
-						.Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
-						.Connection = conn
-					End With
-					dr = cmd.ExecuteReader
-					Console.WriteLine(cmd.CommandText.ToString)
-					While dr.Read
-						Console.WriteLine(dr(0))
-						Console.WriteLine()
-					End While
-					Console.ReadLine()
-					'conn.Close()
-					'dr = Nothing
-					'cmd = Nothing
+                    Dim sql1, sql2, sql3 As String
+                    sql1 = "insert into evn_buffer_penawaran select * from evn_penawaran where idpe = ? "
+                    cmd = New OdbcCommand
+                    With cmd
+                        .CommandText = (sql1)
+                        .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
+                        .Connection = conn
+                    End With
+                    dr = cmd.ExecuteReader
+                    Console.WriteLine(cmd.CommandText.ToString)
+                    While dr.Read
+                        Console.WriteLine(dr(0))
+                        Console.WriteLine()
+                    End While
+                    Console.ReadLine()
+                    'conn.Close()
+                    'dr = Nothing
+                    'cmd = Nothing
 
-					sql3 = "insert into evn_tmp_dp select * from evn_detail_penawaran where idpe = ? "
-					cmd = New OdbcCommand
-					With cmd
-						.CommandText = (sql3)
-						.Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
-						.Connection = conn
-					End With
-					dr = cmd.ExecuteReader
-					Console.WriteLine(cmd.CommandText.ToString)
-					While dr.Read
-						Console.WriteLine(dr(0))
-						Console.WriteLine()
-					End While
-					Console.ReadLine()
+                    sql3 = "insert into evn_tmp_dp select * from evn_detail_penawaran where idpe = ? "
+                    cmd = New OdbcCommand
+                    With cmd
+                        .CommandText = (sql3)
+                        .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
+                        .Connection = conn
+                    End With
+                    dr = cmd.ExecuteReader
+                    Console.WriteLine(cmd.CommandText.ToString)
+                    While dr.Read
+                        Console.WriteLine(dr(0))
+                        Console.WriteLine()
+                    End While
+                    Console.ReadLine()
 
-					sql2 = "DELETE FROM evn_penawaran WHERE idpe = ?"
-					cmd = New OdbcCommand
-					With cmd
-						.CommandText = (sql2)
-						.Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
-						.Connection = conn
-					End With
-					dr = cmd.ExecuteReader
-					Console.WriteLine(cmd.CommandText.ToString)
-					While dr.Read
-						Console.WriteLine(dr(0))
-						Console.WriteLine()
-					End While
-					Console.ReadLine()
-					conn.Close()
-					dr = Nothing
-					cmd = Nothing
+                    sql2 = "DELETE FROM evn_penawaran WHERE idpe = ?"
+                    cmd = New OdbcCommand
+                    With cmd
+                        .CommandText = (sql2)
+                        .Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
+                        .Connection = conn
+                    End With
+                    dr = cmd.ExecuteReader
+                    Console.WriteLine(cmd.CommandText.ToString)
+                    While dr.Read
+                        Console.WriteLine(dr(0))
+                        Console.WriteLine()
+                    End While
+                    Console.ReadLine()
+                    conn.Close()
+                    dr = Nothing
+                    cmd = Nothing
 
-					MsgBox("Penawaran Berhasil diHapus")
-					Call BacaPE()
-					Call BersihPE()
-				Next
-			End If
-		Next I
-		ListPE.EndUpdate()
-	End Sub
-	'Deal Group
-	Private Sub BDeal_Click(sender As Object, e As EventArgs) Handles BDeal.Click
-		Dim result1 As DialogResult = MessageBox.Show("Penawaran ini Sudah Deal?", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-		If result1 = DialogResult.Yes Then
-			GGVM_conn()
-			sql = ""
-			sql = sql & "update evn_penawaran set approved_by = '" & TInputApproved.Text & "',jabatan ='" & TInputJabatan.Text & "' , deal = '1',"
-			sql = sql & " userid_edit = '" & userid & "', timeupdate = now() where idpe = '" & TidPE.Text & "'"
-			cmd = New OdbcCommand(sql, conn)
-			cmd.ExecuteNonQuery()
+                    MsgBox("Penawaran Berhasil diHapus")
+                    Call BacaPE()
+                    Call BersihPE()
+                Next
+            End If
+        Next I
+        ListPE.EndUpdate()
+    End Sub
+    'Deal Group
+    Private Sub BDeal_Click(sender As Object, e As EventArgs) Handles BDeal.Click
+        Dim result1 As DialogResult = MessageBox.Show("Penawaran ini Sudah Deal?", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result1 = DialogResult.Yes Then
+            GGVM_conn()
+            sql = ""
+            sql = sql & "update evn_penawaran set approved_by = '" & TInputApproved.Text & "',jabatan ='" & TInputJabatan.Text & "' , deal = '1',"
+            sql = sql & " userid_edit = '" & userid & "', timeupdate = now() where idpe = '" & TidPE.Text & "'"
+            cmd = New OdbcCommand(sql, conn)
+            cmd.ExecuteNonQuery()
 
-			Call BacaPE()
-			ListPE.SelectedItems.Clear()
-			PApproved.Visible = False
-			TInputJabatan.Text = ""
-			TInputApproved.Text = ""
-		Else
-			Return
-			PApproved.Visible = False
-		End If
-	End Sub
-	Private Sub TutupDeal_Click(sender As Object, e As EventArgs) Handles TutupDeal.Click
-		PApproved.Visible = False
-		TInputApproved.Text = ""
-		TInputJabatan.Text = ""
-	End Sub
-	'End Deal
-	'End Ribbon Penawaran
-	Private Sub PInput_MouseDown(sender As Object, e As MouseEventArgs) Handles PInput.MouseDown
-		Panel1Captured = True
-		Panel1Grabbed = e.Location
-	End Sub
-	Private Sub PInput_MouseMove(sender As Object, e As MouseEventArgs) Handles PInput.MouseMove
-		If (Panel1Captured) Then PInput.Location = PInput.Location + e.Location - Panel1Grabbed
-	End Sub
+            Call BacaPE()
+            ListPE.SelectedItems.Clear()
+            PApproved.Visible = False
+            TInputJabatan.Text = ""
+            TInputApproved.Text = ""
+        Else
+            Return
+            PApproved.Visible = False
+        End If
+    End Sub
+    Private Sub TutupDeal_Click(sender As Object, e As EventArgs) Handles TutupDeal.Click
+        PApproved.Visible = False
+        TInputApproved.Text = ""
+        TInputJabatan.Text = ""
+    End Sub
+    'End Deal
+    'End Ribbon Penawaran
+    Private Sub PInput_MouseDown(sender As Object, e As MouseEventArgs) Handles PInput.MouseDown
+        Panel1Captured = True
+        Panel1Grabbed = e.Location
+    End Sub
+    Private Sub PInput_MouseMove(sender As Object, e As MouseEventArgs) Handles PInput.MouseMove
+        If (Panel1Captured) Then PInput.Location = PInput.Location + e.Location - Panel1Grabbed
+    End Sub
 
-	Private Sub BtnKeluar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnKeluar.ItemClick
-		Me.Close()
-	End Sub
+    Private Sub BtnKeluar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnKeluar.ItemClick
+        Me.Close()
+    End Sub
 
-	Private Sub PInput_MouseUp(sender As Object, e As MouseEventArgs) Handles PInput.MouseUp
-		Panel1Captured = False
-	End Sub
+    Private Sub PInput_MouseUp(sender As Object, e As MouseEventArgs) Handles PInput.MouseUp
+        Panel1Captured = False
+    End Sub
 
-	Private Sub HapusDetail_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles HapusDetail.ItemClick
-		Dim Nominal As Decimal = 0
-		Dim ada As Boolean
-		Dim brs, jmldt As Integer
-		ada = False
-		jmldt = 0
-		TampilDetail.BeginUpdate() ' Turn off the ListView
-		Dim I As Integer
-		For I = TampilDetail.Items.Count - 1 To 0 Step -1
-			If TampilDetail.Items(I).Checked = True Then
-				ada = True
-				brs = I
-				jmldt = jmldt + 1
-				Nominal = Val(TampilDetail.Items(I).SubItems(12).Text) - Nominal
-				For Each item As ListViewItem In TampilDetail.CheckedItems
-					GGVM_conn()
-					Dim sql1, sql2 As String
-					sql1 = "insert into evn_tmp_dp select * from evn_detail_penawaran where iddetail = ? "
-					cmd = New OdbcCommand
-					With cmd
-						.CommandText = (sql1)
-						.Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(15).Text)
-						.Connection = conn
-					End With
-					dr = cmd.ExecuteReader
-					Console.WriteLine(cmd.CommandText.ToString)
-					While dr.Read
-						Console.WriteLine(dr(0))
-						Console.WriteLine()
-					End While
-					Console.ReadLine()
-					'conn.Close()
-					'dr = Nothing
-					'cmd = Nothing
+    Private Sub HapusDetail_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles HapusDetail.ItemClick
+        Dim Nominal As Decimal = 0
+        Dim ada As Boolean
+        Dim brs, jmldt As Integer
+        ada = False
+        jmldt = 0
+        TampilDetail.BeginUpdate() ' Turn off the ListView
+        Dim I As Integer
+        For I = TampilDetail.Items.Count - 1 To 0 Step -1
+            If TampilDetail.Items(I).Checked = True Then
+                ada = True
+                brs = I
+                jmldt = jmldt + 1
+                Nominal = Val(TampilDetail.Items(I).SubItems(12).Text) - Nominal
+                For Each item As ListViewItem In TampilDetail.CheckedItems
+                    GGVM_conn()
+                    Dim sql1, sql2 As String
+                    sql1 = "insert into evn_tmp_dp select * from evn_detail_penawaran where iddetail = ? "
+                    cmd = New OdbcCommand
+                    With cmd
+                        .CommandText = (sql1)
+                        .Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(15).Text)
+                        .Connection = conn
+                    End With
+                    dr = cmd.ExecuteReader
+                    Console.WriteLine(cmd.CommandText.ToString)
+                    While dr.Read
+                        Console.WriteLine(dr(0))
+                        Console.WriteLine()
+                    End While
+                    Console.ReadLine()
+                    'conn.Close()
+                    'dr = Nothing
+                    'cmd = Nothing
 
-					sql2 = "DELETE FROM evn_detail_penawaran WHERE iddetail = ?"
-					cmd = New OdbcCommand
-					With cmd
-						.CommandText = (sql2)
-						.Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(15).Text)
-						.Connection = conn
-					End With
-					dr = cmd.ExecuteReader
-					Console.WriteLine(cmd.CommandText.ToString)
-					While dr.Read
-						Console.WriteLine(dr(0))
-						Console.WriteLine()
-					End While
-					Console.ReadLine()
-					conn.Close()
-					dr = Nothing
-					cmd = Nothing
+                    sql2 = "DELETE FROM evn_detail_penawaran WHERE iddetail = ?"
+                    cmd = New OdbcCommand
+                    With cmd
+                        .CommandText = (sql2)
+                        .Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(15).Text)
+                        .Connection = conn
+                    End With
+                    dr = cmd.ExecuteReader
+                    Console.WriteLine(cmd.CommandText.ToString)
+                    While dr.Read
+                        Console.WriteLine(dr(0))
+                        Console.WriteLine()
+                    End While
+                    Console.ReadLine()
+                    conn.Close()
+                    dr = Nothing
+                    cmd = Nothing
 
-					MsgBox("Barang Berhasil diHapus")
-					Call BacaDetailPE()
-					Call NominalPenawaran()
-				Next
-			End If
-		Next I
-		TampilDetail.EndUpdate()
-	End Sub
+                    MsgBox("Barang Berhasil diHapus")
+                    Call BacaDetailPE()
+                    Call NominalPenawaran()
+                Next
+            End If
+        Next I
+        TampilDetail.EndUpdate()
+    End Sub
 
-	Private Sub NavigasiPEEvent_SelectedPageChanged(sender As Object, e As SelectedPageChangedEventArgs) Handles NavigasiPEEvent.SelectedPageChanged
-		If NavigasiPEEvent.SelectedPage.Caption = "Detail Barang" Then
-			mainRibbonControl.SelectedPage = RibbonDetailPE
-		Else
-			mainRibbonControl.SelectedPage = RibbonPenawaran
-		End If
-	End Sub
+    Private Sub NavigasiPEEvent_SelectedPageChanged(sender As Object, e As SelectedPageChangedEventArgs) Handles NavigasiPEEvent.SelectedPageChanged
+        If NavigasiPEEvent.SelectedPage.Caption = "Detail Barang" Then
+            mainRibbonControl.SelectedPage = RibbonDetailPE
+        Else
+            mainRibbonControl.SelectedPage = RibbonPenawaran
+        End If
+    End Sub
 
-	Private Sub TQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TQty.KeyPress
-		If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
-			MessageBox.Show("Hanya Boleh Angka !")
-			e.Handled = True
-		ElseIf e.KeyChar = Chr(13) Then
-			CSQty.Focus()
-		Else
-			Return
-		End If
-	End Sub
-	Private Sub CSQty_GotFocus(sender As Object, e As EventArgs) Handles CSQty.GotFocus
-		CSQty.DroppedDown = True
-	End Sub
-	Private Sub CSQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CSQty.KeyPress
-		If e.KeyChar = Chr(13) Then
-			TFreq.Focus()
-		End If
-	End Sub
-	Private Sub TFreq_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TFreq.KeyPress
-		If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
-			MessageBox.Show("Hanya Boleh Angka !")
-			e.Handled = True
-		ElseIf e.KeyChar = Chr(13) Then
-			CSFreq.Focus()
-		Else
-			Return
-		End If
-	End Sub
-	Private Sub CSFreq_GotFocus(sender As Object, e As EventArgs) Handles CSFreq.GotFocus
-		CSFreq.DroppedDown = True
-	End Sub
-	Private Sub CSFreq_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CSFreq.KeyPress
-		If e.KeyChar = Chr(13) Then
-			TDay.Focus()
-		End If
-	End Sub
-	Private Sub TDay_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TDay.KeyPress
-		If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
-			MessageBox.Show("Hanya Boleh Angka !")
-			e.Handled = True
-		ElseIf e.KeyChar = Chr(13) Then
-			CSDay.Focus()
-		Else
-			Return
-		End If
-	End Sub
-	Private Sub CSday_GotFocus(sender As Object, e As EventArgs) Handles CSDay.GotFocus
-		CSDay.DroppedDown = True
-	End Sub
-	Private Sub CSday_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CSDay.KeyPress
-		If e.KeyChar = Chr(13) Then
-			TUnitCost.Focus()
-		End If
-	End Sub
-	Private Sub TUnitCost_GotFocus(sender As Object, e As EventArgs) Handles TUnitCost.GotFocus
-		TTotal_TextChanged(sender, e)
-		If TDay.Text = "" Then
-			TDay.Text = 1
-		End If
-		Dim dimensi As Double
-		Double.TryParse(TDimensi.Text, dimensi)
-		If TQty.Text = "" Or TFreq.Text = "" Then
-			MsgBox("Lengkapi Data !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-			Exit Sub
-			CSDay.Select()
-		Else
-			If DivUser = "17" Then
-				TTotal.Text = Val(CDbl(TQty.Text)) * Val(CDbl(TFreq.Text)) * Val(CDbl(dimensi))
-			ElseIf DivUser = "2" Then
-				TTotal.Text = Val(CDbl(TQty.Text)) * Val(CDbl(TFreq.Text)) * Val(CDbl(TDay.Text))
-			End If
-			FormatNumber(totalunit, 0, TriState.False)
-			totalunit = TTotal.Text
-		End If
-	End Sub
-	Private Sub TUnitCost_TextChanged(sender As Object, e As EventArgs) Handles TUnitCost.TextChanged
-		If TUnitCost.Text = "" Or Not IsNumeric(TUnitCost.Text) Then
-			Exit Sub
-		Else
-			Unitcost = Val(CDbl(TUnitCost.Text))
-		End If
-	End Sub
-	Private Sub TUnitCost_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TUnitCost.KeyPress
-		If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
-			MessageBox.Show("Hanya Boleh Angka !")
-			e.Handled = True
-		ElseIf e.KeyChar = Chr(13) Then
-			Remaks.Focus()
-		Else
-			Return
-		End If
-	End Sub
-	Private Sub Remaks_GotFocus(sender As Object, e As EventArgs) Handles Remaks.GotFocus
+    Private Sub SelesaiDetail_ItemClick(sender As Object, e As ItemClickEventArgs) Handles SelesaiDetail.ItemClick
 
-		SubTotal_TextChanged(sender, e)
-		SubTotal.Text = Val(totalunit) * Val(Unitcost)
-		SbTotal = FormatNumber(SubTotal.Text, 0, TriState.True)
+    End Sub
 
-	End Sub
-	Private Sub SubTotal_TextChanged(sender As Object, e As EventArgs) Handles SubTotal.TextChanged
+    Private Sub TQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TQty.KeyPress
+        If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Hanya Boleh Angka !")
+            e.Handled = True
+        ElseIf e.KeyChar = Chr(13) Then
+            CSQty.Focus()
+        Else
+            Return
+        End If
+    End Sub
+    Private Sub CSQty_GotFocus(sender As Object, e As EventArgs) Handles CSQty.GotFocus
+        CSQty.DroppedDown = True
+    End Sub
+    Private Sub CSQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CSQty.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TFreq.Focus()
+        End If
+    End Sub
+    Private Sub TFreq_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TFreq.KeyPress
+        If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Hanya Boleh Angka !")
+            e.Handled = True
+        ElseIf e.KeyChar = Chr(13) Then
+            CSFreq.Focus()
+        Else
+            Return
+        End If
+    End Sub
+    Private Sub CSFreq_GotFocus(sender As Object, e As EventArgs) Handles CSFreq.GotFocus
+        CSFreq.DroppedDown = True
+    End Sub
+    Private Sub CSFreq_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CSFreq.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TDay.Focus()
+        End If
+    End Sub
+    Private Sub TDay_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TDay.KeyPress
+        If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Hanya Boleh Angka !")
+            e.Handled = True
+        ElseIf e.KeyChar = Chr(13) Then
+            CSDay.Focus()
+        Else
+            Return
+        End If
+    End Sub
+    Private Sub CSday_GotFocus(sender As Object, e As EventArgs) Handles CSDay.GotFocus
+        CSDay.DroppedDown = True
+    End Sub
+    Private Sub CSday_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CSDay.KeyPress
+        If e.KeyChar = Chr(13) Then
+            TUnitCost.Focus()
+        End If
+    End Sub
+    Private Sub TUnitCost_GotFocus(sender As Object, e As EventArgs) Handles TUnitCost.GotFocus
+        TTotal_TextChanged(sender, e)
+        If TDay.Text = "" Then
+            TDay.Text = 1
+        End If
+        Dim dimensi As Double
+        Double.TryParse(TDimensi.Text, dimensi)
+        If TQty.Text = "" Or TFreq.Text = "" Then
+            MsgBox("Lengkapi Data !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+            Exit Sub
+            CSDay.Select()
+        Else
+            If DivUser = "17" Then
+                TTotal.Text = Val(CDbl(TQty.Text)) * Val(CDbl(TFreq.Text)) * Val(CDbl(dimensi))
+            ElseIf DivUser = "2" Then
+                TTotal.Text = Val(CDbl(TQty.Text)) * Val(CDbl(TFreq.Text)) * Val(CDbl(TDay.Text))
+            End If
+            FormatNumber(totalunit, 0, TriState.False)
+            totalunit = TTotal.Text
+        End If
+    End Sub
+    Private Sub TUnitCost_TextChanged(sender As Object, e As EventArgs) Handles TUnitCost.TextChanged
+        If TUnitCost.Text = "" Or Not IsNumeric(TUnitCost.Text) Then
+            Exit Sub
+        Else
+            Unitcost = Val(CDbl(TUnitCost.Text))
+        End If
+    End Sub
+    Private Sub TUnitCost_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TUnitCost.KeyPress
+        If Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ",") And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Hanya Boleh Angka !")
+            e.Handled = True
+        ElseIf e.KeyChar = Chr(13) Then
+            Remaks.Focus()
+        Else
+            Return
+        End If
+    End Sub
+    Private Sub Remaks_GotFocus(sender As Object, e As EventArgs) Handles Remaks.GotFocus
+        SubTotal_TextChanged(sender, e)
+        SubTotal.Text = Val(totalunit) * Val(Unitcost)
+        SbTotal = FormatNumber(SubTotal.Text, 0, TriState.True)
+    End Sub
+    Private Sub SubTotal_TextChanged(sender As Object, e As EventArgs) Handles SubTotal.TextChanged
 
-	End Sub
-	Private Sub TTotal_TextChanged(sender As Object, e As EventArgs) Handles TTotal.TextChanged
+    End Sub
+    Private Sub TTotal_TextChanged(sender As Object, e As EventArgs) Handles TTotal.TextChanged
 
-	End Sub
-	Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-		Call EditCounter()
-	End Sub
-	'Revisi Group
-	Private Sub BSimpanRevisi_Click(sender As Object, e As EventArgs) Handles BSimpanRevisi.Click
-		Dim c As String
-		If Len(Me.TARevisi.Text) < 10 Or Len(Me.TARevisi.Text) > 150 Then
-			MsgBox("Alasan Terlalu Pendek, Minimal 10 Huruf !", MsgBoxStyle.Information, "Information !!")
-			Exit Sub
-		Else
-			GGVM_conn()
-			c = ""
-			c = c & " update evn_penawaran set "
-			c = c & " userid_edit = '" & userid & "',"
-			c = c & " timeupdate = now()"
-			c = c & " where idpe = '" & TidPE.Text & "'"
-			cmd = New Odbc.OdbcCommand(c, conn)
-			cmd.ExecuteNonQuery()
+    End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Call EditCounter()
+    End Sub
+    'Revisi Group
+    Private Sub BSimpanRevisi_Click(sender As Object, e As EventArgs) Handles BSimpanRevisi.Click
+        Dim c As String
+        If Len(Me.TARevisi.Text) < 10 Or Len(Me.TARevisi.Text) > 150 Then
+            MsgBox("Alasan Terlalu Pendek, Minimal 10 Huruf !", MsgBoxStyle.Information, "Information !!")
+            Exit Sub
+        Else
+            GGVM_conn()
+            c = ""
+            c = c & " update evn_penawaran set "
+            c = c & " userid_edit = '" & userid & "',"
+            c = c & " timeupdate = now()"
+            c = c & " where idpe = '" & TidPE.Text & "'"
+            cmd = New Odbc.OdbcCommand(c, conn)
+            cmd.ExecuteNonQuery()
 
-			c = ""
-			c = c & " insert into evn_revisi_penawaran (idpe,alasan,timerevisi,userrevisi)"
-			c = c & "values ('" & TidPE.Text & "',"
-			c = c & " '" & TARevisi.Text & "',now(),'" & userid & "')"
-			cmd = New Odbc.OdbcCommand(c, conn)
-			cmd.ExecuteNonQuery()
+            c = ""
+            c = c & " insert into evn_revisi_penawaran (idpe,alasan,timerevisi,userrevisi)"
+            c = c & "values ('" & TidPE.Text & "',"
+            c = c & " '" & TARevisi.Text & "',now(),'" & userid & "')"
+            cmd = New Odbc.OdbcCommand(c, conn)
+            cmd.ExecuteNonQuery()
 
-			sql = ""
-			sql = sql & " select max(revisike) as revisike ,max(idrevisi)as id  from evn_revisi_penawaran where idpe = '" & TidPE.Text & "'"
-			da = New Odbc.OdbcDataAdapter(sql, conn)
-			dt = New DataTable
-			dt.Clear()
-			da.Fill(dt)
-			Dim count As Integer
-			idrevisi.Text = dt.Rows(0)("id")
-			If idrevisi.Text = dt.Rows(0)("id") Then
-				count = dt.Rows(0)("revisike")
-			Else
-				count = 0
-			End If
-			count = count + 1
+            sql = ""
+            sql = sql & " select max(revisike) as revisike ,max(idrevisi)as id  from evn_revisi_penawaran where idpe = '" & TidPE.Text & "'"
+            da = New Odbc.OdbcDataAdapter(sql, conn)
+            dt = New DataTable
+            dt.Clear()
+            da.Fill(dt)
+            Dim count As Integer
+            idrevisi.Text = dt.Rows(0)("id")
+            If idrevisi.Text = dt.Rows(0)("id") Then
+                count = dt.Rows(0)("revisike")
+            Else
+                count = 0
+            End If
+            count = count + 1
 
-			c = ""
-			c = c & "update evn_revisi_penawaran set revisike ='" & count & "' where idrevisi ='" & idrevisi.Text & "'"
-			cmd = New Odbc.OdbcCommand(c, conn)
-			cmd.ExecuteNonQuery()
+            c = ""
+            c = c & "update evn_revisi_penawaran set revisike ='" & count & "' where idrevisi ='" & idrevisi.Text & "'"
+            cmd = New Odbc.OdbcCommand(c, conn)
+            cmd.ExecuteNonQuery()
 
-			PanelAlasan.Visible = False
-			Call Data()
-			sql = ""
-			sql = sql & "update evn_penawaran set "
-			sql = sql & "idklien ='" & Me.TidKlien.Text & "',idjenis_pe ='" & Me.TidJenisPE.Text & "',"
-			sql = sql & "project ='" & Me.TProject.Text & "',venue ='" & Me.TVenue.Text & "',"
-			sql = sql & " tgl_event='" & tglevent & "',start_event ='" & Format(StartDate.Value, "yyyy/MM/dd") & "' ,"
-			sql = sql & "end_event = '" & Format(EndDate.Value, "yyyy/MM/dd") & "',"
-			sql = sql & "waktu_event = '" & waktuevent & "',"
-			sql = sql & "starttime = '" & Format(TimeStart.Value, "HH:mm") & "',"
-			sql = sql & "endtime = '" & Format(TimeEnd.Value, "HH:mm") & "',"
-			sql = sql & "peserta = '" & TPeserta.Text & "' where idpe ='" & TidPE.Text & "' "
-			cmd = New OdbcCommand(sql, conn)
-			cmd.ExecuteNonQuery()
+            PanelAlasan.Visible = False
+            Call Data()
+            sql = ""
+            sql = sql & "update evn_penawaran set "
+            sql = sql & "idklien ='" & Me.TidKlien.Text & "',idjenis_pe ='" & Me.TidJenisPE.Text & "',"
+            sql = sql & "project ='" & Me.TProject.Text & "',venue ='" & Me.TVenue.Text & "',"
+            sql = sql & " tgl_event='" & tglevent & "',start_event ='" & Format(StartDate.Value, "yyyy/MM/dd") & "' ,"
+            sql = sql & "end_event = '" & Format(EndDate.Value, "yyyy/MM/dd") & "',"
+            sql = sql & "waktu_event = '" & waktuevent & "',"
+            sql = sql & "starttime = '" & Format(TimeStart.Value, "HH:mm") & "',"
+            sql = sql & "endtime = '" & Format(TimeEnd.Value, "HH:mm") & "',"
+            sql = sql & "peserta = '" & TPeserta.Text & "' where idpe ='" & TidPE.Text & "' "
+            cmd = New OdbcCommand(sql, conn)
+            cmd.ExecuteNonQuery()
 
-			c = "select * from evn_tmp_dp where idpe = '" & TidPE.Text & "'"
-			cmd = New OdbcCommand(c, conn)
-			dr = cmd.ExecuteReader
-			dr.Read()
-			If dr.HasRows = True Then
-				sql = ""
-				sql = sql & "INSERT INTO evn_revisi_detail_pe"
-				sql = sql & " SELECT b.idrevisi,a.*, b.revisike FROM (SELECT * FROM evn_tmp_dp) a "
-				sql = sql & " LEFT JOIN evn_revisi_penawaran b on a.idpe = b.idpe"
-				sql = sql & " where b.idpe='" & TidPE.Text & "'"
-				cmd = New OdbcCommand(sql, conn)
-				cmd.ExecuteNonQuery()
-			End If
+            c = "select * from evn_tmp_dp where idpe = '" & TidPE.Text & "'"
+            cmd = New OdbcCommand(c, conn)
+            dr = cmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows = True Then
+                sql = ""
+                sql = sql & "INSERT INTO evn_revisi_detail_pe"
+                sql = sql & " SELECT b.idrevisi,a.*, b.revisike FROM (SELECT * FROM evn_tmp_dp) a "
+                sql = sql & " LEFT JOIN evn_revisi_penawaran b on a.idpe = b.idpe"
+                sql = sql & " where b.idpe='" & TidPE.Text & "'"
+                cmd = New OdbcCommand(sql, conn)
+                cmd.ExecuteNonQuery()
+            End If
 
-			sql = ""
-			sql = "delete from evn_tmp_dp where idpe ='" & TidPE.Text & "'"
-			cmd = New OdbcCommand(sql, conn)
-			cmd.ExecuteNonQuery()
+            sql = ""
+            sql = "delete from evn_tmp_dp where idpe ='" & TidPE.Text & "'"
+            cmd = New OdbcCommand(sql, conn)
+            cmd.ExecuteNonQuery()
 
-			Call SimpanTotal()
-			MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-			TampilDetail.Items.Clear()
-			Call BersihPE()
-			Call BacaPE()
-			TampilDetail.Enabled = False
-			ListPE.Enabled = True
-			GGVM_conn_close()
-		End If
-		If NavigasiPEEvent.SelectedPage.Caption = "Detail Barang" Then
-			NavigasiPEEvent.SelectedPage = NavPenawaran
-			mainRibbonControl.SelectedPage = RibbonPenawaran
-		Else
-			mainRibbonControl.SelectedPage = RibbonPenawaran
-		End If
-	End Sub
-	Private Sub TutupRevisi_Click(sender As Object, e As EventArgs) Handles TutupRevisi.Click
-		PanelAlasan.Visible = False
-		TARevisi.Clear()
-		idrevisi.Clear()
-	End Sub
-	'End Revisi'
-	Private Sub iddetail_TextChanged(sender As Object, e As EventArgs) Handles iddetail.TextChanged
-		Try
-			GGVM_conn()
-			sql = "select * from evn_detail_penawaran where iddetail ='" & iddetail.Text & "'"
-			cmd = New OdbcCommand(sql, conn)
-			dr = cmd.ExecuteReader
-			dr.Read()
-			If Not dr.HasRows Then
-				'TCari.Text = ""
-				'	idInpBarang.Text = ""
-				'TQty.Text = ""
-				'CSQty.Text = ""
-				'TFreq.Text = ""
-				'CSFreq.Text = ""
-				'TDay.Text = ""
-				'CSDay.Text = ""
-				'TDimensi.Text = ""
-				'TMaterials.Text = ""
-				'TTotal.Text = ""
-				'TUnitCost.Text = ""
-				'SubTotal.Text = ""
-				'Remaks.Text = ""
-				'NoItem.Text = ""
-				'NoMaterial.Text = ""
-			Else
-				'TCari.Text = dr.Item("barang")
-				'	idInpBarang.Text = dr.Item("idbarang")
-				'TQty.Text = Trim(dr.Item("qty").ToString)
-				'CSQty.Text = dr.Item("satuan_qty")
-				'TFreq.Text = dr.Item("freq")
-				'CSFreq.Text = dr.Item("satuan_freq")
-				'NoItem.Text = dr.Item("item")
-				'NoMaterial.Text = dr.Item("material_no")
-				'TDay.Text = dr.Item("day").ToString
-				'CSDay.Text = dr.Item("satuan_day").ToString
-				'TDimensi.Text = dr.Item("dimensi").ToString
-				'TMaterials.Text = dr.Item("materials").ToString
-				'TTotal.Text = dr.Item("total").ToString
-				'TUnitCost.Text = dr.Item("unitcost").ToString
-				'SubTotal.Text = dr.Item("sub_totalcost").ToString
-				'Remaks.Text = dr.Item("remaks").ToString
-			End If
-		Catch ex As Exception
-			MsgBox("Terjadi Kesalahan!." & ex.Message)
-		Finally
-			GGVM_conn_close()
-		End Try
-	End Sub
-	Private Sub TampilDetail_DoubleClick(sender As Object, e As EventArgs) Handles TampilDetail.DoubleClick
-		PInput.Visible = True
-		BtnOK.Text = "Edit"
-		With Me.TampilDetail
-			Dim i As Integer
-			For Each item As ListViewItem In TampilDetail.SelectedItems
-				i = item.Index
-			Next
-			Dim innercounter As Integer = 0
-			For Each subItem As ListViewItem.ListViewSubItem In TampilDetail.Items(i).SubItems
-				Dim myString As String = TampilDetail.Items(i).SubItems(innercounter).Text
-				Select Case innercounter
-					Case 0
-						TCari.Text = myString
-					Case 1
-						NoItem.Text = myString
-					Case 2
-						NoMaterial.Text = myString
-					Case 3
-						TQty.Text = myString
-					Case 4
-						CSQty.Text = myString
-					Case 5
-						TFreq.Text = myString
-					Case 6
-						CSFreq.Text = myString
-					Case 7
-						TDay.Text = myString
-					Case 8
-						CSDay.Text = myString
-					Case 9
-						TDimensi.Text = myString
-					Case 10
-						TMaterials.Text = myString
-					Case 11
-						TTotal.Text = myString
-					Case 12
-						TUnitCost.Text = myString
-					Case 13
-						SubTotal.Text = myString
-					Case 14
-						Remaks.Text = myString
-					Case 15
-						iddetail.Text = myString
-				End Select
-				innercounter += 1
-			Next
+            Call SimpanTotal()
+            MsgBox("Data berhasil di Perbarui !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+            TampilDetail.Items.Clear()
+            Call BersihPE()
+            TampilDetail.Enabled = False
+            ListPE.Enabled = True
 
-		End With
-	End Sub
-	Private Sub CKontrak_EditValueChanged(sender As Object, e As EventArgs) Handles CKontrak.EditValueChanged
-		GGVM_conn()
-		sql = ""
-		sql = sql & "select * from evn_kontrak where valuecontract = '" & CKontrak.EditValue & "' "
-		cmd = New OdbcCommand(sql, conn)
-		dr = cmd.ExecuteReader
-		dr.Read()
-		If Not dr.HasRows Then
-			TInfoKontrak.Text = ""
-		Else
-			TInfoKontrak.Text = dr.Item("idkontrak")
-		End If
-	End Sub
+            Call ComboJenisPE()
+            Call CounterLoad()
+            Call AwalTampil()
+            Call HitungBisnis()
+            Call BacaPE()
+            FrmPEEvn_Load(sender, e)
+            'GGVM_conn_close()
+        End If
+        If NavigasiPEEvent.SelectedPage.Caption = "Detail Barang" Then
+            NavigasiPEEvent.SelectedPage = NavPenawaran
+            mainRibbonControl.SelectedPage = RibbonPenawaran
+        Else
+            mainRibbonControl.SelectedPage = RibbonPenawaran
+        End If
+    End Sub
+    Private Sub TutupRevisi_Click(sender As Object, e As EventArgs) Handles TutupRevisi.Click
+        PanelAlasan.Visible = False
+        TARevisi.Clear()
+        idrevisi.Clear()
+    End Sub
+    'End Revisi'
+    Private Sub iddetail_TextChanged(sender As Object, e As EventArgs) Handles iddetail.TextChanged
+        Try
+            GGVM_conn()
+            sql = "select * from evn_detail_penawaran where iddetail ='" & iddetail.Text & "'"
+            cmd = New OdbcCommand(sql, conn)
+            dr = cmd.ExecuteReader
+            dr.Read()
+            If Not dr.HasRows Then
+                'TCari.Text = ""
+                '	idInpBarang.Text = ""
+                'TQty.Text = ""
+                'CSQty.Text = ""
+                'TFreq.Text = ""
+                'CSFreq.Text = ""
+                'TDay.Text = ""
+                'CSDay.Text = ""
+                'TDimensi.Text = ""
+                'TMaterials.Text = ""
+                'TTotal.Text = ""
+                'TUnitCost.Text = ""
+                'SubTotal.Text = ""
+                'Remaks.Text = ""
+                'NoItem.Text = ""
+                'NoMaterial.Text = ""
+            Else
+                'TCari.Text = dr.Item("barang")
+                '	idInpBarang.Text = dr.Item("idbarang")
+                'TQty.Text = Trim(dr.Item("qty").ToString)
+                'CSQty.Text = dr.Item("satuan_qty")
+                'TFreq.Text = dr.Item("freq")
+                'CSFreq.Text = dr.Item("satuan_freq")
+                'NoItem.Text = dr.Item("item")
+                'NoMaterial.Text = dr.Item("material_no")
+                'TDay.Text = dr.Item("day").ToString
+                'CSDay.Text = dr.Item("satuan_day").ToString
+                'TDimensi.Text = dr.Item("dimensi").ToString
+                'TMaterials.Text = dr.Item("materials").ToString
+                'TTotal.Text = dr.Item("total").ToString
+                'TUnitCost.Text = dr.Item("unitcost").ToString
+                'SubTotal.Text = dr.Item("sub_totalcost").ToString
+                'Remaks.Text = dr.Item("remaks").ToString
+            End If
+        Catch ex As Exception
+            MsgBox("Terjadi Kesalahan!." & ex.Message)
+        Finally
+            'GGVM_conn_close()
+        End Try
+    End Sub
+    Private Sub TampilDetail_DoubleClick(sender As Object, e As EventArgs) Handles TampilDetail.DoubleClick
+        PInput.Visible = True
+        BtnOK.Text = "Edit"
+        With Me.TampilDetail
+            Dim i As Integer
+            For Each item As ListViewItem In TampilDetail.SelectedItems
+                i = item.Index
+            Next
+            Dim innercounter As Integer = 0
+            For Each subItem As ListViewItem.ListViewSubItem In TampilDetail.Items(i).SubItems
+                Dim myString As String = TampilDetail.Items(i).SubItems(innercounter).Text
+                Select Case innercounter
+                    Case 0
+                        TCari.Text = myString
+                    Case 1
+                        NoItem.Text = myString
+                    Case 2
+                        NoMaterial.Text = myString
+                    Case 3
+                        TQty.Text = myString
+                    Case 4
+                        CSQty.Text = myString
+                    Case 5
+                        TFreq.Text = myString
+                    Case 6
+                        CSFreq.Text = myString
+                    Case 7
+                        TDay.Text = myString
+                    Case 8
+                        CSDay.Text = myString
+                    Case 9
+                        TDimensi.Text = myString
+                    Case 10
+                        TMaterials.Text = myString
+                    Case 11
+                        TTotal.Text = myString
+                    Case 12
+                        TUnitCost.Text = myString
+                    Case 13
+                        SubTotal.Text = myString
+                    Case 14
+                        Remaks.Text = myString
+                    Case 15
+                        iddetail.Text = myString
+                End Select
+                innercounter += 1
+            Next
 
-	Private Sub CekAdaPPN_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles CekAdaPPN.CheckedChanged
-		Call NominalPenawaran()
-	End Sub
+        End With
+    End Sub
+    Private Sub CKontrak_EditValueChanged(sender As Object, e As EventArgs) Handles CKontrak.EditValueChanged
+        GGVM_conn()
+        sql = ""
+        sql = sql & "select * from evn_kontrak where valuecontract = '" & CKontrak.EditValue & "' "
+        cmd = New OdbcCommand(sql, conn)
+        dr = cmd.ExecuteReader
+        dr.Read()
+        If Not dr.HasRows Then
+            TInfoKontrak.Text = ""
+        Else
+            TInfoKontrak.Text = dr.Item("idkontrak")
+        End If
+    End Sub
+
+    Private Sub CekAdaPPN_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles CekAdaPPN.CheckedChanged
+        Call NominalPenawaran()
+    End Sub
+
+    Private Sub ListPE_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListPE.SelectedIndexChanged
+
+    End Sub
 End Class
