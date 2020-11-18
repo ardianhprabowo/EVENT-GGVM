@@ -149,10 +149,6 @@ Public Class MDIGeoGiven
     '    'f.Show()
     'End Sub
 
-    Private Sub BtnActEvent_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnActEvent.ItemClick
-
-    End Sub
-
     Private Sub BtnPEOps_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnPEOps.ItemClick
         For Each frm As Form In Application.OpenForms
             If TypeOf frm Is FrmPEEvent Then
@@ -291,5 +287,64 @@ Public Class MDIGeoGiven
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         Me.Close()
+    End Sub
+    Private Sub BtnActEvent_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnActEvent.ItemClick
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FrmActivation Then
+                frm.Activate()
+                MsgBox("Tutup Dulu Form yang Aktif !")
+                Return
+            End If
+        Next
+        SSManager.ShowWaitForm()
+        For i As Integer = 1 To 100
+            SSManager.SetWaitFormDescription(i.ToString() & "%")
+            Thread.Sleep(10)
+        Next
+        SSManager.CloseWaitForm()
+        Dim f As FrmActivation = New FrmActivation
+        f.MdiParent = Me
+        f.TidJenisPE.Text = "5"
+        f.Show()
+    End Sub
+
+    Private Sub BtnActProject_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnActProject.ItemClick
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FrmActivation Then
+                frm.Activate()
+                MsgBox("Tutup Dulu Form yang Aktif !")
+                Return
+            End If
+        Next
+        SSManager.ShowWaitForm()
+        For i As Integer = 1 To 100
+            SSManager.SetWaitFormDescription(i.ToString() & "%")
+            Thread.Sleep(10)
+        Next
+        SSManager.CloseWaitForm()
+        Dim f As FrmActivation = New FrmActivation
+        f.MdiParent = Me
+        f.TidJenisPE.Text = "6"
+        f.Show()
+    End Sub
+
+    Private Sub BtnActInstore_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnActInstore.ItemClick
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FrmActivation Then
+                frm.Activate()
+                MsgBox("Tutup Dulu Form yang Aktif !")
+                Return
+            End If
+        Next
+        SSManager.ShowWaitForm()
+        For i As Integer = 1 To 100
+            SSManager.SetWaitFormDescription(i.ToString() & "%")
+            Thread.Sleep(10)
+        Next
+        SSManager.CloseWaitForm()
+        Dim f As FrmActivation = New FrmActivation
+        f.MdiParent = Me
+        f.TidJenisPE.Text = "7"
+        f.Show()
     End Sub
 End Class

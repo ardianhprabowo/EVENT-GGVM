@@ -17,8 +17,8 @@ Module Conectionggvm
     Public Usermenu, Fullname As String
     Public sql As String
     Public Sub GGVM_conn()
-        'str = "Dsn=ggvmconn_lokal;server=localhost;uid=root;database=ggvm;port=3306"
-        str = "DSN=ggvmconn;server=192.168.0.10;uid=root;password;toorGGVM;database=geogiven_vm;port=3306"
+        str = "Dsn=ggvmconn_lokal;server=localhost;uid=root;database=ggvm;port=3306"
+        'str = "DSN=ggvmconn;server=192.168.0.10;uid=root;password;toorGGVM;database=geogiven_vm;port=3306"
         conn = New OdbcConnection(str)
         If conn.State = ConnectionState.Closed Then
             conn.Open()
