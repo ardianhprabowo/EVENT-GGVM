@@ -33,19 +33,24 @@ Partial Class FrmActivation
         Me.BtnSimpanPE = New DevExpress.XtraBars.BarButtonItem()
         Me.BatalTools = New DevExpress.XtraBars.BarButtonItem()
         Me.bar3 = New DevExpress.XtraBars.Bar()
-        Me.TTotalProj = New DevExpress.XtraBars.BarEditItem()
+        Me.TTotalCost = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryItemTextEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.TAgentFeeProj = New DevExpress.XtraBars.BarEditItem()
+        Me.TTotalAgenFee = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.BarEditItem1 = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
-        Me.BarEditItem2 = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
-        Me.BarToggleSwitchItem1 = New DevExpress.XtraBars.BarToggleSwitchItem()
+        Me.TTotalPPN = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemTextEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.TTotalBeforeVAT = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemTextEdit4 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.BarEditItem1 = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.BarEditItem2 = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.AdaPPNP = New DevExpress.XtraBars.BarToggleSwitchItem()
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.TabPenawaran = New DevExpress.XtraTab.XtraTabPage()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
@@ -140,6 +145,11 @@ Partial Class FrmActivation
         Me.LabelX32 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX33 = New DevComponents.DotNetBar.LabelX()
         Me.PanelControl5 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelX44 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX48 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX51 = New DevComponents.DotNetBar.LabelX()
+        Me.TGrandTotalCL = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX52 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX139 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX137 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX138 = New DevComponents.DotNetBar.LabelX()
@@ -150,14 +160,13 @@ Partial Class FrmActivation
         Me.LabelX49 = New DevComponents.DotNetBar.LabelX()
         Me.CekPPH = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.LabelX50 = New DevComponents.DotNetBar.LabelX()
-        Me.TGrandTotalCL = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TTotalBeforeVATCL = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX45 = New DevComponents.DotNetBar.LabelX()
         Me.TPph23CL = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX46 = New DevComponents.DotNetBar.LabelX()
         Me.TRpPPNCL = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX47 = New DevComponents.DotNetBar.LabelX()
         Me.TTotalCostCL = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX44 = New DevComponents.DotNetBar.LabelX()
         Me.TAgentFeeCL = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX43 = New DevComponents.DotNetBar.LabelX()
         Me.TidDetailCL = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -167,24 +176,54 @@ Partial Class FrmActivation
         Me.ListEventInstore = New DevExpress.XtraTab.XtraTabControl()
         Me.TabRincianProduksi = New DevExpress.XtraTab.XtraTabPage()
         Me.ListEventProduksi = New System.Windows.Forms.ListView()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TotalProd = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ProdAgentFee = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ProdBeforeVAT = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ProdPPN = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TabRincianEksekusi = New DevExpress.XtraTab.XtraTabPage()
         Me.ListEventEksekusi = New System.Windows.Forms.ListView()
+        Me.StatusStrip2 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TotalEks = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel6 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.EksAgentFee = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel8 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.EksBeforeVAT = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel7 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.EksPPN = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TabRincianManpower = New DevExpress.XtraTab.XtraTabPage()
         Me.ListEventManpower = New System.Windows.Forms.ListView()
+        Me.StatusStrip3 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel10 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TotalMan = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel12 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ManAgentFee = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel14 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ManBeforeVAT = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel9 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ManPPN = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TongglePPN = New DevExpress.XtraEditors.ToggleSwitch()
+        Me.CSubkelEvn = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.ComboItem1 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem2 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem3 = New DevComponents.Editors.ComboItem()
+        Me.CJenisDetail = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.TidDetailActEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.idFreqEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.idQtyEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TidSubkelEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.idBarangEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TidJenisDetail = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
-        Me.TextBoxX7 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TextBoxX8 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.ComboBoxEx3 = New DevComponents.DotNetBar.Controls.ComboBoxEx()
-        Me.ComboItem4 = New DevComponents.Editors.ComboItem()
-        Me.ComboItem5 = New DevComponents.Editors.ComboItem()
-        Me.ComboItem6 = New DevComponents.Editors.ComboItem()
-        Me.TextBoxX9 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TextBoxX10 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TextBoxX11 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TextBoxX12 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.ComboBoxEx4 = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -224,6 +263,8 @@ Partial Class FrmActivation
         Me.TQtyProj = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TBarangProj = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TabDetailInstore = New DevExpress.XtraTab.XtraTabPage()
+        Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.PanelControl6 = New DevExpress.XtraEditors.PanelControl()
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.TSubTotalEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -234,13 +275,13 @@ Partial Class FrmActivation
         Me.TQtyEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TFreqEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TBarangEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TRpPPNProj = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemTextEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.TGrandTotalProj = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemTextEdit4 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.Bar4 = New DevExpress.XtraBars.Bar()
+        Me.Bar5 = New DevExpress.XtraBars.Bar()
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -266,17 +307,22 @@ Partial Class FrmActivation
         CType(Me.ListEventInstore, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ListEventInstore.SuspendLayout()
         Me.TabRincianProduksi.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.TabRincianEksekusi.SuspendLayout()
+        Me.StatusStrip2.SuspendLayout()
         Me.TabRincianManpower.SuspendLayout()
+        Me.StatusStrip3.SuspendLayout()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl3.SuspendLayout()
+        CType(Me.TongglePPN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabDetailProject.SuspendLayout()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl4.SuspendLayout()
+        Me.TabDetailInstore.SuspendLayout()
+        Me.XtraScrollableControl1.SuspendLayout()
+        CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'barManager1
@@ -287,8 +333,8 @@ Partial Class FrmActivation
         Me.barManager1.DockControls.Add(Me.barDockControlLeft)
         Me.barManager1.DockControls.Add(Me.barDockControlRight)
         Me.barManager1.Form = Me
-        Me.barManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BtnProsesPE, Me.BtnHapusPE, Me.BatalTools, Me.BtnCetakPE, Me.BtnPenawaran, Me.TambahPE, Me.BarButtonItem4, Me.BtnRevisiPE, Me.BtnSimpanPE, Me.TTotalProj, Me.TAgentFeeProj, Me.BarEditItem1, Me.BarEditItem2, Me.BarToggleSwitchItem1, Me.TRpPPNProj, Me.TGrandTotalProj})
-        Me.barManager1.MaxItemId = 21
+        Me.barManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BtnProsesPE, Me.BtnHapusPE, Me.BatalTools, Me.BtnCetakPE, Me.BtnPenawaran, Me.TambahPE, Me.BarButtonItem4, Me.BtnRevisiPE, Me.BtnSimpanPE, Me.TTotalCost, Me.TTotalAgenFee, Me.BarEditItem1, Me.BarEditItem2, Me.AdaPPNP, Me.TTotalPPN, Me.TTotalBeforeVAT, Me.BarButtonItem1})
+        Me.barManager1.MaxItemId = 22
         Me.barManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEdit2, Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2, Me.RepositoryItemTextEdit3, Me.RepositoryItemTextEdit4})
         Me.barManager1.StatusBar = Me.bar3
         '
@@ -387,44 +433,107 @@ Partial Class FrmActivation
         Me.bar3.DockCol = 0
         Me.bar3.DockRow = 0
         Me.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.TTotalProj), New DevExpress.XtraBars.LinkPersistInfo(Me.TAgentFeeProj), New DevExpress.XtraBars.LinkPersistInfo(Me.BarToggleSwitchItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.TRpPPNProj), New DevExpress.XtraBars.LinkPersistInfo(Me.TGrandTotalProj)})
+        Me.bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.TTotalCost), New DevExpress.XtraBars.LinkPersistInfo(Me.TTotalAgenFee), New DevExpress.XtraBars.LinkPersistInfo(Me.TTotalPPN), New DevExpress.XtraBars.LinkPersistInfo(Me.TTotalBeforeVAT)})
         Me.bar3.OptionsBar.AllowQuickCustomization = False
         Me.bar3.OptionsBar.DrawDragBorder = False
         Me.bar3.OptionsBar.UseWholeRow = True
         Me.bar3.Text = "Status bar"
         '
-        'TTotalProj
+        'TTotalCost
         '
-        Me.TTotalProj.Caption = "Total | Rp. - : "
-        Me.TTotalProj.Edit = Me.RepositoryItemTextEdit1
-        Me.TTotalProj.EditValue = 0R
-        Me.TTotalProj.Hint = "Total Penawaran"
-        Me.TTotalProj.Id = 14
-        Me.TTotalProj.ImageOptions.Image = CType(resources.GetObject("TTotalProj.ImageOptions.Image"), System.Drawing.Image)
-        Me.TTotalProj.ImageOptions.LargeImage = CType(resources.GetObject("TTotalProj.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.TTotalProj.Name = "TTotalProj"
-        Me.TTotalProj.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.TTotalCost.Caption = "Total | Rp. - : "
+        Me.TTotalCost.Edit = Me.RepositoryItemTextEdit1
+        Me.TTotalCost.EditValue = 0R
+        Me.TTotalCost.Hint = "Total Penawaran"
+        Me.TTotalCost.Id = 14
+        Me.TTotalCost.ImageOptions.Image = CType(resources.GetObject("TTotalCost.ImageOptions.Image"), System.Drawing.Image)
+        Me.TTotalCost.ImageOptions.LargeImage = CType(resources.GetObject("TTotalCost.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.TTotalCost.Name = "TTotalCost"
+        Me.TTotalCost.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         '
         'RepositoryItemTextEdit1
         '
         Me.RepositoryItemTextEdit1.AutoHeight = False
         Me.RepositoryItemTextEdit1.Name = "RepositoryItemTextEdit1"
         '
-        'TAgentFeeProj
+        'TTotalAgenFee
         '
-        Me.TAgentFeeProj.Caption = "Agent Fee | Rp. - :"
-        Me.TAgentFeeProj.Edit = Me.RepositoryItemTextEdit2
-        Me.TAgentFeeProj.EditValue = 0R
-        Me.TAgentFeeProj.Id = 15
-        Me.TAgentFeeProj.ImageOptions.Image = CType(resources.GetObject("TAgentFeeProj.ImageOptions.Image"), System.Drawing.Image)
-        Me.TAgentFeeProj.ImageOptions.LargeImage = CType(resources.GetObject("TAgentFeeProj.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.TAgentFeeProj.Name = "TAgentFeeProj"
-        Me.TAgentFeeProj.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.TTotalAgenFee.Caption = "Agent Fee | Rp. - :"
+        Me.TTotalAgenFee.Edit = Me.RepositoryItemTextEdit2
+        Me.TTotalAgenFee.EditValue = 0R
+        Me.TTotalAgenFee.Id = 15
+        Me.TTotalAgenFee.ImageOptions.Image = CType(resources.GetObject("TTotalAgenFee.ImageOptions.Image"), System.Drawing.Image)
+        Me.TTotalAgenFee.ImageOptions.LargeImage = CType(resources.GetObject("TTotalAgenFee.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.TTotalAgenFee.Name = "TTotalAgenFee"
+        Me.TTotalAgenFee.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         '
         'RepositoryItemTextEdit2
         '
         Me.RepositoryItemTextEdit2.AutoHeight = False
         Me.RepositoryItemTextEdit2.Name = "RepositoryItemTextEdit2"
+        '
+        'TTotalPPN
+        '
+        Me.TTotalPPN.Caption = "PPN 10% | Rp. - :"
+        Me.TTotalPPN.Edit = Me.RepositoryItemTextEdit3
+        Me.TTotalPPN.EditValue = 0R
+        Me.TTotalPPN.Id = 19
+        Me.TTotalPPN.ImageOptions.Image = CType(resources.GetObject("TTotalPPN.ImageOptions.Image"), System.Drawing.Image)
+        Me.TTotalPPN.ImageOptions.LargeImage = CType(resources.GetObject("TTotalPPN.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.TTotalPPN.Name = "TTotalPPN"
+        Me.TTotalPPN.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'RepositoryItemTextEdit3
+        '
+        Me.RepositoryItemTextEdit3.AutoHeight = False
+        Me.RepositoryItemTextEdit3.Name = "RepositoryItemTextEdit3"
+        '
+        'TTotalBeforeVAT
+        '
+        Me.TTotalBeforeVAT.Caption = "Total <Before VAT> | Rp. -"
+        Me.TTotalBeforeVAT.Edit = Me.RepositoryItemTextEdit4
+        Me.TTotalBeforeVAT.EditValue = 0R
+        Me.TTotalBeforeVAT.Id = 20
+        Me.TTotalBeforeVAT.ImageOptions.SvgImage = CType(resources.GetObject("TTotalBeforeVAT.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.TTotalBeforeVAT.Name = "TTotalBeforeVAT"
+        Me.TTotalBeforeVAT.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'RepositoryItemTextEdit4
+        '
+        Me.RepositoryItemTextEdit4.AutoHeight = False
+        Me.RepositoryItemTextEdit4.Name = "RepositoryItemTextEdit4"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.barManager1
+        Me.barDockControlTop.Size = New System.Drawing.Size(1073, 27)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 363)
+        Me.barDockControlBottom.Manager = Me.barManager1
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1073, 25)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 27)
+        Me.barDockControlLeft.Manager = Me.barManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 336)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(1073, 27)
+        Me.barDockControlRight.Manager = Me.barManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 336)
         '
         'BarEditItem1
         '
@@ -452,44 +561,18 @@ Partial Class FrmActivation
         Me.RepositoryItemCheckEdit2.AutoHeight = False
         Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
         '
-        'BarToggleSwitchItem1
+        'AdaPPNP
         '
-        Me.BarToggleSwitchItem1.Caption = "ADA"
-        Me.BarToggleSwitchItem1.Id = 18
-        Me.BarToggleSwitchItem1.Name = "BarToggleSwitchItem1"
-        Me.BarToggleSwitchItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.AdaPPNP.Caption = "ADA"
+        Me.AdaPPNP.Id = 18
+        Me.AdaPPNP.Name = "AdaPPNP"
+        Me.AdaPPNP.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         '
-        'barDockControlTop
+        'BarButtonItem1
         '
-        Me.barDockControlTop.CausesValidation = False
-        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlTop.Manager = Me.barManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1073, 27)
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 310)
-        Me.barDockControlBottom.Manager = Me.barManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1073, 25)
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 27)
-        Me.barDockControlLeft.Manager = Me.barManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 283)
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1073, 27)
-        Me.barDockControlRight.Manager = Me.barManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 283)
+        Me.BarButtonItem1.Caption = "BarButtonItem1"
+        Me.BarButtonItem1.Id = 21
+        Me.BarButtonItem1.Name = "BarButtonItem1"
         '
         'XtraTabControl1
         '
@@ -497,7 +580,7 @@ Partial Class FrmActivation
         Me.XtraTabControl1.Location = New System.Drawing.Point(0, 27)
         Me.XtraTabControl1.Name = "XtraTabControl1"
         Me.XtraTabControl1.SelectedTabPage = Me.TabPenawaran
-        Me.XtraTabControl1.Size = New System.Drawing.Size(1073, 283)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(1073, 336)
         Me.XtraTabControl1.TabIndex = 4
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.TabPenawaran, Me.TabDetailPenawaran})
         '
@@ -506,7 +589,7 @@ Partial Class FrmActivation
         Me.TabPenawaran.Controls.Add(Me.PanelControl2)
         Me.TabPenawaran.Controls.Add(Me.PanelControl1)
         Me.TabPenawaran.Name = "TabPenawaran"
-        Me.TabPenawaran.Size = New System.Drawing.Size(1071, 260)
+        Me.TabPenawaran.Size = New System.Drawing.Size(1071, 313)
         Me.TabPenawaran.Text = "Penawaran"
         '
         'PanelControl2
@@ -515,7 +598,7 @@ Partial Class FrmActivation
         Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl2.Location = New System.Drawing.Point(0, 140)
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(1071, 120)
+        Me.PanelControl2.Size = New System.Drawing.Size(1071, 173)
         Me.PanelControl2.TabIndex = 1
         '
         'ListPEActivation
@@ -524,7 +607,7 @@ Partial Class FrmActivation
         Me.ListPEActivation.HideSelection = False
         Me.ListPEActivation.Location = New System.Drawing.Point(2, 2)
         Me.ListPEActivation.Name = "ListPEActivation"
-        Me.ListPEActivation.Size = New System.Drawing.Size(1067, 116)
+        Me.ListPEActivation.Size = New System.Drawing.Size(1067, 169)
         Me.ListPEActivation.TabIndex = 0
         Me.ListPEActivation.UseCompatibleStateImageBehavior = False
         '
@@ -705,15 +788,14 @@ Partial Class FrmActivation
         'CSubDivisi
         '
         Me.CSubDivisi.DisplayMember = "Text"
-        Me.CSubDivisi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSubDivisi.Enabled = False
         Me.CSubDivisi.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CSubDivisi.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.CSubDivisi.FormattingEnabled = True
-        Me.CSubDivisi.ItemHeight = 18
+        Me.CSubDivisi.ItemHeight = 15
         Me.CSubDivisi.Location = New System.Drawing.Point(911, 75)
         Me.CSubDivisi.Name = "CSubDivisi"
-        Me.CSubDivisi.Size = New System.Drawing.Size(140, 24)
+        Me.CSubDivisi.Size = New System.Drawing.Size(140, 23)
         Me.CSubDivisi.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
         Me.CSubDivisi.TabIndex = 110
         '
@@ -731,15 +813,14 @@ Partial Class FrmActivation
         'CKontrak
         '
         Me.CKontrak.DisplayMember = "Text"
-        Me.CKontrak.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CKontrak.Enabled = False
         Me.CKontrak.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CKontrak.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.CKontrak.FormattingEnabled = True
-        Me.CKontrak.ItemHeight = 18
+        Me.CKontrak.ItemHeight = 15
         Me.CKontrak.Location = New System.Drawing.Point(911, 16)
         Me.CKontrak.Name = "CKontrak"
-        Me.CKontrak.Size = New System.Drawing.Size(140, 24)
+        Me.CKontrak.Size = New System.Drawing.Size(140, 23)
         Me.CKontrak.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
         Me.CKontrak.TabIndex = 108
         '
@@ -1365,7 +1446,7 @@ Partial Class FrmActivation
         '
         Me.TabDetailPenawaran.Controls.Add(Me.TabMainDetailPE)
         Me.TabDetailPenawaran.Name = "TabDetailPenawaran"
-        Me.TabDetailPenawaran.Size = New System.Drawing.Size(1071, 260)
+        Me.TabDetailPenawaran.Size = New System.Drawing.Size(1071, 313)
         Me.TabDetailPenawaran.Text = "Detail Penawaran"
         '
         'TabMainDetailPE
@@ -1374,7 +1455,7 @@ Partial Class FrmActivation
         Me.TabMainDetailPE.Location = New System.Drawing.Point(0, 0)
         Me.TabMainDetailPE.Name = "TabMainDetailPE"
         Me.TabMainDetailPE.SelectedTabPage = Me.TabRincianDetailPE
-        Me.TabMainDetailPE.Size = New System.Drawing.Size(1071, 260)
+        Me.TabMainDetailPE.Size = New System.Drawing.Size(1071, 313)
         Me.TabMainDetailPE.TabIndex = 0
         Me.TabMainDetailPE.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.TabRincianDetailPE, Me.TabDetailEvent, Me.TabDetailProject, Me.TabDetailInstore})
         '
@@ -1382,7 +1463,7 @@ Partial Class FrmActivation
         '
         Me.TabRincianDetailPE.Controls.Add(Me.GroupControl1)
         Me.TabRincianDetailPE.Name = "TabRincianDetailPE"
-        Me.TabRincianDetailPE.Size = New System.Drawing.Size(1069, 237)
+        Me.TabRincianDetailPE.Size = New System.Drawing.Size(1069, 290)
         Me.TabRincianDetailPE.Text = "Main Detail"
         '
         'GroupControl1
@@ -1392,7 +1473,7 @@ Partial Class FrmActivation
         Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupControl1.Location = New System.Drawing.Point(0, 0)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(1069, 237)
+        Me.GroupControl1.Size = New System.Drawing.Size(1069, 290)
         Me.GroupControl1.TabIndex = 0
         Me.GroupControl1.Text = "Rincian Detail Penawaran"
         '
@@ -1400,9 +1481,9 @@ Partial Class FrmActivation
         '
         Me.PanelControl4.Controls.Add(Me.ListDetailPEAct)
         Me.PanelControl4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelControl4.Location = New System.Drawing.Point(2, 174)
+        Me.PanelControl4.Location = New System.Drawing.Point(2, 203)
         Me.PanelControl4.Name = "PanelControl4"
-        Me.PanelControl4.Size = New System.Drawing.Size(1065, 61)
+        Me.PanelControl4.Size = New System.Drawing.Size(1065, 85)
         Me.PanelControl4.TabIndex = 1
         '
         'ListDetailPEAct
@@ -1411,7 +1492,7 @@ Partial Class FrmActivation
         Me.ListDetailPEAct.HideSelection = False
         Me.ListDetailPEAct.Location = New System.Drawing.Point(2, 2)
         Me.ListDetailPEAct.Name = "ListDetailPEAct"
-        Me.ListDetailPEAct.Size = New System.Drawing.Size(1061, 57)
+        Me.ListDetailPEAct.Size = New System.Drawing.Size(1061, 81)
         Me.ListDetailPEAct.TabIndex = 151
         Me.ListDetailPEAct.UseCompatibleStateImageBehavior = False
         '
@@ -1448,7 +1529,7 @@ Partial Class FrmActivation
         Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelControl3.Location = New System.Drawing.Point(2, 23)
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(1065, 151)
+        Me.PanelControl3.Size = New System.Drawing.Size(1065, 180)
         Me.PanelControl3.TabIndex = 0
         '
         'TJmlEvnCL
@@ -1781,6 +1862,11 @@ Partial Class FrmActivation
         Me.PanelControl5.Appearance.Options.UseBackColor = True
         Me.PanelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
         Me.PanelControl5.ContentImage = Global.Program_EVENT.My.Resources.Resources.Caribbean_beach_1536x864
+        Me.PanelControl5.Controls.Add(Me.LabelX44)
+        Me.PanelControl5.Controls.Add(Me.LabelX48)
+        Me.PanelControl5.Controls.Add(Me.LabelX51)
+        Me.PanelControl5.Controls.Add(Me.TGrandTotalCL)
+        Me.PanelControl5.Controls.Add(Me.LabelX52)
         Me.PanelControl5.Controls.Add(Me.LabelX139)
         Me.PanelControl5.Controls.Add(Me.LabelX137)
         Me.PanelControl5.Controls.Add(Me.LabelX138)
@@ -1791,21 +1877,87 @@ Partial Class FrmActivation
         Me.PanelControl5.Controls.Add(Me.LabelX49)
         Me.PanelControl5.Controls.Add(Me.CekPPH)
         Me.PanelControl5.Controls.Add(Me.LabelX50)
-        Me.PanelControl5.Controls.Add(Me.TGrandTotalCL)
+        Me.PanelControl5.Controls.Add(Me.TTotalBeforeVATCL)
         Me.PanelControl5.Controls.Add(Me.LabelX45)
         Me.PanelControl5.Controls.Add(Me.TPph23CL)
         Me.PanelControl5.Controls.Add(Me.LabelX46)
         Me.PanelControl5.Controls.Add(Me.TRpPPNCL)
         Me.PanelControl5.Controls.Add(Me.LabelX47)
         Me.PanelControl5.Controls.Add(Me.TTotalCostCL)
-        Me.PanelControl5.Controls.Add(Me.LabelX44)
         Me.PanelControl5.Controls.Add(Me.TAgentFeeCL)
         Me.PanelControl5.Controls.Add(Me.LabelX43)
         Me.PanelControl5.Dock = System.Windows.Forms.DockStyle.Right
         Me.PanelControl5.Location = New System.Drawing.Point(705, 2)
         Me.PanelControl5.Name = "PanelControl5"
-        Me.PanelControl5.Size = New System.Drawing.Size(358, 147)
+        Me.PanelControl5.Size = New System.Drawing.Size(358, 176)
         Me.PanelControl5.TabIndex = 0
+        '
+        'LabelX44
+        '
+        '
+        '
+        '
+        Me.LabelX44.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX44.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX44.Location = New System.Drawing.Point(19, 115)
+        Me.LabelX44.Name = "LabelX44"
+        Me.LabelX44.Size = New System.Drawing.Size(123, 21)
+        Me.LabelX44.TabIndex = 246
+        Me.LabelX44.Text = "Total <Before VAT>"
+        '
+        'LabelX48
+        '
+        '
+        '
+        '
+        Me.LabelX48.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX48.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX48.Location = New System.Drawing.Point(158, 145)
+        Me.LabelX48.Name = "LabelX48"
+        Me.LabelX48.Size = New System.Drawing.Size(20, 18)
+        Me.LabelX48.TabIndex = 245
+        Me.LabelX48.Text = "Rp."
+        '
+        'LabelX51
+        '
+        '
+        '
+        '
+        Me.LabelX51.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX51.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX51.Location = New System.Drawing.Point(149, 150)
+        Me.LabelX51.Name = "LabelX51"
+        Me.LabelX51.Size = New System.Drawing.Size(10, 10)
+        Me.LabelX51.TabIndex = 244
+        Me.LabelX51.Text = ":"
+        '
+        'TGrandTotalCL
+        '
+        '
+        '
+        '
+        Me.TGrandTotalCL.Border.Class = "TextBoxBorder"
+        Me.TGrandTotalCL.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TGrandTotalCL.Enabled = False
+        Me.TGrandTotalCL.Location = New System.Drawing.Point(184, 145)
+        Me.TGrandTotalCL.Name = "TGrandTotalCL"
+        Me.TGrandTotalCL.PreventEnterBeep = True
+        Me.TGrandTotalCL.Size = New System.Drawing.Size(149, 22)
+        Me.TGrandTotalCL.TabIndex = 242
+        Me.TGrandTotalCL.Text = "0"
+        '
+        'LabelX52
+        '
+        '
+        '
+        '
+        Me.LabelX52.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX52.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX52.Location = New System.Drawing.Point(19, 148)
+        Me.LabelX52.Name = "LabelX52"
+        Me.LabelX52.Size = New System.Drawing.Size(88, 10)
+        Me.LabelX52.TabIndex = 243
+        Me.LabelX52.Text = "GRAND TOTAL"
         '
         'LabelX139
         '
@@ -1946,20 +2098,20 @@ Partial Class FrmActivation
         Me.LabelX50.TabIndex = 235
         Me.LabelX50.Text = ":"
         '
-        'TGrandTotalCL
+        'TTotalBeforeVATCL
         '
         '
         '
         '
-        Me.TGrandTotalCL.Border.Class = "TextBoxBorder"
-        Me.TGrandTotalCL.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TGrandTotalCL.Enabled = False
-        Me.TGrandTotalCL.Location = New System.Drawing.Point(183, 116)
-        Me.TGrandTotalCL.Name = "TGrandTotalCL"
-        Me.TGrandTotalCL.PreventEnterBeep = True
-        Me.TGrandTotalCL.Size = New System.Drawing.Size(149, 22)
-        Me.TGrandTotalCL.TabIndex = 225
-        Me.TGrandTotalCL.Text = "0"
+        Me.TTotalBeforeVATCL.Border.Class = "TextBoxBorder"
+        Me.TTotalBeforeVATCL.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TTotalBeforeVATCL.Enabled = False
+        Me.TTotalBeforeVATCL.Location = New System.Drawing.Point(183, 116)
+        Me.TTotalBeforeVATCL.Name = "TTotalBeforeVATCL"
+        Me.TTotalBeforeVATCL.PreventEnterBeep = True
+        Me.TTotalBeforeVATCL.Size = New System.Drawing.Size(149, 22)
+        Me.TTotalBeforeVATCL.TabIndex = 225
+        Me.TTotalBeforeVATCL.Text = "0"
         '
         'LabelX45
         '
@@ -2045,19 +2197,6 @@ Partial Class FrmActivation
         Me.TTotalCostCL.TabIndex = 228
         Me.TTotalCostCL.Text = "0"
         '
-        'LabelX44
-        '
-        '
-        '
-        '
-        Me.LabelX44.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX44.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelX44.Location = New System.Drawing.Point(19, 119)
-        Me.LabelX44.Name = "LabelX44"
-        Me.LabelX44.Size = New System.Drawing.Size(88, 10)
-        Me.LabelX44.TabIndex = 231
-        Me.LabelX44.Text = "GRAND TOTAL"
-        '
         'TAgentFeeCL
         '
         '
@@ -2133,7 +2272,7 @@ Partial Class FrmActivation
         Me.TabDetailEvent.Controls.Add(Me.ListEventInstore)
         Me.TabDetailEvent.Controls.Add(Me.GroupControl3)
         Me.TabDetailEvent.Name = "TabDetailEvent"
-        Me.TabDetailEvent.Size = New System.Drawing.Size(1069, 237)
+        Me.TabDetailEvent.Size = New System.Drawing.Size(1069, 290)
         Me.TabDetailEvent.Text = "Rincian Event"
         '
         'ListEventInstore
@@ -2142,15 +2281,16 @@ Partial Class FrmActivation
         Me.ListEventInstore.Location = New System.Drawing.Point(0, 152)
         Me.ListEventInstore.Name = "ListEventInstore"
         Me.ListEventInstore.SelectedTabPage = Me.TabRincianProduksi
-        Me.ListEventInstore.Size = New System.Drawing.Size(1069, 85)
+        Me.ListEventInstore.Size = New System.Drawing.Size(1069, 138)
         Me.ListEventInstore.TabIndex = 1
         Me.ListEventInstore.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.TabRincianProduksi, Me.TabRincianEksekusi, Me.TabRincianManpower})
         '
         'TabRincianProduksi
         '
         Me.TabRincianProduksi.Controls.Add(Me.ListEventProduksi)
+        Me.TabRincianProduksi.Controls.Add(Me.StatusStrip1)
         Me.TabRincianProduksi.Name = "TabRincianProduksi"
-        Me.TabRincianProduksi.Size = New System.Drawing.Size(1067, 62)
+        Me.TabRincianProduksi.Size = New System.Drawing.Size(1067, 115)
         Me.TabRincianProduksi.Text = "Rincian Produksi"
         '
         'ListEventProduksi
@@ -2159,15 +2299,74 @@ Partial Class FrmActivation
         Me.ListEventProduksi.HideSelection = False
         Me.ListEventProduksi.Location = New System.Drawing.Point(0, 0)
         Me.ListEventProduksi.Name = "ListEventProduksi"
-        Me.ListEventProduksi.Size = New System.Drawing.Size(1067, 62)
+        Me.ListEventProduksi.Size = New System.Drawing.Size(1067, 93)
         Me.ListEventProduksi.TabIndex = 0
         Me.ListEventProduksi.UseCompatibleStateImageBehavior = False
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel2, Me.TotalProd, Me.ToolStripStatusLabel1, Me.ProdAgentFee, Me.ToolStripStatusLabel3, Me.ProdBeforeVAT, Me.ToolStripStatusLabel5, Me.ProdPPN})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 93)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.StatusStrip1.Size = New System.Drawing.Size(1067, 22)
+        Me.StatusStrip1.TabIndex = 2
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(107, 17)
+        Me.ToolStripStatusLabel2.Text = "Total Produksi : Rp."
+        '
+        'TotalProd
+        '
+        Me.TotalProd.Name = "TotalProd"
+        Me.TotalProd.Size = New System.Drawing.Size(13, 17)
+        Me.TotalProd.Text = "0"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(86, 17)
+        Me.ToolStripStatusLabel1.Text = "| Agent Fee Rp."
+        '
+        'ProdAgentFee
+        '
+        Me.ProdAgentFee.Name = "ProdAgentFee"
+        Me.ProdAgentFee.Size = New System.Drawing.Size(13, 17)
+        Me.ProdAgentFee.Text = "0"
+        '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(133, 17)
+        Me.ToolStripStatusLabel3.Text = "| Total <Before VAT> Rp."
+        '
+        'ProdBeforeVAT
+        '
+        Me.ProdBeforeVAT.Name = "ProdBeforeVAT"
+        Me.ProdBeforeVAT.Size = New System.Drawing.Size(13, 17)
+        Me.ProdBeforeVAT.Text = "0"
+        '
+        'ToolStripStatusLabel5
+        '
+        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(81, 17)
+        Me.ToolStripStatusLabel5.Text = "| PPN 10% Rp."
+        '
+        'ProdPPN
+        '
+        Me.ProdPPN.Name = "ProdPPN"
+        Me.ProdPPN.Size = New System.Drawing.Size(13, 17)
+        Me.ProdPPN.Text = "0"
         '
         'TabRincianEksekusi
         '
         Me.TabRincianEksekusi.Controls.Add(Me.ListEventEksekusi)
+        Me.TabRincianEksekusi.Controls.Add(Me.StatusStrip2)
         Me.TabRincianEksekusi.Name = "TabRincianEksekusi"
-        Me.TabRincianEksekusi.Size = New System.Drawing.Size(1067, 62)
+        Me.TabRincianEksekusi.Size = New System.Drawing.Size(1067, 115)
         Me.TabRincianEksekusi.Text = "Rincian Eksekusi"
         '
         'ListEventEksekusi
@@ -2176,15 +2375,74 @@ Partial Class FrmActivation
         Me.ListEventEksekusi.HideSelection = False
         Me.ListEventEksekusi.Location = New System.Drawing.Point(0, 0)
         Me.ListEventEksekusi.Name = "ListEventEksekusi"
-        Me.ListEventEksekusi.Size = New System.Drawing.Size(1067, 62)
+        Me.ListEventEksekusi.Size = New System.Drawing.Size(1067, 93)
         Me.ListEventEksekusi.TabIndex = 1
         Me.ListEventEksekusi.UseCompatibleStateImageBehavior = False
+        '
+        'StatusStrip2
+        '
+        Me.StatusStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel4, Me.TotalEks, Me.ToolStripStatusLabel6, Me.EksAgentFee, Me.ToolStripStatusLabel8, Me.EksBeforeVAT, Me.ToolStripStatusLabel7, Me.EksPPN})
+        Me.StatusStrip2.Location = New System.Drawing.Point(0, 93)
+        Me.StatusStrip2.Name = "StatusStrip2"
+        Me.StatusStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.StatusStrip2.Size = New System.Drawing.Size(1067, 22)
+        Me.StatusStrip2.TabIndex = 3
+        Me.StatusStrip2.Text = "StatusStrip2"
+        '
+        'ToolStripStatusLabel4
+        '
+        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(105, 17)
+        Me.ToolStripStatusLabel4.Text = "Total Eksekusi : Rp."
+        '
+        'TotalEks
+        '
+        Me.TotalEks.Name = "TotalEks"
+        Me.TotalEks.Size = New System.Drawing.Size(13, 17)
+        Me.TotalEks.Text = "0"
+        '
+        'ToolStripStatusLabel6
+        '
+        Me.ToolStripStatusLabel6.Name = "ToolStripStatusLabel6"
+        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(86, 17)
+        Me.ToolStripStatusLabel6.Text = "| Agent Fee Rp."
+        '
+        'EksAgentFee
+        '
+        Me.EksAgentFee.Name = "EksAgentFee"
+        Me.EksAgentFee.Size = New System.Drawing.Size(13, 17)
+        Me.EksAgentFee.Text = "0"
+        '
+        'ToolStripStatusLabel8
+        '
+        Me.ToolStripStatusLabel8.Name = "ToolStripStatusLabel8"
+        Me.ToolStripStatusLabel8.Size = New System.Drawing.Size(133, 17)
+        Me.ToolStripStatusLabel8.Text = "| Total <Before VAT> Rp."
+        '
+        'EksBeforeVAT
+        '
+        Me.EksBeforeVAT.Name = "EksBeforeVAT"
+        Me.EksBeforeVAT.Size = New System.Drawing.Size(13, 17)
+        Me.EksBeforeVAT.Text = "0"
+        '
+        'ToolStripStatusLabel7
+        '
+        Me.ToolStripStatusLabel7.Name = "ToolStripStatusLabel7"
+        Me.ToolStripStatusLabel7.Size = New System.Drawing.Size(84, 17)
+        Me.ToolStripStatusLabel7.Text = "| PPN 10 % Rp."
+        '
+        'EksPPN
+        '
+        Me.EksPPN.Name = "EksPPN"
+        Me.EksPPN.Size = New System.Drawing.Size(13, 17)
+        Me.EksPPN.Text = "0"
         '
         'TabRincianManpower
         '
         Me.TabRincianManpower.Controls.Add(Me.ListEventManpower)
+        Me.TabRincianManpower.Controls.Add(Me.StatusStrip3)
         Me.TabRincianManpower.Name = "TabRincianManpower"
-        Me.TabRincianManpower.Size = New System.Drawing.Size(1067, 62)
+        Me.TabRincianManpower.Size = New System.Drawing.Size(1067, 115)
         Me.TabRincianManpower.Text = "Rincian Manpower && Supervisi"
         '
         'ListEventManpower
@@ -2193,22 +2451,83 @@ Partial Class FrmActivation
         Me.ListEventManpower.HideSelection = False
         Me.ListEventManpower.Location = New System.Drawing.Point(0, 0)
         Me.ListEventManpower.Name = "ListEventManpower"
-        Me.ListEventManpower.Size = New System.Drawing.Size(1067, 62)
+        Me.ListEventManpower.Size = New System.Drawing.Size(1067, 93)
         Me.ListEventManpower.TabIndex = 1
         Me.ListEventManpower.UseCompatibleStateImageBehavior = False
         '
+        'StatusStrip3
+        '
+        Me.StatusStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel10, Me.TotalMan, Me.ToolStripStatusLabel12, Me.ManAgentFee, Me.ToolStripStatusLabel14, Me.ManBeforeVAT, Me.ToolStripStatusLabel9, Me.ManPPN})
+        Me.StatusStrip3.Location = New System.Drawing.Point(0, 93)
+        Me.StatusStrip3.Name = "StatusStrip3"
+        Me.StatusStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.StatusStrip3.Size = New System.Drawing.Size(1067, 22)
+        Me.StatusStrip3.TabIndex = 3
+        Me.StatusStrip3.Text = "StatusStrip3"
+        '
+        'ToolStripStatusLabel10
+        '
+        Me.ToolStripStatusLabel10.Name = "ToolStripStatusLabel10"
+        Me.ToolStripStatusLabel10.Size = New System.Drawing.Size(181, 17)
+        Me.ToolStripStatusLabel10.Text = "Total Manpower && Supervisi : Rp."
+        '
+        'TotalMan
+        '
+        Me.TotalMan.Name = "TotalMan"
+        Me.TotalMan.Size = New System.Drawing.Size(13, 17)
+        Me.TotalMan.Text = "0"
+        '
+        'ToolStripStatusLabel12
+        '
+        Me.ToolStripStatusLabel12.Name = "ToolStripStatusLabel12"
+        Me.ToolStripStatusLabel12.Size = New System.Drawing.Size(86, 17)
+        Me.ToolStripStatusLabel12.Text = "| Agent Fee Rp."
+        '
+        'ManAgentFee
+        '
+        Me.ManAgentFee.Name = "ManAgentFee"
+        Me.ManAgentFee.Size = New System.Drawing.Size(13, 17)
+        Me.ManAgentFee.Text = "0"
+        '
+        'ToolStripStatusLabel14
+        '
+        Me.ToolStripStatusLabel14.Name = "ToolStripStatusLabel14"
+        Me.ToolStripStatusLabel14.Size = New System.Drawing.Size(133, 17)
+        Me.ToolStripStatusLabel14.Text = "| Total <Before VAT> Rp."
+        '
+        'ManBeforeVAT
+        '
+        Me.ManBeforeVAT.Name = "ManBeforeVAT"
+        Me.ManBeforeVAT.Size = New System.Drawing.Size(13, 17)
+        Me.ManBeforeVAT.Text = "0"
+        '
+        'ToolStripStatusLabel9
+        '
+        Me.ToolStripStatusLabel9.Name = "ToolStripStatusLabel9"
+        Me.ToolStripStatusLabel9.Size = New System.Drawing.Size(75, 17)
+        Me.ToolStripStatusLabel9.Text = "PPN 10% Rp."
+        '
+        'ManPPN
+        '
+        Me.ManPPN.Name = "ManPPN"
+        Me.ManPPN.Size = New System.Drawing.Size(13, 17)
+        Me.ManPPN.Text = "0"
+        '
         'GroupControl3
         '
+        Me.GroupControl3.Controls.Add(Me.Label1)
+        Me.GroupControl3.Controls.Add(Me.Label2)
+        Me.GroupControl3.Controls.Add(Me.TongglePPN)
+        Me.GroupControl3.Controls.Add(Me.CSubkelEvn)
+        Me.GroupControl3.Controls.Add(Me.CJenisDetail)
+        Me.GroupControl3.Controls.Add(Me.TidDetailActEvn)
+        Me.GroupControl3.Controls.Add(Me.idFreqEvn)
+        Me.GroupControl3.Controls.Add(Me.idQtyEvn)
+        Me.GroupControl3.Controls.Add(Me.TidSubkelEvn)
+        Me.GroupControl3.Controls.Add(Me.idBarangEvn)
+        Me.GroupControl3.Controls.Add(Me.TidJenisDetail)
         Me.GroupControl3.Controls.Add(Me.SimpleButton1)
         Me.GroupControl3.Controls.Add(Me.SimpleButton2)
-        Me.GroupControl3.Controls.Add(Me.TextBoxX7)
-        Me.GroupControl3.Controls.Add(Me.TextBoxX8)
-        Me.GroupControl3.Controls.Add(Me.ComboBoxEx3)
-        Me.GroupControl3.Controls.Add(Me.TextBoxX9)
-        Me.GroupControl3.Controls.Add(Me.TextBoxX10)
-        Me.GroupControl3.Controls.Add(Me.TextBoxX11)
-        Me.GroupControl3.Controls.Add(Me.TextBoxX12)
-        Me.GroupControl3.Controls.Add(Me.ComboBoxEx4)
         Me.GroupControl3.Controls.Add(Me.Label15)
         Me.GroupControl3.Controls.Add(Me.Label16)
         Me.GroupControl3.Controls.Add(Me.Label17)
@@ -2239,6 +2558,156 @@ Partial Class FrmActivation
         Me.GroupControl3.TabIndex = 0
         Me.GroupControl3.Text = "Rincian Biaya Event"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(560, 34)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(10, 13)
+        Me.Label1.TabIndex = 94
+        Me.Label1.Text = ":"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(497, 34)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(51, 13)
+        Me.Label2.TabIndex = 93
+        Me.Label2.Text = "PPN 10%"
+        '
+        'TongglePPN
+        '
+        Me.TongglePPN.Location = New System.Drawing.Point(576, 31)
+        Me.TongglePPN.MenuManager = Me.barManager1
+        Me.TongglePPN.Name = "TongglePPN"
+        Me.TongglePPN.Properties.OffText = "Tidak"
+        Me.TongglePPN.Properties.OnText = "Ada"
+        Me.TongglePPN.Size = New System.Drawing.Size(95, 19)
+        Me.TongglePPN.TabIndex = 92
+        '
+        'CSubkelEvn
+        '
+        Me.CSubkelEvn.DisplayMember = "Text"
+        Me.CSubkelEvn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CSubkelEvn.FormattingEnabled = True
+        Me.CSubkelEvn.ItemHeight = 17
+        Me.CSubkelEvn.Items.AddRange(New Object() {Me.ComboItem1, Me.ComboItem2, Me.ComboItem3})
+        Me.CSubkelEvn.Location = New System.Drawing.Point(500, 62)
+        Me.CSubkelEvn.Name = "CSubkelEvn"
+        Me.CSubkelEvn.Size = New System.Drawing.Size(104, 23)
+        Me.CSubkelEvn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CSubkelEvn.TabIndex = 91
+        Me.CSubkelEvn.Visible = False
+        '
+        'ComboItem1
+        '
+        Me.ComboItem1.Text = "Production Cost"
+        '
+        'ComboItem2
+        '
+        Me.ComboItem2.Text = "Execution Cost"
+        '
+        'ComboItem3
+        '
+        Me.ComboItem3.Text = "Man Power & Supervisi"
+        '
+        'CJenisDetail
+        '
+        Me.CJenisDetail.DisplayMember = "Text"
+        Me.CJenisDetail.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CJenisDetail.FormattingEnabled = True
+        Me.CJenisDetail.ItemHeight = 17
+        Me.CJenisDetail.Location = New System.Drawing.Point(612, 62)
+        Me.CJenisDetail.Name = "CJenisDetail"
+        Me.CJenisDetail.Size = New System.Drawing.Size(120, 23)
+        Me.CJenisDetail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CJenisDetail.TabIndex = 90
+        '
+        'TidDetailActEvn
+        '
+        '
+        '
+        '
+        Me.TidDetailActEvn.Border.Class = "TextBoxBorder"
+        Me.TidDetailActEvn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TidDetailActEvn.Location = New System.Drawing.Point(598, 91)
+        Me.TidDetailActEvn.Name = "TidDetailActEvn"
+        Me.TidDetailActEvn.PreventEnterBeep = True
+        Me.TidDetailActEvn.Size = New System.Drawing.Size(24, 22)
+        Me.TidDetailActEvn.TabIndex = 89
+        Me.TidDetailActEvn.Visible = False
+        '
+        'idFreqEvn
+        '
+        '
+        '
+        '
+        Me.idFreqEvn.Border.Class = "TextBoxBorder"
+        Me.idFreqEvn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.idFreqEvn.Location = New System.Drawing.Point(568, 92)
+        Me.idFreqEvn.Name = "idFreqEvn"
+        Me.idFreqEvn.PreventEnterBeep = True
+        Me.idFreqEvn.Size = New System.Drawing.Size(24, 22)
+        Me.idFreqEvn.TabIndex = 86
+        Me.idFreqEvn.Visible = False
+        '
+        'idQtyEvn
+        '
+        '
+        '
+        '
+        Me.idQtyEvn.Border.Class = "TextBoxBorder"
+        Me.idQtyEvn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.idQtyEvn.Location = New System.Drawing.Point(538, 92)
+        Me.idQtyEvn.Name = "idQtyEvn"
+        Me.idQtyEvn.PreventEnterBeep = True
+        Me.idQtyEvn.Size = New System.Drawing.Size(24, 22)
+        Me.idQtyEvn.TabIndex = 85
+        Me.idQtyEvn.Visible = False
+        '
+        'TidSubkelEvn
+        '
+        '
+        '
+        '
+        Me.TidSubkelEvn.Border.Class = "TextBoxBorder"
+        Me.TidSubkelEvn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TidSubkelEvn.Location = New System.Drawing.Point(738, 92)
+        Me.TidSubkelEvn.Name = "TidSubkelEvn"
+        Me.TidSubkelEvn.PreventEnterBeep = True
+        Me.TidSubkelEvn.Size = New System.Drawing.Size(24, 22)
+        Me.TidSubkelEvn.TabIndex = 88
+        Me.TidSubkelEvn.Visible = False
+        '
+        'idBarangEvn
+        '
+        '
+        '
+        '
+        Me.idBarangEvn.Border.Class = "TextBoxBorder"
+        Me.idBarangEvn.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.idBarangEvn.Location = New System.Drawing.Point(500, 92)
+        Me.idBarangEvn.Name = "idBarangEvn"
+        Me.idBarangEvn.PreventEnterBeep = True
+        Me.idBarangEvn.Size = New System.Drawing.Size(32, 22)
+        Me.idBarangEvn.TabIndex = 84
+        Me.idBarangEvn.Visible = False
+        '
+        'TidJenisDetail
+        '
+        '
+        '
+        '
+        Me.TidJenisDetail.Border.Class = "TextBoxBorder"
+        Me.TidJenisDetail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TidJenisDetail.Location = New System.Drawing.Point(628, 92)
+        Me.TidJenisDetail.Name = "TidJenisDetail"
+        Me.TidJenisDetail.PreventEnterBeep = True
+        Me.TidJenisDetail.Size = New System.Drawing.Size(24, 22)
+        Me.TidJenisDetail.TabIndex = 83
+        Me.TidJenisDetail.Visible = False
+        '
         'SimpleButton1
         '
         Me.SimpleButton1.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
@@ -2258,128 +2727,6 @@ Partial Class FrmActivation
         Me.SimpleButton2.Size = New System.Drawing.Size(120, 24)
         Me.SimpleButton2.TabIndex = 81
         Me.SimpleButton2.Text = "Tambahkan"
-        '
-        'TextBoxX7
-        '
-        '
-        '
-        '
-        Me.TextBoxX7.Border.Class = "TextBoxBorder"
-        Me.TextBoxX7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX7.Location = New System.Drawing.Point(595, 63)
-        Me.TextBoxX7.Name = "TextBoxX7"
-        Me.TextBoxX7.PreventEnterBeep = True
-        Me.TextBoxX7.Size = New System.Drawing.Size(24, 22)
-        Me.TextBoxX7.TabIndex = 80
-        Me.TextBoxX7.Visible = False
-        '
-        'TextBoxX8
-        '
-        '
-        '
-        '
-        Me.TextBoxX8.Border.Class = "TextBoxBorder"
-        Me.TextBoxX8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX8.Location = New System.Drawing.Point(565, 64)
-        Me.TextBoxX8.Name = "TextBoxX8"
-        Me.TextBoxX8.PreventEnterBeep = True
-        Me.TextBoxX8.Size = New System.Drawing.Size(24, 22)
-        Me.TextBoxX8.TabIndex = 77
-        Me.TextBoxX8.Visible = False
-        '
-        'ComboBoxEx3
-        '
-        Me.ComboBoxEx3.DisplayMember = "Text"
-        Me.ComboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.ComboBoxEx3.FormattingEnabled = True
-        Me.ComboBoxEx3.ItemHeight = 17
-        Me.ComboBoxEx3.Items.AddRange(New Object() {Me.ComboItem4, Me.ComboItem5, Me.ComboItem6})
-        Me.ComboBoxEx3.Location = New System.Drawing.Point(625, 63)
-        Me.ComboBoxEx3.Name = "ComboBoxEx3"
-        Me.ComboBoxEx3.Size = New System.Drawing.Size(104, 23)
-        Me.ComboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ComboBoxEx3.TabIndex = 74
-        Me.ComboBoxEx3.Visible = False
-        '
-        'ComboItem4
-        '
-        Me.ComboItem4.Text = "Production Cost"
-        '
-        'ComboItem5
-        '
-        Me.ComboItem5.Text = "Execution Cost"
-        '
-        'ComboItem6
-        '
-        Me.ComboItem6.Text = "Man Power & Supervisi"
-        '
-        'TextBoxX9
-        '
-        '
-        '
-        '
-        Me.TextBoxX9.Border.Class = "TextBoxBorder"
-        Me.TextBoxX9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX9.Location = New System.Drawing.Point(535, 64)
-        Me.TextBoxX9.Name = "TextBoxX9"
-        Me.TextBoxX9.PreventEnterBeep = True
-        Me.TextBoxX9.Size = New System.Drawing.Size(24, 22)
-        Me.TextBoxX9.TabIndex = 76
-        Me.TextBoxX9.Visible = False
-        '
-        'TextBoxX10
-        '
-        '
-        '
-        '
-        Me.TextBoxX10.Border.Class = "TextBoxBorder"
-        Me.TextBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX10.Location = New System.Drawing.Point(735, 64)
-        Me.TextBoxX10.Name = "TextBoxX10"
-        Me.TextBoxX10.PreventEnterBeep = True
-        Me.TextBoxX10.Size = New System.Drawing.Size(24, 22)
-        Me.TextBoxX10.TabIndex = 79
-        Me.TextBoxX10.Visible = False
-        '
-        'TextBoxX11
-        '
-        '
-        '
-        '
-        Me.TextBoxX11.Border.Class = "TextBoxBorder"
-        Me.TextBoxX11.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX11.Location = New System.Drawing.Point(497, 64)
-        Me.TextBoxX11.Name = "TextBoxX11"
-        Me.TextBoxX11.PreventEnterBeep = True
-        Me.TextBoxX11.Size = New System.Drawing.Size(32, 22)
-        Me.TextBoxX11.TabIndex = 75
-        Me.TextBoxX11.Visible = False
-        '
-        'TextBoxX12
-        '
-        '
-        '
-        '
-        Me.TextBoxX12.Border.Class = "TextBoxBorder"
-        Me.TextBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX12.Location = New System.Drawing.Point(776, 64)
-        Me.TextBoxX12.Name = "TextBoxX12"
-        Me.TextBoxX12.PreventEnterBeep = True
-        Me.TextBoxX12.Size = New System.Drawing.Size(24, 22)
-        Me.TextBoxX12.TabIndex = 78
-        Me.TextBoxX12.Visible = False
-        '
-        'ComboBoxEx4
-        '
-        Me.ComboBoxEx4.DisplayMember = "Text"
-        Me.ComboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.ComboBoxEx4.FormattingEnabled = True
-        Me.ComboBoxEx4.ItemHeight = 17
-        Me.ComboBoxEx4.Location = New System.Drawing.Point(625, 31)
-        Me.ComboBoxEx4.Name = "ComboBoxEx4"
-        Me.ComboBoxEx4.Size = New System.Drawing.Size(104, 23)
-        Me.ComboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ComboBoxEx4.TabIndex = 73
         '
         'Label15
         '
@@ -2634,7 +2981,7 @@ Partial Class FrmActivation
         Me.TabDetailProject.Controls.Add(Me.ListProjectDetail)
         Me.TabDetailProject.Controls.Add(Me.GroupControl4)
         Me.TabDetailProject.Name = "TabDetailProject"
-        Me.TabDetailProject.Size = New System.Drawing.Size(1069, 237)
+        Me.TabDetailProject.Size = New System.Drawing.Size(1069, 290)
         Me.TabDetailProject.Text = "Rincian Project"
         '
         'ListProjectDetail
@@ -2643,7 +2990,7 @@ Partial Class FrmActivation
         Me.ListProjectDetail.HideSelection = False
         Me.ListProjectDetail.Location = New System.Drawing.Point(0, 78)
         Me.ListProjectDetail.Name = "ListProjectDetail"
-        Me.ListProjectDetail.Size = New System.Drawing.Size(1069, 159)
+        Me.ListProjectDetail.Size = New System.Drawing.Size(1069, 212)
         Me.ListProjectDetail.TabIndex = 1
         Me.ListProjectDetail.UseCompatibleStateImageBehavior = False
         '
@@ -2829,9 +3176,27 @@ Partial Class FrmActivation
         '
         'TabDetailInstore
         '
+        Me.TabDetailInstore.Controls.Add(Me.XtraScrollableControl1)
         Me.TabDetailInstore.Name = "TabDetailInstore"
-        Me.TabDetailInstore.Size = New System.Drawing.Size(1069, 237)
+        Me.TabDetailInstore.Size = New System.Drawing.Size(1069, 290)
         Me.TabDetailInstore.Text = "Rincian InStore"
+        '
+        'XtraScrollableControl1
+        '
+        Me.XtraScrollableControl1.Controls.Add(Me.PanelControl6)
+        Me.XtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.XtraScrollableControl1.Location = New System.Drawing.Point(0, 0)
+        Me.XtraScrollableControl1.Name = "XtraScrollableControl1"
+        Me.XtraScrollableControl1.Size = New System.Drawing.Size(1069, 290)
+        Me.XtraScrollableControl1.TabIndex = 1
+        '
+        'PanelControl6
+        '
+        Me.PanelControl6.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelControl6.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl6.Name = "PanelControl6"
+        Me.PanelControl6.Size = New System.Drawing.Size(1069, 85)
+        Me.PanelControl6.TabIndex = 0
         '
         'Bar2
         '
@@ -2965,42 +3330,27 @@ Partial Class FrmActivation
         Me.TBarangEvn.TabIndex = 16
         Me.TBarangEvn.WatermarkText = "Items"
         '
-        'TRpPPNProj
+        'Bar4
         '
-        Me.TRpPPNProj.Caption = "PPN 10% | Rp. - :"
-        Me.TRpPPNProj.Edit = Me.RepositoryItemTextEdit3
-        Me.TRpPPNProj.EditValue = 0R
-        Me.TRpPPNProj.Id = 19
-        Me.TRpPPNProj.ImageOptions.Image = CType(resources.GetObject("BarEditItem3.ImageOptions.Image"), System.Drawing.Image)
-        Me.TRpPPNProj.ImageOptions.LargeImage = CType(resources.GetObject("BarEditItem3.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.TRpPPNProj.Name = "TRpPPNProj"
-        Me.TRpPPNProj.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.Bar4.BarName = "Custom 4"
+        Me.Bar4.DockCol = 0
+        Me.Bar4.DockRow = 1
+        Me.Bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.Bar4.Text = "Custom 4"
         '
-        'RepositoryItemTextEdit3
+        'Bar5
         '
-        Me.RepositoryItemTextEdit3.AutoHeight = False
-        Me.RepositoryItemTextEdit3.Name = "RepositoryItemTextEdit3"
-        '
-        'TGrandTotalProj
-        '
-        Me.TGrandTotalProj.Caption = "Grand Total | Rp. -"
-        Me.TGrandTotalProj.Edit = Me.RepositoryItemTextEdit4
-        Me.TGrandTotalProj.EditValue = 0R
-        Me.TGrandTotalProj.Id = 20
-        Me.TGrandTotalProj.ImageOptions.SvgImage = CType(resources.GetObject("BarEditItem3.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.TGrandTotalProj.Name = "TGrandTotalProj"
-        Me.TGrandTotalProj.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'RepositoryItemTextEdit4
-        '
-        Me.RepositoryItemTextEdit4.AutoHeight = False
-        Me.RepositoryItemTextEdit4.Name = "RepositoryItemTextEdit4"
+        Me.Bar5.BarName = "Custom 4"
+        Me.Bar5.DockCol = 0
+        Me.Bar5.DockRow = 1
+        Me.Bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.Bar5.Text = "Custom 4"
         '
         'FrmActivation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1073, 335)
+        Me.ClientSize = New System.Drawing.Size(1073, 388)
         Me.Controls.Add(Me.XtraTabControl1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
@@ -3011,6 +3361,8 @@ Partial Class FrmActivation
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3036,18 +3388,29 @@ Partial Class FrmActivation
         CType(Me.ListEventInstore, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ListEventInstore.ResumeLayout(False)
         Me.TabRincianProduksi.ResumeLayout(False)
+        Me.TabRincianProduksi.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.TabRincianEksekusi.ResumeLayout(False)
+        Me.TabRincianEksekusi.PerformLayout()
+        Me.StatusStrip2.ResumeLayout(False)
+        Me.StatusStrip2.PerformLayout()
         Me.TabRincianManpower.ResumeLayout(False)
+        Me.TabRincianManpower.PerformLayout()
+        Me.StatusStrip3.ResumeLayout(False)
+        Me.StatusStrip3.PerformLayout()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
         Me.GroupControl3.PerformLayout()
+        CType(Me.TongglePPN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabDetailProject.ResumeLayout(False)
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl4.ResumeLayout(False)
+        Me.TabDetailInstore.ResumeLayout(False)
+        Me.XtraScrollableControl1.ResumeLayout(False)
+        CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3150,14 +3513,13 @@ Partial Class FrmActivation
     Friend WithEvents LabelX49 As DevComponents.DotNetBar.LabelX
     Friend WithEvents CekPPH As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents LabelX50 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TGrandTotalCL As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TTotalBeforeVATCL As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX45 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TPph23CL As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX46 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TRpPPNCL As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX47 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TTotalCostCL As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX44 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TAgentFeeCL As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX43 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TidDetail As DevComponents.DotNetBar.Controls.TextBoxX
@@ -3206,17 +3568,6 @@ Partial Class FrmActivation
     Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents TextBoxX7 As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TextBoxX8 As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents ComboBoxEx3 As DevComponents.DotNetBar.Controls.ComboBoxEx
-    Friend WithEvents ComboItem4 As DevComponents.Editors.ComboItem
-    Friend WithEvents ComboItem5 As DevComponents.Editors.ComboItem
-    Friend WithEvents ComboItem6 As DevComponents.Editors.ComboItem
-    Friend WithEvents TextBoxX9 As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TextBoxX10 As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TextBoxX11 As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TextBoxX12 As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents ComboBoxEx4 As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents Label15 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents Label17 As Label
@@ -3257,17 +3608,68 @@ Partial Class FrmActivation
     Friend WithEvents CQtyProj As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents TQtyProj As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents TBarangProj As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TTotalProj As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents TTotalCost As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents TAgentFeeProj As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents TTotalAgenFee As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents BarEditItem1 As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents BarEditItem2 As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
-    Friend WithEvents BarToggleSwitchItem1 As DevExpress.XtraBars.BarToggleSwitchItem
-    Friend WithEvents TRpPPNProj As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents AdaPPNP As DevExpress.XtraBars.BarToggleSwitchItem
+    Friend WithEvents TTotalPPN As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemTextEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents TGrandTotalProj As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents TTotalBeforeVAT As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemTextEdit4 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents TidJenisDetail As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TidDetailActEvn As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents idFreqEvn As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents idQtyEvn As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TidSubkelEvn As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents idBarangEvn As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents CSubkelEvn As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents ComboItem1 As DevComponents.Editors.ComboItem
+    Friend WithEvents ComboItem2 As DevComponents.Editors.ComboItem
+    Friend WithEvents ComboItem3 As DevComponents.Editors.ComboItem
+    Friend WithEvents CJenisDetail As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents ProdAgentFee As ToolStripStatusLabel
+    Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Bar4 As DevExpress.XtraBars.Bar
+    Friend WithEvents Bar5 As DevExpress.XtraBars.Bar
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents TotalProd As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents ProdBeforeVAT As ToolStripStatusLabel
+    Friend WithEvents StatusStrip2 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
+    Friend WithEvents TotalEks As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel6 As ToolStripStatusLabel
+    Friend WithEvents EksAgentFee As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel8 As ToolStripStatusLabel
+    Friend WithEvents EksBeforeVAT As ToolStripStatusLabel
+    Friend WithEvents StatusStrip3 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel10 As ToolStripStatusLabel
+    Friend WithEvents TotalMan As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel12 As ToolStripStatusLabel
+    Friend WithEvents ManAgentFee As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel14 As ToolStripStatusLabel
+    Friend WithEvents ManBeforeVAT As ToolStripStatusLabel
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TongglePPN As DevExpress.XtraEditors.ToggleSwitch
+    Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
+    Friend WithEvents ProdPPN As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel7 As ToolStripStatusLabel
+    Friend WithEvents EksPPN As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel9 As ToolStripStatusLabel
+    Friend WithEvents ManPPN As ToolStripStatusLabel
+    Friend WithEvents XtraScrollableControl1 As DevExpress.XtraEditors.XtraScrollableControl
+    Friend WithEvents PanelControl6 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents LabelX48 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX51 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TGrandTotalCL As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX52 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX44 As DevComponents.DotNetBar.LabelX
 End Class

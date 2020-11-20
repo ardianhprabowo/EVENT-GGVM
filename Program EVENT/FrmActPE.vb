@@ -168,8 +168,8 @@ Public Class FrmActPE
 	End Sub
 	Private Sub LoadKlien()
 		GGVM_conn()
-		sql = "select * from klien"
-		da = New OdbcDataAdapter(sql, conn)
+        sql = "select * from klien where status='1'"
+        da = New OdbcDataAdapter(sql, conn)
 		ds = New DataSet
 		da.Fill(ds)
 		Dim Klien As New AutoCompleteStringCollection
@@ -342,211 +342,210 @@ Public Class FrmActPE
 		Dim IncludePPN As Double = 0
 		Dim PPH As Double = 0
 		Const V As Integer = 100
-		If TidJenisPE.Text = "5" Then
-			For i As Integer = 0 To ListBiayaEvn.Items.Count - 1
-				Nominal = CLng(Nominal + Val(ListBiayaEvn.Items(i).SubItems(7).Text))
-			Next
-			TTotalEvn.EditValue = Nominal
-			Fee = Val(CDbl(Nominal)) * Val(CDbl(TAgentFee.Text)) / V
-			TAgentFeeEvn.EditValue = Val(CDbl(Fee))
-			BeforeVAT = Val(CDbl(Nominal)) + Val(CDbl(Fee))
-			TTotalVATEvn.EditValue = BeforeVAT
-			If AdaPPN.Checked = True Then
-				PPN = Val(BeforeVAT * 10) / V
-			Else
-				PPN = 0
-			End If
-			TPPNEvn.EditValue = PPN
-			TGrandTotalEvn.EditValue = BeforeVAT + PPN
-		ElseIf TidJenisPE.Text = "6" Then
-			For i As Integer = 0 To ListBiayaProject.Items.Count - 1
-				Nominal = Nominal + Val(ListBiayaProject.Items(i).SubItems(4).Text)
-			Next
-			TTotalProj.EditValue = Nominal
-			Fee = Val(CDbl(Nominal)) * Val(CDbl(TAgentFee.Text)) / V
-			TAgentFeeProj.EditValue = Val(CDbl(Fee))
-			BeforeVAT = Val(CDbl(Nominal)) + Val(CDbl(Fee))
-			If AdaPPN.Checked = True Then
-				PPN = Val(BeforeVAT * 10) / V
-			Else
-				PPN = 0
-			End If
-			TRpPPNProj.EditValue = PPN
-			TGrandTotalProj.EditValue = BeforeVAT + PPN
-		ElseIf TidJenisPE.Text = "7" Then
-			For t As Integer = 0 To DGInputHR.Rows.Count - 1
-				TTotPersonHR.Text = Val(CDbl(TTotPersonHR.Text)) + Val(DGInputHR.Rows(t).Cells(10).Value)
-				TPersonMonthHR.Text = Val(CDbl(TPersonMonthHR.Text)) + Val(DGInputHR.Rows(t).Cells(3).Value)
-				TGross1HR.Text = Val(CDbl(TGross1HR.Text)) + Val(DGInputHR.Rows(t).Cells(11).Value)
-				TGross2HR.Text = Val(CDbl(TGross2HR.Text)) + Val(DGInputHR.Rows(t).Cells(12).Value)
-				TAgentFeeHR.Text = Val(CDbl(TAgentFeeHR.Text)) + Val(DGInputHR.Rows(t).Cells(13).Value)
-				TPpnHR.Text = Val(CDbl(TPpnHR.Text)) + Val(DGInputHR.Rows(t).Cells(14).Value)
-				TPph23HR.Text = Val(CDbl(TPph23HR.Text)) + Val(DGInputHR.Rows(t).Cells(15).Value)
-				TGrandTotalHR.Text = Val(CDbl(TGrandTotalHR.Text)) + Val(DGInputHR.Rows(t).Cells(17).Value)
-				TTakeHomePay.Text = Val(CDbl(TTakeHomePay.Text)) + Val(DGInputHR.Rows(t).Cells(16).Value)
-			Next
-		Else
-			Return
+        If TidJenisPE.Text = "5" Then
+            For i As Integer = 0 To ListBiayaEvn.Items.Count - 1
+                Nominal = CLng(Nominal + Val(ListBiayaEvn.Items(i).SubItems(7).Text))
+            Next
+            TTotalEvn.EditValue = Nominal
+            Fee = Val(CDbl(Nominal)) * Val(CDbl(TAgentFee.Text)) / V
+            TAgentFeeEvn.EditValue = Val(CDbl(Fee))
+            BeforeVAT = Val(CDbl(Nominal)) + Val(CDbl(Fee))
+            TTotalVATEvn.EditValue = BeforeVAT
+            If AdaPPN.Checked = True Then
+                PPN = Val(BeforeVAT * 10) / V
+            Else
+                PPN = 0
+            End If
+            TPPNEvn.EditValue = PPN
+            TGrandTotalEvn.EditValue = BeforeVAT + PPN
+        ElseIf TidJenisPE.Text = "6" Then
+            For i As Integer = 0 To ListBiayaProject.Items.Count - 1
+                Nominal = Nominal + Val(ListBiayaProject.Items(i).SubItems(4).Text)
+            Next
+            TTotalProj.EditValue = Nominal
+            Fee = Val(CDbl(Nominal)) * Val(CDbl(TAgentFee.Text)) / V
+            TAgentFeeProj.EditValue = Val(CDbl(Fee))
+            BeforeVAT = Val(CDbl(Nominal)) + Val(CDbl(Fee))
+            If AdaPPN.Checked = True Then
+                PPN = Val(BeforeVAT * 10) / V
+            Else
+                PPN = 0
+            End If
+            TRpPPNProj.EditValue = PPN
+            TGrandTotalProj.EditValue = BeforeVAT + PPN
+        ElseIf TidJenisPE.Text = "7" Then
+            For t As Integer = 0 To DGInputHR.Rows.Count - 1
+                TTotPersonHR.Text = Val(CDbl(TTotPersonHR.Text)) + Val(DGInputHR.Rows(t).Cells(10).Value)
+                TPersonMonthHR.Text = Val(CDbl(TPersonMonthHR.Text)) + Val(DGInputHR.Rows(t).Cells(3).Value)
+                TGross1HR.Text = Val(CDbl(TGross1HR.Text)) + Val(DGInputHR.Rows(t).Cells(11).Value)
+                TGross2HR.Text = Val(CDbl(TGross2HR.Text)) + Val(DGInputHR.Rows(t).Cells(12).Value)
+                TAgentFeeHR.Text = Val(CDbl(TAgentFeeHR.Text)) + Val(DGInputHR.Rows(t).Cells(13).Value)
+                TPpnHR.Text = Val(CDbl(TPpnHR.Text)) + Val(DGInputHR.Rows(t).Cells(14).Value)
+                TPph23HR.Text = Val(CDbl(TPph23HR.Text)) + Val(DGInputHR.Rows(t).Cells(15).Value)
+                TGrandTotalHR.Text = Val(CDbl(TGrandTotalHR.Text)) + Val(DGInputHR.Rows(t).Cells(17).Value)
+                TTakeHomePay.Text = Val(CDbl(TTakeHomePay.Text)) + Val(DGInputHR.Rows(t).Cells(16).Value)
+            Next
+        Else
+            Return
 		End If
 	End Sub
-	Private Sub DataBaruHR()
+    Private Sub DataBaruHR()
+        Call HitungInpHR()
+        Try
+            GGVM_conn()
+            sql = ""
+            sql = sql & "insert act_detail_sdm (idpe,iddetail,idjenis_detail,idjabatan,idarea,idregion,idkota,tahun,"
+            sql = sql & "jml_person,basicsalary,"
+            If CAdaBPJS.Checked = True Then
+                sql = sql & "bpjskes,bpjstk,"
+            End If
+            If TPostAllow.Text <> "" Then
+                sql = sql & "tunjjbt,"
+            End If
+            If TMeal.Text <> "" Then
+                sql = sql & "allowmeal,"
+            End If
+            If TTransport.Text <> "" Then
+                sql = sql & "allowtrans,"
+            End If
+            If TMotor.Text <> "" Then
+                sql = sql & "motorcycle,"
+            End If
+            If TAtkHR.Text <> "" Then
+                sql = sql & "allowatk,"
+            End If
+            If TRentComp.Text <> "" Then
+                sql = sql & "sewakomp,"
+            End If
+            If TPulse.Text <> "" Then
+                sql = sql & "pulsa,"
+            End If
+            If TMakeUp.Text <> "" Then
+                sql = sql & "makeup,"
+            End If
+            If TMeetingCost.Text <> "" Then
+                sql = sql & "bymeeting,"
+            End If
+            If TIncentive.Text <> "" Then
+                sql = sql & "incentive,"
+            End If
+            If TTravellingHR.Text <> "" Then
+                sql = sql & "traveling_cost,"
+            End If
+            If TFixCostHR.Text <> "" Then
+                sql = sql & "fix_cost,"
+            End If
+            If TTelemarketingHR.Text <> "" Then
+                sql = sql & "telemarketing,"
+            End If
+            If TUangHadir.Text <> "" Then
+                sql = sql & "uanghadir,"
+            End If
+            If TEventHR.Text <> "" Then
+                sql = sql & "event_cost,"
+            End If
+            If TPotBpjsEmp.Text <> "" Then
+                sql = sql & "pot_bpjstk,"
+            End If
+            If TPotBpjsMed.Text <> "" Then
+                sql = sql & "pot_bpjskes,"
+            End If
+            If TThr.Text <> "" Then
+                sql = sql & "thr,"
+            End If
+            If TTrainingCost.Text <> "" Then
+                sql = sql & "training_cost,"
+            End If
+            If TOvertime.Text <> "" Then
+                sql = sql & "lembur,"
+            End If
+            If TSubColl.Text <> "" Then
+                sql = sql & "subcollateb,"
+            End If
+            sql = sql & "gross1,gross2,fee,ppn,pph23,thp,totalperson_cost,grandtotal,"
+            sql = sql & "periode, userinput, timeinput)"
+            sql = sql & " values ('" & TidPE.Text & "','" & TidDetailCL.Text & "','4','" & TidPositionHR.Text & "','" & TidAreaHR.Text & "','" & TidRegionHR.Text & "','" & TidKotaHR.Text & "', '" & TTahunHR.Text & "',"
+            sql = sql & "'" & TPeopleHR.Text & "', '" & TBasicSalaryHR.Text & "',"
+            If CAdaBPJS.Checked = True Then
+                sql = sql & "'" & TBpjsMed.Text & "','" & TBpjsEmp.Text & "',"
+            End If
+            If TPostAllow.Text <> "" Then
+                sql = sql & "'" & TPostAllow.Text & "',"
+            End If
+            If TMeal.Text <> "" Then
+                sql = sql & "'" & TMeal.Text & "',"
+            End If
+            If TTransport.Text <> "" Then
+                sql = sql & "'" & TTransport.Text & "',"
+            End If
+            If TMotor.Text <> "" Then
+                sql = sql & "'" & TMotor.Text & "',"
+            End If
+            If TAtkHR.Text <> "" Then
+                sql = sql & "'" & TAtkHR.Text & "',"
+            End If
+            If TRentComp.Text <> "" Then
+                sql = sql & "'" & TRentComp.Text & "',"
+            End If
+            If TPulse.Text <> "" Then
+                sql = sql & "'" & TPulse.Text & "',"
+            End If
+            If TMakeUp.Text <> "" Then
+                sql = sql & "'" & TMakeUp.Text & "',"
+            End If
+            If TMeetingCost.Text <> "" Then
+                sql = sql & "'" & TMeetingCost.Text & "',"
+            End If
+            If TTravellingHR.Text <> "" Then
+                sql = sql & "'" & TTravellingHR.Text & "',"
+            End If
+            If TIncentive.Text <> "" Then
+                sql = sql & "'" & TIncentive.Text & "',"
+            End If
+            If TFixCostHR.Text <> "" Then
+                sql = sql & "'" & TFixCostHR.Text & "',"
+            End If
+            If TTelemarketingHR.Text <> "" Then
+                sql = sql & "'" & TTelemarketingHR.Text & "',"
+            End If
+            If TUangHadir.Text <> "" Then
+                sql = sql & "'" & TUangHadir.Text & "',"
+            End If
+            If TEventHR.Text <> "" Then
+                sql = sql & "'" & TEventHR.Text & "',"
+            End If
+            If TPotBpjsEmp.Text <> "" Then
+                sql = sql & "'" & TPotBpjsEmp.Text & "',"
+            End If
+            If TPotBpjsMed.Text <> "" Then
+                sql = sql & "'" & TPotBpjsMed.Text & "',"
+            End If
+            If TThr.Text <> "" Then
+                sql = sql & "'" & TThr.Text & "',"
+            End If
+            If TTrainingCost.Text <> "" Then
+                sql = sql & "'" & TTrainingCost.Text & "',"
+            End If
+            If TOvertime.Text <> "" Then
+                sql = sql & "'" & TOvertime.Text & "',"
+            End If
+            If TSubColl.Text <> "" Then
+                sql = sql & "'" & TSubColl.Text & "',"
+            End If
+            sql = sql & "'" & TGross1HR.Text & "','" & TGross2HR.Text & "','" & TAgentFeeHR.Text & "','" & TPpnHR.Text & "',"
+            sql = sql & "'" & TPph23HR.Text & "','" & TTakeHomePay.Text & "','" & TPersonMonthHR.Text & "','" & TGrandTotalHR.Text & "',"
+            sql = sql & "'" & TPeriodeHR.Text & "','" & userid & "',now())"
+            cmd = New OdbcCommand(sql, conn)
+            cmd.ExecuteNonQuery()
 
-		Call HitungInpHR()
-		Try
-			GGVM_conn()
-			sql = ""
-			sql = sql & "insert act_detail_sdm (idpe,iddetail,idjenis_detail,idjabatan,idarea,idregion,idkota,tahun,"
-			sql = sql & "jml_person,basicsalary,"
-			If CAdaBPJS.Checked = True Then
-				sql = sql & "bpjskes,bpjstk,"
-			End If
-			If TPostAllow.Text <> "" Then
-				sql = sql & "tunjjbt,"
-			End If
-			If TMeal.Text <> "" Then
-				sql = sql & "allowmeal,"
-			End If
-			If TTransport.Text <> "" Then
-				sql = sql & "allowtrans,"
-			End If
-			If TMotor.Text <> "" Then
-				sql = sql & "motorcycle,"
-			End If
-			If TAtkHR.Text <> "" Then
-				sql = sql & "allowatk,"
-			End If
-			If TRentComp.Text <> "" Then
-				sql = sql & "sewakomp,"
-			End If
-			If TPulse.Text <> "" Then
-				sql = sql & "pulsa,"
-			End If
-			If TMakeUp.Text <> "" Then
-				sql = sql & "makeup,"
-			End If
-			If TMeetingCost.Text <> "" Then
-				sql = sql & "bymeeting,"
-			End If
-			If TIncentive.Text <> "" Then
-				sql = sql & "incentive,"
-			End If
-			If TTravellingHR.Text <> "" Then
-				sql = sql & "traveling_cost,"
-			End If
-			If TFixCostHR.Text <> "" Then
-				sql = sql & "fix_cost,"
-			End If
-			If TTelemarketingHR.Text <> "" Then
-				sql = sql & "telemarketing,"
-			End If
-			If TUangHadir.Text <> "" Then
-				sql = sql & "uanghadir,"
-			End If
-			If TEventHR.Text <> "" Then
-				sql = sql & "event_cost,"
-			End If
-			If TPotBpjsEmp.Text <> "" Then
-				sql = sql & "pot_bpjstk,"
-			End If
-			If TPotBpjsMed.Text <> "" Then
-				sql = sql & "pot_bpjskes,"
-			End If
-			If TThr.Text <> "" Then
-				sql = sql & "thr,"
-			End If
-			If TTrainingCost.Text <> "" Then
-				sql = sql & "training_cost,"
-			End If
-			If TOvertime.Text <> "" Then
-				sql = sql & "lembur,"
-			End If
-			If TSubColl.Text <> "" Then
-				sql = sql & "subcollateb,"
-			End If
-			sql = sql & "gross1,gross2,fee,ppn,pph23,thp,totalperson_cost,grandtotal,"
-			sql = sql & "periode, userinput, timeinput)"
-			sql = sql & " values ('" & TidPE.Text & "','" & TidDetailCL.Text & "','4','" & TidPositionHR.Text & "','" & TidAreaHR.Text & "','" & TidRegionHR.Text & "','" & TidKotaHR.Text & "', '" & TTahunHR.Text & "',"
-			sql = sql & "'" & TPeopleHR.Text & "', '" & TBasicSalaryHR.Text & "',"
-			If CAdaBPJS.Checked = True Then
-				sql = sql & "'" & TBpjsMed.Text & "','" & TBpjsEmp.Text & "',"
-			End If
-			If TPostAllow.Text <> "" Then
-				sql = sql & "'" & TPostAllow.Text & "',"
-			End If
-			If TMeal.Text <> "" Then
-				sql = sql & "'" & TMeal.Text & "',"
-			End If
-			If TTransport.Text <> "" Then
-				sql = sql & "'" & TTransport.Text & "',"
-			End If
-			If TMotor.Text <> "" Then
-				sql = sql & "'" & TMotor.Text & "',"
-			End If
-			If TAtkHR.Text <> "" Then
-				sql = sql & "'" & TAtkHR.Text & "',"
-			End If
-			If TRentComp.Text <> "" Then
-				sql = sql & "'" & TRentComp.Text & "',"
-			End If
-			If TPulse.Text <> "" Then
-				sql = sql & "'" & TPulse.Text & "',"
-			End If
-			If TMakeUp.Text <> "" Then
-				sql = sql & "'" & TMakeUp.Text & "',"
-			End If
-			If TMeetingCost.Text <> "" Then
-				sql = sql & "'" & TMeetingCost.Text & "',"
-			End If
-			If TTravellingHR.Text <> "" Then
-				sql = sql & "'" & TTravellingHR.Text & "',"
-			End If
-			If TIncentive.Text <> "" Then
-				sql = sql & "'" & TIncentive.Text & "',"
-			End If
-			If TFixCostHR.Text <> "" Then
-				sql = sql & "'" & TFixCostHR.Text & "',"
-			End If
-			If TTelemarketingHR.Text <> "" Then
-				sql = sql & "'" & TTelemarketingHR.Text & "',"
-			End If
-			If TUangHadir.Text <> "" Then
-				sql = sql & "'" & TUangHadir.Text & "',"
-			End If
-			If TEventHR.Text <> "" Then
-				sql = sql & "'" & TEventHR.Text & "',"
-			End If
-			If TPotBpjsEmp.Text <> "" Then
-				sql = sql & "'" & TPotBpjsEmp.Text & "',"
-			End If
-			If TPotBpjsMed.Text <> "" Then
-				sql = sql & "'" & TPotBpjsMed.Text & "',"
-			End If
-			If TThr.Text <> "" Then
-				sql = sql & "'" & TThr.Text & "',"
-			End If
-			If TTrainingCost.Text <> "" Then
-				sql = sql & "'" & TTrainingCost.Text & "',"
-			End If
-			If TOvertime.Text <> "" Then
-				sql = sql & "'" & TOvertime.Text & "',"
-			End If
-			If TSubColl.Text <> "" Then
-				sql = sql & "'" & TSubColl.Text & "',"
-			End If
-			sql = sql & "'" & TGross1HR.Text & "','" & TGross2HR.Text & "','" & TAgentFeeHR.Text & "','" & TPpnHR.Text & "',"
-			sql = sql & "'" & TPph23HR.Text & "','" & TTakeHomePay.Text & "','" & TPersonMonthHR.Text & "','" & TGrandTotalHR.Text & "',"
-			sql = sql & "'" & TPeriodeHR.Text & "','" & userid & "',now())"
-			cmd = New OdbcCommand(sql, conn)
-			cmd.ExecuteNonQuery()
-
-			MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
-		Catch ex As Exception
-			MsgBox("Data Gagal di Simpan !!", MsgBoxStyle.Critical, "Eror !!")
-		Finally
-			GGVM_conn_close()
-		End Try
-	End Sub
-	Private Sub InputMainDetail()
+            MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+        Catch ex As Exception
+            MsgBox("Data Gagal di Simpan !!", MsgBoxStyle.Critical, "Eror !!")
+        Finally
+            GGVM_conn_close()
+        End Try
+    End Sub
+    Private Sub InputMainDetail()
 		Dim detailid, idjnsdet As Integer
 
 		TTotalCostCL.Text = Val(CDbl(TQtyCL.Text)) * Val(CDbl(TSubTotalCL.Text))
@@ -602,9 +601,9 @@ Public Class FrmActPE
 
 		MsgBox("Data berhasil di tambahkan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
 	End Sub
-	Private Sub HitungMainDetail()
-		GGVM_conn()
-		Dim NominalCL As Double = 0
+    Private Sub HitungMainDetail()
+        GGVM_conn()
+        Dim NominalCL As Double = 0
 		For i As Integer = 0 To ListDetailPEAct.Items.Count - 1
 			NominalCL = NominalCL + Val(ListDetailPEAct.Items(i).SubItems(5).Text)
 		Next
@@ -1148,11 +1147,12 @@ Public Class FrmActPE
 	Private Sub BacaMainDetail()
 		GGVM_conn()
 		sql = ""
-		sql = sql & "SELECT a.*,c.subkel, d.periode FROM evn_detail_penawaran a "
-		sql = sql & "Join barang_penawaran b ON b.idbarang = a.idbarang "
-		sql = sql & " Join subkelompok c on c.idsubkel = b.idsubkel "
-		sql = sql & " join evn_penawaran d on d.idpe = a.idpe"
-		If TidJenisPE.Text = "5" Then
+        sql = sql & "SELECT if(d.periode is null, '',d.periode) as periode ,a.barang,a.qty, "
+        sql = sql & " a.satuan_qty,a.unitcost,a.sub_totalcost,c.subkel, a.iddetail FROM evn_detail_penawaran a  "
+        sql = sql & " Join barang_penawaran b ON b.idbarang = a.idbarang "
+        sql = sql & " Join subkelompok c on c.idsubkel = b.idsubkel "
+        sql = sql & " join evn_penawaran d on d.idpe = a.idpe "
+        If TidJenisPE.Text = "5" Then
 			If CKuartal.Text <> "" Then
 				sql = sql & " LEFT JOIN act_kuartal_pe e on e.iddetail = a.iddetail"
 			End If
@@ -1185,9 +1185,8 @@ Public Class FrmActPE
 		Next
 		ListDetailPEAct.EndUpdate()
 		Call HitungMainDetail()
-		GGVM_conn_close()
-		conn.Dispose()
-	End Sub
+        GGVM_conn_close()
+    End Sub
 	Private Sub ListHeaderEvn()
 		With ListBiayaEvn
 			.FullRowSelect = True
@@ -3942,10 +3941,15 @@ Public Class FrmActPE
 	Private Sub TAgentFeeHR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TAgentFeeHR.KeyPress
 		AturanInput(e)
 	End Sub
-	Private Sub TGrandTotalHR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TGrandTotalHR.KeyPress
-		AturanInput(e)
-	End Sub
-	Private Sub TSubTotalHR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TGross2HR.KeyPress
+
+    Private Sub RibbonControl_Click(sender As Object, e As EventArgs) Handles RibbonControl.Click
+
+    End Sub
+
+    Private Sub TGrandTotalHR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TGrandTotalHR.KeyPress
+        AturanInput(e)
+    End Sub
+    Private Sub TSubTotalHR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TGross2HR.KeyPress
 		AturanInput(e)
 	End Sub
 	Private Sub TPpnHR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TPpnHR.KeyPress
