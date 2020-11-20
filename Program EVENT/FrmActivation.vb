@@ -109,7 +109,7 @@ Public Class FrmActivation
         sql = ""
         sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,if(a.venue is null,'-',a.venue) as venue,if(a.jmlevent is null,'-',a.jmlevent) as jmlevent, "
         sql = sql & " if (a.periode is null,'',a.periode)as periode,if (a.region is null,'',a.region)as region,a.tgl_pe,a.total,a.rp_ppn, "
-        sql = sql & " if (a.grandtotal Is null,'Belum Ada Detail',a.grandtotal)as grantotal,a.approved_by, a.idpe,if(a.idsubdivisi is null,'',a.idsubdivisi) as idsubdivisi "
+        sql = sql & " if (a.grandtotal Is null,'Belum Ada Detail',a.grandtotal)as grandtotal,a.approved_by, a.idpe,if(a.idsubdivisi is null,'',a.idsubdivisi) as idsubdivisi "
         sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and c.idjenis_pe = '" & TidJenisPE.Text & "' "
         If LevelUser = "1" Then
             sql = sql & " And a.userid_input = '" & userid & "' "
@@ -721,17 +721,17 @@ Public Class FrmActivation
                 TTotalPPN.EditValue = "0"
             End If
         ElseIf TidJenisPE.Text = "7" Then
-            For t As Integer = 0 To DGInputHR.Rows.Count - 1
-                TTotPersonHR.Text = Val(CDbl(TTotPersonHR.Text)) + Val(DGInputHR.Rows(t).Cells(10).Value)
-                TPersonMonthHR.Text = Val(CDbl(TPersonMonthHR.Text)) + Val(DGInputHR.Rows(t).Cells(3).Value)
-                TGross1HR.Text = Val(CDbl(TGross1HR.Text)) + Val(DGInputHR.Rows(t).Cells(11).Value)
-                TGross2HR.Text = Val(CDbl(TGross2HR.Text)) + Val(DGInputHR.Rows(t).Cells(12).Value)
-                TAgentFeeHR.Text = Val(CDbl(TAgentFeeHR.Text)) + Val(DGInputHR.Rows(t).Cells(13).Value)
-                TPpnHR.Text = Val(CDbl(TPpnHR.Text)) + Val(DGInputHR.Rows(t).Cells(14).Value)
-                TPph23HR.Text = Val(CDbl(TPph23HR.Text)) + Val(DGInputHR.Rows(t).Cells(15).Value)
-                TGrandTotalHR.Text = Val(CDbl(TGrandTotalHR.Text)) + Val(DGInputHR.Rows(t).Cells(17).Value)
-                TTakeHomePay.Text = Val(CDbl(TTakeHomePay.Text)) + Val(DGInputHR.Rows(t).Cells(16).Value)
-            Next
+            'For t As Integer = 0 To DGInputHR.Rows.Count - 1
+            '    TTotPersonHR.Text = Val(CDbl(TTotPersonHR.Text)) + Val(DGInputHR.Rows(t).Cells(10).Value)
+            '    TPersonMonthHR.Text = Val(CDbl(TPersonMonthHR.Text)) + Val(DGInputHR.Rows(t).Cells(3).Value)
+            '    TGross1HR.Text = Val(CDbl(TGross1HR.Text)) + Val(DGInputHR.Rows(t).Cells(11).Value)
+            '    TGross2HR.Text = Val(CDbl(TGross2HR.Text)) + Val(DGInputHR.Rows(t).Cells(12).Value)
+            '    TAgentFeeHR.Text = Val(CDbl(TAgentFeeHR.Text)) + Val(DGInputHR.Rows(t).Cells(13).Value)
+            '    TPpnHR.Text = Val(CDbl(TPpnHR.Text)) + Val(DGInputHR.Rows(t).Cells(14).Value)
+            '    TPph23HR.Text = Val(CDbl(TPph23HR.Text)) + Val(DGInputHR.Rows(t).Cells(15).Value)
+            '    TGrandTotalHR.Text = Val(CDbl(TGrandTotalHR.Text)) + Val(DGInputHR.Rows(t).Cells(17).Value)
+            '    TTakeHomePay.Text = Val(CDbl(TTakeHomePay.Text)) + Val(DGInputHR.Rows(t).Cells(16).Value)
+            'Next
         Else
             Return
         End If
@@ -750,8 +750,191 @@ Public Class FrmActivation
     End Sub
     Private Sub BtnProsesPE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnProsesPE.ItemClick
         If BtnProsesPE.Caption = "Proses Input" Then
+            If TidKlien.Text = "" Then
+                MsgBox("Pilih Nama Klien!", MsgBoxStyle.Critical, "Message !!")
+                Exit Sub
+            ElseIf TProject.Text = "" Then
+                MsgBox("Masukkan Nama Project !", MsgBoxStyle.Critical, "Message !!")
+                Exit Sub
+            ElseIf TAgentFee.Text = "0" Then
+                MsgBox("Masukkan Agent Fee !", MsgBoxStyle.Critical, "Message !!")
+                Exit Sub
+            Else
+                GGVM_conn()
+                'Dim PeriodeHR As String
+                sql = " Select a.nope_activation, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi = '" & DivUser & "' "
+                Try
+                    cmd = New OdbcCommand(sql, conn)
+                    dr = cmd.ExecuteReader
+                    dr.Read()
+                Catch ex As Exception
+                    MsgBox("Terjadi Kesalah !" + ex.Message)
+                End Try
+                thn = Microsoft.VisualBasic.Right(DTTanggal.Text, 4)
+                If thn = dr.GetString(1) Then
+                    count = dr.Item("nope_activation")
+                Else
+                    count = 0
+                End If
+                count = count + 1
+                divisiid = dr.GetString(3)
+                divisiid = Microsoft.VisualBasic.Right("0" & divisiid, 2)
+                urutpe = Microsoft.VisualBasic.Right("0000" & count, 4)
 
-            BtnProsesPE.Caption = "Tambah Detail"
+                bln = bulan(DTTanggal.Text)
+                thn = Microsoft.VisualBasic.Right(DTTanggal.Text, 4)
+                urutpe = urutpe + "/GGVM-" + divisiid + "/" + bln + "/" + thn
+
+                c = ""
+                c = c & " update counter set nope_activation = '" & count & "',"
+                c = c & " thnpe_event = '" & Microsoft.VisualBasic.Right(DTTanggal.Text, 4) & "'"
+                Try
+                    cmd = New OdbcCommand(c, conn)
+                    cmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MsgBox("Terjadi Kesalahan !" + ex.Message)
+                    Exit Sub
+                Finally
+                    GGVM_conn_close()
+                End Try
+
+                Select Case ProsesPE
+                    Case "Event"
+                        GGVM_conn()
+                        sql = ""
+                        sql = sql & "insert evn_penawaran (nope,idklien,idjenis_pe,project,"
+                        sql = sql & "venue,jmlevent,"
+                        If TPIC.Text <> "" Then
+                            sql = sql & "approved_by,"
+                        End If
+                        sql = sql & "tgl_pe,userid_input,timeinput,iddivisi,"
+                        sql = sql & "start_event,end_event,periode,periode_start,periode_end) "
+                        sql = sql & " values ('" & urutpe & "','" & TidKlien.Text & "','" & TidJenisPE.Text & "','" & TProject.Text & "',"
+                        sql = sql & "'" & TVenue.Text & "','" & TJmlEvent.Text & "',"
+                        If TPIC.Text <> "" Then
+                            sql = sql & "'" & TPIC.Text & "',"
+                        End If
+                        sql = sql & "'" & Format(DTTanggal.Value, "yyyy/MM/dd") & "','" & userid & "',now(),'" & DivUser & "',"
+                        sql = sql & "'" & Format(StartPeriod.Value, "yyyy/MM/dd") & "','" & Format(EndPeriod.Value, "yyyy/MM/dd") & "','" & tglevent & "','" & Format(StartPeriod.Value, "yyyyMM") & "','" & Format(EndPeriod.Value, "yyyyMM") & "')"
+                        Try
+                            cmd = New OdbcCommand(sql, conn)
+                            cmd.ExecuteNonQuery()
+                        Catch ex As Exception
+                            MsgBox("Terjadi Kesalah !" + ex.Message)
+                        Finally
+                            GGVM_conn_close()
+                        End Try
+                        If TidSubdivisi.Text = "" Then
+                            c = ""
+                            c = c & "insert subdivisi (id_divisi,subdivisi)"
+                            c = c & "values ('18', 'ACTIVATION' ' ' '" & TProject.Text & "')"
+                            cmd = New OdbcCommand(c, conn)
+                            cmd.ExecuteNonQuery()
+
+                            c = ""
+                            c = c & " Select max(idsubdivisi) As id from subdivisi "
+                            da = New OdbcDataAdapter(c, conn)
+                            dt = New DataTable
+                            da.Fill(dt)
+                            If dt.Rows.Count > 0 Then
+                                TidSubdivisi.Text = dt.Rows(0)("id")
+                            End If
+
+                            sql = ""
+                            sql = sql & "update subdivisi set fee = '" & TAgentFee.Text & "'"
+                            sql = sql & " where subdivisi = '" & CSubDivisi.Text & "'"
+                            Try
+                                cmd = New OdbcCommand(sql, conn)
+                                cmd.ExecuteNonQuery()
+                            Catch ex As Exception
+                                MsgBox("Terjadi Kesalahan", MsgBoxStyle.Critical, "Pemberitahuan !!")
+                            Finally
+                                GGVM_conn_close()
+                            End Try
+                        End If
+
+                        MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+                        Dim idno As Integer = 0
+                        c = ""
+                        c = c & " Select max(idpe)As id from evn_penawaran "
+                        da = New OdbcDataAdapter(c, conn)
+                        dt = New DataTable
+                        da.Fill(dt)
+                        If dt.Rows.Count > 0 Then
+                            idno = dt.Rows(0)("id")
+                        End If
+
+                        c = ""
+                        c = c & "update evn_penawaran set idsubdivisi = '" & TidSubdivisi.Text & "'"
+                        c = c & " where idpe = '" & idno & "'"
+                        cmd = New OdbcCommand(c, conn)
+                        cmd.ExecuteNonQuery()
+
+                        TidPE.Text = idno
+                        KondisiAwalPE()
+                        BacaPE()
+                        GGVM_conn_close()
+                    Case "Project"
+                        GGVM_conn()
+                        sql = ""
+                        sql = sql & "insert evn_penawaran (nope,idklien,idjenis_pe,project,"
+                        sql = sql & "tgl_pe,userid_input,timeinput,iddivisi,"
+                        sql = sql & "start_event,end_event,periode,periode_start,periode_end) "
+                        sql = sql & " values ('" & urutpe & "','" & TidKlien.Text & "','" & TidJenisPE.Text & "','" & TProject.Text & "',"
+                        sql = sql & "'" & Format(DTTanggal.Value, "yyyy/MM/dd") & "','" & userid & "',now(),'" & DivUser & "',"
+                        sql = sql & "'" & Format(StartPeriod.Value, "yyyy/MM/dd") & "','" & Format(EndPeriod.Value, "yyyy/MM/dd") & "','" & tglevent & "','" & Format(StartPeriod.Value, "yyyyMM") & "','" & Format(EndPeriod.Value, "yyyyMM") & "')"
+                        Try
+                            cmd = New OdbcCommand(sql, conn)
+                            cmd.ExecuteNonQuery()
+                        Catch ex As Exception
+                            MsgBox("Terjadi Kesalahan", MsgBoxStyle.Information, "Pemberitahuan !!")
+                        End Try
+
+                        If TidSubdivisi.Text = "" Then
+                            c = ""
+                            c = c & "insert subdivisi (id_divisi,subdivisi)"
+                            c = c & "values ('18', 'ACTIVATION' ' ' '" & TProject.Text & "')"
+                            cmd = New OdbcCommand(c, conn)
+                            cmd.ExecuteNonQuery()
+
+                            c = ""
+                            c = c & " Select max(idsubdivisi) As id from subdivisi "
+                            da = New OdbcDataAdapter(c, conn)
+                            dt = New DataTable
+                            da.Fill(dt)
+                            If dt.Rows.Count > 0 Then
+                                TidSubdivisi.Text = dt.Rows(0)("id")
+                            End If
+
+                            sql = ""
+                            sql = sql & "update subdivisi set fee = '" & TAgentFee.Text & "'"
+                            sql = sql & " where idsubdivisi = '" & TidSubdivisi.Text & "'"
+                            cmd = New OdbcCommand(sql, conn)
+                            cmd.ExecuteNonQuery()
+                        End If
+
+                        MsgBox("Data berhasil di Simpan !!", MsgBoxStyle.Information, "Pemberitahuan !!")
+
+                        c = ""
+                        c = c & " Select max(idpe)As id from evn_penawaran "
+                        da = New OdbcDataAdapter(c, conn)
+                        dt = New DataTable
+                        da.Fill(dt)
+                        If dt.Rows.Count > 0 Then
+                            TidPE.Text = dt.Rows(0)("id")
+                        End If
+
+                        c = ""
+                        c = c & "update evn_penawaran set idsubdivisi = '" & TidSubdivisi.Text & "'"
+                        c = c & " where idpe = '" & TidPE.Text & "'"
+                        cmd = New OdbcCommand(c, conn)
+                        cmd.ExecuteNonQuery()
+
+                        KondisiAwalPE()
+                        BacaPE()
+                End Select
+                BtnProsesPE.Caption = "Tambah Detail"
+            End If
         ElseIf BtnProsesPE.Caption = "Tambah Detail" Then
 
             BtnProsesPE.Caption = "Simpan Detail"

@@ -222,8 +222,7 @@ Partial Class FrmActivation
         Me.TidSubkelEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.idBarangEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TidJenisDetail = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtnTambahEvent = New DevExpress.XtraEditors.SimpleButton()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -277,6 +276,8 @@ Partial Class FrmActivation
         Me.TBarangEvn = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Bar4 = New DevExpress.XtraBars.Bar()
         Me.Bar5 = New DevExpress.XtraBars.Bar()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2515,6 +2516,8 @@ Partial Class FrmActivation
         '
         'GroupControl3
         '
+        Me.GroupControl3.Controls.Add(Me.Label3)
+        Me.GroupControl3.Controls.Add(Me.Label4)
         Me.GroupControl3.Controls.Add(Me.Label1)
         Me.GroupControl3.Controls.Add(Me.Label2)
         Me.GroupControl3.Controls.Add(Me.TongglePPN)
@@ -2526,8 +2529,7 @@ Partial Class FrmActivation
         Me.GroupControl3.Controls.Add(Me.TidSubkelEvn)
         Me.GroupControl3.Controls.Add(Me.idBarangEvn)
         Me.GroupControl3.Controls.Add(Me.TidJenisDetail)
-        Me.GroupControl3.Controls.Add(Me.SimpleButton1)
-        Me.GroupControl3.Controls.Add(Me.SimpleButton2)
+        Me.GroupControl3.Controls.Add(Me.BtnTambahEvent)
         Me.GroupControl3.Controls.Add(Me.Label15)
         Me.GroupControl3.Controls.Add(Me.Label16)
         Me.GroupControl3.Controls.Add(Me.Label17)
@@ -2589,13 +2591,12 @@ Partial Class FrmActivation
         'CSubkelEvn
         '
         Me.CSubkelEvn.DisplayMember = "Text"
-        Me.CSubkelEvn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSubkelEvn.FormattingEnabled = True
-        Me.CSubkelEvn.ItemHeight = 17
+        Me.CSubkelEvn.ItemHeight = 13
         Me.CSubkelEvn.Items.AddRange(New Object() {Me.ComboItem1, Me.ComboItem2, Me.ComboItem3})
-        Me.CSubkelEvn.Location = New System.Drawing.Point(500, 62)
+        Me.CSubkelEvn.Location = New System.Drawing.Point(668, 27)
         Me.CSubkelEvn.Name = "CSubkelEvn"
-        Me.CSubkelEvn.Size = New System.Drawing.Size(104, 23)
+        Me.CSubkelEvn.Size = New System.Drawing.Size(104, 21)
         Me.CSubkelEvn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSubkelEvn.TabIndex = 91
         Me.CSubkelEvn.Visible = False
@@ -2615,12 +2616,11 @@ Partial Class FrmActivation
         'CJenisDetail
         '
         Me.CJenisDetail.DisplayMember = "Text"
-        Me.CJenisDetail.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CJenisDetail.FormattingEnabled = True
-        Me.CJenisDetail.ItemHeight = 17
-        Me.CJenisDetail.Location = New System.Drawing.Point(612, 62)
+        Me.CJenisDetail.ItemHeight = 13
+        Me.CJenisDetail.Location = New System.Drawing.Point(584, 60)
         Me.CJenisDetail.Name = "CJenisDetail"
-        Me.CJenisDetail.Size = New System.Drawing.Size(120, 23)
+        Me.CJenisDetail.Size = New System.Drawing.Size(120, 21)
         Me.CJenisDetail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CJenisDetail.TabIndex = 90
         '
@@ -2708,25 +2708,15 @@ Partial Class FrmActivation
         Me.TidJenisDetail.TabIndex = 83
         Me.TidJenisDetail.Visible = False
         '
-        'SimpleButton1
+        'BtnTambahEvent
         '
-        Me.SimpleButton1.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.SimpleButton1.ImageOptions.SvgImageSize = New System.Drawing.Size(15, 15)
-        Me.SimpleButton1.Location = New System.Drawing.Point(495, 117)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(65, 24)
-        Me.SimpleButton1.TabIndex = 82
-        Me.SimpleButton1.Text = "Tutup"
-        '
-        'SimpleButton2
-        '
-        Me.SimpleButton2.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton2.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.SimpleButton2.ImageOptions.SvgImageSize = New System.Drawing.Size(15, 15)
-        Me.SimpleButton2.Location = New System.Drawing.Point(565, 117)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(120, 24)
-        Me.SimpleButton2.TabIndex = 81
-        Me.SimpleButton2.Text = "Tambahkan"
+        Me.BtnTambahEvent.ImageOptions.Image = CType(resources.GetObject("SimpleButton2.ImageOptions.Image"), System.Drawing.Image)
+        Me.BtnTambahEvent.ImageOptions.SvgImageSize = New System.Drawing.Size(15, 15)
+        Me.BtnTambahEvent.Location = New System.Drawing.Point(500, 117)
+        Me.BtnTambahEvent.Name = "BtnTambahEvent"
+        Me.BtnTambahEvent.Size = New System.Drawing.Size(120, 24)
+        Me.BtnTambahEvent.TabIndex = 81
+        Me.BtnTambahEvent.Text = "Tambahkan"
         '
         'Label15
         '
@@ -2899,24 +2889,22 @@ Partial Class FrmActivation
         'ComboBoxEx5
         '
         Me.ComboBoxEx5.DisplayMember = "Text"
-        Me.ComboBoxEx5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx5.FormattingEnabled = True
-        Me.ComboBoxEx5.ItemHeight = 17
+        Me.ComboBoxEx5.ItemHeight = 13
         Me.ComboBoxEx5.Location = New System.Drawing.Point(154, 60)
         Me.ComboBoxEx5.Name = "ComboBoxEx5"
-        Me.ComboBoxEx5.Size = New System.Drawing.Size(51, 23)
+        Me.ComboBoxEx5.Size = New System.Drawing.Size(51, 21)
         Me.ComboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ComboBoxEx5.TabIndex = 52
         '
         'ComboBoxEx6
         '
         Me.ComboBoxEx6.DisplayMember = "Text"
-        Me.ComboBoxEx6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx6.FormattingEnabled = True
-        Me.ComboBoxEx6.ItemHeight = 17
+        Me.ComboBoxEx6.ItemHeight = 13
         Me.ComboBoxEx6.Location = New System.Drawing.Point(154, 88)
         Me.ComboBoxEx6.Name = "ComboBoxEx6"
-        Me.ComboBoxEx6.Size = New System.Drawing.Size(51, 23)
+        Me.ComboBoxEx6.Size = New System.Drawing.Size(51, 21)
         Me.ComboBoxEx6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ComboBoxEx6.TabIndex = 54
         '
@@ -3346,6 +3334,24 @@ Partial Class FrmActivation
         Me.Bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.Bar5.Text = "Custom 4"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(560, 62)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(10, 13)
+        Me.Label3.TabIndex = 96
+        Me.Label3.Text = ":"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(497, 63)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(33, 13)
+        Me.Label4.TabIndex = 95
+        Me.Label4.Text = "Biaya"
+        '
         'FrmActivation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3566,8 +3572,7 @@ Partial Class FrmActivation
     Friend WithEvents TabRincianEksekusi As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents TabRincianManpower As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents BtnTambahEvent As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label15 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents Label17 As Label
@@ -3672,4 +3677,6 @@ Partial Class FrmActivation
     Friend WithEvents TGrandTotalCL As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX52 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX44 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 End Class
