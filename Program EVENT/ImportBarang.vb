@@ -113,29 +113,29 @@ Public Class ImportBarang
 
 	Private Sub OpenFileDialog1_FileOk(sender As Object, e As CancelEventArgs) Handles OpenFileDialog1.FileOk
 		Dim filePath As String = OpenFileDialog1.FileName
-		Using workBook As New XLWorkbook(filePath)
-			Dim workSheet As IXLWorksheet = workBook.Worksheet(1)
-			TLokasiExcel.Text = filePath
-			Dim dt As New DataTable()
-			Dim firstRow As Boolean = True
-			For Each row As IXLRow In workSheet.Rows()
-				If firstRow Then
-					For Each cell As IXLCell In row.Cells()
-						dt.Columns.Add(cell.Value.ToString())
-					Next
-					firstRow = False
-				Else
-					dt.Rows.Add()
-					Dim i As Integer = 0
-					For Each cell As IXLCell In row.Cells()
-						dt.Rows(dt.Rows.Count - 1)(i) = cell.Value.ToString()
-						i += 1
-					Next
-				End If
-				DataGridView1.DataSource = dt
-				DataGridView1.AllowUserToAddRows = False
-			Next
-		End Using
+        Using workBook As New XLWorkbook(filePath)
+            Dim workSheet As IXLWorksheet = workBook.Worksheet(1)
+            TLokasiExcel.Text = filePath
+            Dim dt As New DataTable()
+            Dim firstRow As Boolean = True
+            For Each row As IXLRow In workSheet.Rows()
+                If firstRow Then
+                    For Each cell As IXLCell In row.Cells()
+                        dt.Columns.Add(cell.Value.ToString())
+                    Next
+                    firstRow = False
+                Else
+                    dt.Rows.Add()
+                    Dim i As Integer = 0
+                    For Each cell As IXLCell In row.Cells()
+                        dt.Rows(dt.Rows.Count - 1)(i) = cell.Value.ToString()
+                        i += 1
+                    Next
+                End If
+                DataGridView1.DataSource = dt
+                DataGridView1.AllowUserToAddRows = False
+            Next
+        End Using
 	End Sub
 	Friend myExcel As Excel.Application
 	Friend myWorkBookCollection As Excel.Workbooks

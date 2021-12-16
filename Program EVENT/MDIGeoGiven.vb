@@ -40,10 +40,10 @@ Public Class MDIGeoGiven
 
     Private Sub MDIGeoGiven_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Enabled = True
-        AutoUpdater.Start("http://helpdesk.geogiven.co.id/program/version.xml")
-        'AutoUpdater.ShowUpdateForm()
-        AutoUpdater.DownloadPath = Environment.CurrentDirectory
-        AutoUpdater.Mandatory = True
+        'AutoUpdater.Start("http://helpdesk.geogiven.co.id/program/version.xml")
+        ''AutoUpdater.ShowUpdateForm()
+        'AutoUpdater.DownloadPath = Environment.CurrentDirectory
+        'AutoUpdater.Mandatory = True
         Call Logout()
     End Sub
 

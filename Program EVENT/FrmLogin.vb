@@ -7,11 +7,12 @@ Imports System.Drawing
 Imports System.Reflection
 Imports System.Windows.Forms
 Imports System.Threading
+Imports AutoUpdaterDotNET
 Public Class FrmLogin
 
-    Public Sub New()
-        InitializeComponent()
-    End Sub
+    'Public Sub New()
+    '    InitializeComponent()
+    'End Sub
     Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
         Me.BackColor = Color.White
         Dim s As String
@@ -96,6 +97,14 @@ Public Class FrmLogin
             Thread.Sleep(40)
         Next
         SplashScreenManager.CloseForm()
+        Timer1.Enabled = True
+        AutoUpdater.Start("http://srv.geogiven.co.id/updateinhouseapp/event-pe/version.xml")
+        AutoUpdater.DownloadPath = Environment.CurrentDirectory
+        ' AutoUpdater.Mandatory = True
+        AutoUpdater.InstalledVersion = New Version("2.6")
+        AutoUpdater.Synchronous = True
+        AutoUpdater.ShowSkipButton = False
+        AutoUpdater.ShowRemindLaterButton = False
         TUsername.Focus()
         TUsername.Select()
     End Sub
@@ -104,7 +113,7 @@ Public Class FrmLogin
         '        MsgBoxStyle.YesNo, "Exit") = MsgBoxResult.No Then
         '    e.Cancel = True
         'End If
-        Me.Close()
+        '  Me.Close()
     End Sub
 
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click

@@ -10,10 +10,10 @@ Public Class MainMenu
         MenuActive()
         Label1.Text = ShowVertical(Label1.Text)
 		Timer1.Enabled = True
-        AutoUpdater.Start("http://helpdesk.geogiven.co.id/program/version.xml")
-        'AutoUpdater.ShowUpdateForm()
-        AutoUpdater.DownloadPath = Environment.CurrentDirectory
-        AutoUpdater.Mandatory = True
+        'AutoUpdater.Start("http://helpdesk.geogiven.co.id/program/version.xml")
+        ''AutoUpdater.ShowUpdateForm()
+        'AutoUpdater.DownloadPath = Environment.CurrentDirectory
+        'AutoUpdater.Mandatory = True
     End Sub
     Private m_intMarqueeCounter As Integer = 1
     Private m_bolMarqueeIncrementUp As Boolean = True

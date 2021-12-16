@@ -37,23 +37,29 @@ Partial Public Class FrmPEEvn
             .Columns.Add("GrandTotal", 150, HorizontalAlignment.Left)
             .Columns.Add("Approved By", 140, HorizontalAlignment.Left)
             .Columns.Add("TANGGAL PE", 100, HorizontalAlignment.Left)
-            .Columns.Add("idpe", 1, HorizontalAlignment.Left)
+            .Columns.Add("SISA PE", 150, HorizontalAlignment.Left)
+            .Columns.Add("idpe", 0, HorizontalAlignment.Left)
         End With
     End Sub
     Private Sub BacaPE()
         GGVM_conn()
         sql = ""
-        sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.peserta, a.tgl_event,a.tgl_pe, a.waktu_event,a.total,a.rp_ppn,a.grandtotal,a.approved_by,a.jabatan, a.idpe "
-        sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe  "
+        sql = sql & "Select a.*,a.grandtotal -"
+        sql = sql & "(SELECT "
+        sql = sql & " SUM(b.nominal)"
+        sql = sql & "FROM po_klien b "
+        sql = sql & " WHERE b.Idpe = a.Idpe) as sisape from view_evnpe a "
         If DivUser = "2" Then
-            sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
+            sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "17" Then
-            sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
+            sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "0" Then
-            sql = sql & "and a.deal is Null and c.idjenis_pe in (1,2,3,4)"
+            sql = sql & "where a.deal is Null and a.idjenis_pe in (1,2,3,4)"
         Else
             Return
         End If
+        sql = sql & " Order by a.idpe desc "
+        sql = sql & " LIMIT 100 "
         da = New OdbcDataAdapter(sql, conn)
         ds = New DataSet
         da.Fill(ds)
@@ -82,6 +88,7 @@ Partial Public Class FrmPEEvn
                         .Add(dt.Rows(j)("approved_by"))
                     End If
                     .Add(dt.Rows(j)("tgl_pe"))
+                    .Add(IIf(IsDBNull(dt.Rows(j)("sisape")), "Belum Ada PO", dt.Rows(j)("sisape")))
                     .Add(dt.Rows(j)("idpe"))
                 End With
             End With
@@ -271,11 +278,11 @@ Partial Public Class FrmPEEvn
             sql = sql & " JOIN evn_kontrak c on c.idkontrak = b.idkontrak "
             sql = sql & " WHERE c.idkontrak = '" & TInfoKontrak.Text & "'"
         Else
-            sql = "SELECT barang from barang_penawaran where idsubkel = '71' and idkontrak is nULL"
+            sql = "SELECT barang from barang_penawaran where idsubkel = '71'"
         End If
-        da = New OdbcDataAdapter(sql, conn)
-        ds = New DataSet
-        da.Fill(ds)
+            da = New OdbcDataAdapter(sql, conn)
+            ds = New DataSet
+            da.Fill(ds)
     End Sub
     Private Sub SuperSUBarangPE()
         sql = ""
@@ -655,7 +662,7 @@ Partial Public Class FrmPEEvn
                 If item.Checked Then
                     .CheckedItems.Item(0).Checked = True
                 End If
-                TidPE.Text = item.SubItems(9).Text
+                TidPE.Text = item.SubItems(10).Text
             Next
             Call BacaDetailPE()
             Call AutoCompKlien()
@@ -1315,20 +1322,45 @@ Partial Public Class FrmPEEvn
                         cmd = New Odbc.OdbcCommand(c, conn)
                         cmd.ExecuteNonQuery()
 
+                        'If TidProject.Text = "" Then
+                        '    c = ""
+                        '    c = c & "insert subdivisi (id_divisi,subdivisi)"
+                        '    c = c & "values ('2', 'EVENT' ' ' '" & TProject.Text & "')"
+                        '    cmd = New OdbcCommand(c, conn)
+                        '    cmd.ExecuteNonQuery()
+
+                        '    c = ""
+                        '    c = c & " Select max(idsubdivisi) As id from subdivisi "
+                        '    da = New OdbcDataAdapter(c, conn)
+                        '    dt = New DataTable
+                        '    da.Fill(dt)
+                        '    If dt.Rows.Count > 0 Then
+                        '        TidProject.Text = dt.Rows(0)("id")
+                        '    End If
+                        'End If
+
                         sql = ""
                         sql = sql & "insert evn_penawaran (nope,idklien,idjenis_pe,project,venue,tgl_event,"
                         sql = sql & "start_event,end_event,waktu_event,starttime,endtime,peserta,tgl_pe,total,rp_ppn, "
                         If TApprov.Text <> "" Then
                             sql = sql & "approved_by,jabatan,"
                         End If
-                        sql = sql & "userid_input,timeinput,iddivisi,idsubdivisi)"
+                        sql = sql & "userid_input,timeinput,"
+                        'If TidProject.Text = "" Then
+                        '    sql = sql & "idsubdivisi,"
+                        'End If
+                        sql = sql & "iddivisi)"
                         sql = sql & "values ('" & urutpe & "','" & TidKlien.Text & "','" & TidJenisPE.Text & "','" & TProject.Text & "','" & TVenue.Text & "',"
                         sql = sql & "'" & tglevent & "','" & Format(StartDate.Value, "yyyy/MM/dd") & "','" & Format(EndDate.Value, "yyyy/MM/dd") & "','" & waktuevent & "',"
                         sql = sql & "'" & Format(TimeStart.Value, "HH:mm") & "','" & Format(TimeEnd.Value, "HH:mm") & "','" & TPeserta.Text & "','" & Format(DTTanggal.Value, "yyyy/MM/dd") & "','" & TTotalEvent.Text & "','" & RpPPN.Text & "',"
                         If TApprov.Text <> "" Then
                             sql = sql & "'" & TApprov.Text & "','" & TJabatan.Text & "',"
                         End If
-                        sql = sql & "'" & userid & "',now(),'" & DivUser & "','" & TidProject.Text & "')"
+                        sql = sql & "'" & userid & "',now(),"
+                        'If TidProject.Text = "" Then
+                        '    sql = sql & "'" & TidProject.Text & "',"
+                        'End If
+                        sql = sql & "'" & DivUser & "')"
                         cmd = New OdbcCommand(sql, conn)
                         cmd.ExecuteNonQuery()
 

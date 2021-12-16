@@ -25,7 +25,7 @@ Partial Public Class FrmMaintPO
     ''' </summary>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMaintPO))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.ribbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BtnKeluar = New DevExpress.XtraBars.BarButtonItem()
@@ -36,6 +36,7 @@ Partial Public Class FrmMaintPO
         Me.BtnRefresh = New DevExpress.XtraBars.BarButtonItem()
         Me.BtnClose = New DevExpress.XtraBars.BarButtonItem()
         Me.BtnSimpan = New DevExpress.XtraBars.BarButtonItem()
+        Me.MainMenu = New DevExpress.XtraBars.Ribbon.RibbonPageCategory()
         Me.ribbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.ribbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.TDivisi = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -102,8 +103,21 @@ Partial Public Class FrmMaintPO
         Me.LabelControl25 = New DevExpress.XtraEditors.LabelControl()
         Me.TAlasan = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.SplitContainerControl1 = New DevExpress.XtraEditors.SplitContainerControl()
+        Me.LabelControl32 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl30 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl29 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl28 = New DevExpress.XtraEditors.LabelControl()
+        Me.TRpPPN = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelControl27 = New DevExpress.XtraEditors.LabelControl()
+        Me.CFixedCost = New System.Windows.Forms.CheckBox()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.TPersenFee = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.CFee = New System.Windows.Forms.CheckBox()
+        Me.TGrandTotal = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TFixedCost = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TFee = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelControl26 = New DevExpress.XtraEditors.LabelControl()
-        Me.MainMenu = New DevExpress.XtraBars.Ribbon.RibbonPageCategory()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadioData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelSurvei.SuspendLayout()
@@ -115,36 +129,32 @@ Partial Public Class FrmMaintPO
         '
         'ribbonStatusBar
         '
-        Me.ribbonStatusBar.Location = New System.Drawing.Point(0, 592)
+        Me.ribbonStatusBar.Location = New System.Drawing.Point(0, 797)
+        Me.ribbonStatusBar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ribbonStatusBar.Name = "ribbonStatusBar"
         Me.ribbonStatusBar.Ribbon = Me.ribbonControl
-        Me.ribbonStatusBar.Size = New System.Drawing.Size(1097, 39)
+        Me.ribbonStatusBar.Size = New System.Drawing.Size(1280, 28)
         Me.ribbonStatusBar.Visible = False
         '
         'ribbonControl
         '
         Me.ribbonControl.AutoHideEmptyItems = True
         Me.ribbonControl.AutoSizeItems = True
+        Me.ribbonControl.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.ribbonControl.ExpandCollapseItem.Id = 0
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.BtnKeluar, Me.bsiRecordsCount, Me.BtnEntry, Me.BtnEdit, Me.BtnHapus, Me.BtnRefresh, Me.BtnClose, Me.BtnSimpan})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.ribbonControl.SearchEditItem, Me.BtnKeluar, Me.bsiRecordsCount, Me.BtnEntry, Me.BtnEdit, Me.BtnHapus, Me.BtnRefresh, Me.BtnClose, Me.BtnSimpan})
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
+        Me.ribbonControl.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ribbonControl.MaxItemId = 23
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.OptionsMenuMinWidth = 300
         Me.ribbonControl.PageCategories.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageCategory() {Me.MainMenu})
         Me.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019
-        '
-        '
-        '
-        Me.ribbonControl.SearchEditItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left
-        Me.ribbonControl.SearchEditItem.EditWidth = 150
-        Me.ribbonControl.SearchEditItem.Id = -5000
-        Me.ribbonControl.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.[True]
         Me.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.ribbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.ribbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.ribbonControl.ShowToolbarCustomizeItem = False
-        Me.ribbonControl.Size = New System.Drawing.Size(1097, 166)
+        Me.ribbonControl.Size = New System.Drawing.Size(1280, 196)
         Me.ribbonControl.StatusBar = Me.ribbonStatusBar
         Me.ribbonControl.Toolbar.ShowCustomizeItem = False
         Me.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden
@@ -212,6 +222,12 @@ Partial Public Class FrmMaintPO
         Me.BtnSimpan.ImageOptions.SvgImage = CType(resources.GetObject("BtnSimpan.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.BtnSimpan.Name = "BtnSimpan"
         '
+        'MainMenu
+        '
+        Me.MainMenu.Name = "MainMenu"
+        Me.MainMenu.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.ribbonPage1})
+        Me.MainMenu.Text = "Main Menu"
+        '
         'ribbonPage1
         '
         Me.ribbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.ribbonPageGroup1})
@@ -239,10 +255,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TDivisi.Border.Class = "TextBoxBorder"
         Me.TDivisi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TDivisi.Location = New System.Drawing.Point(131, 8)
+        Me.TDivisi.Location = New System.Drawing.Point(153, 10)
+        Me.TDivisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TDivisi.Name = "TDivisi"
         Me.TDivisi.PreventEnterBeep = True
-        Me.TDivisi.Size = New System.Drawing.Size(232, 21)
+        Me.TDivisi.Size = New System.Drawing.Size(271, 25)
         Me.TDivisi.TabIndex = 0
         '
         'TNoPE
@@ -252,10 +269,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TNoPE.Border.Class = "TextBoxBorder"
         Me.TNoPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TNoPE.Location = New System.Drawing.Point(131, 34)
+        Me.TNoPE.Location = New System.Drawing.Point(153, 44)
+        Me.TNoPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TNoPE.Name = "TNoPE"
         Me.TNoPE.PreventEnterBeep = True
-        Me.TNoPE.Size = New System.Drawing.Size(232, 21)
+        Me.TNoPE.Size = New System.Drawing.Size(271, 25)
         Me.TNoPE.TabIndex = 10
         '
         'TKlien
@@ -265,10 +283,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TKlien.Border.Class = "TextBoxBorder"
         Me.TKlien.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TKlien.Location = New System.Drawing.Point(131, 62)
+        Me.TKlien.Location = New System.Drawing.Point(153, 81)
+        Me.TKlien.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TKlien.Name = "TKlien"
         Me.TKlien.PreventEnterBeep = True
-        Me.TKlien.Size = New System.Drawing.Size(232, 21)
+        Me.TKlien.Size = New System.Drawing.Size(271, 25)
         Me.TKlien.TabIndex = 11
         '
         'TSubdivisi
@@ -278,10 +297,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TSubdivisi.Border.Class = "TextBoxBorder"
         Me.TSubdivisi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TSubdivisi.Location = New System.Drawing.Point(131, 90)
+        Me.TSubdivisi.Location = New System.Drawing.Point(153, 118)
+        Me.TSubdivisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TSubdivisi.Name = "TSubdivisi"
         Me.TSubdivisi.PreventEnterBeep = True
-        Me.TSubdivisi.Size = New System.Drawing.Size(194, 21)
+        Me.TSubdivisi.Size = New System.Drawing.Size(226, 25)
         Me.TSubdivisi.TabIndex = 12
         '
         'TTitle
@@ -291,27 +311,30 @@ Partial Public Class FrmMaintPO
         '
         Me.TTitle.Border.Class = "TextBoxBorder"
         Me.TTitle.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TTitle.Location = New System.Drawing.Point(131, 118)
+        Me.TTitle.Location = New System.Drawing.Point(153, 154)
+        Me.TTitle.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TTitle.Multiline = True
         Me.TTitle.Name = "TTitle"
         Me.TTitle.PreventEnterBeep = True
-        Me.TTitle.Size = New System.Drawing.Size(232, 65)
+        Me.TTitle.Size = New System.Drawing.Size(271, 85)
         Me.TTitle.TabIndex = 13
         '
         'DTTanggal
         '
-        Me.DTTanggal.Location = New System.Drawing.Point(516, 11)
+        Me.DTTanggal.Location = New System.Drawing.Point(602, 14)
+        Me.DTTanggal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.DTTanggal.Name = "DTTanggal"
-        Me.DTTanggal.Size = New System.Drawing.Size(139, 21)
+        Me.DTTanggal.Size = New System.Drawing.Size(161, 25)
         Me.DTTanggal.TabIndex = 14
         '
         'LabelControl1
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Location = New System.Drawing.Point(76, 11)
+        Me.LabelControl1.Location = New System.Drawing.Point(89, 14)
+        Me.LabelControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(30, 13)
+        Me.LabelControl1.Size = New System.Drawing.Size(39, 19)
         Me.LabelControl1.TabIndex = 15
         Me.LabelControl1.Text = "DIVISI"
         '
@@ -319,9 +342,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl3.Appearance.Options.UseFont = True
-        Me.LabelControl3.Location = New System.Drawing.Point(116, 37)
+        Me.LabelControl3.Location = New System.Drawing.Point(135, 48)
+        Me.LabelControl3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl3.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl3.TabIndex = 18
         Me.LabelControl3.Text = ":"
         '
@@ -329,9 +353,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl5.Appearance.Options.UseFont = True
-        Me.LabelControl5.Location = New System.Drawing.Point(116, 65)
+        Me.LabelControl5.Location = New System.Drawing.Point(135, 85)
+        Me.LabelControl5.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl5.Name = "LabelControl5"
-        Me.LabelControl5.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl5.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl5.TabIndex = 20
         Me.LabelControl5.Text = ":"
         '
@@ -339,9 +364,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl6.Appearance.Options.UseFont = True
-        Me.LabelControl6.Location = New System.Drawing.Point(76, 65)
+        Me.LabelControl6.Location = New System.Drawing.Point(89, 85)
+        Me.LabelControl6.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl6.Name = "LabelControl6"
-        Me.LabelControl6.Size = New System.Drawing.Size(31, 13)
+        Me.LabelControl6.Size = New System.Drawing.Size(38, 19)
         Me.LabelControl6.TabIndex = 19
         Me.LabelControl6.Text = "KLIEN"
         '
@@ -349,9 +375,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl7.Appearance.Options.UseFont = True
-        Me.LabelControl7.Location = New System.Drawing.Point(116, 93)
+        Me.LabelControl7.Location = New System.Drawing.Point(135, 122)
+        Me.LabelControl7.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl7.Name = "LabelControl7"
-        Me.LabelControl7.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl7.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl7.TabIndex = 22
         Me.LabelControl7.Text = ":"
         '
@@ -359,9 +386,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl8.Appearance.Options.UseFont = True
-        Me.LabelControl8.Location = New System.Drawing.Point(53, 93)
+        Me.LabelControl8.Location = New System.Drawing.Point(62, 122)
+        Me.LabelControl8.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl8.Name = "LabelControl8"
-        Me.LabelControl8.Size = New System.Drawing.Size(54, 13)
+        Me.LabelControl8.Size = New System.Drawing.Size(70, 19)
         Me.LabelControl8.TabIndex = 21
         Me.LabelControl8.Text = "SUB DIVISI"
         '
@@ -369,9 +397,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl9.Appearance.Options.UseFont = True
-        Me.LabelControl9.Location = New System.Drawing.Point(116, 121)
+        Me.LabelControl9.Location = New System.Drawing.Point(135, 158)
+        Me.LabelControl9.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl9.Name = "LabelControl9"
-        Me.LabelControl9.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl9.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl9.TabIndex = 24
         Me.LabelControl9.Text = ":"
         '
@@ -379,9 +408,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl10.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl10.Appearance.Options.UseFont = True
-        Me.LabelControl10.Location = New System.Drawing.Point(80, 121)
+        Me.LabelControl10.Location = New System.Drawing.Point(93, 158)
+        Me.LabelControl10.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl10.Name = "LabelControl10"
-        Me.LabelControl10.Size = New System.Drawing.Size(27, 13)
+        Me.LabelControl10.Size = New System.Drawing.Size(34, 19)
         Me.LabelControl10.TabIndex = 23
         Me.LabelControl10.Text = "TITLE"
         '
@@ -391,9 +421,10 @@ Partial Public Class FrmMaintPO
         Me.BtnDivisi.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
         Me.BtnDivisi.ImageOptions.SvgImage = CType(resources.GetObject("BtnDivisi.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.BtnDivisi.ImageOptions.SvgImageSize = New System.Drawing.Size(25, 25)
-        Me.BtnDivisi.Location = New System.Drawing.Point(370, 8)
+        Me.BtnDivisi.Location = New System.Drawing.Point(432, 10)
+        Me.BtnDivisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnDivisi.Name = "BtnDivisi"
-        Me.BtnDivisi.Size = New System.Drawing.Size(36, 23)
+        Me.BtnDivisi.Size = New System.Drawing.Size(42, 30)
         Me.BtnDivisi.TabIndex = 25
         Me.BtnDivisi.Text = "SimpleButton1"
         '
@@ -404,9 +435,10 @@ Partial Public Class FrmMaintPO
         Me.BtnPE.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
         Me.BtnPE.ImageOptions.SvgImage = CType(resources.GetObject("BtnPE.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.BtnPE.ImageOptions.SvgImageSize = New System.Drawing.Size(25, 25)
-        Me.BtnPE.Location = New System.Drawing.Point(370, 36)
+        Me.BtnPE.Location = New System.Drawing.Point(432, 47)
+        Me.BtnPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnPE.Name = "BtnPE"
-        Me.BtnPE.Size = New System.Drawing.Size(36, 23)
+        Me.BtnPE.Size = New System.Drawing.Size(42, 30)
         Me.BtnPE.TabIndex = 26
         Me.BtnPE.Text = "SimpleButton2"
         '
@@ -417,9 +449,10 @@ Partial Public Class FrmMaintPO
         Me.BtnKlien.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
         Me.BtnKlien.ImageOptions.SvgImage = CType(resources.GetObject("BtnKlien.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.BtnKlien.ImageOptions.SvgImageSize = New System.Drawing.Size(25, 25)
-        Me.BtnKlien.Location = New System.Drawing.Point(370, 65)
+        Me.BtnKlien.Location = New System.Drawing.Point(432, 85)
+        Me.BtnKlien.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnKlien.Name = "BtnKlien"
-        Me.BtnKlien.Size = New System.Drawing.Size(36, 23)
+        Me.BtnKlien.Size = New System.Drawing.Size(42, 30)
         Me.BtnKlien.TabIndex = 27
         Me.BtnKlien.Text = "SimpleButton3"
         '
@@ -430,9 +463,10 @@ Partial Public Class FrmMaintPO
         Me.BtnSubdivisi.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
         Me.BtnSubdivisi.ImageOptions.SvgImage = CType(resources.GetObject("BtnSubdivisi.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.BtnSubdivisi.ImageOptions.SvgImageSize = New System.Drawing.Size(25, 25)
-        Me.BtnSubdivisi.Location = New System.Drawing.Point(327, 89)
+        Me.BtnSubdivisi.Location = New System.Drawing.Point(381, 116)
+        Me.BtnSubdivisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnSubdivisi.Name = "BtnSubdivisi"
-        Me.BtnSubdivisi.Size = New System.Drawing.Size(36, 23)
+        Me.BtnSubdivisi.Size = New System.Drawing.Size(42, 30)
         Me.BtnSubdivisi.TabIndex = 28
         Me.BtnSubdivisi.Text = "SimpleButton4"
         '
@@ -443,10 +477,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TIdPE.Border.Class = "TextBoxBorder"
         Me.TIdPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TIdPE.Location = New System.Drawing.Point(370, 93)
+        Me.TIdPE.Location = New System.Drawing.Point(432, 122)
+        Me.TIdPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TIdPE.Name = "TIdPE"
         Me.TIdPE.PreventEnterBeep = True
-        Me.TIdPE.Size = New System.Drawing.Size(36, 21)
+        Me.TIdPE.Size = New System.Drawing.Size(42, 25)
         Me.TIdPE.TabIndex = 29
         Me.TIdPE.Visible = False
         '
@@ -457,10 +492,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TIdKlien.Border.Class = "TextBoxBorder"
         Me.TIdKlien.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TIdKlien.Location = New System.Drawing.Point(370, 123)
+        Me.TIdKlien.Location = New System.Drawing.Point(432, 161)
+        Me.TIdKlien.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TIdKlien.Name = "TIdKlien"
         Me.TIdKlien.PreventEnterBeep = True
-        Me.TIdKlien.Size = New System.Drawing.Size(36, 21)
+        Me.TIdKlien.Size = New System.Drawing.Size(42, 25)
         Me.TIdKlien.TabIndex = 30
         Me.TIdKlien.Visible = False
         '
@@ -471,10 +507,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TidDivisi.Border.Class = "TextBoxBorder"
         Me.TidDivisi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidDivisi.Location = New System.Drawing.Point(370, 151)
+        Me.TidDivisi.Location = New System.Drawing.Point(432, 197)
+        Me.TidDivisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TidDivisi.Name = "TidDivisi"
         Me.TidDivisi.PreventEnterBeep = True
-        Me.TidDivisi.Size = New System.Drawing.Size(36, 21)
+        Me.TidDivisi.Size = New System.Drawing.Size(42, 25)
         Me.TidDivisi.TabIndex = 31
         Me.TidDivisi.Visible = False
         '
@@ -485,10 +522,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TidSubdivisi.Border.Class = "TextBoxBorder"
         Me.TidSubdivisi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidSubdivisi.Location = New System.Drawing.Point(89, 140)
+        Me.TidSubdivisi.Location = New System.Drawing.Point(104, 183)
+        Me.TidSubdivisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TidSubdivisi.Name = "TidSubdivisi"
         Me.TidSubdivisi.PreventEnterBeep = True
-        Me.TidSubdivisi.Size = New System.Drawing.Size(36, 21)
+        Me.TidSubdivisi.Size = New System.Drawing.Size(42, 25)
         Me.TidSubdivisi.TabIndex = 32
         Me.TidSubdivisi.Visible = False
         '
@@ -497,9 +535,10 @@ Partial Public Class FrmMaintPO
         Me.NOPE.AutoSize = True
         Me.NOPE.Enabled = False
         Me.NOPE.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.NOPE.Location = New System.Drawing.Point(51, 38)
+        Me.NOPE.Location = New System.Drawing.Point(59, 50)
+        Me.NOPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NOPE.Name = "NOPE"
-        Me.NOPE.Size = New System.Drawing.Size(62, 17)
+        Me.NOPE.Size = New System.Drawing.Size(76, 23)
         Me.NOPE.TabIndex = 33
         Me.NOPE.Text = "NO. PE"
         Me.NOPE.UseVisualStyleBackColor = True
@@ -509,9 +548,10 @@ Partial Public Class FrmMaintPO
         Me.NOPO.AutoSize = True
         Me.NOPO.Enabled = False
         Me.NOPO.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.NOPO.Location = New System.Drawing.Point(437, 44)
+        Me.NOPO.Location = New System.Drawing.Point(510, 58)
+        Me.NOPO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NOPO.Name = "NOPO"
-        Me.NOPO.Size = New System.Drawing.Size(64, 17)
+        Me.NOPO.Size = New System.Drawing.Size(80, 23)
         Me.NOPO.TabIndex = 36
         Me.NOPO.Text = "NO. PO"
         Me.NOPO.UseVisualStyleBackColor = True
@@ -520,9 +560,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl4.Appearance.Options.UseFont = True
-        Me.LabelControl4.Location = New System.Drawing.Point(504, 43)
+        Me.LabelControl4.Location = New System.Drawing.Point(588, 56)
+        Me.LabelControl4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl4.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl4.TabIndex = 35
         Me.LabelControl4.Text = ":"
         '
@@ -533,19 +574,21 @@ Partial Public Class FrmMaintPO
         '
         Me.TNoPO.Border.Class = "TextBoxBorder"
         Me.TNoPO.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TNoPO.Location = New System.Drawing.Point(516, 40)
+        Me.TNoPO.Location = New System.Drawing.Point(621, 58)
+        Me.TNoPO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TNoPO.Name = "TNoPO"
         Me.TNoPO.PreventEnterBeep = True
-        Me.TNoPO.Size = New System.Drawing.Size(232, 21)
+        Me.TNoPO.Size = New System.Drawing.Size(271, 25)
         Me.TNoPO.TabIndex = 34
         '
         'LabelControl11
         '
         Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl11.Appearance.Options.UseFont = True
-        Me.LabelControl11.Location = New System.Drawing.Point(504, 13)
+        Me.LabelControl11.Location = New System.Drawing.Point(588, 17)
+        Me.LabelControl11.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl11.Name = "LabelControl11"
-        Me.LabelControl11.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl11.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl11.TabIndex = 38
         Me.LabelControl11.Text = ":"
         '
@@ -553,17 +596,19 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl12.Appearance.Options.UseFont = True
-        Me.LabelControl12.Location = New System.Drawing.Point(427, 13)
+        Me.LabelControl12.Location = New System.Drawing.Point(498, 17)
+        Me.LabelControl12.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl12.Name = "LabelControl12"
-        Me.LabelControl12.Size = New System.Drawing.Size(71, 13)
+        Me.LabelControl12.Size = New System.Drawing.Size(90, 19)
         Me.LabelControl12.TabIndex = 37
         Me.LabelControl12.Text = "TANGGAL PO"
         '
         'TglCounter
         '
-        Me.TglCounter.Location = New System.Drawing.Point(676, 9)
+        Me.TglCounter.Location = New System.Drawing.Point(789, 12)
+        Me.TglCounter.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TglCounter.Name = "TglCounter"
-        Me.TglCounter.Size = New System.Drawing.Size(68, 21)
+        Me.TglCounter.Size = New System.Drawing.Size(79, 25)
         Me.TglCounter.TabIndex = 39
         Me.TglCounter.Visible = False
         '
@@ -574,10 +619,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TIdPO.Border.Class = "TextBoxBorder"
         Me.TIdPO.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TIdPO.Location = New System.Drawing.Point(681, 11)
+        Me.TIdPO.Location = New System.Drawing.Point(794, 14)
+        Me.TIdPO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TIdPO.Name = "TIdPO"
         Me.TIdPO.PreventEnterBeep = True
-        Me.TIdPO.Size = New System.Drawing.Size(36, 21)
+        Me.TIdPO.Size = New System.Drawing.Size(42, 25)
         Me.TIdPO.TabIndex = 40
         Me.TIdPO.Visible = False
         '
@@ -585,9 +631,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl13.Appearance.Options.UseFont = True
-        Me.LabelControl13.Location = New System.Drawing.Point(504, 73)
+        Me.LabelControl13.Location = New System.Drawing.Point(588, 95)
+        Me.LabelControl13.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl13.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl13.TabIndex = 43
         Me.LabelControl13.Text = ":"
         '
@@ -595,9 +642,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl14.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl14.Appearance.Options.UseFont = True
-        Me.LabelControl14.Location = New System.Drawing.Point(424, 75)
+        Me.LabelControl14.Location = New System.Drawing.Point(495, 98)
+        Me.LabelControl14.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl14.Name = "LabelControl14"
-        Me.LabelControl14.Size = New System.Drawing.Size(74, 13)
+        Me.LabelControl14.Size = New System.Drawing.Size(93, 19)
         Me.LabelControl14.TabIndex = 42
         Me.LabelControl14.Text = "NOMINAL Rp."
         '
@@ -609,10 +657,11 @@ Partial Public Class FrmMaintPO
         Me.TNominal.Border.Class = "TextBoxBorder"
         Me.TNominal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TNominal.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.TNominal.Location = New System.Drawing.Point(516, 66)
+        Me.TNominal.Location = New System.Drawing.Point(621, 88)
+        Me.TNominal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TNominal.Name = "TNominal"
         Me.TNominal.PreventEnterBeep = True
-        Me.TNominal.Size = New System.Drawing.Size(232, 29)
+        Me.TNominal.Size = New System.Drawing.Size(271, 34)
         Me.TNominal.TabIndex = 41
         Me.TNominal.Text = "0"
         Me.TNominal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -622,9 +671,10 @@ Partial Public Class FrmMaintPO
         Me.Referensi.AutoSize = True
         Me.Referensi.Enabled = False
         Me.Referensi.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.Referensi.Location = New System.Drawing.Point(759, 13)
+        Me.Referensi.Location = New System.Drawing.Point(41, 252)
+        Me.Referensi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Referensi.Name = "Referensi"
-        Me.Referensi.Size = New System.Drawing.Size(82, 17)
+        Me.Referensi.Size = New System.Drawing.Size(100, 23)
         Me.Referensi.TabIndex = 46
         Me.Referensi.Text = "REFERENSI"
         Me.Referensi.UseVisualStyleBackColor = True
@@ -633,9 +683,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl15.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl15.Appearance.Options.UseFont = True
-        Me.LabelControl15.Location = New System.Drawing.Point(843, 12)
+        Me.LabelControl15.Location = New System.Drawing.Point(139, 251)
+        Me.LabelControl15.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl15.Name = "LabelControl15"
-        Me.LabelControl15.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl15.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl15.TabIndex = 45
         Me.LabelControl15.Text = ":"
         '
@@ -646,19 +697,21 @@ Partial Public Class FrmMaintPO
         '
         Me.TReferensi.Border.Class = "TextBoxBorder"
         Me.TReferensi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TReferensi.Location = New System.Drawing.Point(855, 9)
+        Me.TReferensi.Location = New System.Drawing.Point(153, 247)
+        Me.TReferensi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TReferensi.Name = "TReferensi"
         Me.TReferensi.PreventEnterBeep = True
-        Me.TReferensi.Size = New System.Drawing.Size(232, 21)
+        Me.TReferensi.Size = New System.Drawing.Size(271, 25)
         Me.TReferensi.TabIndex = 44
         '
         'LabelControl16
         '
         Me.LabelControl16.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl16.Appearance.Options.UseFont = True
-        Me.LabelControl16.Location = New System.Drawing.Point(843, 40)
+        Me.LabelControl16.Location = New System.Drawing.Point(138, 284)
+        Me.LabelControl16.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl16.Name = "LabelControl16"
-        Me.LabelControl16.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl16.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl16.TabIndex = 49
         Me.LabelControl16.Text = ":"
         '
@@ -666,9 +719,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl17.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl17.Appearance.Options.UseFont = True
-        Me.LabelControl17.Location = New System.Drawing.Point(801, 40)
+        Me.LabelControl17.Location = New System.Drawing.Point(89, 284)
+        Me.LabelControl17.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl17.Name = "LabelControl17"
-        Me.LabelControl17.Size = New System.Drawing.Size(33, 13)
+        Me.LabelControl17.Size = New System.Drawing.Size(42, 19)
         Me.LabelControl17.TabIndex = 48
         Me.LabelControl17.Text = "USERS"
         '
@@ -679,19 +733,21 @@ Partial Public Class FrmMaintPO
         '
         Me.TUsers.Border.Class = "TextBoxBorder"
         Me.TUsers.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TUsers.Location = New System.Drawing.Point(855, 37)
+        Me.TUsers.Location = New System.Drawing.Point(152, 280)
+        Me.TUsers.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TUsers.Name = "TUsers"
         Me.TUsers.PreventEnterBeep = True
-        Me.TUsers.Size = New System.Drawing.Size(232, 21)
+        Me.TUsers.Size = New System.Drawing.Size(271, 25)
         Me.TUsers.TabIndex = 47
         '
         'LabelControl18
         '
         Me.LabelControl18.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl18.Appearance.Options.UseFont = True
-        Me.LabelControl18.Location = New System.Drawing.Point(843, 68)
+        Me.LabelControl18.Location = New System.Drawing.Point(1018, 159)
+        Me.LabelControl18.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl18.Name = "LabelControl18"
-        Me.LabelControl18.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl18.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl18.TabIndex = 52
         Me.LabelControl18.Text = ":"
         '
@@ -699,9 +755,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl19.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl19.Appearance.Options.UseFont = True
-        Me.LabelControl19.Location = New System.Drawing.Point(785, 70)
+        Me.LabelControl19.Location = New System.Drawing.Point(951, 162)
+        Me.LabelControl19.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl19.Name = "LabelControl19"
-        Me.LabelControl19.Size = New System.Drawing.Size(52, 13)
+        Me.LabelControl19.Size = New System.Drawing.Size(67, 19)
         Me.LabelControl19.TabIndex = 51
         Me.LabelControl19.Text = "REVISI KE-"
         '
@@ -712,19 +769,21 @@ Partial Public Class FrmMaintPO
         '
         Me.TRevisi.Border.Class = "TextBoxBorder"
         Me.TRevisi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TRevisi.Location = New System.Drawing.Point(855, 66)
+        Me.TRevisi.Location = New System.Drawing.Point(1032, 156)
+        Me.TRevisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TRevisi.Name = "TRevisi"
         Me.TRevisi.PreventEnterBeep = True
-        Me.TRevisi.Size = New System.Drawing.Size(97, 21)
+        Me.TRevisi.Size = New System.Drawing.Size(113, 25)
         Me.TRevisi.TabIndex = 50
         '
         'LabelControl20
         '
         Me.LabelControl20.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl20.Appearance.Options.UseFont = True
-        Me.LabelControl20.Location = New System.Drawing.Point(843, 96)
+        Me.LabelControl20.Location = New System.Drawing.Point(1018, 196)
+        Me.LabelControl20.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl20.Name = "LabelControl20"
-        Me.LabelControl20.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl20.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl20.TabIndex = 55
         Me.LabelControl20.Text = ":"
         '
@@ -732,9 +791,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl21.Appearance.Options.UseFont = True
-        Me.LabelControl21.Location = New System.Drawing.Point(763, 96)
+        Me.LabelControl21.Location = New System.Drawing.Point(925, 196)
+        Me.LabelControl21.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl21.Name = "LabelControl21"
-        Me.LabelControl21.Size = New System.Drawing.Size(74, 13)
+        Me.LabelControl21.Size = New System.Drawing.Size(92, 19)
         Me.LabelControl21.TabIndex = 54
         Me.LabelControl21.Text = "KETERANGAN"
         '
@@ -745,15 +805,17 @@ Partial Public Class FrmMaintPO
         '
         Me.TKeterangan.Border.Class = "TextBoxBorder"
         Me.TKeterangan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TKeterangan.Location = New System.Drawing.Point(855, 93)
+        Me.TKeterangan.Location = New System.Drawing.Point(1032, 192)
+        Me.TKeterangan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TKeterangan.Name = "TKeterangan"
         Me.TKeterangan.PreventEnterBeep = True
-        Me.TKeterangan.Size = New System.Drawing.Size(232, 21)
+        Me.TKeterangan.Size = New System.Drawing.Size(271, 25)
         Me.TKeterangan.TabIndex = 53
         '
         'RadioData
         '
-        Me.RadioData.Location = New System.Drawing.Point(427, 113)
+        Me.RadioData.Location = New System.Drawing.Point(898, 14)
+        Me.RadioData.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.RadioData.MenuManager = Me.ribbonControl
         Me.RadioData.Name = "RadioData"
         Me.RadioData.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
@@ -761,16 +823,17 @@ Partial Public Class FrmMaintPO
         Me.RadioData.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.RadioData.Properties.Columns = 2
         Me.RadioData.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "DATA PO BELUM INVOICE"), New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "DATA PO BELUM MIGO"), New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "DATA PO SUDAH INVOICE")})
-        Me.RadioData.Size = New System.Drawing.Size(317, 48)
+        Me.RadioData.Size = New System.Drawing.Size(370, 63)
         Me.RadioData.TabIndex = 56
         '
         'CariPO
         '
         Me.CariPO.AutoSize = True
         Me.CariPO.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.CariPO.Location = New System.Drawing.Point(750, 126)
+        Me.CariPO.Location = New System.Drawing.Point(909, 88)
+        Me.CariPO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CariPO.Name = "CariPO"
-        Me.CariPO.Size = New System.Drawing.Size(69, 17)
+        Me.CariPO.Size = New System.Drawing.Size(87, 23)
         Me.CariPO.TabIndex = 59
         Me.CariPO.Text = "CARI PO"
         Me.CariPO.UseVisualStyleBackColor = True
@@ -779,9 +842,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl22.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl22.Appearance.Options.UseFont = True
-        Me.LabelControl22.Location = New System.Drawing.Point(843, 126)
+        Me.LabelControl22.Location = New System.Drawing.Point(1014, 90)
+        Me.LabelControl22.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl22.Name = "LabelControl22"
-        Me.LabelControl22.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl22.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl22.TabIndex = 58
         Me.LabelControl22.Text = ":"
         '
@@ -792,19 +856,21 @@ Partial Public Class FrmMaintPO
         '
         Me.TCariPO.Border.Class = "TextBoxBorder"
         Me.TCariPO.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TCariPO.Location = New System.Drawing.Point(855, 123)
+        Me.TCariPO.Location = New System.Drawing.Point(1028, 84)
+        Me.TCariPO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TCariPO.Name = "TCariPO"
         Me.TCariPO.PreventEnterBeep = True
-        Me.TCariPO.Size = New System.Drawing.Size(232, 21)
+        Me.TCariPO.Size = New System.Drawing.Size(226, 25)
         Me.TCariPO.TabIndex = 57
         '
         'CJudul
         '
         Me.CJudul.AutoSize = True
         Me.CJudul.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.CJudul.Location = New System.Drawing.Point(750, 153)
+        Me.CJudul.Location = New System.Drawing.Point(906, 121)
+        Me.CJudul.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CJudul.Name = "CJudul"
-        Me.CJudul.Size = New System.Drawing.Size(81, 17)
+        Me.CJudul.Size = New System.Drawing.Size(101, 23)
         Me.CJudul.TabIndex = 62
         Me.CJudul.Text = "CARI TITLE"
         Me.CJudul.UseVisualStyleBackColor = True
@@ -813,9 +879,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl23.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl23.Appearance.Options.UseFont = True
-        Me.LabelControl23.Location = New System.Drawing.Point(843, 154)
+        Me.LabelControl23.Location = New System.Drawing.Point(1014, 122)
+        Me.LabelControl23.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl23.Name = "LabelControl23"
-        Me.LabelControl23.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl23.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl23.TabIndex = 61
         Me.LabelControl23.Text = ":"
         '
@@ -826,10 +893,11 @@ Partial Public Class FrmMaintPO
         '
         Me.TJudul.Border.Class = "TextBoxBorder"
         Me.TJudul.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TJudul.Location = New System.Drawing.Point(855, 151)
+        Me.TJudul.Location = New System.Drawing.Point(1028, 118)
+        Me.TJudul.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TJudul.Name = "TJudul"
         Me.TJudul.PreventEnterBeep = True
-        Me.TJudul.Size = New System.Drawing.Size(232, 21)
+        Me.TJudul.Size = New System.Drawing.Size(226, 25)
         Me.TJudul.TabIndex = 60
         '
         'ListPO
@@ -837,8 +905,9 @@ Partial Public Class FrmMaintPO
         Me.ListPO.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListPO.HideSelection = False
         Me.ListPO.Location = New System.Drawing.Point(0, 0)
+        Me.ListPO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ListPO.Name = "ListPO"
-        Me.ListPO.Size = New System.Drawing.Size(1097, 208)
+        Me.ListPO.Size = New System.Drawing.Size(1280, 253)
         Me.ListPO.TabIndex = 63
         Me.ListPO.UseCompatibleStateImageBehavior = False
         '
@@ -846,39 +915,43 @@ Partial Public Class FrmMaintPO
         '
         Me.PanelSurvei.Controls.Add(Me.BtnTutupPanel)
         Me.PanelSurvei.Controls.Add(Me.GridPanel)
-        Me.PanelSurvei.Location = New System.Drawing.Point(34, 9)
+        Me.PanelSurvei.Location = New System.Drawing.Point(40, 12)
+        Me.PanelSurvei.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PanelSurvei.Name = "PanelSurvei"
-        Me.PanelSurvei.Size = New System.Drawing.Size(475, 231)
+        Me.PanelSurvei.Size = New System.Drawing.Size(554, 302)
         Me.PanelSurvei.TabIndex = 64
         Me.PanelSurvei.Visible = False
         '
         'BtnTutupPanel
         '
-        Me.BtnTutupPanel.Location = New System.Drawing.Point(46, 193)
+        Me.BtnTutupPanel.Location = New System.Drawing.Point(54, 252)
+        Me.BtnTutupPanel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnTutupPanel.Name = "BtnTutupPanel"
-        Me.BtnTutupPanel.Size = New System.Drawing.Size(364, 23)
+        Me.BtnTutupPanel.Size = New System.Drawing.Size(425, 30)
         Me.BtnTutupPanel.TabIndex = 1
         Me.BtnTutupPanel.Text = "Tutup"
         '
         'GridPanel
         '
         Me.GridPanel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(61, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(61, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridPanel.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 7.8!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridPanel.DefaultCellStyle = DataGridViewCellStyle1
         Me.GridPanel.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.GridPanel.Location = New System.Drawing.Point(17, 17)
+        Me.GridPanel.Location = New System.Drawing.Point(20, 22)
+        Me.GridPanel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.GridPanel.Name = "GridPanel"
-        Me.GridPanel.Size = New System.Drawing.Size(447, 167)
+        Me.GridPanel.Size = New System.Drawing.Size(521, 218)
         Me.GridPanel.TabIndex = 0
         '
         'PAlasan
         '
+        Me.PAlasan.BackColor = System.Drawing.Color.Salmon
         Me.PAlasan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PAlasan.Controls.Add(Me.LPanel)
         Me.PAlasan.Controls.Add(Me.BtnTutup)
@@ -886,9 +959,10 @@ Partial Public Class FrmMaintPO
         Me.PAlasan.Controls.Add(Me.LabelControl24)
         Me.PAlasan.Controls.Add(Me.LabelControl25)
         Me.PAlasan.Controls.Add(Me.TAlasan)
-        Me.PAlasan.Location = New System.Drawing.Point(312, 8)
+        Me.PAlasan.Location = New System.Drawing.Point(649, 167)
+        Me.PAlasan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PAlasan.Name = "PAlasan"
-        Me.PAlasan.Size = New System.Drawing.Size(445, 192)
+        Me.PAlasan.Size = New System.Drawing.Size(520, 268)
         Me.PAlasan.TabIndex = 67
         Me.PAlasan.Visible = False
         '
@@ -896,24 +970,27 @@ Partial Public Class FrmMaintPO
         '
         Me.LPanel.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LPanel.Appearance.Options.UseFont = True
-        Me.LPanel.Location = New System.Drawing.Point(185, 10)
+        Me.LPanel.Location = New System.Drawing.Point(216, 13)
+        Me.LPanel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LPanel.Name = "LPanel"
-        Me.LPanel.Size = New System.Drawing.Size(0, 13)
+        Me.LPanel.Size = New System.Drawing.Size(0, 19)
         Me.LPanel.TabIndex = 27
         '
         'BtnTutup
         '
-        Me.BtnTutup.Location = New System.Drawing.Point(306, 153)
+        Me.BtnTutup.Location = New System.Drawing.Point(357, 200)
+        Me.BtnTutup.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnTutup.Name = "BtnTutup"
-        Me.BtnTutup.Size = New System.Drawing.Size(108, 23)
+        Me.BtnTutup.Size = New System.Drawing.Size(126, 30)
         Me.BtnTutup.TabIndex = 26
         Me.BtnTutup.Text = "Tutup"
         '
         'BtnSimpanAls
         '
-        Me.BtnSimpanAls.Location = New System.Drawing.Point(27, 153)
+        Me.BtnSimpanAls.Location = New System.Drawing.Point(31, 200)
+        Me.BtnSimpanAls.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnSimpanAls.Name = "BtnSimpanAls"
-        Me.BtnSimpanAls.Size = New System.Drawing.Size(123, 23)
+        Me.BtnSimpanAls.Size = New System.Drawing.Size(143, 30)
         Me.BtnSimpanAls.TabIndex = 25
         Me.BtnSimpanAls.Text = "Simpan Alasan"
         '
@@ -921,9 +998,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl24.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl24.Appearance.Options.UseFont = True
-        Me.LabelControl24.Location = New System.Drawing.Point(113, 10)
+        Me.LabelControl24.Location = New System.Drawing.Point(132, 13)
+        Me.LabelControl24.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl24.Name = "LabelControl24"
-        Me.LabelControl24.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl24.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl24.TabIndex = 24
         Me.LabelControl24.Text = ":"
         '
@@ -931,9 +1009,10 @@ Partial Public Class FrmMaintPO
         '
         Me.LabelControl25.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl25.Appearance.Options.UseFont = True
-        Me.LabelControl25.Location = New System.Drawing.Point(27, 10)
+        Me.LabelControl25.Location = New System.Drawing.Point(31, 13)
+        Me.LabelControl25.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl25.Name = "LabelControl25"
-        Me.LabelControl25.Size = New System.Drawing.Size(80, 13)
+        Me.LabelControl25.Size = New System.Drawing.Size(101, 19)
         Me.LabelControl25.TabIndex = 23
         Me.LabelControl25.Text = "ALASAN REVISI"
         '
@@ -944,21 +1023,38 @@ Partial Public Class FrmMaintPO
         '
         Me.TAlasan.Border.Class = "TextBoxBorder"
         Me.TAlasan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TAlasan.Location = New System.Drawing.Point(27, 27)
+        Me.TAlasan.Location = New System.Drawing.Point(31, 35)
+        Me.TAlasan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TAlasan.Multiline = True
         Me.TAlasan.Name = "TAlasan"
         Me.TAlasan.PreventEnterBeep = True
-        Me.TAlasan.Size = New System.Drawing.Size(387, 115)
+        Me.TAlasan.Size = New System.Drawing.Size(451, 150)
         Me.TAlasan.TabIndex = 14
         '
         'SplitContainerControl1
         '
+        Me.SplitContainerControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.SplitContainerControl1.Appearance.Options.UseBackColor = True
         Me.SplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainerControl1.Horizontal = False
-        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 166)
+        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 196)
+        Me.SplitContainerControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.SplitContainerControl1.Name = "SplitContainerControl1"
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl32)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl31)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl30)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl29)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl28)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.TRpPPN)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl27)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.CFixedCost)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl2)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.TPersenFee)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.CFee)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.TGrandTotal)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.TFixedCost)
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.TFee)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl26)
-        Me.SplitContainerControl1.Panel1.Controls.Add(Me.PAlasan)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.DTTanggal)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.LabelControl1)
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.RadioData)
@@ -1015,40 +1111,222 @@ Partial Public Class FrmMaintPO
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelSurvei)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.ListPO)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(1097, 426)
-        Me.SplitContainerControl1.SplitterPosition = 206
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1280, 601)
+        Me.SplitContainerControl1.SplitterPosition = 336
         Me.SplitContainerControl1.TabIndex = 70
+        '
+        'LabelControl32
+        '
+        Me.LabelControl32.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl32.Appearance.Options.UseFont = True
+        Me.LabelControl32.Location = New System.Drawing.Point(612, 260)
+        Me.LabelControl32.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelControl32.Name = "LabelControl32"
+        Me.LabelControl32.Size = New System.Drawing.Size(4, 19)
+        Me.LabelControl32.TabIndex = 82
+        Me.LabelControl32.Text = ":"
+        '
+        'LabelControl31
+        '
+        Me.LabelControl31.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl31.Appearance.Options.UseFont = True
+        Me.LabelControl31.Location = New System.Drawing.Point(612, 103)
+        Me.LabelControl31.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelControl31.Name = "LabelControl31"
+        Me.LabelControl31.Size = New System.Drawing.Size(4, 19)
+        Me.LabelControl31.TabIndex = 81
+        Me.LabelControl31.Text = ":"
+        '
+        'LabelControl30
+        '
+        Me.LabelControl30.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl30.Appearance.Options.UseFont = True
+        Me.LabelControl30.Location = New System.Drawing.Point(612, 220)
+        Me.LabelControl30.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelControl30.Name = "LabelControl30"
+        Me.LabelControl30.Size = New System.Drawing.Size(4, 19)
+        Me.LabelControl30.TabIndex = 80
+        Me.LabelControl30.Text = ":"
+        '
+        'LabelControl29
+        '
+        Me.LabelControl29.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl29.Appearance.Options.UseFont = True
+        Me.LabelControl29.Location = New System.Drawing.Point(612, 180)
+        Me.LabelControl29.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelControl29.Name = "LabelControl29"
+        Me.LabelControl29.Size = New System.Drawing.Size(4, 19)
+        Me.LabelControl29.TabIndex = 79
+        Me.LabelControl29.Text = ":"
+        '
+        'LabelControl28
+        '
+        Me.LabelControl28.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl28.Appearance.Options.UseFont = True
+        Me.LabelControl28.Location = New System.Drawing.Point(570, 220)
+        Me.LabelControl28.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelControl28.Name = "LabelControl28"
+        Me.LabelControl28.Size = New System.Drawing.Size(29, 19)
+        Me.LabelControl28.TabIndex = 78
+        Me.LabelControl28.Text = "PPN"
+        '
+        'TRpPPN
+        '
+        '
+        '
+        '
+        Me.TRpPPN.Border.Class = "TextBoxBorder"
+        Me.TRpPPN.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TRpPPN.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.TRpPPN.Location = New System.Drawing.Point(621, 210)
+        Me.TRpPPN.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TRpPPN.Name = "TRpPPN"
+        Me.TRpPPN.PreventEnterBeep = True
+        Me.TRpPPN.Size = New System.Drawing.Size(271, 34)
+        Me.TRpPPN.TabIndex = 77
+        Me.TRpPPN.Text = "0"
+        Me.TRpPPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'LabelControl27
+        '
+        Me.LabelControl27.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl27.Appearance.Options.UseFont = True
+        Me.LabelControl27.Location = New System.Drawing.Point(501, 261)
+        Me.LabelControl27.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelControl27.Name = "LabelControl27"
+        Me.LabelControl27.Size = New System.Drawing.Size(98, 19)
+        Me.LabelControl27.TabIndex = 76
+        Me.LabelControl27.Text = "GRAND TOTAL"
+        '
+        'CFixedCost
+        '
+        Me.CFixedCost.AutoSize = True
+        Me.CFixedCost.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CFixedCost.Location = New System.Drawing.Point(498, 179)
+        Me.CFixedCost.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.CFixedCost.Name = "CFixedCost"
+        Me.CFixedCost.Size = New System.Drawing.Size(108, 23)
+        Me.CFixedCost.TabIndex = 75
+        Me.CFixedCost.Text = "FIXED COST"
+        Me.CFixedCost.UseVisualStyleBackColor = True
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl2.Appearance.Options.UseFont = True
+        Me.LabelControl2.Location = New System.Drawing.Point(600, 137)
+        Me.LabelControl2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(12, 19)
+        Me.LabelControl2.TabIndex = 74
+        Me.LabelControl2.Text = "%"
+        '
+        'TPersenFee
+        '
+        '
+        '
+        '
+        Me.TPersenFee.Border.Class = "TextBoxBorder"
+        Me.TPersenFee.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TPersenFee.Enabled = False
+        Me.TPersenFee.Location = New System.Drawing.Point(550, 135)
+        Me.TPersenFee.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TPersenFee.Name = "TPersenFee"
+        Me.TPersenFee.PreventEnterBeep = True
+        Me.TPersenFee.Size = New System.Drawing.Size(44, 25)
+        Me.TPersenFee.TabIndex = 73
+        Me.TPersenFee.Text = "0"
+        '
+        'CFee
+        '
+        Me.CFee.AutoSize = True
+        Me.CFee.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.CFee.Location = New System.Drawing.Point(498, 137)
+        Me.CFee.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.CFee.Name = "CFee"
+        Me.CFee.Size = New System.Drawing.Size(52, 23)
+        Me.CFee.TabIndex = 72
+        Me.CFee.Text = "FEE"
+        Me.CFee.UseVisualStyleBackColor = True
+        '
+        'TGrandTotal
+        '
+        '
+        '
+        '
+        Me.TGrandTotal.Border.Class = "TextBoxBorder"
+        Me.TGrandTotal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TGrandTotal.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.TGrandTotal.Location = New System.Drawing.Point(621, 251)
+        Me.TGrandTotal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TGrandTotal.Name = "TGrandTotal"
+        Me.TGrandTotal.PreventEnterBeep = True
+        Me.TGrandTotal.Size = New System.Drawing.Size(271, 34)
+        Me.TGrandTotal.TabIndex = 71
+        Me.TGrandTotal.Text = "0"
+        Me.TGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TFixedCost
+        '
+        '
+        '
+        '
+        Me.TFixedCost.Border.Class = "TextBoxBorder"
+        Me.TFixedCost.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TFixedCost.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.TFixedCost.Location = New System.Drawing.Point(621, 170)
+        Me.TFixedCost.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TFixedCost.Name = "TFixedCost"
+        Me.TFixedCost.PreventEnterBeep = True
+        Me.TFixedCost.Size = New System.Drawing.Size(271, 34)
+        Me.TFixedCost.TabIndex = 70
+        Me.TFixedCost.Text = "0"
+        Me.TFixedCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TFee
+        '
+        '
+        '
+        '
+        Me.TFee.Border.Class = "TextBoxBorder"
+        Me.TFee.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TFee.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.TFee.Location = New System.Drawing.Point(621, 128)
+        Me.TFee.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TFee.Name = "TFee"
+        Me.TFee.PreventEnterBeep = True
+        Me.TFee.Size = New System.Drawing.Size(271, 34)
+        Me.TFee.TabIndex = 69
+        Me.TFee.Text = "0"
+        Me.TFee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'LabelControl26
         '
         Me.LabelControl26.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl26.Appearance.Options.UseFont = True
-        Me.LabelControl26.Location = New System.Drawing.Point(116, 11)
+        Me.LabelControl26.Location = New System.Drawing.Point(135, 14)
+        Me.LabelControl26.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl26.Name = "LabelControl26"
-        Me.LabelControl26.Size = New System.Drawing.Size(3, 13)
+        Me.LabelControl26.Size = New System.Drawing.Size(4, 19)
         Me.LabelControl26.TabIndex = 68
         Me.LabelControl26.Text = ":"
         '
-        'MainMenu
-        '
-        Me.MainMenu.Name = "MainMenu"
-        Me.MainMenu.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.ribbonPage1})
-        Me.MainMenu.Text = "Main Menu"
-        '
         'FrmMaintPO
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1097, 631)
+        Me.ClientSize = New System.Drawing.Size(1280, 825)
         Me.ControlBox = False
+        Me.Controls.Add(Me.PAlasan)
         Me.Controls.Add(Me.SplitContainerControl1)
         Me.Controls.Add(Me.ribbonStatusBar)
         Me.Controls.Add(Me.ribbonControl)
+        Me.IconOptions.ShowIcon = False
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FrmMaintPO"
         Me.Ribbon = Me.ribbonControl
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.StatusBar = Me.ribbonStatusBar
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -1144,4 +1422,18 @@ Partial Public Class FrmMaintPO
     Friend WithEvents SplitContainerControl1 As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents LabelControl26 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents MainMenu As DevExpress.XtraBars.Ribbon.RibbonPageCategory
+    Friend WithEvents LabelControl27 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents CFixedCost As System.Windows.Forms.CheckBox
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents TPersenFee As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents CFee As System.Windows.Forms.CheckBox
+    Friend WithEvents TGrandTotal As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TFixedCost As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TFee As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelControl32 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl31 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl30 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl29 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl28 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents TRpPPN As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

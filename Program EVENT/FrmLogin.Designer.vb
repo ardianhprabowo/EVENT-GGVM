@@ -19,6 +19,7 @@ Partial Class FrmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim SplashScreenManager As DevExpress.XtraSplashScreen.SplashScreenManager = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.Program_EVENT.SplashScreen), True, True)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmLogin))
         Me.FluentDesignFormContainer1 = New DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer()
@@ -42,6 +43,7 @@ Partial Class FrmLogin
         Me.ItemContainer4 = New DevComponents.DotNetBar.ItemContainer()
         Me.BtnLogin = New DevComponents.DotNetBar.ButtonItem()
         Me.BtnCancel = New DevComponents.DotNetBar.ButtonItem()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.FluentDesignFormContainer1.SuspendLayout()
         Me.ItemPanel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,7 +106,7 @@ Partial Class FrmLogin
         '
         Me.TextBox1.Location = New System.Drawing.Point(326, 216)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
         Me.TextBox1.TabIndex = 4
         Me.TextBox1.Visible = False
         '
@@ -124,11 +126,11 @@ Partial Class FrmLogin
         '
         Me.TPassword.Border.Class = "TextBoxBorder"
         Me.TPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TPassword.Location = New System.Drawing.Point(183, 132)
+        Me.TPassword.Location = New System.Drawing.Point(182, 133)
         Me.TPassword.Name = "TPassword"
         Me.TPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TPassword.PreventEnterBeep = True
-        Me.TPassword.Size = New System.Drawing.Size(149, 21)
+        Me.TPassword.Size = New System.Drawing.Size(149, 22)
         Me.TPassword.TabIndex = 2
         Me.TPassword.UseSystemPasswordChar = True
         '
@@ -150,10 +152,10 @@ Partial Class FrmLogin
         Me.TUsername.Border.Class = "TextBoxBorder"
         Me.TUsername.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TUsername.FocusHighlightEnabled = True
-        Me.TUsername.Location = New System.Drawing.Point(183, 99)
+        Me.TUsername.Location = New System.Drawing.Point(182, 99)
         Me.TUsername.Name = "TUsername"
         Me.TUsername.PreventEnterBeep = True
-        Me.TUsername.Size = New System.Drawing.Size(149, 21)
+        Me.TUsername.Size = New System.Drawing.Size(149, 22)
         Me.TUsername.TabIndex = 0
         '
         'ControlContainerItem1
@@ -309,7 +311,7 @@ Partial Class FrmLogin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(476, 234)
         Me.Controls.Add(Me.FluentDesignFormContainer1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("FrmLogin.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "FrmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Halaman Login"
@@ -342,4 +344,5 @@ Partial Class FrmLogin
     Friend WithEvents TUsername As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents ControlContainerItem2 As DevComponents.DotNetBar.ControlContainerItem
     Friend WithEvents ControlContainerItem3 As DevComponents.DotNetBar.ControlContainerItem
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
 End Class

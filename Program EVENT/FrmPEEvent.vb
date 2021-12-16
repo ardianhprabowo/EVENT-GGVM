@@ -32,20 +32,24 @@ Public Class FrmPEEvent
             .Columns.Add("GrandTotal", 150, HorizontalAlignment.Left)
             .Columns.Add("Approved By", 140, HorizontalAlignment.Left)
             .Columns.Add("TANGGAL PE", 100, HorizontalAlignment.Left)
+            .Columns.Add("SISA PE", 150, HorizontalAlignment.Left)
             .Columns.Add("idpe", 1, HorizontalAlignment.Left)
         End With
     End Sub
     Private Sub BacaPE()
         GGVM_conn()
         sql = ""
-        sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.peserta, a.tgl_event,a.tgl_pe, a.waktu_event,a.total,a.rp_ppn,a.grandtotal,a.approved_by,a.jabatan, a.idpe "
-        sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe  "
+        sql = sql & "Select a.*,a.grandtotal -"
+        sql = sql & "(SELECT "
+        sql = sql & " SUM(b.nominal)"
+        sql = sql & "FROM po_klien b "
+        sql = sql & " WHERE b.Idpe = a.Idpe) as sisape from view_evnpe "
         If DivUser = "2" Then
-            sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
+            sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "17" Then
-            sql = sql & "and a.deal is Null and c.idjenis_pe = '" & TidJenisPE.Text & "'"
+            sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "0" Then
-            sql = sql & "and a.deal is Null and c.idjenis_pe in (1,2,3,4)"
+            sql = sql & "where a.deal is Null and a.idjenis_pe in (1,2,3,4)"
         Else
             Return
         End If
@@ -75,6 +79,7 @@ Public Class FrmPEEvent
                     Else
                         .Add(dt.Rows(j)("approved_by"))
                     End If
+                    .Add(IIf(IsDBNull(dt.Rows(j)("sisa_pe")), "Belum PO", dt.Rows(j)("sisa_pe")))
                     .Add(dt.Rows(j)("tgl_pe"))
                     .Add(dt.Rows(j)("idpe"))
                 End With

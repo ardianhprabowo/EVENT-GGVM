@@ -25,6 +25,8 @@ Partial Public Class FrmMaintPO
         ListPO.Columns.Add("NO.PE", 150, HorizontalAlignment.Left)
         ListPO.Columns.Add("TITLE", 300, HorizontalAlignment.Left)
         ListPO.Columns.Add("NOMINAL", 150, HorizontalAlignment.Right)
+        ListPO.Columns.Add("PPN", 150, HorizontalAlignment.Right)
+        ListPO.Columns.Add("GRAND TOTAL", 150, HorizontalAlignment.Right)
         ListPO.Columns.Add("REFERENSI", 150, HorizontalAlignment.Left)
         ListPO.Columns.Add("USERS", 150, HorizontalAlignment.Left)
         ListPO.Columns.Add("REVISI", 50, HorizontalAlignment.Left)
@@ -133,12 +135,14 @@ Partial Public Class FrmMaintPO
             With ListPO
                 .Items.Add(tbl.Rows(i)("printed"))
                 With .Items(.Items.Count - 1).SubItems
-                    .Add(tbl.Rows(i)("divisi"))
-                    .Add(tbl.Rows(i)("nopo"))
-                    .Add(tbl.Rows(i)("klien"))
-                    .Add(tbl.Rows(i)("referensi"))
+                    .Add(tbl.Rows(i)("divisi")) '1
+                    .Add(tbl.Rows(i)("nopo")) '2
+                    .Add(tbl.Rows(i)("klien")) '3
+                    .Add(tbl.Rows(i)("referensi")) '4
                     .Add(replaceNewLine(tbl.Rows(i)("title"), False))
                     .Add(FormatNumber(tbl.Rows(i)("nominal"), 0, , , TriState.True))
+                    .Add(FormatNumber(tbl.Rows(i)("ppn"), 0, , , TriState.True))
+                    .Add(FormatNumber(tbl.Rows(i)("grandtotal"), 0, , , TriState.True))
                     .Add(tbl.Rows(i)("referensi"))
                     .Add(tbl.Rows(i)("users"))
                     .Add(tbl.Rows(i)("revisike"))
@@ -248,6 +252,8 @@ Partial Public Class FrmMaintPO
                     .Add(tbl.Rows(i)("referensi"))
                     .Add(replaceNewLine(tbl.Rows(i)("title"), False))
                     .Add(FormatNumber(tbl.Rows(i)("nominal"), 0, , , TriState.True))
+                    .Add(FormatNumber(tbl.Rows(i)("ppn"), 0, , , TriState.True))
+                    .Add(FormatNumber(tbl.Rows(i)("grandtotal"), 0, , , TriState.True))
                     .Add(tbl.Rows(i)("referensi"))
                     .Add(tbl.Rows(i)("users"))
                     .Add(tbl.Rows(i)("revisike"))
@@ -405,7 +411,7 @@ Partial Public Class FrmMaintPO
 
         s = ""
         If TidDivisi.Text = "2" Or TidDivisi.Text = "17" Or TidDivisi.Text = "18" Then
-            s = s & "  select x.idpo,x.divisi,x.iddivisi,x.idklien,x.klien,x.nopo,x.printed,x.title,x.nominal,x.users,x.referensi,x.idpe,x.revisike,x.zidpe,x.nope, "
+            s = s & "  select x.idpo,x.divisi,x.iddivisi,x.idklien,x.klien,x.nopo,x.printed,x.ppn,x.grandtotal,x.title,x.nominal,x.users,x.referensi,x.idpe,x.revisike,x.zidpe,x.nope, "
             s = s & " if(x.idsubdivisi is null,'',x.idsubdivisi)as idsubdiv"
             s = s & " from ("
             s = s & " select k.* ,if (l.nominaldtl is null,'0',l.nominaldtl)as nominaldtl"
@@ -426,7 +432,7 @@ Partial Public Class FrmMaintPO
         End If
 
         If TidDivisi.Text = "3" Or TidDivisi.Text = "1" Or TidDivisi.Text = "16" Then 'divisi OUTSOURCING DAN PRODUKSI & P.AGENT
-            s = s & "  select x.idpo,x.divisi,x.iddivisi,x.idklien,x.klien,x.nopo,x.printed,x.title,x.nominal,x.users,x.referensi,x.idpe,x.revisike,x.zidpe,x.nope, "
+            s = s & "  select x.idpo,x.divisi,x.iddivisi,x.idklien,x.klien,x.nopo,x.ppn,x.grandtotal,x.printed,x.title,x.nominal,x.users,x.referensi,x.idpe,x.revisike,x.zidpe,x.nope, "
             s = s & " if(x.idsubdivisi is null,'',x.idsubdivisi)as idsubdiv"
             s = s & " from ("
             s = s & " select k.* ,if (l.nominaldtl is null,'0',l.nominaldtl)as nominaldtl"
@@ -462,6 +468,8 @@ Partial Public Class FrmMaintPO
                     .Add(tbl.Rows(i)("nope"))
                     .Add(replaceNewLine(tbl.Rows(i)("title"), False))
                     .Add(FormatNumber(tbl.Rows(i)("nominal"), 0, , , TriState.True))
+                    .Add(FormatNumber(tbl.Rows(i)("ppn"), 0, , , TriState.True))
+                    .Add(FormatNumber(tbl.Rows(i)("grandtotal"), 0, , , TriState.True))
                     .Add(tbl.Rows(i)("referensi"))
                     .Add(tbl.Rows(i)("users"))
                     .Add(tbl.Rows(i)("revisike"))
@@ -881,7 +889,7 @@ Partial Public Class FrmMaintPO
             ListPO.Focus()
             Exit Sub
         End If
-
+        
         Proses = "EDIT"
         If pohead = True Then
             DTTanggal.Text = ListPO.Items(brs).SubItems(0).Text
@@ -891,33 +899,34 @@ Partial Public Class FrmMaintPO
             TNoPE.Text = ListPO.Items(brs).SubItems(4).Text
             TTitle.Text = ListPO.Items(brs).SubItems(5).Text
             TNominal.Text = ListPO.Items(brs).SubItems(6).Text
-            TReferensi.Text = ListPO.Items(brs).SubItems(7).Text
-            TUsers.Text = ListPO.Items(brs).SubItems(8).Text
-            TRevisi.Text = ListPO.Items(brs).SubItems(9).Text
-            TIdPO.Text = ListPO.Items(brs).SubItems(10).Text
-            TidDivisi.Text = ListPO.Items(brs).SubItems(11).Text
-            TIdKlien.Text = ListPO.Items(brs).SubItems(12).Text
-            TIdPE.Text = ListPO.Items(brs).SubItems(13).Text
-            TidSubdivisi.Text = ListPO.Items(brs).SubItems(14).Text
+            TRpPPN.Text = ListPO.Items(brs).SubItems(7).Text
+            TGrandTotal.Text = ListPO.Items(brs).SubItems(8).Text
+            TReferensi.Text = ListPO.Items(brs).SubItems(9).Text
+            TUsers.Text = ListPO.Items(brs).SubItems(10).Text
+            TRevisi.Text = ListPO.Items(brs).SubItems(11).Text
+            TIdPO.Text = ListPO.Items(brs).SubItems(12).Text
+            TidDivisi.Text = ListPO.Items(brs).SubItems(13).Text
+            TIdKlien.Text = ListPO.Items(brs).SubItems(14).Text
+            TIdPE.Text = ListPO.Items(brs).SubItems(15).Text
+            TidSubdivisi.Text = ListPO.Items(brs).SubItems(16).Text
         Else
             DTTanggal.Text = ListPO.Items(brs).SubItems(0).Text
             TDivisi.Text = ListPO.Items(brs).SubItems(1).Text
             TNoPO.Text = ListPO.Items(brs).SubItems(2).Text
             TKlien.Text = ListPO.Items(brs).SubItems(3).Text
-
-            TNominal.Text = ListPO.Items(brs).SubItems(4).Text
-
-            TNoPE.Text = ListPO.Items(brs).SubItems(6).Text
-            TTitle.Text = ListPO.Items(brs).SubItems(7).Text
-
-            TReferensi.Text = ListPO.Items(brs).SubItems(8).Text
-            TUsers.Text = ListPO.Items(brs).SubItems(9).Text
-            TRevisi.Text = ListPO.Items(brs).SubItems(10).Text
-            TIdPO.Text = ListPO.Items(brs).SubItems(11).Text
-            TidDivisi.Text = ListPO.Items(brs).SubItems(12).Text
-            TIdKlien.Text = ListPO.Items(brs).SubItems(13).Text
-            TIdPE.Text = ListPO.Items(brs).SubItems(14).Text
-            TidSubdivisi.Text = ListPO.Items(brs).SubItems(15).Text
+            TNoPE.Text = ListPO.Items(brs).SubItems(4).Text
+            TTitle.Text = ListPO.Items(brs).SubItems(5).Text
+            TNominal.Text = ListPO.Items(brs).SubItems(6).Text
+            TRpPPN.Text = ListPO.Items(brs).SubItems(7).Text
+            TGrandTotal.Text = ListPO.Items(brs).SubItems(8).Text
+            TReferensi.Text = ListPO.Items(brs).SubItems(9).Text
+            TUsers.Text = ListPO.Items(brs).SubItems(10).Text
+            TRevisi.Text = ListPO.Items(brs).SubItems(11).Text
+            TIdPO.Text = ListPO.Items(brs).SubItems(12).Text
+            TidDivisi.Text = ListPO.Items(brs).SubItems(13).Text
+            TIdKlien.Text = ListPO.Items(brs).SubItems(14).Text
+            TIdPE.Text = ListPO.Items(brs).SubItems(15).Text
+            TidSubdivisi.Text = ListPO.Items(brs).SubItems(16).Text
         End If
 
         PAlasan.Visible = True
@@ -928,7 +937,7 @@ Partial Public Class FrmMaintPO
         BtnHapus.Enabled = False
         BtnSimpan.Enabled = True
         BtnKeluar.Caption = "BATAL"
-        SplitContainerControl1.Panel1.Enabled = False
+        SplitContainerControl1.Panel1.Enabled = True
 
         BtnKlien.Enabled = True
         BtnSubdivisi.Enabled = True
@@ -973,17 +982,29 @@ Partial Public Class FrmMaintPO
 
 
                 c = ""
-                c = c & " insert into po_klien (iddivisi,idsubdivisi,nopo,idklien,printed,title,nominal,sisapo,"
+                c = c & " insert into po_klien (iddivisi,idsubdivisi,nopo,idklien,printed,title,nominal,sisapo,plafon_lpj,sisa_plafon, "
                 If TIdPE.Text <> "" Then
                     c = c & " idpe, "
                 End If
-                c = c & " users,referensi,revisike,timeinput,userinput,adapo,keterangan) values "
+                If CFee.Checked = True Then
+                    c = c & "fee, "
+                End If
+                If CFixedCost.Checked = True Then
+                    c = c & "fixedcost, "
+                End If
+                c = c & " ppn,grandtotal, users,referensi,revisike,timeinput,userinput,adapo,keterangan) values "
                 c = c & " ('" & TidDivisi.Text & "','" & TidSubdivisi.Text & "','" & TNoPO.Text & "','" & TIdKlien.Text & "','" & Format(DTTanggal.Value, "yyyy/MM/dd") & "',"
-                c = c & " '" & jdl & "','" & nominal & "','" & nominal & "',"
+                c = c & " '" & jdl & "','" & nominal & "','" & nominal & "','" & nominal & "','" & nominal & "',"
                 If TIdPE.Text <> "" Then
                     c = c & "'" & TIdPE.Text & "',"
                 End If
-                c = c & "'" & TUsers.Text & "','" & TReferensi.Text & "','" & TRevisi.Text & "',now(),'" & userid & "',"
+                If CFee.Checked = True Then
+                    c = c & "'" & TFee.Text & "',"
+                End If
+                If CFixedCost.Checked = True Then
+                    c = c & "'" & TFixedCost.Text & "',"
+                End If
+                c = c & "'" & TRpPPN.Text & "','" & TGrandTotal.Text & "','" & TUsers.Text & "','" & TReferensi.Text & "','" & TRevisi.Text & "',now(),'" & userid & "',"
                 If NOPO.Checked = True Then
                     c = c & "'0',"
                 Else
@@ -1007,6 +1028,7 @@ Partial Public Class FrmMaintPO
 
             Case "EDIT"
                 Dim RpInv As Double
+                Dim SisaPlafon, PakaiPlafon As Integer
 
                 s = ""
                 s = s & " select *  from po_klien"
@@ -1017,6 +1039,8 @@ Partial Public Class FrmMaintPO
                 tbl.Clear()
                 da.Fill(tbl)
                 RpInv = tbl.Rows(0)("nominalinv")
+                PakaiPlafon = tbl.Rows(0)("pakai_plafon")
+                SisaPlafon = nominal - PakaiPlafon
 
                 ke = TRevisi.Text
                 ke = ke + 1
@@ -1029,6 +1053,14 @@ Partial Public Class FrmMaintPO
                 If TIdPE.Text <> "" Then
                     c = c & " idpe = '" & TIdPE.Text & "',"
                 End If
+                If CFee.Checked = True Then
+                    c = c & " fee = '" & TFee.Text & "',"
+                End If
+                If CFixedCost.Checked = True Then
+                    c = c & " fixed = '" & TFixedCost.Text & "', "
+                End If
+                c = c & " ppn = '" & TRpPPN.Text & "' ,"
+                c = c & " grandtotal ='" & TGrandTotal.Text & "', "
                 c = c & " printed = '" & Format(DTTanggal.Value, "yyyy/MM/dd") & "',"
                 c = c & " title = '" & jdl & "',"
                 c = c & " nominal = '" & nominal & "',"
@@ -1046,6 +1078,7 @@ Partial Public Class FrmMaintPO
                     c = c & " adapo = '1',"
                 End If
                 c = c & " revisike = '" & ke & "',"
+                c = c & " sisa_plafon='" & SisaPlafon & "',"
                 c = c & " keterangan = '" & TKeterangan.Text & "'"
                 c = c & " where idpo = '" & TIdPO.Text & "'"
                 cmd = New Odbc.OdbcCommand(c, conn)
@@ -1098,32 +1131,32 @@ Partial Public Class FrmMaintPO
             c = ""
             c = c & " update po_klien set "
             c = c & " timedelete = now()"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
             cmd = New Odbc.OdbcCommand(c, conn)
             cmd.ExecuteNonQuery()
 
             c = ""
             c = c & " insert into buffer_po_klien select * from po_klien"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
             cmd = New Odbc.OdbcCommand(c, conn)
             cmd.ExecuteNonQuery()
 
             c = ""
             c = c & " insert into buffer_detail_po_klien select * from detail_po_klien"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
             cmd = New Odbc.OdbcCommand(c, conn)
             cmd.ExecuteNonQuery()
 
             c = ""
             c = c & " delete from detail_migo"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
             cmd = New Odbc.OdbcCommand(c, conn)
             cmd.ExecuteNonQuery()
 
 
             c = ""
             c = c & " delete from po_klien"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
             cmd = New Odbc.OdbcCommand(c, conn)
             cmd.ExecuteNonQuery()
 
@@ -1354,5 +1387,37 @@ Partial Public Class FrmMaintPO
     Private Sub PanelSurvei_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelSurvei.MouseDown
         Panel1Captured = True
         Panel1Grabbed = e.Location
+    End Sub
+
+    Private Sub CFee_CheckedChanged(sender As Object, e As EventArgs) Handles CFee.CheckedChanged
+        If CFee.Checked = True Then
+            TPersenFee.Enabled = True
+            TFee.Enabled = True
+        Else
+            TPersenFee.Enabled = False
+            TFee.Enabled = False
+        End If
+    End Sub
+
+    Private Sub CFixedCost_CheckedChanged(sender As Object, e As EventArgs) Handles CFixedCost.CheckedChanged
+        If CFixedCost.Checked = True Then
+            TFixedCost.Enabled = True
+        Else
+            TFixedCost.Enabled = False
+        End If
+    End Sub
+
+
+    Private Sub TPersenFee_TextChanged(sender As Object, e As EventArgs) Handles TPersenFee.TextChanged
+        Dim fee As Decimal
+        fee = Val(CDec(TNominal.Text)) * Val(CDec(TPersenFee.Text)) / 100
+        TFee.Text = fee
+    End Sub
+
+    Private Sub TNominal_TextChanged(sender As Object, e As EventArgs) Handles TNominal.TextChanged
+        Dim ppn As Decimal
+        ppn = (Val(CDec(TNominal.Text)) * 10) / 100
+        TRpPPN.Text = ppn
+        TGrandTotal.Text = Val(CDec(TNominal.Text)) + Val(CDec(TRpPPN.Text))
     End Sub
 End Class
