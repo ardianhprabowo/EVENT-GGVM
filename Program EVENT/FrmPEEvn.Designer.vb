@@ -26,7 +26,7 @@ Partial Public Class FrmPEEvn
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPEEvn))
-        Dim SimpleContextButton2 As DevExpress.Utils.SimpleContextButton = New DevExpress.Utils.SimpleContextButton()
+        Dim SimpleContextButton1 As DevExpress.Utils.SimpleContextButton = New DevExpress.Utils.SimpleContextButton()
         Me.mainRibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BuatPE = New DevExpress.XtraBars.BarButtonItem()
         Me.EditPE = New DevExpress.XtraBars.BarButtonItem()
@@ -65,6 +65,12 @@ Partial Public Class FrmPEEvn
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.ListPE = New System.Windows.Forms.ListView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PanelBatalPE = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.LabelX30 = New DevComponents.DotNetBar.LabelX()
+        Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.BtnBatalPE = New DevExpress.XtraEditors.SimpleButton()
+        Me.TInputAlasanBatalPE = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.DTTanggal = New System.Windows.Forms.DateTimePicker()
         Me.CJenisPE = New System.Windows.Forms.ComboBox()
         Me.LabelX26 = New DevComponents.DotNetBar.LabelX()
@@ -178,6 +184,7 @@ Partial Public Class FrmPEEvn
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemToggleSwitch1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.PanelBatalPE.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.NavigasiPEEvent, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.NavigasiPEEvent.SuspendLayout()
@@ -379,12 +386,12 @@ Partial Public Class FrmPEEvn
         '
         Me.RepositoryItemComboBox1.AutoHeight = False
         Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        SimpleContextButton2.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center
-        SimpleContextButton2.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far
-        SimpleContextButton2.Caption = "simpleContextButton1"
-        SimpleContextButton2.Id = New System.Guid("bb0dcc66-a49e-4c24-a91c-2a976c8a586f")
-        SimpleContextButton2.Name = "simpleContextButton1"
-        Me.RepositoryItemComboBox1.ContextButtons.Add(SimpleContextButton2)
+        SimpleContextButton1.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center
+        SimpleContextButton1.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far
+        SimpleContextButton1.Caption = "simpleContextButton1"
+        SimpleContextButton1.Id = New System.Guid("bb0dcc66-a49e-4c24-a91c-2a976c8a586f")
+        SimpleContextButton1.Name = "simpleContextButton1"
+        Me.RepositoryItemComboBox1.ContextButtons.Add(SimpleContextButton1)
         Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
         '
         'BtnKeluar
@@ -508,12 +515,13 @@ Partial Public Class FrmPEEvn
         Me.ListPE.Location = New System.Drawing.Point(0, 0)
         Me.ListPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ListPE.Name = "ListPE"
-        Me.ListPE.Size = New System.Drawing.Size(1860, 560)
+        Me.ListPE.Size = New System.Drawing.Size(1860, 541)
         Me.ListPE.TabIndex = 0
         Me.ListPE.UseCompatibleStateImageBehavior = False
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.PanelBatalPE)
         Me.Panel1.Controls.Add(Me.DTTanggal)
         Me.Panel1.Controls.Add(Me.CJenisPE)
         Me.Panel1.Controls.Add(Me.LabelX26)
@@ -569,8 +577,117 @@ Partial Public Class FrmPEEvn
         Me.Panel1.Location = New System.Drawing.Point(3, 4)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1934, 281)
+        Me.Panel1.Size = New System.Drawing.Size(1934, 300)
         Me.Panel1.TabIndex = 1
+        '
+        'PanelBatalPE
+        '
+        Me.PanelBatalPE.CanvasColor = System.Drawing.SystemColors.Control
+        Me.PanelBatalPE.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.PanelBatalPE.Controls.Add(Me.LabelX30)
+        Me.PanelBatalPE.Controls.Add(Me.TextBoxX1)
+        Me.PanelBatalPE.Controls.Add(Me.Label4)
+        Me.PanelBatalPE.Controls.Add(Me.BtnBatalPE)
+        Me.PanelBatalPE.Controls.Add(Me.TInputAlasanBatalPE)
+        Me.PanelBatalPE.DisabledBackColor = System.Drawing.Color.Empty
+        Me.PanelBatalPE.Location = New System.Drawing.Point(525, 31)
+        Me.PanelBatalPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.PanelBatalPE.Name = "PanelBatalPE"
+        Me.PanelBatalPE.Size = New System.Drawing.Size(533, 165)
+        '
+        '
+        '
+        Me.PanelBatalPE.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.PanelBatalPE.Style.BackColorGradientAngle = 90
+        Me.PanelBatalPE.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.PanelBatalPE.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.PanelBatalPE.Style.BorderBottomWidth = 1
+        Me.PanelBatalPE.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.PanelBatalPE.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.PanelBatalPE.Style.BorderLeftWidth = 1
+        Me.PanelBatalPE.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.PanelBatalPE.Style.BorderRightWidth = 1
+        Me.PanelBatalPE.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.PanelBatalPE.Style.BorderTopWidth = 1
+        Me.PanelBatalPE.Style.CornerDiameter = 4
+        Me.PanelBatalPE.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.PanelBatalPE.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.PanelBatalPE.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.PanelBatalPE.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.PanelBatalPE.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.PanelBatalPE.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.PanelBatalPE.TabIndex = 54
+        Me.PanelBatalPE.Text = "Alasan Batal PE"
+        Me.PanelBatalPE.Visible = False
+        '
+        'LabelX30
+        '
+        Me.LabelX30.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX30.Location = New System.Drawing.Point(475, 101)
+        Me.LabelX30.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelX30.Name = "LabelX30"
+        Me.LabelX30.Size = New System.Drawing.Size(38, 30)
+        Me.LabelX30.TabIndex = 4
+        Me.LabelX30.Text = "Tutup"
+        '
+        'TextBoxX1
+        '
+        '
+        '
+        '
+        Me.TextBoxX1.Border.Class = "TextBoxBorder"
+        Me.TextBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TextBoxX1.Location = New System.Drawing.Point(21, 85)
+        Me.TextBoxX1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBoxX1.Name = "TextBoxX1"
+        Me.TextBoxX1.PreventEnterBeep = True
+        Me.TextBoxX1.Size = New System.Drawing.Size(37, 25)
+        Me.TextBoxX1.TabIndex = 3
+        Me.TextBoxX1.Visible = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(17, 25)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(339, 23)
+        Me.Label4.TabIndex = 2
+        Me.Label4.Text = "Tuliskan Alasan Membatalkan Penawaran"
+        '
+        'BtnBatalPE
+        '
+        Me.BtnBatalPE.Location = New System.Drawing.Point(197, 101)
+        Me.BtnBatalPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.BtnBatalPE.Name = "BtnBatalPE"
+        Me.BtnBatalPE.Size = New System.Drawing.Size(136, 30)
+        Me.BtnBatalPE.TabIndex = 1
+        Me.BtnBatalPE.Text = "Batal Penawaran"
+        '
+        'TInputAlasanBatalPE
+        '
+        '
+        '
+        '
+        Me.TInputAlasanBatalPE.Border.Class = "TextBoxBorder"
+        Me.TInputAlasanBatalPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TInputAlasanBatalPE.Location = New System.Drawing.Point(17, 48)
+        Me.TInputAlasanBatalPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TInputAlasanBatalPE.Name = "TInputAlasanBatalPE"
+        Me.TInputAlasanBatalPE.PreventEnterBeep = True
+        Me.TInputAlasanBatalPE.Size = New System.Drawing.Size(502, 25)
+        Me.TInputAlasanBatalPE.TabIndex = 0
         '
         'DTTanggal
         '
@@ -1251,8 +1368,8 @@ Partial Public Class FrmPEEvn
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.5!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.52376!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.47624!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1940, 974)
         Me.TableLayoutPanel1.TabIndex = 3
@@ -1267,16 +1384,16 @@ Partial Public Class FrmPEEvn
         Me.NavigasiPEEvent.Cursor = System.Windows.Forms.Cursors.Default
         Me.NavigasiPEEvent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.NavigasiPEEvent.ItemOrientation = System.Windows.Forms.Orientation.Vertical
-        Me.NavigasiPEEvent.Location = New System.Drawing.Point(3, 293)
+        Me.NavigasiPEEvent.Location = New System.Drawing.Point(3, 312)
         Me.NavigasiPEEvent.LookAndFeel.SkinName = "Office 2013 Dark Gray"
         Me.NavigasiPEEvent.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
         Me.NavigasiPEEvent.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NavigasiPEEvent.Name = "NavigasiPEEvent"
         Me.NavigasiPEEvent.PageProperties.AllowCustomHeaderButtonsGlyphSkinning = True
         Me.NavigasiPEEvent.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavPenawaran, Me.NavDetailBarang})
-        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(1934, 650)
+        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(1934, 631)
         Me.NavigasiPEEvent.SelectedPage = Me.NavPenawaran
-        Me.NavigasiPEEvent.Size = New System.Drawing.Size(1934, 650)
+        Me.NavigasiPEEvent.Size = New System.Drawing.Size(1934, 631)
         Me.NavigasiPEEvent.TabIndex = 2
         Me.NavigasiPEEvent.Text = "NavigasiPEEvent"
         '
@@ -1294,7 +1411,7 @@ Partial Public Class FrmPEEvn
         Me.NavPenawaran.Controls.Add(Me.ListPE)
         Me.NavPenawaran.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NavPenawaran.Name = "NavPenawaran"
-        Me.NavPenawaran.Size = New System.Drawing.Size(1860, 560)
+        Me.NavPenawaran.Size = New System.Drawing.Size(1860, 541)
         '
         'NavDetailBarang
         '
@@ -1303,7 +1420,7 @@ Partial Public Class FrmPEEvn
         Me.NavDetailBarang.Controls.Add(Me.TampilDetail)
         Me.NavDetailBarang.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NavDetailBarang.Name = "NavDetailBarang"
-        Me.NavDetailBarang.Size = New System.Drawing.Size(1605, 498)
+        Me.NavDetailBarang.Size = New System.Drawing.Size(1860, 541)
         '
         'PInput
         '
@@ -1669,7 +1786,7 @@ Partial Public Class FrmPEEvn
         Me.TampilDetail.Location = New System.Drawing.Point(0, 0)
         Me.TampilDetail.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TampilDetail.Name = "TampilDetail"
-        Me.TampilDetail.Size = New System.Drawing.Size(1605, 498)
+        Me.TampilDetail.Size = New System.Drawing.Size(1860, 541)
         Me.TampilDetail.TabIndex = 1
         Me.TampilDetail.UseCompatibleStateImageBehavior = False
         '
@@ -1998,6 +2115,8 @@ Partial Public Class FrmPEEvn
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemToggleSwitch1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.PanelBatalPE.ResumeLayout(False)
+        Me.PanelBatalPE.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.NavigasiPEEvent, System.ComponentModel.ISupportInitialize).EndInit()
         Me.NavigasiPEEvent.ResumeLayout(False)
@@ -2146,11 +2265,17 @@ Partial Public Class FrmPEEvn
     Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
     Friend WithEvents BtnKeluar As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents MainMenu As DevExpress.XtraBars.Ribbon.RibbonPageCategory
-	Friend WithEvents CekAdaPPN As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents CekAdaPPN As DevExpress.XtraBars.BarCheckItem
     Friend WithEvents ToolbarFormControl1 As DevExpress.XtraBars.ToolbarForm.ToolbarFormControl
     Friend WithEvents ToolbarFormManager1 As DevExpress.XtraBars.ToolbarForm.ToolbarFormManager
     Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents PanelBatalPE As DevComponents.DotNetBar.Controls.GroupPanel
+    Friend WithEvents LabelX30 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents BtnBatalPE As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents TInputAlasanBatalPE As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

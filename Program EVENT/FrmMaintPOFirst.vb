@@ -4,7 +4,7 @@ Imports System.ComponentModel.DataAnnotations
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraEditors
 Imports System.Data.Odbc
-Partial Public Class FrmMaintPO
+Partial Public Class FrmMaintPOFirst
     Private Panel1Captured As Boolean
     Private Panel1Grabbed As Point
     Dim tgl As Date
@@ -889,7 +889,7 @@ Partial Public Class FrmMaintPO
             ListPO.Focus()
             Exit Sub
         End If
-        
+
         Proses = "EDIT"
         If pohead = True Then
             DTTanggal.Text = ListPO.Items(brs).SubItems(0).Text
@@ -977,6 +977,7 @@ Partial Public Class FrmMaintPO
                     MsgBox("No PO : '" & TNoPO.Text & "'   SUDAH ADA !!..", MsgBoxStyle.Information, "Information")
                     GGVM_conn_close()
                     TNoPO.Focus()
+                    Me.Cursor = Cursors.Default
                     Exit Sub
                 End If
 
@@ -1023,6 +1024,24 @@ Partial Public Class FrmMaintPO
                 da.Fill(tbl)
                 TIdPO.Text = tbl.Rows(0)("idpo")
 
+                sql = ""
+                sql = sql & "SELECT a.grandtotal - (SELECT SUM(nominal)FROM po_klien b  WHERE b.Idpe = a.idpe) as sisape FROM `view_evnpe` a"
+                da = New Odbc.OdbcDataAdapter(sql, conn)
+                ds.Clear()
+                tbl = New DataTable
+                tbl.Clear()
+                da.Fill(tbl)
+                If tbl.Rows(0)("sisape") Is DBNull.Value Then
+                    sql = ""
+                    sql = sql & "insert into evn_penawaran (sisape) values ('" & tbl.Rows(0)("sisape") & "') where idpe ='" & TIdPE.Text & "'"
+                    cmd = New OdbcCommand(sql, conn)
+                    cmd.ExecuteNonQuery()
+                Else
+                    sql = ""
+                    sql = sql & "update evn_penawaran set sisape='" & tbl.Rows(0)("sisape") & "' where idpe ='" & TIdPE.Text & "'"
+                    cmd = New OdbcCommand(sql, conn)
+                    cmd.ExecuteNonQuery()
+                End If
                 Me.Cursor = Cursors.Default
                 MsgBox("Data Sudah di-SIMPAN !!..", MsgBoxStyle.Information, "Information")
 
@@ -1083,6 +1102,18 @@ Partial Public Class FrmMaintPO
                 c = c & " where idpo = '" & TIdPO.Text & "'"
                 cmd = New Odbc.OdbcCommand(c, conn)
                 cmd.ExecuteNonQuery()
+
+                If tbl.Rows(0)("sisape") Is DBNull.Value Then
+                    sql = ""
+                    sql = sql & "insert into evn_penawaran (sisape) values ('" & tbl.Rows(0)("sisape") & "') where idpe ='" & TIdPE.Text & "'"
+                    cmd = New OdbcCommand(sql, conn)
+                    cmd.ExecuteNonQuery()
+                Else
+                    sql = ""
+                    sql = sql & "update evn_penawaran set sisape='" & tbl.Rows(0)("sisape") & "' where idpe ='" & TIdPE.Text & "'"
+                    cmd = New OdbcCommand(sql, conn)
+                    cmd.ExecuteNonQuery()
+                End If
                 Me.Cursor = Cursors.Default
                 MsgBox("Data Sudah di-EDIT !!..", MsgBoxStyle.Information, "Information")
         End Select
@@ -1100,7 +1131,6 @@ Partial Public Class FrmMaintPO
         Dim ada As Boolean
         Dim brs, jmldt As Integer
         Dim cmd As New OdbcCommand
-        Dim c As String
 
 
         ada = False
@@ -1113,7 +1143,7 @@ Partial Public Class FrmMaintPO
             End If
         Next
         If ada = False Then
-            MsgBox("ThenTidak ada data yang akan di EDIT, Pilih dulu datanya!!...", MsgBoxStyle.Information, "Information")
+            MsgBox("Tidak ada data yang akan di EDIT, Pilih dulu datanya!!...", MsgBoxStyle.Information, "Information")
             ListPO.Focus()
             Exit Sub
         End If
@@ -1125,47 +1155,59 @@ Partial Public Class FrmMaintPO
 
         BtnKeluar.Caption = "BATAL"
         If MsgBox("Anda yakin menghapus DATA PO ??....", MsgBoxStyle.OkCancel, "Question") = MsgBoxResult.Ok Then
+            BtnSimpanAls.Visible = False
+            BtnHapusAlasan.Visible = True
+            LabelControl25.Text = "ALASAN PO DIHAPUS"
+            PAlasan.Visible = True
+            TAlasan.Text = ""
+            TAlasan.Focus()
+            TIdPO.Text = ListPO.Items(brs).SubItems(12).Text
 
-            Me.Cursor = Cursors.WaitCursor
-            GGVM_conn()
-            c = ""
-            c = c & " update po_klien set "
-            c = c & " timedelete = now()"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
-            cmd = New Odbc.OdbcCommand(c, conn)
-            cmd.ExecuteNonQuery()
+            'Me.Cursor = Cursors.WaitCursor
+            'GGVM_conn()
+            'c = ""
+            'c = c & " update po_klien set "
+            'c = c & " timedelete = now()"
+            'c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            'cmd = New Odbc.OdbcCommand(c, conn)
+            'cmd.ExecuteNonQuery()
 
-            c = ""
-            c = c & " insert into buffer_po_klien select * from po_klien"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
-            cmd = New Odbc.OdbcCommand(c, conn)
-            cmd.ExecuteNonQuery()
+            'c = ""
+            'c = c & " insert into buffer_po_klien select * from po_klien"
+            'c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            'cmd = New Odbc.OdbcCommand(c, conn)
+            'cmd.ExecuteNonQuery()
 
-            c = ""
-            c = c & " insert into buffer_detail_po_klien select * from detail_po_klien"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
-            cmd = New Odbc.OdbcCommand(c, conn)
-            cmd.ExecuteNonQuery()
+            'c = ""
+            'c = c & " insert into buffer_detail_po_klien select * from detail_po_klien"
+            'c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            'cmd = New Odbc.OdbcCommand(c, conn)
+            'cmd.ExecuteNonQuery()
 
-            c = ""
-            c = c & " delete from detail_migo"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
-            cmd = New Odbc.OdbcCommand(c, conn)
-            cmd.ExecuteNonQuery()
+            'c = ""
+            'c = c & " delete from detail_migo"
+            'c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            'cmd = New Odbc.OdbcCommand(c, conn)
+            'cmd.ExecuteNonQuery()
 
 
-            c = ""
-            c = c & " delete from po_klien"
-            c = c & " where idpo='" & ListPO.Items(brs).SubItems(13).Text & "'"
-            cmd = New Odbc.OdbcCommand(c, conn)
-            cmd.ExecuteNonQuery()
+            'c = ""
+            'c = c & " delete from po_klien"
+            'c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            'cmd = New Odbc.OdbcCommand(c, conn)
+            'cmd.ExecuteNonQuery()
 
-            GGVM_conn_close()
+            ''c = ""
+            ''c = c & " delete from detail_po_klien"
+            ''c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+            ''cmd = New Odbc.OdbcCommand(c, conn)
+            ''cmd.ExecuteNonQuery()
+            'GGVM_conn_close()
 
-            TampilPO()
-            Me.Cursor = Cursors.Default
+            'TampilPO()
+            'Me.Cursor = Cursors.Default
         End If
-        ClearAll()
+        'ClearAll()
 
     End Sub
     Private Sub BtnRefresh_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtnRefresh.ItemClick
@@ -1416,8 +1458,72 @@ Partial Public Class FrmMaintPO
 
     Private Sub TNominal_TextChanged(sender As Object, e As EventArgs) Handles TNominal.TextChanged
         Dim ppn As Decimal
-        ppn = (Val(CDec(TNominal.Text)) * 10) / 100
+        ppn = Math.Round((Val(CDec(TNominal.Text)) * 10) / 100)
         TRpPPN.Text = ppn
         TGrandTotal.Text = Val(CDec(TNominal.Text)) + Val(CDec(TRpPPN.Text))
+    End Sub
+
+    Private Sub BtnHapusAlasan_Click(sender As Object, e As EventArgs) Handles BtnHapusAlasan.Click
+        Dim cmd As New OdbcCommand
+        Dim c, als As String
+
+        Me.Cursor = Cursors.WaitCursor
+        GGVM_conn()
+        als = replaceNewLine(TAlasan.Text, True)
+
+
+        c = ""
+        c = c & " insert into revisi_po_klien_hapus ( idpo,alasan,timerevisi,revisike,userid) values"
+        c = c & " ( '" & TIdPO.Text & "','" & als & "',now(),'0','" & userid & "')"
+        cmd = New Odbc.OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
+
+        c = ""
+        c = c & " update po_klien set "
+        c = c & " timedelete = now()"
+        c = c & " where idpo='" & TIdPO.Text & "'"
+        cmd = New Odbc.OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
+
+        c = ""
+        c = c & " insert into buffer_po_klien select * from po_klien"
+        c = c & " where idpo='" & TIdPO.Text & "'"
+        cmd = New Odbc.OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
+
+        c = ""
+        c = c & " insert into buffer_detail_po_klien select * from detail_po_klien"
+        c = c & " where idpo='" & TIdPO.Text & "'"
+        cmd = New Odbc.OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
+
+        c = ""
+        c = c & " delete from detail_migo"
+        c = c & " where idpo='" & TIdPO.Text & "'"
+        cmd = New Odbc.OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
+
+        c = ""
+        c = c & " delete from revisi_po_klien"
+        c = c & " where idpo='" & TIdPO.Text & "'"
+        cmd = New Odbc.OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
+
+        c = ""
+        c = c & " delete from po_klien"
+        c = c & " where idpo='" & TIdPO.Text & "'"
+        cmd = New Odbc.OdbcCommand(c, conn)
+        cmd.ExecuteNonQuery()
+
+        'c = ""
+        'c = c & " delete from detail_po_klien"
+        'c = c & " where idpo='" & ListPO.Items(brs).SubItems(10).Text & "'"
+        'cmd = New Odbc.OdbcCommand(c, conn)
+        'cmd.ExecuteNonQuery()
+        GGVM_conn_close()
+        ClearAll()
+        TampilPO()
+        Me.Cursor = Cursors.Default
+        PAlasan.Visible = False
     End Sub
 End Class

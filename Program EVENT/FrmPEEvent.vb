@@ -20,7 +20,7 @@ Public Class FrmPEEvent
             .FullRowSelect = True
             .MultiSelect = False
             .View = View.Details
-            .CheckBoxes = False
+            .CheckBoxes = True
             .Columns.Clear()
             .Items.Clear()
             .Columns.Add("NO PE", 140, HorizontalAlignment.Left)
@@ -33,7 +33,7 @@ Public Class FrmPEEvent
             .Columns.Add("Approved By", 140, HorizontalAlignment.Left)
             .Columns.Add("TANGGAL PE", 100, HorizontalAlignment.Left)
             .Columns.Add("SISA PE", 150, HorizontalAlignment.Left)
-            .Columns.Add("idpe", 1, HorizontalAlignment.Left)
+            .Columns.Add("idpe", 0, HorizontalAlignment.Left)
         End With
     End Sub
     Private Sub BacaPE()
@@ -43,16 +43,16 @@ Public Class FrmPEEvent
         sql = sql & "(SELECT "
         sql = sql & " SUM(b.nominal)"
         sql = sql & "FROM po_klien b "
-        sql = sql & " WHERE b.Idpe = a.Idpe) as sisape from view_evnpe "
+        sql = sql & " WHERE b.Idpe = a.Idpe) as sisape from view_evnpe a "
         If DivUser = "2" Then
             sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "17" Then
             sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
-        ElseIf DivUser = "0" Then
-            sql = sql & "where a.deal is Null and a.idjenis_pe in (1,2,3,4)"
         Else
-            Return
+            sql = sql & "where a.deal is Null"
         End If
+        sql = sql & " Order by a.idpe desc "
+        sql = sql & " LIMIT 100 "
         da = New OdbcDataAdapter(sql, conn)
         ds = New DataSet
         da.Fill(ds)
@@ -74,13 +74,14 @@ Public Class FrmPEEvent
                     Else
                         .Add(dt.Rows(j)("grandtotal"))
                     End If
+
                     If dt.Rows(j)("approved_by") Is DBNull.Value Then
                         .Add("Belum Deal")
                     Else
                         .Add(dt.Rows(j)("approved_by"))
                     End If
-                    .Add(IIf(IsDBNull(dt.Rows(j)("sisa_pe")), "Belum PO", dt.Rows(j)("sisa_pe")))
                     .Add(dt.Rows(j)("tgl_pe"))
+                    .Add(IIf(IsDBNull(dt.Rows(j)("sisape")), "Belum Ada PO", dt.Rows(j)("sisape")))
                     .Add(dt.Rows(j)("idpe"))
                 End With
             End With

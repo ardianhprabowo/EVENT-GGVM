@@ -16,9 +16,9 @@ Partial Public Class FrmPEEvn
     Private Unitcost, NilaiPPN, GrandTotal, TotalHargaEvent, totalunit, SbTotal As Double
     Private lvwIndex As Integer
 
-    Public Sub New()
-        InitializeComponent()
-    End Sub
+    'Public Sub New()
+    '    InitializeComponent()
+    'End Sub
 #Region "ListView"
     Private Sub ListHeaderPE()
         With ListPE
@@ -44,21 +44,22 @@ Partial Public Class FrmPEEvn
     Private Sub BacaPE()
         GGVM_conn()
         sql = ""
-        sql = sql & "Select a.*,a.grandtotal -"
-        sql = sql & "(SELECT "
-        sql = sql & " SUM(b.nominal)"
-        sql = sql & "FROM po_klien b "
-        sql = sql & " WHERE b.Idpe = a.Idpe) as sisape from view_evnpe a "
+        sql = sql & "SELECT y.*, (y.grandtotal-x.rp) as sisape "
+        sql = sql & "from ( "
+        sql = sql & "SELECT b.idpe,SUM( b.nominal ) as rp "
+        sql = sql & "FROM po_klien b WHERE  b.iddivisi='2' "
+        sql = sql & " group by b.idpe "
+        sql = sql & " ) x LEFT JOIN `view_evnpe` y on x.idpe=y.idpe "
         If DivUser = "2" Then
-            sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
+            sql = sql & "where y.deal is Null and y.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "17" Then
-            sql = sql & "where a.deal is Null and a.idjenis_pe = '" & TidJenisPE.Text & "'"
+            sql = sql & "where y.deal is Null and y.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "0" Then
-            sql = sql & "where a.deal is Null and a.idjenis_pe in (1,2,3,4)"
+            sql = sql & "where y.deal is Null and y.idjenis_pe in (1,2,3,4)"
         Else
             Return
         End If
-        sql = sql & " Order by a.idpe desc "
+        sql = sql & " Order by y.idpe desc "
         sql = sql & " LIMIT 100 "
         da = New OdbcDataAdapter(sql, conn)
         ds = New DataSet
@@ -535,16 +536,25 @@ Partial Public Class FrmPEEvn
     Private Sub CariPE()
         GGVM_conn()
         sql = ""
-        sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.peserta, a.tgl_event,a.tgl_pe, a.waktu_event,a.total,a.rp_ppn,a.grandtotal,a.approved_by,a.jabatan, a.idpe "
-        sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and a.project Like '%" & TCariPE.Text.Replace("'", "''") & "%' or b.nama like '%" & TCariPE.Text.Replace("'", "''") & "%' "
-        If DivUser = "2" Then
-            sql = sql & "and a.deal = 1 and c.idjenis_pe in (1,2)"
-        ElseIf DivUser = "17" Then
-            sql = sql & "and a.deal = 1 and c.idjenis_pe in (3,4)"
-        Else
-            Return
-        End If
-        sql = sql & "group by a.nope"
+        sql = sql & "SELECT y.*, (y.grandtotal-x.rp) as sisape "
+        sql = sql & "from ( "
+        sql = sql & "SELECT b.idpe,SUM( b.nominal ) as rp "
+        sql = sql & "FROM po_klien b WHERE  b.iddivisi='2' "
+        sql = sql & " group by b.idpe "
+        sql = sql & " ) x LEFT JOIN `view_evnpe` y on x.idpe=y.idpe "
+        sql = sql & " where y.nope Like '%" & TCariPE.Text & "%' or y.project Like '%" & TCariPE.Text.Replace("'", "''") & "%' "
+
+        'sql = ""
+        'sql = sql & "SELECT a.nope,b.nama,c.jenis_pe, a.project,a.venue,a.peserta, a.tgl_event,a.tgl_pe, a.waktu_event,a.total,a.rp_ppn,a.grandtotal,a.approved_by,a.jabatan, a.idpe "
+        'sql = sql & "FROM `evn_penawaran`a , klien b , evn_jenis_pe c where a.idklien = b.id And a.idjenis_pe = c.idjenis_pe and a.project Like '%" & TCariPE.Text.Replace("'", "''") & "%' or b.nama like '%" & TCariPE.Text.Replace("'", "''") & "%' "
+        'If DivUser = "2" Then
+        '    sql = sql & "and a.deal = 1 and c.idjenis_pe in (1,2)"
+        'ElseIf DivUser = "17" Then
+        '    sql = sql & "and a.deal = 1 and c.idjenis_pe in (3,4)"
+        'Else
+        '    Return
+        'End If
+        'sql = sql & "group by a.nope"
         da = New OdbcDataAdapter(sql, conn)
         ds = New DataSet
         ds.Clear()
@@ -634,7 +644,7 @@ Partial Public Class FrmPEEvn
             EndDate.CustomFormat = "dd/MMM/yyyy"
             Call ListHeaderPE()
             Call ComboJenisPE()
-            Call CounterLoad()
+            'Call CounterLoad()
             Call AwalTampil()
             Call HitungBisnis()
             Call BersihPE()
@@ -644,15 +654,17 @@ Partial Public Class FrmPEEvn
             If DivUser = "17" Then
                 TDay.Visible = False
                 CSDay.Visible = False
-            ElseIf DivUser = "2" Then
+            Else
                 TMaterials.Visible = False
                 TDimensi.Visible = False
-            Else
-                Return
             End If
         Catch ex As Exception
             MsgBox("Terjadi kesalahan! " & ex.Message)
         End Try
+    End Sub
+
+    Private Sub ListPE_ContextMenuChanged(sender As Object, e As EventArgs) Handles ListPE.ContextMenuChanged
+
     End Sub
     Private Sub ListPE_DoubleClick(sender As Object, e As EventArgs) Handles ListPE.DoubleClick
         GGVM_conn()
@@ -892,7 +904,7 @@ Partial Public Class FrmPEEvn
                         If dt.Rows(j)("grandtotal") Is DBNull.Value Then
                             .Add("Belum Ada Barang")
                         Else
-                            .Add(Format(Val(dt.Rows(j)("grandtotal")), "Rp, ###,###"))
+                            .Add(dt.Rows(j)("grandtotal"))
                         End If
 
                         If dt.Rows(j)("approved_by") Is DBNull.Value Then
@@ -901,6 +913,7 @@ Partial Public Class FrmPEEvn
                             .Add(dt.Rows(j)("approved_by"))
                         End If
                         .Add(dt.Rows(j)("tgl_pe"))
+                        .Add(IIf(IsDBNull(dt.Rows(j)("sisape")), "Belum Ada PO", dt.Rows(j)("sisape")))
                         .Add(dt.Rows(j)("idpe"))
                     End With
                 End With
@@ -908,7 +921,7 @@ Partial Public Class FrmPEEvn
             ListPE.EndUpdate()
         Else
             ListPE.Items.Clear()
-            Call BacaPE()
+            'Call BacaPE()
         End If
     End Sub
     Private Sub TCari_TextChanged(sender As Object, e As EventArgs) Handles TCari.TextChanged
@@ -1428,7 +1441,7 @@ Partial Public Class FrmPEEvn
                 Else
                     For Each item As ListViewItem In ListPE.CheckedItems
                         If item.Checked Then
-                            CetakIdPE = item.SubItems(9).Text
+                            CetakIdPE = item.SubItems(10).Text
                         End If
                     Next
                     If DivUser = "2" Then
@@ -1457,82 +1470,12 @@ Partial Public Class FrmPEEvn
         End If
     End Sub
     Private Sub DeletePE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles DeletePE.ItemClick
-        Dim ada As Boolean
-        Dim brs, jmldt As Integer
-        ada = False
-        jmldt = 0
-        ListPE.BeginUpdate()
-        Dim I As Integer
-        For I = ListPE.Items.Count - 1 To 0 Step -1
-            If ListPE.Items(I).Checked = True Then
-                ada = True
-                brs = I
-                jmldt = jmldt + 1
-                For Each item As ListViewItem In ListPE.CheckedItems
-                    GGVM_conn()
-                    sql = " update evn_penawaran set userid_delete= '" & userid & "', timedelete=now() where idpe = '" & item.SubItems(9).Text & "'"
-                    cmd = New OdbcCommand(sql, conn)
-                    cmd.ExecuteNonQuery()
-
-                    Dim sql1, sql2, sql3 As String
-                    sql1 = "insert into evn_buffer_penawaran select * from evn_penawaran where idpe = ? "
-                    cmd = New OdbcCommand
-                    With cmd
-                        .CommandText = (sql1)
-                        .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
-                        .Connection = conn
-                    End With
-                    dr = cmd.ExecuteReader
-                    Console.WriteLine(cmd.CommandText.ToString)
-                    While dr.Read
-                        Console.WriteLine(dr(0))
-                        Console.WriteLine()
-                    End While
-                    Console.ReadLine()
-                    'conn.Close()
-                    'dr = Nothing
-                    'cmd = Nothing
-
-                    sql3 = "insert into evn_tmp_dp select * from evn_detail_penawaran where idpe = ? "
-                    cmd = New OdbcCommand
-                    With cmd
-                        .CommandText = (sql3)
-                        .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
-                        .Connection = conn
-                    End With
-                    dr = cmd.ExecuteReader
-                    Console.WriteLine(cmd.CommandText.ToString)
-                    While dr.Read
-                        Console.WriteLine(dr(0))
-                        Console.WriteLine()
-                    End While
-                    Console.ReadLine()
-
-                    sql2 = "DELETE FROM evn_penawaran WHERE idpe = ?"
-                    cmd = New OdbcCommand
-                    With cmd
-                        .CommandText = (sql2)
-                        .Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(9).Text)
-                        .Connection = conn
-                    End With
-                    dr = cmd.ExecuteReader
-                    Console.WriteLine(cmd.CommandText.ToString)
-                    While dr.Read
-                        Console.WriteLine(dr(0))
-                        Console.WriteLine()
-                    End While
-                    Console.ReadLine()
-                    conn.Close()
-                    dr = Nothing
-                    cmd = Nothing
-
-                    MsgBox("Penawaran Berhasil diHapus")
-                    Call BacaPE()
-                    Call BersihPE()
-                Next
-            End If
-        Next I
-        ListPE.EndUpdate()
+        If TidPE.Text = "" Then
+            MsgBox("Pilih Dulu Datanya !", MsgBoxStyle.Information)
+        Else
+            PanelBatalPE.Visible = True
+            TInputAlasanBatalPE.Focus()
+        End If
     End Sub
     'Deal Group
     Private Sub BDeal_Click(sender As Object, e As EventArgs) Handles BDeal.Click
@@ -1574,10 +1517,34 @@ Partial Public Class FrmPEEvn
         Me.Close()
     End Sub
 
-    Private Sub PInput_MouseUp(sender As Object, e As MouseEventArgs) Handles PInput.MouseUp
+    Private Sub PInput_MouseUp(sender As Object, e As MouseEventArgs) Handles PanelBatalPE.MouseUp
         Panel1Captured = False
     End Sub
 
+
+    Private Sub PanelBatalPE_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelBatalPE.MouseDown
+        Panel1Captured = True
+        Panel1Grabbed = e.Location
+    End Sub
+    Private Sub PanelBatalPE_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelBatalPE.MouseMove
+        If (Panel1Captured) Then PanelBatalPE.Location = PanelBatalPE.Location + e.Location - Panel1Grabbed
+    End Sub
+
+    Private Sub PanelBatalPE_MouseUp(sender As Object, e As MouseEventArgs) Handles PanelBatalPE.MouseUp
+        Panel1Captured = False
+    End Sub
+
+    Private Sub PApproved_MouseDown(sender As Object, e As MouseEventArgs) Handles PApproved.MouseDown
+        Panel1Captured = True
+        Panel1Grabbed = e.Location
+    End Sub
+    Private Sub PApproved_MouseMove(sender As Object, e As MouseEventArgs) Handles PApproved.MouseMove
+        If (Panel1Captured) Then PApproved.Location = PApproved.Location + e.Location - Panel1Grabbed
+    End Sub
+
+    Private Sub PApproved_MouseUp(sender As Object, e As MouseEventArgs) Handles PApproved.MouseUp
+        Panel1Captured = False
+    End Sub
     Private Sub HapusDetail_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles HapusDetail.ItemClick
         Dim Nominal As Decimal = 0
         Dim ada As Boolean
@@ -1979,7 +1946,116 @@ Partial Public Class FrmPEEvn
         Call NominalPenawaran()
     End Sub
 
+    Private Sub ListPE_RetrieveVirtualItem(sender As Object, e As RetrieveVirtualItemEventArgs) Handles ListPE.RetrieveVirtualItem
+
+    End Sub
+
     Private Sub ListPE_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListPE.SelectedIndexChanged
 
+    End Sub
+
+    Private Sub TCariPE_TextChanged(sender As Object, e As EventArgs) Handles TCariPE.TextChanged
+
+    End Sub
+
+    Private Sub BtnBatalPE_Click(sender As Object, e As EventArgs) Handles BtnBatalPE.Click
+        If Len(Me.TInputAlasanBatalPE.Text) < 10 Or Len(Me.TInputAlasanBatalPE.Text) > 150 Then
+            MsgBox("Alasan Terlalu Pendek, Minimal 10 Huruf !", MsgBoxStyle.Information, "Information !!")
+            Exit Sub
+        Else
+            Dim ada As Boolean
+            Dim brs, jmldt As Integer
+            ada = False
+            jmldt = 0
+            ListPE.BeginUpdate()
+            Dim I As Integer
+            For I = ListPE.Items.Count - 1 To 0 Step -1
+                If ListPE.Items(I).Checked = True Then
+                    ada = True
+                    brs = I
+                    jmldt = jmldt + 1
+                    For Each item As ListViewItem In ListPE.CheckedItems
+                        GGVM_conn()
+                        sql = " update evn_penawaran set userid_delete= '" & userid & "', timedelete=now() where idpe = '" & item.SubItems(10).Text & "'"
+                        cmd = New OdbcCommand(sql, conn)
+                        cmd.ExecuteNonQuery()
+
+                        Dim sql1, sql2, sql3, sql4 As String
+                        sql4 = ""
+                        sql4 = sql4 & " insert into evn_batal_penawaran (idpe,alasan,timebatal,userbatal)"
+                        sql4 = sql4 & "values ('" & item.SubItems(10).Text & "',"
+                        sql4 = sql4 & " '" & TInputAlasanBatalPE.Text & "',now(),'" & userid & "')"
+                        cmd = New OdbcCommand(sql4, conn)
+                        cmd.ExecuteNonQuery()
+
+                        sql1 = "insert into evn_buffer_penawaran select * from evn_penawaran where idpe = ? "
+                        cmd = New OdbcCommand
+                        With cmd
+                            .CommandText = (sql1)
+                            .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(10).Text)
+                            .Connection = conn
+                        End With
+                        dr = cmd.ExecuteReader
+                        Console.WriteLine(cmd.CommandText.ToString)
+                        While dr.Read
+                            Console.WriteLine(dr(0))
+                            Console.WriteLine()
+                        End While
+                        Console.ReadLine()
+
+                        
+                        'conn.Close()
+                        'dr = Nothing
+                        'cmd = Nothing
+
+                        sql3 = "insert into evn_tmp_dp select * from evn_detail_penawaran where idpe = ? "
+                        cmd = New OdbcCommand
+                        With cmd
+                            .CommandText = (sql3)
+                            .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(10).Text)
+                            .Connection = conn
+                        End With
+                        dr = cmd.ExecuteReader
+                        Console.WriteLine(cmd.CommandText.ToString)
+                        While dr.Read
+                            Console.WriteLine(dr(0))
+                            Console.WriteLine()
+                        End While
+                        Console.ReadLine()
+
+                        sql2 = "DELETE FROM evn_penawaran WHERE idpe = ?"
+                        cmd = New OdbcCommand
+                        With cmd
+                            .CommandText = (sql2)
+                            .Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(10).Text)
+                            .Connection = conn
+                        End With
+                        dr = cmd.ExecuteReader
+                        Console.WriteLine(cmd.CommandText.ToString)
+                        While dr.Read
+                            Console.WriteLine(dr(0))
+                            Console.WriteLine()
+                        End While
+                        Console.ReadLine()
+                        conn.Close()
+                        dr = Nothing
+                        cmd = Nothing
+
+                        MsgBox("Penawaran Berhasil diHapus")
+                        Call BacaPE()
+                        Call BersihPE()
+                        PanelBatalPE.Visible = False
+                        TInputAlasanBatalPE.Text = ""
+                    Next
+                End If
+            Next I
+            ListPE.EndUpdate()
+        End If
+        
+    End Sub
+
+    Private Sub LabelX30_Click(sender As Object, e As EventArgs) Handles LabelX30.Click
+        PanelBatalPE.Visible = False
+        TInputAlasanBatalPE.Text = ""
     End Sub
 End Class

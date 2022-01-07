@@ -37,16 +37,17 @@ Public Class MainMenu
         ShowVertical = sTheString
     End Function
     Private Sub MenuActive()
-        If DivUser = CInt("2") Then
+        If DivUser = CInt("2") And LevelUser = "1" Then
             Menu_Event.Enabled = True
-        ElseIf DivUser = CInt("17") Then
+        ElseIf DivUser = CInt("17") And LevelUser = "1" Then
             Menu_Exhibition.Enabled = True
-        ElseIf DivUser = CInt("18") Then
+        ElseIf DivUser = CInt("18") And LevelUser = "1" Then
             Menu_Activation.Enabled = True
         Else
             Menu_Event.Enabled = True
             Menu_Exhibition.Enabled = True
             Menu_Activation.Enabled = True
+            PE_Hapus.Visible = True
         End If
     End Sub
 
@@ -143,7 +144,7 @@ Public Class MainMenu
 
     Private Sub MainMenu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 		Environment.Exit(1)
-		FrmLogin.Close()
+        'FrmLogin.Close()
 	End Sub
 
     Private Sub PE_RegExh_Click(sender As Object, e As EventArgs) Handles PE_RegExh.Click
@@ -202,7 +203,7 @@ Public Class MainMenu
 
     Private Sub M_MintaPO_Click(sender As Object, e As EventArgs) Handles M_MintaPO.Click
         For Each frm As Form In Application.OpenForms
-            If TypeOf frm Is FrmMaintPO Then
+            If TypeOf frm Is FrmMaintPOFirst Then
                 frm.Activate()
                 Return
             End If
@@ -213,7 +214,7 @@ Public Class MainMenu
             Thread.Sleep(40)
         Next
         SSManager.CloseWaitForm()
-        Dim f As New FrmMaintPO
+        Dim f As New FrmMaintPOFirst
         If Not FluentContainer.Controls.Contains(f) Then
             f.TopLevel = False
             FluentContainer.Controls.Add(f)
@@ -554,4 +555,35 @@ Public Class MainMenu
 	Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
 
 	End Sub
+
+    Private Sub Menu_Event_Click(sender As Object, e As EventArgs) Handles Menu_Event.Click
+
+    End Sub
+
+    Private Sub PE_Hapus_Click(sender As Object, e As EventArgs) Handles PE_Hapus.Click
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FrmHistoryPE Then
+                frm.Activate()
+                Return
+            End If
+        Next
+        SSManager.ShowWaitForm()
+        For i As Integer = 1 To 100
+            SSManager.SetWaitFormDescription(i.ToString() & "%")
+            Thread.Sleep(20)
+        Next
+        SSManager.CloseWaitForm()
+        Dim f As New FrmHistoryPE
+        If Not FluentContainer.Controls.Contains(f) Then
+            f.TopLevel = False
+            FluentContainer.Controls.Add(f)
+            f.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+            f.Dock = DockStyle.Fill
+            ' f.NavImportKontrak.PageVisible = False
+            f.BringToFront()
+            f.Show()
+        Else
+            Return
+        End If
+    End Sub
 End Class

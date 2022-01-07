@@ -101,7 +101,7 @@ Public Class FrmLogin
         AutoUpdater.Start("http://srv.geogiven.co.id/updateinhouseapp/event-pe/version.xml")
         AutoUpdater.DownloadPath = Environment.CurrentDirectory
         ' AutoUpdater.Mandatory = True
-        AutoUpdater.InstalledVersion = New Version("2.6")
+        AutoUpdater.InstalledVersion = New Version("3.3")
         AutoUpdater.Synchronous = True
         AutoUpdater.ShowSkipButton = False
         AutoUpdater.ShowRemindLaterButton = False

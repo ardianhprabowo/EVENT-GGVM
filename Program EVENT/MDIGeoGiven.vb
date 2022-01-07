@@ -268,7 +268,7 @@ Public Class MDIGeoGiven
     End Sub
     Private Sub BtnMainPO_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtnMainPO.ItemClick
         For Each frm As Form In Application.OpenForms
-            If TypeOf frm Is FrmMaintPO Then
+            If TypeOf frm Is FrmMaintPOFirst Then
                 frm.Activate()
                 MsgBox("Tutup Dulu Form yang Aktif !")
                 Return
@@ -280,7 +280,7 @@ Public Class MDIGeoGiven
             Thread.Sleep(10)
         Next
         SSManager.CloseWaitForm()
-        Dim f As FrmMaintPO = New FrmMaintPO
+        Dim f As FrmMaintPOFirst = New FrmMaintPOFirst
         f.MdiParent = Me
         f.Show()
     End Sub

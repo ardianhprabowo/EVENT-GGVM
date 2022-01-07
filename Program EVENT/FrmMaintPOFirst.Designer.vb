@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Public Class FrmMaintPO
+Partial Public Class FrmMaintPOFirst
     Inherits DevExpress.XtraBars.Ribbon.RibbonForm
     ''' <summary>
     ''' Required designer variable.
@@ -24,8 +24,8 @@ Partial Public Class FrmMaintPO
     ''' the contents of this method with the code editor.
     ''' </summary>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMaintPO))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMaintPOFirst))
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.ribbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BtnKeluar = New DevExpress.XtraBars.BarButtonItem()
@@ -96,6 +96,7 @@ Partial Public Class FrmMaintPO
         Me.BtnTutupPanel = New DevExpress.XtraEditors.SimpleButton()
         Me.GridPanel = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.PAlasan = New System.Windows.Forms.Panel()
+        Me.BtnHapusAlasan = New DevExpress.XtraEditors.SimpleButton()
         Me.LPanel = New DevExpress.XtraEditors.LabelControl()
         Me.BtnTutup = New DevExpress.XtraEditors.SimpleButton()
         Me.BtnSimpanAls = New DevExpress.XtraEditors.SimpleButton()
@@ -140,7 +141,7 @@ Partial Public Class FrmMaintPO
         '
         Me.ribbonControl.AutoHideEmptyItems = True
         Me.ribbonControl.AutoSizeItems = True
-        Me.ribbonControl.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.ribbonControl.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.ribbonControl.SearchEditItem, Me.BtnKeluar, Me.bsiRecordsCount, Me.BtnEntry, Me.BtnEdit, Me.BtnHapus, Me.BtnRefresh, Me.BtnClose, Me.BtnSimpan})
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
@@ -196,7 +197,6 @@ Partial Public Class FrmMaintPO
         Me.BtnHapus.ImageOptions.ImageUri.Uri = "Delete"
         Me.BtnHapus.ImageOptions.SvgImage = CType(resources.GetObject("BtnHapus.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.BtnHapus.Name = "BtnHapus"
-        Me.BtnHapus.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         Me.BtnHapus.VisibleInSearchMenu = False
         '
         'BtnRefresh
@@ -913,6 +913,7 @@ Partial Public Class FrmMaintPO
         '
         'PanelSurvei
         '
+        Me.PanelSurvei.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.PanelSurvei.Controls.Add(Me.BtnTutupPanel)
         Me.PanelSurvei.Controls.Add(Me.GridPanel)
         Me.PanelSurvei.Location = New System.Drawing.Point(40, 12)
@@ -934,14 +935,14 @@ Partial Public Class FrmMaintPO
         'GridPanel
         '
         Me.GridPanel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 7.8!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridPanel.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 7.8!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridPanel.DefaultCellStyle = DataGridViewCellStyle3
         Me.GridPanel.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.GridPanel.Location = New System.Drawing.Point(20, 22)
         Me.GridPanel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -953,18 +954,29 @@ Partial Public Class FrmMaintPO
         '
         Me.PAlasan.BackColor = System.Drawing.Color.Salmon
         Me.PAlasan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PAlasan.Controls.Add(Me.BtnHapusAlasan)
         Me.PAlasan.Controls.Add(Me.LPanel)
         Me.PAlasan.Controls.Add(Me.BtnTutup)
         Me.PAlasan.Controls.Add(Me.BtnSimpanAls)
         Me.PAlasan.Controls.Add(Me.LabelControl24)
         Me.PAlasan.Controls.Add(Me.LabelControl25)
         Me.PAlasan.Controls.Add(Me.TAlasan)
-        Me.PAlasan.Location = New System.Drawing.Point(649, 167)
+        Me.PAlasan.Location = New System.Drawing.Point(510, 167)
         Me.PAlasan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PAlasan.Name = "PAlasan"
         Me.PAlasan.Size = New System.Drawing.Size(520, 268)
         Me.PAlasan.TabIndex = 67
         Me.PAlasan.Visible = False
+        '
+        'BtnHapusAlasan
+        '
+        Me.BtnHapusAlasan.Location = New System.Drawing.Point(31, 200)
+        Me.BtnHapusAlasan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.BtnHapusAlasan.Name = "BtnHapusAlasan"
+        Me.BtnHapusAlasan.Size = New System.Drawing.Size(143, 30)
+        Me.BtnHapusAlasan.TabIndex = 28
+        Me.BtnHapusAlasan.Text = "PROSES HAPUS"
+        Me.BtnHapusAlasan.Visible = False
         '
         'LPanel
         '
@@ -992,7 +1004,7 @@ Partial Public Class FrmMaintPO
         Me.BtnSimpanAls.Name = "BtnSimpanAls"
         Me.BtnSimpanAls.Size = New System.Drawing.Size(143, 30)
         Me.BtnSimpanAls.TabIndex = 25
-        Me.BtnSimpanAls.Text = "Simpan Alasan"
+        Me.BtnSimpanAls.Text = "SIMPAN ALASAN"
         '
         'LabelControl24
         '
@@ -1033,7 +1045,7 @@ Partial Public Class FrmMaintPO
         '
         'SplitContainerControl1
         '
-        Me.SplitContainerControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.SplitContainerControl1.Appearance.BackColor = System.Drawing.Color.DodgerBlue
         Me.SplitContainerControl1.Appearance.Options.UseBackColor = True
         Me.SplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainerControl1.Horizontal = False
@@ -1311,7 +1323,7 @@ Partial Public Class FrmMaintPO
         Me.LabelControl26.TabIndex = 68
         Me.LabelControl26.Text = ":"
         '
-        'FrmMaintPO
+        'FrmMaintPOFirst
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -1325,7 +1337,7 @@ Partial Public Class FrmMaintPO
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "FrmMaintPO"
+        Me.Name = "FrmMaintPOFirst"
         Me.Ribbon = Me.ribbonControl
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.StatusBar = Me.ribbonStatusBar
@@ -1436,4 +1448,5 @@ Partial Public Class FrmMaintPO
     Friend WithEvents LabelControl29 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl28 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TRpPPN As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents BtnHapusAlasan As DevExpress.XtraEditors.SimpleButton
 End Class
