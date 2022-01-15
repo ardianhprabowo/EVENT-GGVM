@@ -341,9 +341,9 @@ Public Class FrmBarang
             .CheckBoxes = False
             .Columns.Clear()
             .Items.Clear()
-            .Columns.Add("Kode Barang", 90, HorizontalAlignment.Left)
+            ' .Columns.Add("Kode Barang", 90, HorizontalAlignment.Left)
             .Columns.Add("Barang Penawaran", 250, HorizontalAlignment.Left)
-            .Columns.Add("idbarang", 0, HorizontalAlignment.Left)
+            '.Columns.Add("idbarang", 0, HorizontalAlignment.Left)
         End With
     End Sub
     Private Sub TampilBarangPenawaran()
@@ -374,10 +374,10 @@ Public Class FrmBarang
             ListBarangPenawaran.BeginUpdate()
             For i = 0 To dt.Rows.Count - 1
                 With ListBarangPenawaran
-                    .Items.Add(dt.Rows(i)("kdbarang"))
+                    .Items.Add(dt.Rows(i)("barang"))
                     With .Items(.Items.Count - 1).SubItems
-                        .Add(dt.Rows(i)("barang"))
-                        .Add(dt.Rows(i)("idbarang"))
+                        '.Add(dt.Rows(i)("barang"))
+                        '.Add(dt.Rows(i)("idbarang"))
                     End With
                 End With
             Next
@@ -704,7 +704,7 @@ Public Class FrmBarang
             For Each subItem As ListViewItem.ListViewSubItem In ListBarangPenawaran.Items(i).SubItems
                 Dim myString As String = ListBarangPenawaran.Items(i).SubItems(innercounter).Text
                 Select Case innercounter
-                    Case 1
+                    Case 0
                         TBarangPE.Text = myString
                 End Select
                 innercounter += 1
@@ -1007,4 +1007,8 @@ Public Class FrmBarang
 		End Try
 		GGVM_conn_close()
 	End Sub
+
+    Private Sub ListBarangPenawaran_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBarangPenawaran.SelectedIndexChanged
+
+    End Sub
 End Class

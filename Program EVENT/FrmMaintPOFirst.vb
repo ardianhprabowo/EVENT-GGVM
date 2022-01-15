@@ -900,7 +900,9 @@ Partial Public Class FrmMaintPOFirst
             TTitle.Text = ListPO.Items(brs).SubItems(5).Text
             TNominal.Text = ListPO.Items(brs).SubItems(6).Text
             TRpPPN.Text = ListPO.Items(brs).SubItems(7).Text
-            TGrandTotal.Text = ListPO.Items(brs).SubItems(8).Text
+
+            TGrandTotal.Text = FormatNumber(ListPO.Items(brs).SubItems(8).Text, 0, TriState.True)
+            Format(TGrandTotal.Text, "#########")
             TReferensi.Text = ListPO.Items(brs).SubItems(9).Text
             TUsers.Text = ListPO.Items(brs).SubItems(10).Text
             TRevisi.Text = ListPO.Items(brs).SubItems(11).Text
@@ -918,7 +920,8 @@ Partial Public Class FrmMaintPOFirst
             TTitle.Text = ListPO.Items(brs).SubItems(5).Text
             TNominal.Text = ListPO.Items(brs).SubItems(6).Text
             TRpPPN.Text = ListPO.Items(brs).SubItems(7).Text
-            TGrandTotal.Text = ListPO.Items(brs).SubItems(8).Text
+            TGrandTotal.Text = FormatNumber(ListPO.Items(brs).SubItems(8).Text, 0, TriState.True)
+            Format(TGrandTotal.Text, "#########")
             TReferensi.Text = ListPO.Items(brs).SubItems(9).Text
             TUsers.Text = ListPO.Items(brs).SubItems(10).Text
             TRevisi.Text = ListPO.Items(brs).SubItems(11).Text
@@ -949,12 +952,15 @@ Partial Public Class FrmMaintPOFirst
         Dim cmd As New OdbcCommand
         Dim c, jdl, s As String
         Dim nominal As Double
+        Dim ppn, grandtotal As Double
         Dim tbl As DataTable
         Dim ke As Integer
 
         Me.Cursor = Cursors.WaitCursor
         jdl = replaceNewLine(TTitle.Text, True)
         nominal = TNominal.Text
+        ppn = TRpPPN.Text
+        grandtotal = TGrandTotal.Text
         If TIdKlien.Text = "" And TIdKlien.Text = "0" Then
             MsgBox("Isi dulu Kliennya !!!...", MsgBoxStyle.Information, "Information")
             Exit Sub
@@ -1005,7 +1011,7 @@ Partial Public Class FrmMaintPOFirst
                 If CFixedCost.Checked = True Then
                     c = c & "'" & TFixedCost.Text & "',"
                 End If
-                c = c & "'" & TRpPPN.Text & "','" & TGrandTotal.Text & "','" & TUsers.Text & "','" & TReferensi.Text & "','" & TRevisi.Text & "',now(),'" & userid & "',"
+                c = c & "'" & ppn & "','" & grandtotal & "','" & TUsers.Text & "','" & TReferensi.Text & "','" & TRevisi.Text & "',now(),'" & userid & "',"
                 If NOPO.Checked = True Then
                     c = c & "'0',"
                 Else
@@ -1085,8 +1091,8 @@ Partial Public Class FrmMaintPOFirst
                 If CFixedCost.Checked = True Then
                     c = c & " fixed = '" & TFixedCost.Text & "', "
                 End If
-                c = c & " ppn = '" & TRpPPN.Text & "' ,"
-                c = c & " grandtotal ='" & TGrandTotal.Text & "', "
+                c = c & " ppn = '" & ppn & "' ,"
+                c = c & " grandtotal ='" & grandtotal & "', "
                 c = c & " printed = '" & Format(DTTanggal.Value, "yyyy/MM/dd") & "',"
                 c = c & " title = '" & jdl & "',"
                 c = c & " nominal = '" & nominal & "',"
@@ -1478,10 +1484,12 @@ Partial Public Class FrmMaintPOFirst
     End Sub
 
     Private Sub TNominal_TextChanged(sender As Object, e As EventArgs) Handles TNominal.TextChanged
-        Dim ppn As Decimal
-        ppn = Math.Round((Val(CDec(TNominal.Text)) * 10) / 100)
-        TRpPPN.Text = ppn
-        TGrandTotal.Text = Val(CDec(TNominal.Text)) + Val(CDec(TRpPPN.Text))
+        Dim ppn, grandtotal As Double
+        ppn = Math.Round((Val(TNominal.Text) * 10) / 100)
+        'TRpPPN.Text = ppn
+        TRpPPN.Text = FormatNumber(ppn, 0, , , TriState.True)
+        grandtotal = Val(TNominal.Text) + Val(TRpPPN.Text)
+        TGrandTotal.Text = FormatNumber(grandtotal, 0, , , TriState.True)
     End Sub
 
     Private Sub BtnHapusAlasan_Click(sender As Object, e As EventArgs) Handles BtnHapusAlasan.Click

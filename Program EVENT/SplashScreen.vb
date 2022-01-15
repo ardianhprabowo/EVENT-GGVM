@@ -16,7 +16,7 @@ Public Class SplashScreen
         AutoUpdater.Start("http://srv.geogiven.co.id/updateinhouseapp/event-pe/version.xml")
         AutoUpdater.DownloadPath = Environment.CurrentDirectory
         ' AutoUpdater.Mandatory = True
-        AutoUpdater.InstalledVersion = New Version("3.7")
+        AutoUpdater.InstalledVersion = New Version("3.8")
         AutoUpdater.Synchronous = True
         AutoUpdater.ShowSkipButton = False
         AutoUpdater.ShowRemindLaterButton = False
