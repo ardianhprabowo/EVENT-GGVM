@@ -1517,7 +1517,7 @@ Partial Public Class FrmPEEvn
         Me.Close()
     End Sub
 
-    Private Sub PInput_MouseUp(sender As Object, e As MouseEventArgs) Handles PanelBatalPE.MouseUp
+    Private Sub PInput_MouseUp(sender As Object, e As MouseEventArgs) Handles PInput.MouseUp
         Panel1Captured = False
     End Sub
 

@@ -1025,7 +1025,14 @@ Partial Public Class FrmMaintPOFirst
                 TIdPO.Text = tbl.Rows(0)("idpo")
 
                 sql = ""
-                sql = sql & "SELECT a.grandtotal - (SELECT SUM(nominal)FROM po_klien b  WHERE b.Idpe = a.idpe) as sisape FROM `view_evnpe` a"
+                sql = sql & "SELECT x.idpe ,(y.grandtotal-x.rp) as sisape "
+                sql = sql & " from ( "
+                sql = sql & " SELECT b.idpe,SUM( b.nominal ) as rp "
+                sql = sql & " FROM po_klien b  "
+                sql = sql & " WHERE  b.iddivisi='2' "
+                sql = sql & " group by b.idpe  "
+                sql = sql & " ) x RIGHT JOIN `view_evnpe` y on x.idpe=y.idpe "
+                sql = sql & " where y.idpe ='" & TIdPE.Text & "' "
                 da = New Odbc.OdbcDataAdapter(sql, conn)
                 ds.Clear()
                 tbl = New DataTable
@@ -1103,6 +1110,20 @@ Partial Public Class FrmMaintPOFirst
                 cmd = New Odbc.OdbcCommand(c, conn)
                 cmd.ExecuteNonQuery()
 
+                sql = ""
+                sql = sql & "SELECT x.idpe ,(y.grandtotal-x.rp) as sisape "
+                sql = sql & " from ( "
+                sql = sql & " SELECT b.idpe,SUM( b.nominal ) as rp "
+                sql = sql & " FROM po_klien b  "
+                sql = sql & " WHERE  b.iddivisi='2' "
+                sql = sql & " group by b.idpe  "
+                sql = sql & " ) x RIGHT JOIN `view_evnpe` y on x.idpe=y.idpe "
+                sql = sql & " where y.idpe ='" & TIdPE.Text & "' "
+                da = New Odbc.OdbcDataAdapter(sql, conn)
+                ds.Clear()
+                tbl = New DataTable
+                tbl.Clear()
+                da.Fill(tbl)
                 If tbl.Rows(0)("sisape") Is DBNull.Value Then
                     sql = ""
                     sql = sql & "insert into evn_penawaran (sisape) values ('" & tbl.Rows(0)("sisape") & "') where idpe ='" & TIdPE.Text & "'"

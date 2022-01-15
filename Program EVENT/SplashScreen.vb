@@ -1,4 +1,6 @@
-﻿Public Class SplashScreen
+﻿Imports AutoUpdaterDotNET
+
+Public Class SplashScreen
     Sub New()
         InitializeComponent()
         Me.labelCopyright.Text = "Copyright © 2010-" & DateTime.Now.Year.ToString()
@@ -9,4 +11,14 @@
     Public Enum SplashScreenCommand
         SomeCommandId
     End Enum
+
+    Private Sub SplashScreen_Load(sender As Object, e As EventArgs) Handles Me.Load
+        AutoUpdater.Start("http://srv.geogiven.co.id/updateinhouseapp/event-pe/version.xml")
+        AutoUpdater.DownloadPath = Environment.CurrentDirectory
+        ' AutoUpdater.Mandatory = True
+        AutoUpdater.InstalledVersion = New Version("3.7")
+        AutoUpdater.Synchronous = True
+        AutoUpdater.ShowSkipButton = False
+        AutoUpdater.ShowRemindLaterButton = False
+    End Sub
 End Class

@@ -17,6 +17,7 @@
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
     <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>ftp://ftp.keacoal.co.id/Program/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
