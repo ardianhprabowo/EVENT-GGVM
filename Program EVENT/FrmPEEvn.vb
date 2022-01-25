@@ -44,12 +44,13 @@ Partial Public Class FrmPEEvn
     Private Sub BacaPE()
         GGVM_conn()
         sql = ""
-        sql = sql & "SELECT y.*, (y.grandtotal-x.rp) as sisape "
-        sql = sql & "from ( "
-        sql = sql & "SELECT b.idpe,SUM( b.nominal ) as rp "
-        sql = sql & "FROM po_klien b WHERE  b.iddivisi='2' "
-        sql = sql & " group by b.idpe "
-        sql = sql & " ) x LEFT JOIN `view_evnpe` y on x.idpe=y.idpe "
+        sql = sql & " select y.* from view_evnsisape y "
+        'sql = sql & "SELECT y.*, (y.grandtotal-x.rp) as sisape "
+        'sql = sql & "from ( "
+        'sql = sql & "SELECT b.idpe,SUM( b.nominal ) as rp "
+        'sql = sql & "FROM po_klien b WHERE  b.iddivisi='2' "
+        'sql = sql & " group by b.idpe "
+        'sql = sql & " ) x LEFT JOIN `view_evnpe` y on x.idpe=y.idpe "
         If DivUser = "2" Then
             sql = sql & "where y.deal is Null and y.idjenis_pe = '" & TidJenisPE.Text & "'"
         ElseIf DivUser = "17" Then

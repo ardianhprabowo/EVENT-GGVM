@@ -91,12 +91,8 @@ Partial Class FrmPEEvent
         Me.CJenisPE = New System.Windows.Forms.ComboBox()
         Me.LabelX26 = New DevComponents.DotNetBar.LabelX()
         Me.TidVenue = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.BtnGantiNoPE = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelX25 = New DevComponents.DotNetBar.LabelX()
         Me.TCariPE = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
-        Me.TCounter = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TimeEnd = New System.Windows.Forms.DateTimePicker()
         Me.TimeStart = New System.Windows.Forms.DateTimePicker()
         Me.TidKlien = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -151,6 +147,12 @@ Partial Class FrmPEEvent
         Me.TutupDeal = New DevComponents.DotNetBar.LabelX()
         Me.TInputJabatan = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TInputApproved = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.PanelBatalPE = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
+        Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.BtnBatalPE = New DevExpress.XtraEditors.SimpleButton()
+        Me.TInputAlasanBatalPE = New DevComponents.DotNetBar.Controls.TextBoxX()
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -173,6 +175,8 @@ Partial Class FrmPEEvent
         Me.PanelAlasan.SuspendLayout()
         CType(Me.PApproved, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PApproved.SuspendLayout()
+        CType(Me.PanelBatalPE, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelBatalPE.SuspendLayout()
         Me.SuspendLayout()
         '
         'barManager1
@@ -313,7 +317,7 @@ Partial Class FrmPEEvent
         '
         Me.TotalEvent.Caption = "Total Event :"
         Me.TotalEvent.Edit = Me.RepositoryItemTextEdit3
-        Me.TotalEvent.EditValue = 0R
+        Me.TotalEvent.EditValue = 0.0R
         Me.TotalEvent.EditWidth = 100
         Me.TotalEvent.Hint = "Nominal Total Event"
         Me.TotalEvent.Id = 8
@@ -337,7 +341,7 @@ Partial Class FrmPEEvent
         '
         Me.PPN.Caption = "PPN :"
         Me.PPN.Edit = Me.RepositoryItemTextEdit5
-        Me.PPN.EditValue = 0R
+        Me.PPN.EditValue = 0.0R
         Me.PPN.EditWidth = 100
         Me.PPN.Hint = "Nominal PPN Penawara"
         Me.PPN.Id = 13
@@ -353,7 +357,7 @@ Partial Class FrmPEEvent
         '
         Me.TGrandTotal.Caption = "Grand Total :"
         Me.TGrandTotal.Edit = Me.RepositoryItemTextEdit6
-        Me.TGrandTotal.EditValue = 0R
+        Me.TGrandTotal.EditValue = 0.0R
         Me.TGrandTotal.EditWidth = 130
         Me.TGrandTotal.Hint = "Grand Total Penawara"
         Me.TGrandTotal.Id = 14
@@ -371,31 +375,35 @@ Partial Class FrmPEEvent
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.barManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1330, 27)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1552, 33)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 735)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 962)
         Me.barDockControlBottom.Manager = Me.barManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1330, 21)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1552, 27)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 27)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 33)
         Me.barDockControlLeft.Manager = Me.barManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 708)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 929)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1330, 27)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1552, 33)
         Me.barDockControlRight.Manager = Me.barManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 708)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 929)
         '
         'BarEditItem2
         '
@@ -451,26 +459,29 @@ Partial Class FrmPEEvent
         '
         Me.PanelControl1.Controls.Add(Me.ControlListPE)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelControl1.Location = New System.Drawing.Point(0, 158)
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 204)
+        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(1330, 577)
+        Me.PanelControl1.Size = New System.Drawing.Size(1552, 758)
         Me.PanelControl1.TabIndex = 4
         '
         'ControlListPE
         '
         Me.ControlListPE.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ControlListPE.Location = New System.Drawing.Point(2, 2)
+        Me.ControlListPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ControlListPE.Name = "ControlListPE"
         Me.ControlListPE.SelectedTabPage = Me.TabPenawaran
-        Me.ControlListPE.Size = New System.Drawing.Size(1326, 573)
+        Me.ControlListPE.Size = New System.Drawing.Size(1548, 754)
         Me.ControlListPE.TabIndex = 0
         Me.ControlListPE.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.TabPenawaran, Me.TabDetailPenawaran})
         '
         'TabPenawaran
         '
         Me.TabPenawaran.Controls.Add(Me.ListPE)
+        Me.TabPenawaran.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TabPenawaran.Name = "TabPenawaran"
-        Me.TabPenawaran.Size = New System.Drawing.Size(1324, 550)
+        Me.TabPenawaran.Size = New System.Drawing.Size(1546, 725)
         Me.TabPenawaran.Text = "Data Penawaran"
         '
         'ListPE
@@ -478,9 +489,10 @@ Partial Class FrmPEEvent
         Me.ListPE.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListPE.HideSelection = False
         Me.ListPE.Location = New System.Drawing.Point(0, 0)
+        Me.ListPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ListPE.MultiSelect = False
         Me.ListPE.Name = "ListPE"
-        Me.ListPE.Size = New System.Drawing.Size(1324, 550)
+        Me.ListPE.Size = New System.Drawing.Size(1546, 725)
         Me.ListPE.TabIndex = 1
         Me.ListPE.UseCompatibleStateImageBehavior = False
         '
@@ -488,8 +500,9 @@ Partial Class FrmPEEvent
         '
         Me.TabDetailPenawaran.Controls.Add(Me.PInput)
         Me.TabDetailPenawaran.Controls.Add(Me.TampilDetail)
+        Me.TabDetailPenawaran.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TabDetailPenawaran.Name = "TabDetailPenawaran"
-        Me.TabDetailPenawaran.Size = New System.Drawing.Size(1324, 550)
+        Me.TabDetailPenawaran.Size = New System.Drawing.Size(1546, 725)
         Me.TabDetailPenawaran.Text = "Detail Penawaran"
         '
         'PInput
@@ -517,9 +530,10 @@ Partial Class FrmPEEvent
         Me.PInput.Controls.Add(Me.CSQty)
         Me.PInput.Controls.Add(Me.TQty)
         Me.PInput.Controls.Add(Me.TCari)
-        Me.PInput.Location = New System.Drawing.Point(152, 44)
+        Me.PInput.Location = New System.Drawing.Point(177, 58)
+        Me.PInput.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PInput.Name = "PInput"
-        Me.PInput.Size = New System.Drawing.Size(1018, 82)
+        Me.PInput.Size = New System.Drawing.Size(1188, 107)
         Me.PInput.TabIndex = 3
         Me.PInput.Visible = False
         '
@@ -530,10 +544,11 @@ Partial Class FrmPEEvent
         '
         Me.TInfoKlien.Border.Class = "TextBoxBorder"
         Me.TInfoKlien.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TInfoKlien.Location = New System.Drawing.Point(649, 40)
+        Me.TInfoKlien.Location = New System.Drawing.Point(757, 52)
+        Me.TInfoKlien.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TInfoKlien.Name = "TInfoKlien"
         Me.TInfoKlien.PreventEnterBeep = True
-        Me.TInfoKlien.Size = New System.Drawing.Size(32, 22)
+        Me.TInfoKlien.Size = New System.Drawing.Size(37, 25)
         Me.TInfoKlien.TabIndex = 22
         Me.TInfoKlien.Visible = False
         '
@@ -544,28 +559,31 @@ Partial Class FrmPEEvent
         '
         Me.TInfoKontrak.Border.Class = "TextBoxBorder"
         Me.TInfoKontrak.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TInfoKontrak.Location = New System.Drawing.Point(613, 40)
+        Me.TInfoKontrak.Location = New System.Drawing.Point(715, 52)
+        Me.TInfoKontrak.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TInfoKontrak.Name = "TInfoKontrak"
         Me.TInfoKontrak.PreventEnterBeep = True
-        Me.TInfoKontrak.Size = New System.Drawing.Size(32, 22)
+        Me.TInfoKontrak.Size = New System.Drawing.Size(37, 25)
         Me.TInfoKontrak.TabIndex = 21
         Me.TInfoKontrak.Visible = False
         '
         'BtnTutup
         '
         Me.BtnTutup.ImageOptions.Image = CType(resources.GetObject("BtnTutup.ImageOptions.Image"), System.Drawing.Image)
-        Me.BtnTutup.Location = New System.Drawing.Point(915, 50)
+        Me.BtnTutup.Location = New System.Drawing.Point(1067, 65)
+        Me.BtnTutup.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnTutup.Name = "BtnTutup"
-        Me.BtnTutup.Size = New System.Drawing.Size(75, 23)
+        Me.BtnTutup.Size = New System.Drawing.Size(87, 30)
         Me.BtnTutup.TabIndex = 18
         Me.BtnTutup.Text = "Tutup"
         '
         'BtnOKInput
         '
-        Me.BtnOKInput.ImageOptions.Image = CType(resources.GetObject("BtnOK.ImageOptions.Image"), System.Drawing.Image)
-        Me.BtnOKInput.Location = New System.Drawing.Point(801, 50)
+        Me.BtnOKInput.ImageOptions.Image = CType(resources.GetObject("BtnOKInput.ImageOptions.Image"), System.Drawing.Image)
+        Me.BtnOKInput.Location = New System.Drawing.Point(934, 65)
+        Me.BtnOKInput.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnOKInput.Name = "BtnOKInput"
-        Me.BtnOKInput.Size = New System.Drawing.Size(103, 23)
+        Me.BtnOKInput.Size = New System.Drawing.Size(120, 30)
         Me.BtnOKInput.TabIndex = 12
         Me.BtnOKInput.Text = "Input"
         '
@@ -575,9 +593,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX29.Location = New System.Drawing.Point(444, 40)
+        Me.LabelX29.Location = New System.Drawing.Point(518, 52)
+        Me.LabelX29.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX29.Name = "LabelX29"
-        Me.LabelX29.Size = New System.Drawing.Size(50, 23)
+        Me.LabelX29.Size = New System.Drawing.Size(58, 30)
         Me.LabelX29.TabIndex = 16
         Me.LabelX29.Text = "NO LINE :"
         '
@@ -588,10 +607,11 @@ Partial Class FrmPEEvent
         '
         Me.NoItem.Border.Class = "TextBoxBorder"
         Me.NoItem.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.NoItem.Location = New System.Drawing.Point(500, 40)
+        Me.NoItem.Location = New System.Drawing.Point(583, 52)
+        Me.NoItem.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NoItem.Name = "NoItem"
         Me.NoItem.PreventEnterBeep = True
-        Me.NoItem.Size = New System.Drawing.Size(73, 22)
+        Me.NoItem.Size = New System.Drawing.Size(85, 25)
         Me.NoItem.TabIndex = 15
         '
         'idInpBarang
@@ -601,10 +621,11 @@ Partial Class FrmPEEvent
         '
         Me.idInpBarang.Border.Class = "TextBoxBorder"
         Me.idInpBarang.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.idInpBarang.Location = New System.Drawing.Point(385, 40)
+        Me.idInpBarang.Location = New System.Drawing.Point(449, 52)
+        Me.idInpBarang.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.idInpBarang.Name = "idInpBarang"
         Me.idInpBarang.PreventEnterBeep = True
-        Me.idInpBarang.Size = New System.Drawing.Size(32, 22)
+        Me.idInpBarang.Size = New System.Drawing.Size(37, 25)
         Me.idInpBarang.TabIndex = 14
         Me.idInpBarang.Visible = False
         '
@@ -615,10 +636,11 @@ Partial Class FrmPEEvent
         '
         Me.iddetail.Border.Class = "TextBoxBorder"
         Me.iddetail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.iddetail.Location = New System.Drawing.Point(347, 40)
+        Me.iddetail.Location = New System.Drawing.Point(405, 52)
+        Me.iddetail.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.iddetail.Name = "iddetail"
         Me.iddetail.PreventEnterBeep = True
-        Me.iddetail.Size = New System.Drawing.Size(32, 22)
+        Me.iddetail.Size = New System.Drawing.Size(37, 25)
         Me.iddetail.TabIndex = 13
         Me.iddetail.Visible = False
         '
@@ -629,10 +651,11 @@ Partial Class FrmPEEvent
         '
         Me.NoMaterial.Border.Class = "TextBoxBorder"
         Me.NoMaterial.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.NoMaterial.Location = New System.Drawing.Point(103, 40)
+        Me.NoMaterial.Location = New System.Drawing.Point(120, 52)
+        Me.NoMaterial.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NoMaterial.Name = "NoMaterial"
         Me.NoMaterial.PreventEnterBeep = True
-        Me.NoMaterial.Size = New System.Drawing.Size(32, 22)
+        Me.NoMaterial.Size = New System.Drawing.Size(37, 25)
         Me.NoMaterial.TabIndex = 12
         Me.NoMaterial.Visible = False
         '
@@ -643,10 +666,11 @@ Partial Class FrmPEEvent
         '
         Me.idKontrak.Border.Class = "TextBoxBorder"
         Me.idKontrak.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.idKontrak.Location = New System.Drawing.Point(140, 40)
+        Me.idKontrak.Location = New System.Drawing.Point(163, 52)
+        Me.idKontrak.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.idKontrak.Name = "idKontrak"
         Me.idKontrak.PreventEnterBeep = True
-        Me.idKontrak.Size = New System.Drawing.Size(32, 22)
+        Me.idKontrak.Size = New System.Drawing.Size(37, 25)
         Me.idKontrak.TabIndex = 11
         Me.idKontrak.Visible = False
         '
@@ -657,10 +681,11 @@ Partial Class FrmPEEvent
         '
         Me.TMaterials.Border.Class = "TextBoxBorder"
         Me.TMaterials.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TMaterials.Location = New System.Drawing.Point(178, 40)
+        Me.TMaterials.Location = New System.Drawing.Point(208, 52)
+        Me.TMaterials.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TMaterials.Name = "TMaterials"
         Me.TMaterials.PreventEnterBeep = True
-        Me.TMaterials.Size = New System.Drawing.Size(159, 22)
+        Me.TMaterials.Size = New System.Drawing.Size(185, 25)
         Me.TMaterials.TabIndex = 10
         Me.TMaterials.WatermarkText = "Material Barang"
         '
@@ -671,10 +696,11 @@ Partial Class FrmPEEvent
         '
         Me.Remaks.Border.Class = "TextBoxBorder"
         Me.Remaks.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.Remaks.Location = New System.Drawing.Point(853, 13)
+        Me.Remaks.Location = New System.Drawing.Point(995, 17)
+        Me.Remaks.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Remaks.Name = "Remaks"
         Me.Remaks.PreventEnterBeep = True
-        Me.Remaks.Size = New System.Drawing.Size(151, 22)
+        Me.Remaks.Size = New System.Drawing.Size(176, 25)
         Me.Remaks.TabIndex = 11
         Me.Remaks.WatermarkText = "Keterangan"
         '
@@ -685,10 +711,11 @@ Partial Class FrmPEEvent
         '
         Me.SubTotal.Border.Class = "TextBoxBorder"
         Me.SubTotal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.SubTotal.Location = New System.Drawing.Point(740, 13)
+        Me.SubTotal.Location = New System.Drawing.Point(863, 17)
+        Me.SubTotal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.SubTotal.Name = "SubTotal"
         Me.SubTotal.PreventEnterBeep = True
-        Me.SubTotal.Size = New System.Drawing.Size(107, 22)
+        Me.SubTotal.Size = New System.Drawing.Size(125, 25)
         Me.SubTotal.TabIndex = 10
         Me.SubTotal.WatermarkText = "Sub Total"
         '
@@ -699,10 +726,11 @@ Partial Class FrmPEEvent
         '
         Me.TUnitCost.Border.Class = "TextBoxBorder"
         Me.TUnitCost.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TUnitCost.Location = New System.Drawing.Point(627, 13)
+        Me.TUnitCost.Location = New System.Drawing.Point(731, 17)
+        Me.TUnitCost.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TUnitCost.Name = "TUnitCost"
         Me.TUnitCost.PreventEnterBeep = True
-        Me.TUnitCost.Size = New System.Drawing.Size(107, 22)
+        Me.TUnitCost.Size = New System.Drawing.Size(125, 25)
         Me.TUnitCost.TabIndex = 9
         Me.TUnitCost.WatermarkText = "Unit Cost"
         '
@@ -713,10 +741,11 @@ Partial Class FrmPEEvent
         '
         Me.TTotal.Border.Class = "TextBoxBorder"
         Me.TTotal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TTotal.Location = New System.Drawing.Point(512, 13)
+        Me.TTotal.Location = New System.Drawing.Point(597, 17)
+        Me.TTotal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TTotal.Name = "TTotal"
         Me.TTotal.PreventEnterBeep = True
-        Me.TTotal.Size = New System.Drawing.Size(109, 22)
+        Me.TTotal.Size = New System.Drawing.Size(127, 25)
         Me.TTotal.TabIndex = 8
         Me.TTotal.WatermarkText = "Total Item"
         '
@@ -727,10 +756,11 @@ Partial Class FrmPEEvent
         '
         Me.TDimensi.Border.Class = "TextBoxBorder"
         Me.TDimensi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TDimensi.Location = New System.Drawing.Point(399, 14)
+        Me.TDimensi.Location = New System.Drawing.Point(465, 18)
+        Me.TDimensi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TDimensi.Name = "TDimensi"
         Me.TDimensi.PreventEnterBeep = True
-        Me.TDimensi.Size = New System.Drawing.Size(107, 22)
+        Me.TDimensi.Size = New System.Drawing.Size(125, 25)
         Me.TDimensi.TabIndex = 7
         Me.TDimensi.WatermarkText = "Dimensi"
         '
@@ -741,10 +771,11 @@ Partial Class FrmPEEvent
         '
         Me.TDay.Border.Class = "TextBoxBorder"
         Me.TDay.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TDay.Location = New System.Drawing.Point(399, 13)
+        Me.TDay.Location = New System.Drawing.Point(465, 17)
+        Me.TDay.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TDay.Name = "TDay"
         Me.TDay.PreventEnterBeep = True
-        Me.TDay.Size = New System.Drawing.Size(39, 22)
+        Me.TDay.Size = New System.Drawing.Size(45, 25)
         Me.TDay.TabIndex = 5
         Me.TDay.WatermarkText = "Day"
         '
@@ -755,9 +786,10 @@ Partial Class FrmPEEvent
         Me.CSDay.Font = New System.Drawing.Font("Segoe UI", 7.6!)
         Me.CSDay.FormattingEnabled = True
         Me.CSDay.ItemHeight = 16
-        Me.CSDay.Location = New System.Drawing.Point(444, 13)
+        Me.CSDay.Location = New System.Drawing.Point(518, 17)
+        Me.CSDay.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CSDay.Name = "CSDay"
-        Me.CSDay.Size = New System.Drawing.Size(62, 22)
+        Me.CSDay.Size = New System.Drawing.Size(72, 22)
         Me.CSDay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSDay.TabIndex = 6
         '
@@ -766,10 +798,11 @@ Partial Class FrmPEEvent
         Me.CSFreq.DisplayMember = "Text"
         Me.CSFreq.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSFreq.FormattingEnabled = True
-        Me.CSFreq.ItemHeight = 17
-        Me.CSFreq.Location = New System.Drawing.Point(335, 12)
+        Me.CSFreq.ItemHeight = 20
+        Me.CSFreq.Location = New System.Drawing.Point(391, 16)
+        Me.CSFreq.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CSFreq.Name = "CSFreq"
-        Me.CSFreq.Size = New System.Drawing.Size(58, 23)
+        Me.CSFreq.Size = New System.Drawing.Size(67, 26)
         Me.CSFreq.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSFreq.TabIndex = 4
         '
@@ -780,10 +813,11 @@ Partial Class FrmPEEvent
         '
         Me.TFreq.Border.Class = "TextBoxBorder"
         Me.TFreq.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TFreq.Location = New System.Drawing.Point(290, 12)
+        Me.TFreq.Location = New System.Drawing.Point(338, 16)
+        Me.TFreq.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TFreq.Name = "TFreq"
         Me.TFreq.PreventEnterBeep = True
-        Me.TFreq.Size = New System.Drawing.Size(39, 22)
+        Me.TFreq.Size = New System.Drawing.Size(45, 25)
         Me.TFreq.TabIndex = 3
         Me.TFreq.WatermarkText = "Freq"
         '
@@ -792,10 +826,11 @@ Partial Class FrmPEEvent
         Me.CSQty.DisplayMember = "Text"
         Me.CSQty.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CSQty.FormattingEnabled = True
-        Me.CSQty.ItemHeight = 17
-        Me.CSQty.Location = New System.Drawing.Point(223, 12)
+        Me.CSQty.ItemHeight = 20
+        Me.CSQty.Location = New System.Drawing.Point(260, 16)
+        Me.CSQty.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CSQty.Name = "CSQty"
-        Me.CSQty.Size = New System.Drawing.Size(59, 23)
+        Me.CSQty.Size = New System.Drawing.Size(68, 26)
         Me.CSQty.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CSQty.TabIndex = 2
         '
@@ -806,10 +841,11 @@ Partial Class FrmPEEvent
         '
         Me.TQty.Border.Class = "TextBoxBorder"
         Me.TQty.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TQty.Location = New System.Drawing.Point(178, 12)
+        Me.TQty.Location = New System.Drawing.Point(208, 16)
+        Me.TQty.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TQty.Name = "TQty"
         Me.TQty.PreventEnterBeep = True
-        Me.TQty.Size = New System.Drawing.Size(39, 22)
+        Me.TQty.Size = New System.Drawing.Size(45, 25)
         Me.TQty.TabIndex = 1
         Me.TQty.WatermarkText = "Qty"
         '
@@ -820,10 +856,11 @@ Partial Class FrmPEEvent
         '
         Me.TCari.Border.Class = "TextBoxBorder"
         Me.TCari.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TCari.Location = New System.Drawing.Point(13, 12)
+        Me.TCari.Location = New System.Drawing.Point(15, 16)
+        Me.TCari.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TCari.Name = "TCari"
         Me.TCari.PreventEnterBeep = True
-        Me.TCari.Size = New System.Drawing.Size(159, 22)
+        Me.TCari.Size = New System.Drawing.Size(185, 25)
         Me.TCari.TabIndex = 0
         Me.TCari.WatermarkText = "Cari Barang Penawaran"
         '
@@ -832,8 +869,9 @@ Partial Class FrmPEEvent
         Me.TampilDetail.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TampilDetail.HideSelection = False
         Me.TampilDetail.Location = New System.Drawing.Point(0, 0)
+        Me.TampilDetail.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TampilDetail.Name = "TampilDetail"
-        Me.TampilDetail.Size = New System.Drawing.Size(1324, 550)
+        Me.TampilDetail.Size = New System.Drawing.Size(1546, 725)
         Me.TampilDetail.TabIndex = 2
         Me.TampilDetail.UseCompatibleStateImageBehavior = False
         '
@@ -843,12 +881,8 @@ Partial Class FrmPEEvent
         Me.PanelControl2.Controls.Add(Me.CJenisPE)
         Me.PanelControl2.Controls.Add(Me.LabelX26)
         Me.PanelControl2.Controls.Add(Me.TidVenue)
-        Me.PanelControl2.Controls.Add(Me.BtnGantiNoPE)
         Me.PanelControl2.Controls.Add(Me.LabelX25)
         Me.PanelControl2.Controls.Add(Me.TCariPE)
-        Me.PanelControl2.Controls.Add(Me.LabelX27)
-        Me.PanelControl2.Controls.Add(Me.LabelX28)
-        Me.PanelControl2.Controls.Add(Me.TCounter)
         Me.PanelControl2.Controls.Add(Me.TimeEnd)
         Me.PanelControl2.Controls.Add(Me.TimeStart)
         Me.PanelControl2.Controls.Add(Me.TidKlien)
@@ -891,26 +925,29 @@ Partial Class FrmPEEvent
         Me.PanelControl2.Controls.Add(Me.LabelX1)
         Me.PanelControl2.Controls.Add(Me.TNoPE)
         Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelControl2.Location = New System.Drawing.Point(0, 27)
+        Me.PanelControl2.Location = New System.Drawing.Point(0, 33)
+        Me.PanelControl2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(1330, 131)
+        Me.PanelControl2.Size = New System.Drawing.Size(1552, 171)
         Me.PanelControl2.TabIndex = 5
         '
         'DTTanggal
         '
         Me.DTTanggal.CustomFormat = "dd/MM/yyyy"
         Me.DTTanggal.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTTanggal.Location = New System.Drawing.Point(995, 75)
+        Me.DTTanggal.Location = New System.Drawing.Point(1046, 15)
+        Me.DTTanggal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.DTTanggal.Name = "DTTanggal"
-        Me.DTTanggal.Size = New System.Drawing.Size(83, 22)
+        Me.DTTanggal.Size = New System.Drawing.Size(213, 25)
         Me.DTTanggal.TabIndex = 104
         '
         'CJenisPE
         '
         Me.CJenisPE.FormattingEnabled = True
-        Me.CJenisPE.Location = New System.Drawing.Point(113, 40)
+        Me.CJenisPE.Location = New System.Drawing.Point(132, 52)
+        Me.CJenisPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CJenisPE.Name = "CJenisPE"
-        Me.CJenisPE.Size = New System.Drawing.Size(188, 21)
+        Me.CJenisPE.Size = New System.Drawing.Size(219, 25)
         Me.CJenisPE.TabIndex = 103
         '
         'LabelX26
@@ -919,9 +956,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX26.Location = New System.Drawing.Point(897, 82)
+        Me.LabelX26.Location = New System.Drawing.Point(1046, 107)
+        Me.LabelX26.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX26.Name = "LabelX26"
-        Me.LabelX26.Size = New System.Drawing.Size(75, 13)
+        Me.LabelX26.Size = New System.Drawing.Size(87, 17)
         Me.LabelX26.TabIndex = 99
         Me.LabelX26.Text = "PENCARIAN"
         '
@@ -932,20 +970,13 @@ Partial Class FrmPEEvent
         '
         Me.TidVenue.Border.Class = "TextBoxBorder"
         Me.TidVenue.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidVenue.Location = New System.Drawing.Point(370, 13)
+        Me.TidVenue.Location = New System.Drawing.Point(432, 17)
+        Me.TidVenue.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TidVenue.Name = "TidVenue"
         Me.TidVenue.PreventEnterBeep = True
-        Me.TidVenue.Size = New System.Drawing.Size(22, 22)
+        Me.TidVenue.Size = New System.Drawing.Size(26, 25)
         Me.TidVenue.TabIndex = 102
         Me.TidVenue.Visible = False
-        '
-        'BtnGantiNoPE
-        '
-        Me.BtnGantiNoPE.Location = New System.Drawing.Point(995, 43)
-        Me.BtnGantiNoPE.Name = "BtnGantiNoPE"
-        Me.BtnGantiNoPE.Size = New System.Drawing.Size(75, 23)
-        Me.BtnGantiNoPE.TabIndex = 101
-        Me.BtnGantiNoPE.Text = "Ganti"
         '
         'LabelX25
         '
@@ -953,9 +984,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX25.Location = New System.Drawing.Point(978, 82)
+        Me.LabelX25.Location = New System.Drawing.Point(1141, 107)
+        Me.LabelX25.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX25.Name = "LabelX25"
-        Me.LabelX25.Size = New System.Drawing.Size(10, 12)
+        Me.LabelX25.Size = New System.Drawing.Size(12, 16)
         Me.LabelX25.TabIndex = 100
         Me.LabelX25.Text = ":"
         '
@@ -966,67 +998,33 @@ Partial Class FrmPEEvent
         '
         Me.TCariPE.Border.Class = "TextBoxBorder"
         Me.TCariPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TCariPE.Location = New System.Drawing.Point(897, 100)
+        Me.TCariPE.Location = New System.Drawing.Point(1046, 131)
+        Me.TCariPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TCariPE.Name = "TCariPE"
         Me.TCariPE.PreventEnterBeep = True
-        Me.TCariPE.Size = New System.Drawing.Size(192, 22)
+        Me.TCariPE.Size = New System.Drawing.Size(224, 25)
         Me.TCariPE.TabIndex = 98
-        '
-        'LabelX27
-        '
-        '
-        '
-        '
-        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX27.Location = New System.Drawing.Point(979, 12)
-        Me.LabelX27.Name = "LabelX27"
-        Me.LabelX27.Size = New System.Drawing.Size(10, 22)
-        Me.LabelX27.TabIndex = 97
-        Me.LabelX27.Text = ":"
-        '
-        'LabelX28
-        '
-        '
-        '
-        '
-        Me.LabelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX28.Location = New System.Drawing.Point(897, 12)
-        Me.LabelX28.Name = "LabelX28"
-        Me.LabelX28.Size = New System.Drawing.Size(75, 23)
-        Me.LabelX28.TabIndex = 96
-        Me.LabelX28.Text = "EDIT NO PE"
-        '
-        'TCounter
-        '
-        '
-        '
-        '
-        Me.TCounter.Border.Class = "TextBoxBorder"
-        Me.TCounter.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TCounter.Location = New System.Drawing.Point(995, 15)
-        Me.TCounter.Name = "TCounter"
-        Me.TCounter.PreventEnterBeep = True
-        Me.TCounter.Size = New System.Drawing.Size(78, 22)
-        Me.TCounter.TabIndex = 95
         '
         'TimeEnd
         '
         Me.TimeEnd.CustomFormat = "HH:mm"
         Me.TimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.TimeEnd.Location = New System.Drawing.Point(515, 96)
+        Me.TimeEnd.Location = New System.Drawing.Point(601, 126)
+        Me.TimeEnd.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TimeEnd.Name = "TimeEnd"
         Me.TimeEnd.ShowUpDown = True
-        Me.TimeEnd.Size = New System.Drawing.Size(83, 22)
+        Me.TimeEnd.Size = New System.Drawing.Size(96, 25)
         Me.TimeEnd.TabIndex = 94
         '
         'TimeStart
         '
         Me.TimeStart.CustomFormat = "HH:mm"
         Me.TimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.TimeStart.Location = New System.Drawing.Point(415, 96)
+        Me.TimeStart.Location = New System.Drawing.Point(484, 126)
+        Me.TimeStart.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TimeStart.Name = "TimeStart"
         Me.TimeStart.ShowUpDown = True
-        Me.TimeStart.Size = New System.Drawing.Size(85, 22)
+        Me.TimeStart.Size = New System.Drawing.Size(98, 25)
         Me.TimeStart.TabIndex = 93
         '
         'TidKlien
@@ -1036,10 +1034,11 @@ Partial Class FrmPEEvent
         '
         Me.TidKlien.Border.Class = "TextBoxBorder"
         Me.TidKlien.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidKlien.Location = New System.Drawing.Point(67, 96)
+        Me.TidKlien.Location = New System.Drawing.Point(78, 126)
+        Me.TidKlien.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TidKlien.Name = "TidKlien"
         Me.TidKlien.PreventEnterBeep = True
-        Me.TidKlien.Size = New System.Drawing.Size(23, 22)
+        Me.TidKlien.Size = New System.Drawing.Size(27, 25)
         Me.TidKlien.TabIndex = 92
         Me.TidKlien.Visible = False
         '
@@ -1050,10 +1049,11 @@ Partial Class FrmPEEvent
         '
         Me.TidProject.Border.Class = "TextBoxBorder"
         Me.TidProject.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidProject.Location = New System.Drawing.Point(67, 67)
+        Me.TidProject.Location = New System.Drawing.Point(78, 88)
+        Me.TidProject.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TidProject.Name = "TidProject"
         Me.TidProject.PreventEnterBeep = True
-        Me.TidProject.Size = New System.Drawing.Size(23, 22)
+        Me.TidProject.Size = New System.Drawing.Size(27, 25)
         Me.TidProject.TabIndex = 91
         Me.TidProject.Visible = False
         '
@@ -1064,10 +1064,11 @@ Partial Class FrmPEEvent
         '
         Me.TidJenisPE.Border.Class = "TextBoxBorder"
         Me.TidJenisPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidJenisPE.Location = New System.Drawing.Point(67, 40)
+        Me.TidJenisPE.Location = New System.Drawing.Point(78, 52)
+        Me.TidJenisPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TidJenisPE.Name = "TidJenisPE"
         Me.TidJenisPE.PreventEnterBeep = True
-        Me.TidJenisPE.Size = New System.Drawing.Size(23, 22)
+        Me.TidJenisPE.Size = New System.Drawing.Size(27, 25)
         Me.TidJenisPE.TabIndex = 90
         Me.TidJenisPE.Visible = False
         '
@@ -1078,10 +1079,11 @@ Partial Class FrmPEEvent
         '
         Me.TidPE.Border.Class = "TextBoxBorder"
         Me.TidPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidPE.Location = New System.Drawing.Point(67, 12)
+        Me.TidPE.Location = New System.Drawing.Point(78, 16)
+        Me.TidPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TidPE.Name = "TidPE"
         Me.TidPE.PreventEnterBeep = True
-        Me.TidPE.Size = New System.Drawing.Size(23, 22)
+        Me.TidPE.Size = New System.Drawing.Size(27, 25)
         Me.TidPE.TabIndex = 89
         Me.TidPE.Visible = False
         '
@@ -1089,18 +1091,20 @@ Partial Class FrmPEEvent
         '
         Me.EndDate.CustomFormat = "dd/MM/yyyy"
         Me.EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.EndDate.Location = New System.Drawing.Point(515, 69)
+        Me.EndDate.Location = New System.Drawing.Point(601, 90)
+        Me.EndDate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.EndDate.Name = "EndDate"
-        Me.EndDate.Size = New System.Drawing.Size(83, 22)
+        Me.EndDate.Size = New System.Drawing.Size(96, 25)
         Me.EndDate.TabIndex = 88
         '
         'StartDate
         '
         Me.StartDate.CustomFormat = "dd/MM/yyyy"
         Me.StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.StartDate.Location = New System.Drawing.Point(415, 69)
+        Me.StartDate.Location = New System.Drawing.Point(484, 90)
+        Me.StartDate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.StartDate.Name = "StartDate"
-        Me.StartDate.Size = New System.Drawing.Size(85, 22)
+        Me.StartDate.Size = New System.Drawing.Size(98, 25)
         Me.StartDate.TabIndex = 87
         '
         'LabelX21
@@ -1109,9 +1113,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX21.Location = New System.Drawing.Point(699, 99)
+        Me.LabelX21.Location = New System.Drawing.Point(815, 129)
+        Me.LabelX21.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX21.Name = "LabelX21"
-        Me.LabelX21.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX21.Size = New System.Drawing.Size(12, 29)
         Me.LabelX21.TabIndex = 86
         Me.LabelX21.Text = ":"
         '
@@ -1121,9 +1126,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX22.Location = New System.Drawing.Point(617, 97)
+        Me.LabelX22.Location = New System.Drawing.Point(720, 127)
+        Me.LabelX22.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX22.Name = "LabelX22"
-        Me.LabelX22.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX22.Size = New System.Drawing.Size(87, 30)
         Me.LabelX22.TabIndex = 85
         Me.LabelX22.Text = "JABATAN"
         '
@@ -1134,10 +1140,11 @@ Partial Class FrmPEEvent
         '
         Me.TJabatan.Border.Class = "TextBoxBorder"
         Me.TJabatan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TJabatan.Location = New System.Drawing.Point(715, 99)
+        Me.TJabatan.Location = New System.Drawing.Point(834, 129)
+        Me.TJabatan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TJabatan.Name = "TJabatan"
         Me.TJabatan.PreventEnterBeep = True
-        Me.TJabatan.Size = New System.Drawing.Size(160, 22)
+        Me.TJabatan.Size = New System.Drawing.Size(187, 25)
         Me.TJabatan.TabIndex = 84
         '
         'LabelX23
@@ -1146,9 +1153,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX23.Location = New System.Drawing.Point(699, 71)
+        Me.LabelX23.Location = New System.Drawing.Point(815, 93)
+        Me.LabelX23.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX23.Name = "LabelX23"
-        Me.LabelX23.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX23.Size = New System.Drawing.Size(12, 29)
         Me.LabelX23.TabIndex = 83
         Me.LabelX23.Text = ":"
         '
@@ -1158,9 +1166,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX24.Location = New System.Drawing.Point(617, 71)
+        Me.LabelX24.Location = New System.Drawing.Point(720, 93)
+        Me.LabelX24.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX24.Name = "LabelX24"
-        Me.LabelX24.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX24.Size = New System.Drawing.Size(87, 30)
         Me.LabelX24.TabIndex = 82
         Me.LabelX24.Text = "DISETUJUI"
         '
@@ -1171,10 +1180,11 @@ Partial Class FrmPEEvent
         '
         Me.TApprov.Border.Class = "TextBoxBorder"
         Me.TApprov.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TApprov.Location = New System.Drawing.Point(715, 71)
+        Me.TApprov.Location = New System.Drawing.Point(834, 93)
+        Me.TApprov.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TApprov.Name = "TApprov"
         Me.TApprov.PreventEnterBeep = True
-        Me.TApprov.Size = New System.Drawing.Size(160, 22)
+        Me.TApprov.Size = New System.Drawing.Size(187, 25)
         Me.TApprov.TabIndex = 81
         '
         'LabelX17
@@ -1183,9 +1193,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX17.Location = New System.Drawing.Point(699, 42)
+        Me.LabelX17.Location = New System.Drawing.Point(815, 55)
+        Me.LabelX17.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX17.Name = "LabelX17"
-        Me.LabelX17.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX17.Size = New System.Drawing.Size(12, 29)
         Me.LabelX17.TabIndex = 80
         Me.LabelX17.Text = ":"
         '
@@ -1195,9 +1206,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX18.Location = New System.Drawing.Point(617, 40)
+        Me.LabelX18.Location = New System.Drawing.Point(720, 52)
+        Me.LabelX18.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX18.Name = "LabelX18"
-        Me.LabelX18.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX18.Size = New System.Drawing.Size(87, 30)
         Me.LabelX18.TabIndex = 79
         Me.LabelX18.Text = "PPN"
         '
@@ -1208,10 +1220,11 @@ Partial Class FrmPEEvent
         '
         Me.RpPPN.Border.Class = "TextBoxBorder"
         Me.RpPPN.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RpPPN.Location = New System.Drawing.Point(715, 42)
+        Me.RpPPN.Location = New System.Drawing.Point(834, 55)
+        Me.RpPPN.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.RpPPN.Name = "RpPPN"
         Me.RpPPN.PreventEnterBeep = True
-        Me.RpPPN.Size = New System.Drawing.Size(160, 22)
+        Me.RpPPN.Size = New System.Drawing.Size(187, 25)
         Me.RpPPN.TabIndex = 78
         '
         'LabelX19
@@ -1220,9 +1233,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX19.Location = New System.Drawing.Point(699, 14)
+        Me.LabelX19.Location = New System.Drawing.Point(815, 18)
+        Me.LabelX19.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX19.Name = "LabelX19"
-        Me.LabelX19.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX19.Size = New System.Drawing.Size(12, 29)
         Me.LabelX19.TabIndex = 77
         Me.LabelX19.Text = ":"
         '
@@ -1232,9 +1246,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX20.Location = New System.Drawing.Point(617, 12)
+        Me.LabelX20.Location = New System.Drawing.Point(720, 16)
+        Me.LabelX20.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX20.Name = "LabelX20"
-        Me.LabelX20.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX20.Size = New System.Drawing.Size(87, 30)
         Me.LabelX20.TabIndex = 76
         Me.LabelX20.Text = "TOTAL"
         '
@@ -1245,10 +1260,11 @@ Partial Class FrmPEEvent
         '
         Me.TTotalEvent.Border.Class = "TextBoxBorder"
         Me.TTotalEvent.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TTotalEvent.Location = New System.Drawing.Point(715, 14)
+        Me.TTotalEvent.Location = New System.Drawing.Point(834, 18)
+        Me.TTotalEvent.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TTotalEvent.Name = "TTotalEvent"
         Me.TTotalEvent.PreventEnterBeep = True
-        Me.TTotalEvent.Size = New System.Drawing.Size(160, 22)
+        Me.TTotalEvent.Size = New System.Drawing.Size(187, 25)
         Me.TTotalEvent.TabIndex = 75
         '
         'LabelX9
@@ -1257,9 +1273,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX9.Location = New System.Drawing.Point(399, 96)
+        Me.LabelX9.Location = New System.Drawing.Point(465, 126)
+        Me.LabelX9.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX9.Name = "LabelX9"
-        Me.LabelX9.Size = New System.Drawing.Size(10, 20)
+        Me.LabelX9.Size = New System.Drawing.Size(12, 26)
         Me.LabelX9.TabIndex = 74
         Me.LabelX9.Text = ":"
         '
@@ -1269,9 +1286,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX10.Location = New System.Drawing.Point(317, 96)
+        Me.LabelX10.Location = New System.Drawing.Point(370, 126)
+        Me.LabelX10.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX10.Name = "LabelX10"
-        Me.LabelX10.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX10.Size = New System.Drawing.Size(87, 30)
         Me.LabelX10.TabIndex = 73
         Me.LabelX10.Text = "WAKTU"
         '
@@ -1281,9 +1299,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX11.Location = New System.Drawing.Point(399, 68)
+        Me.LabelX11.Location = New System.Drawing.Point(465, 89)
+        Me.LabelX11.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX11.Name = "LabelX11"
-        Me.LabelX11.Size = New System.Drawing.Size(10, 20)
+        Me.LabelX11.Size = New System.Drawing.Size(12, 26)
         Me.LabelX11.TabIndex = 72
         Me.LabelX11.Text = ":"
         '
@@ -1293,9 +1312,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX12.Location = New System.Drawing.Point(317, 68)
+        Me.LabelX12.Location = New System.Drawing.Point(370, 89)
+        Me.LabelX12.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX12.Name = "LabelX12"
-        Me.LabelX12.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX12.Size = New System.Drawing.Size(87, 30)
         Me.LabelX12.TabIndex = 71
         Me.LabelX12.Text = "TANGGAL"
         '
@@ -1305,9 +1325,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX13.Location = New System.Drawing.Point(399, 40)
+        Me.LabelX13.Location = New System.Drawing.Point(465, 52)
+        Me.LabelX13.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX13.Name = "LabelX13"
-        Me.LabelX13.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX13.Size = New System.Drawing.Size(12, 29)
         Me.LabelX13.TabIndex = 70
         Me.LabelX13.Text = ":"
         '
@@ -1317,9 +1338,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX14.Location = New System.Drawing.Point(317, 38)
+        Me.LabelX14.Location = New System.Drawing.Point(370, 50)
+        Me.LabelX14.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX14.Name = "LabelX14"
-        Me.LabelX14.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX14.Size = New System.Drawing.Size(87, 30)
         Me.LabelX14.TabIndex = 69
         Me.LabelX14.Text = "PESERTA"
         '
@@ -1330,10 +1352,11 @@ Partial Class FrmPEEvent
         '
         Me.TPeserta.Border.Class = "TextBoxBorder"
         Me.TPeserta.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TPeserta.Location = New System.Drawing.Point(415, 40)
+        Me.TPeserta.Location = New System.Drawing.Point(484, 52)
+        Me.TPeserta.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TPeserta.Name = "TPeserta"
         Me.TPeserta.PreventEnterBeep = True
-        Me.TPeserta.Size = New System.Drawing.Size(183, 22)
+        Me.TPeserta.Size = New System.Drawing.Size(213, 25)
         Me.TPeserta.TabIndex = 68
         '
         'LabelX15
@@ -1342,9 +1365,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX15.Location = New System.Drawing.Point(399, 12)
+        Me.LabelX15.Location = New System.Drawing.Point(465, 16)
+        Me.LabelX15.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX15.Name = "LabelX15"
-        Me.LabelX15.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX15.Size = New System.Drawing.Size(12, 29)
         Me.LabelX15.TabIndex = 67
         Me.LabelX15.Text = ":"
         '
@@ -1354,9 +1378,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX16.Location = New System.Drawing.Point(317, 10)
+        Me.LabelX16.Location = New System.Drawing.Point(370, 13)
+        Me.LabelX16.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX16.Name = "LabelX16"
-        Me.LabelX16.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX16.Size = New System.Drawing.Size(87, 30)
         Me.LabelX16.TabIndex = 66
         Me.LabelX16.Text = "VENUE"
         '
@@ -1367,10 +1392,11 @@ Partial Class FrmPEEvent
         '
         Me.TVenue.Border.Class = "TextBoxBorder"
         Me.TVenue.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TVenue.Location = New System.Drawing.Point(415, 12)
+        Me.TVenue.Location = New System.Drawing.Point(484, 16)
+        Me.TVenue.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TVenue.Name = "TVenue"
         Me.TVenue.PreventEnterBeep = True
-        Me.TVenue.Size = New System.Drawing.Size(183, 22)
+        Me.TVenue.Size = New System.Drawing.Size(213, 25)
         Me.TVenue.TabIndex = 65
         '
         'LabelX7
@@ -1379,9 +1405,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX7.Location = New System.Drawing.Point(97, 95)
+        Me.LabelX7.Location = New System.Drawing.Point(113, 124)
+        Me.LabelX7.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX7.Name = "LabelX7"
-        Me.LabelX7.Size = New System.Drawing.Size(10, 20)
+        Me.LabelX7.Size = New System.Drawing.Size(12, 26)
         Me.LabelX7.TabIndex = 64
         Me.LabelX7.Text = ":"
         '
@@ -1391,9 +1418,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX8.Location = New System.Drawing.Point(15, 95)
+        Me.LabelX8.Location = New System.Drawing.Point(17, 124)
+        Me.LabelX8.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX8.Name = "LabelX8"
-        Me.LabelX8.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX8.Size = New System.Drawing.Size(87, 30)
         Me.LabelX8.TabIndex = 63
         Me.LabelX8.Text = "KLIEN"
         '
@@ -1404,10 +1432,11 @@ Partial Class FrmPEEvent
         '
         Me.TKlien.Border.Class = "TextBoxBorder"
         Me.TKlien.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TKlien.Location = New System.Drawing.Point(113, 95)
+        Me.TKlien.Location = New System.Drawing.Point(132, 124)
+        Me.TKlien.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TKlien.Name = "TKlien"
         Me.TKlien.PreventEnterBeep = True
-        Me.TKlien.Size = New System.Drawing.Size(189, 22)
+        Me.TKlien.Size = New System.Drawing.Size(220, 25)
         Me.TKlien.TabIndex = 62
         '
         'LabelX5
@@ -1416,9 +1445,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX5.Location = New System.Drawing.Point(97, 67)
+        Me.LabelX5.Location = New System.Drawing.Point(113, 88)
+        Me.LabelX5.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(10, 20)
+        Me.LabelX5.Size = New System.Drawing.Size(12, 26)
         Me.LabelX5.TabIndex = 61
         Me.LabelX5.Text = ":"
         '
@@ -1428,9 +1458,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Location = New System.Drawing.Point(15, 67)
+        Me.LabelX6.Location = New System.Drawing.Point(17, 88)
+        Me.LabelX6.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX6.Size = New System.Drawing.Size(87, 30)
         Me.LabelX6.TabIndex = 60
         Me.LabelX6.Text = "PROJECT"
         '
@@ -1441,10 +1472,11 @@ Partial Class FrmPEEvent
         '
         Me.TProject.Border.Class = "TextBoxBorder"
         Me.TProject.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TProject.Location = New System.Drawing.Point(113, 67)
+        Me.TProject.Location = New System.Drawing.Point(132, 88)
+        Me.TProject.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TProject.Name = "TProject"
         Me.TProject.PreventEnterBeep = True
-        Me.TProject.Size = New System.Drawing.Size(189, 22)
+        Me.TProject.Size = New System.Drawing.Size(220, 25)
         Me.TProject.TabIndex = 59
         '
         'LabelX3
@@ -1453,9 +1485,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Location = New System.Drawing.Point(97, 39)
+        Me.LabelX3.Location = New System.Drawing.Point(113, 51)
+        Me.LabelX3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX3.Size = New System.Drawing.Size(12, 29)
         Me.LabelX3.TabIndex = 58
         Me.LabelX3.Text = ":"
         '
@@ -1465,9 +1498,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Location = New System.Drawing.Point(15, 37)
+        Me.LabelX4.Location = New System.Drawing.Point(17, 48)
+        Me.LabelX4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX4.Size = New System.Drawing.Size(87, 30)
         Me.LabelX4.TabIndex = 57
         Me.LabelX4.Text = "JENIS PE"
         '
@@ -1477,9 +1511,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Location = New System.Drawing.Point(97, 11)
+        Me.LabelX2.Location = New System.Drawing.Point(113, 14)
+        Me.LabelX2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(10, 22)
+        Me.LabelX2.Size = New System.Drawing.Size(12, 29)
         Me.LabelX2.TabIndex = 56
         Me.LabelX2.Text = ":"
         '
@@ -1489,9 +1524,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Location = New System.Drawing.Point(15, 9)
+        Me.LabelX1.Location = New System.Drawing.Point(17, 12)
+        Me.LabelX1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX1.Size = New System.Drawing.Size(87, 30)
         Me.LabelX1.TabIndex = 55
         Me.LabelX1.Text = "NO. PE"
         '
@@ -1503,10 +1539,11 @@ Partial Class FrmPEEvent
         Me.TNoPE.Border.Class = "TextBoxBorder"
         Me.TNoPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TNoPE.Enabled = False
-        Me.TNoPE.Location = New System.Drawing.Point(113, 11)
+        Me.TNoPE.Location = New System.Drawing.Point(132, 14)
+        Me.TNoPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TNoPE.Name = "TNoPE"
         Me.TNoPE.PreventEnterBeep = True
-        Me.TNoPE.Size = New System.Drawing.Size(189, 22)
+        Me.TNoPE.Size = New System.Drawing.Size(220, 25)
         Me.TNoPE.TabIndex = 54
         '
         'PanelAlasan
@@ -1516,9 +1553,10 @@ Partial Class FrmPEEvent
         Me.PanelAlasan.Controls.Add(Me.Label3)
         Me.PanelAlasan.Controls.Add(Me.BSimpanRevisi)
         Me.PanelAlasan.Controls.Add(Me.TARevisi)
-        Me.PanelAlasan.Location = New System.Drawing.Point(245, 119)
+        Me.PanelAlasan.Location = New System.Drawing.Point(286, 156)
+        Me.PanelAlasan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PanelAlasan.Name = "PanelAlasan"
-        Me.PanelAlasan.Size = New System.Drawing.Size(481, 123)
+        Me.PanelAlasan.Size = New System.Drawing.Size(561, 161)
         Me.PanelAlasan.TabIndex = 2
         Me.PanelAlasan.Text = "Alasan Revisi"
         Me.PanelAlasan.Visible = False
@@ -1530,9 +1568,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.TutupRevisi.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TutupRevisi.Location = New System.Drawing.Point(443, 85)
+        Me.TutupRevisi.Location = New System.Drawing.Point(517, 111)
+        Me.TutupRevisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TutupRevisi.Name = "TutupRevisi"
-        Me.TutupRevisi.Size = New System.Drawing.Size(33, 23)
+        Me.TutupRevisi.Size = New System.Drawing.Size(38, 30)
         Me.TutupRevisi.TabIndex = 9
         Me.TutupRevisi.Text = "Tutup"
         '
@@ -1543,10 +1582,11 @@ Partial Class FrmPEEvent
         '
         Me.idrevisi.Border.Class = "TextBoxBorder"
         Me.idrevisi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.idrevisi.Location = New System.Drawing.Point(8, 73)
+        Me.idrevisi.Location = New System.Drawing.Point(9, 95)
+        Me.idrevisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.idrevisi.Name = "idrevisi"
         Me.idrevisi.PreventEnterBeep = True
-        Me.idrevisi.Size = New System.Drawing.Size(32, 22)
+        Me.idrevisi.Size = New System.Drawing.Size(37, 25)
         Me.idrevisi.TabIndex = 8
         Me.idrevisi.Visible = False
         '
@@ -1554,18 +1594,19 @@ Partial Class FrmPEEvent
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Location = New System.Drawing.Point(5, 31)
+        Me.Label3.Location = New System.Drawing.Point(6, 41)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(177, 13)
+        Me.Label3.Size = New System.Drawing.Size(208, 19)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Tulis Alasan Revisi Dibawah Ini .. "
         '
         'BSimpanRevisi
         '
         Me.BSimpanRevisi.ImageOptions.Image = CType(resources.GetObject("BSimpanRevisi.ImageOptions.Image"), System.Drawing.Image)
-        Me.BSimpanRevisi.Location = New System.Drawing.Point(159, 85)
+        Me.BSimpanRevisi.Location = New System.Drawing.Point(185, 111)
+        Me.BSimpanRevisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BSimpanRevisi.Name = "BSimpanRevisi"
-        Me.BSimpanRevisi.Size = New System.Drawing.Size(117, 23)
+        Me.BSimpanRevisi.Size = New System.Drawing.Size(136, 30)
         Me.BSimpanRevisi.TabIndex = 6
         Me.BSimpanRevisi.Text = "Simpan Revisi"
         '
@@ -1576,16 +1617,18 @@ Partial Class FrmPEEvent
         '
         Me.TARevisi.Border.Class = "TextBoxBorder"
         Me.TARevisi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TARevisi.Location = New System.Drawing.Point(8, 45)
+        Me.TARevisi.Location = New System.Drawing.Point(9, 59)
+        Me.TARevisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TARevisi.Name = "TARevisi"
         Me.TARevisi.PreventEnterBeep = True
-        Me.TARevisi.Size = New System.Drawing.Size(468, 22)
+        Me.TARevisi.Size = New System.Drawing.Size(546, 25)
         Me.TARevisi.TabIndex = 5
         '
         'PApproved
         '
         Me.PApproved.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.PApproved.Appearance.Options.UseBackColor = True
+        Me.PApproved.CaptionImageOptions.Image = CType(resources.GetObject("PApproved.CaptionImageOptions.Image"), System.Drawing.Image)
         Me.PApproved.CaptionLocation = DevExpress.Utils.Locations.Top
         Me.PApproved.ContentImage = Global.Program_EVENT.My.Resources.Resources.deal
         Me.PApproved.Controls.Add(Me.BDeal)
@@ -1595,9 +1638,10 @@ Partial Class FrmPEEvent
         Me.PApproved.Controls.Add(Me.TInputJabatan)
         Me.PApproved.Controls.Add(Me.TInputApproved)
         Me.PApproved.GroupStyle = DevExpress.Utils.GroupStyle.Card
-        Me.PApproved.Location = New System.Drawing.Point(329, 59)
+        Me.PApproved.Location = New System.Drawing.Point(384, 77)
+        Me.PApproved.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PApproved.Name = "PApproved"
-        Me.PApproved.Size = New System.Drawing.Size(297, 147)
+        Me.PApproved.Size = New System.Drawing.Size(346, 192)
         Me.PApproved.TabIndex = 10
         Me.PApproved.Text = "Disetujui Oleh :"
         Me.PApproved.Visible = False
@@ -1606,27 +1650,28 @@ Partial Class FrmPEEvent
         '
         Me.BDeal.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter
         Me.BDeal.ImageOptions.SvgImage = CType(resources.GetObject("BDeal.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.BDeal.Location = New System.Drawing.Point(77, 112)
+        Me.BDeal.Location = New System.Drawing.Point(90, 146)
+        Me.BDeal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BDeal.Name = "BDeal"
-        Me.BDeal.Size = New System.Drawing.Size(122, 29)
+        Me.BDeal.Size = New System.Drawing.Size(142, 38)
         Me.BDeal.TabIndex = 11
         Me.BDeal.Text = "Konfirmasi"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(10, 27)
+        Me.Label2.Location = New System.Drawing.Point(12, 35)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(36, 13)
+        Me.Label2.Size = New System.Drawing.Size(45, 19)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "Nama"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(10, 69)
+        Me.Label1.Location = New System.Drawing.Point(12, 90)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 13)
+        Me.Label1.Size = New System.Drawing.Size(56, 19)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "Jabatan"
         '
@@ -1636,9 +1681,10 @@ Partial Class FrmPEEvent
         '
         '
         Me.TutupDeal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TutupDeal.Location = New System.Drawing.Point(261, 118)
+        Me.TutupDeal.Location = New System.Drawing.Point(304, 154)
+        Me.TutupDeal.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TutupDeal.Name = "TutupDeal"
-        Me.TutupDeal.Size = New System.Drawing.Size(33, 23)
+        Me.TutupDeal.Size = New System.Drawing.Size(38, 30)
         Me.TutupDeal.TabIndex = 8
         Me.TutupDeal.Text = "Tutup"
         '
@@ -1649,10 +1695,11 @@ Partial Class FrmPEEvent
         '
         Me.TInputJabatan.Border.Class = "TextBoxBorder"
         Me.TInputJabatan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TInputJabatan.Location = New System.Drawing.Point(10, 84)
+        Me.TInputJabatan.Location = New System.Drawing.Point(12, 110)
+        Me.TInputJabatan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TInputJabatan.Name = "TInputJabatan"
         Me.TInputJabatan.PreventEnterBeep = True
-        Me.TInputJabatan.Size = New System.Drawing.Size(262, 22)
+        Me.TInputJabatan.Size = New System.Drawing.Size(306, 25)
         Me.TInputJabatan.TabIndex = 7
         '
         'TInputApproved
@@ -1661,17 +1708,97 @@ Partial Class FrmPEEvent
         '
         '
         Me.TInputApproved.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TInputApproved.Location = New System.Drawing.Point(9, 42)
+        Me.TInputApproved.Location = New System.Drawing.Point(10, 55)
+        Me.TInputApproved.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TInputApproved.Name = "TInputApproved"
         Me.TInputApproved.PreventEnterBeep = True
-        Me.TInputApproved.Size = New System.Drawing.Size(262, 16)
+        Me.TInputApproved.Size = New System.Drawing.Size(306, 19)
         Me.TInputApproved.TabIndex = 6
+        '
+        'PanelBatalPE
+        '
+        Me.PanelBatalPE.Controls.Add(Me.LabelX27)
+        Me.PanelBatalPE.Controls.Add(Me.TextBoxX1)
+        Me.PanelBatalPE.Controls.Add(Me.Label4)
+        Me.PanelBatalPE.Controls.Add(Me.BtnBatalPE)
+        Me.PanelBatalPE.Controls.Add(Me.TInputAlasanBatalPE)
+        Me.PanelBatalPE.Location = New System.Drawing.Point(496, 350)
+        Me.PanelBatalPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.PanelBatalPE.Name = "PanelBatalPE"
+        Me.PanelBatalPE.Size = New System.Drawing.Size(561, 161)
+        Me.PanelBatalPE.TabIndex = 15
+        Me.PanelBatalPE.Text = "Alasan Batal Penawaran"
+        Me.PanelBatalPE.Visible = False
+        '
+        'LabelX27
+        '
+        Me.LabelX27.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX27.Location = New System.Drawing.Point(517, 111)
+        Me.LabelX27.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelX27.Name = "LabelX27"
+        Me.LabelX27.Size = New System.Drawing.Size(38, 30)
+        Me.LabelX27.TabIndex = 9
+        Me.LabelX27.Text = "Tutup"
+        '
+        'TextBoxX1
+        '
+        '
+        '
+        '
+        Me.TextBoxX1.Border.Class = "TextBoxBorder"
+        Me.TextBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TextBoxX1.Location = New System.Drawing.Point(9, 95)
+        Me.TextBoxX1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBoxX1.Name = "TextBoxX1"
+        Me.TextBoxX1.PreventEnterBeep = True
+        Me.TextBoxX1.Size = New System.Drawing.Size(37, 25)
+        Me.TextBoxX1.TabIndex = 8
+        Me.TextBoxX1.Visible = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Location = New System.Drawing.Point(6, 41)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(259, 19)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Tulisan Alasan Pembatalan Di bawah ini .."
+        '
+        'BtnBatalPE
+        '
+        Me.BtnBatalPE.ImageOptions.Image = CType(resources.GetObject("SimpleButton1.ImageOptions.Image"), System.Drawing.Image)
+        Me.BtnBatalPE.Location = New System.Drawing.Point(185, 111)
+        Me.BtnBatalPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.BtnBatalPE.Name = "BtnBatalPE"
+        Me.BtnBatalPE.Size = New System.Drawing.Size(136, 30)
+        Me.BtnBatalPE.TabIndex = 6
+        Me.BtnBatalPE.Text = "Batal Penawaran"
+        '
+        'TInputAlasanBatalPE
+        '
+        '
+        '
+        '
+        Me.TInputAlasanBatalPE.Border.Class = "TextBoxBorder"
+        Me.TInputAlasanBatalPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TInputAlasanBatalPE.Location = New System.Drawing.Point(9, 59)
+        Me.TInputAlasanBatalPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TInputAlasanBatalPE.Name = "TInputAlasanBatalPE"
+        Me.TInputAlasanBatalPE.PreventEnterBeep = True
+        Me.TInputAlasanBatalPE.Size = New System.Drawing.Size(546, 25)
+        Me.TInputAlasanBatalPE.TabIndex = 5
         '
         'FrmPEEvent
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1330, 756)
+        Me.ClientSize = New System.Drawing.Size(1552, 989)
+        Me.Controls.Add(Me.PanelBatalPE)
         Me.Controls.Add(Me.PanelAlasan)
         Me.Controls.Add(Me.PApproved)
         Me.Controls.Add(Me.PanelControl1)
@@ -1680,6 +1807,7 @@ Partial Class FrmPEEvent
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "FrmPEEvent"
         Me.Text = "Penawaran"
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1706,6 +1834,9 @@ Partial Class FrmPEEvent
         CType(Me.PApproved, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PApproved.ResumeLayout(False)
         Me.PApproved.PerformLayout()
+        CType(Me.PanelBatalPE, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelBatalPE.ResumeLayout(False)
+        Me.PanelBatalPE.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1724,12 +1855,8 @@ Partial Class FrmPEEvent
     Friend WithEvents CJenisPE As ComboBox
     Friend WithEvents LabelX26 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TidVenue As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents BtnGantiNoPE As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelX25 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TCariPE As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX27 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX28 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TCounter As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents TimeEnd As DateTimePicker
     Friend WithEvents TimeStart As DateTimePicker
     Friend WithEvents TidKlien As DevComponents.DotNetBar.Controls.TextBoxX
@@ -1839,4 +1966,10 @@ Partial Class FrmPEEvent
     Friend WithEvents TutupDeal As DevComponents.DotNetBar.LabelX
     Friend WithEvents TInputJabatan As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents TInputApproved As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents PanelBatalPE As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents LabelX27 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents BtnBatalPE As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents TInputAlasanBatalPE As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

@@ -214,7 +214,7 @@ Partial Public Class FrmPEEvn
         Me.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.mainRibbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.mainRibbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.mainRibbonControl.Size = New System.Drawing.Size(2116, 99)
+        Me.mainRibbonControl.Size = New System.Drawing.Size(1940, 99)
         Me.mainRibbonControl.StatusBar = Me.RibbonStatusBar1
         '
         'BuatPE
@@ -506,7 +506,7 @@ Partial Public Class FrmPEEvn
         Me.RibbonStatusBar1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
         Me.RibbonStatusBar1.Ribbon = Me.mainRibbonControl
-        Me.RibbonStatusBar1.Size = New System.Drawing.Size(2116, 28)
+        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1940, 28)
         '
         'ListPE
         '
@@ -515,7 +515,7 @@ Partial Public Class FrmPEEvn
         Me.ListPE.Location = New System.Drawing.Point(0, 0)
         Me.ListPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ListPE.Name = "ListPE"
-        Me.ListPE.Size = New System.Drawing.Size(2036, 541)
+        Me.ListPE.Size = New System.Drawing.Size(1860, 541)
         Me.ListPE.TabIndex = 0
         Me.ListPE.UseCompatibleStateImageBehavior = False
         '
@@ -577,7 +577,7 @@ Partial Public Class FrmPEEvn
         Me.Panel1.Location = New System.Drawing.Point(3, 4)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(2110, 300)
+        Me.Panel1.Size = New System.Drawing.Size(1934, 300)
         Me.Panel1.TabIndex = 1
         '
         'PanelBatalPE
@@ -1371,7 +1371,7 @@ Partial Public Class FrmPEEvn
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.52376!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.47624!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(2116, 974)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1940, 974)
         Me.TableLayoutPanel1.TabIndex = 3
         '
         'NavigasiPEEvent
@@ -1391,9 +1391,9 @@ Partial Public Class FrmPEEvn
         Me.NavigasiPEEvent.Name = "NavigasiPEEvent"
         Me.NavigasiPEEvent.PageProperties.AllowCustomHeaderButtonsGlyphSkinning = True
         Me.NavigasiPEEvent.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavPenawaran, Me.NavDetailBarang})
-        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(2110, 631)
+        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(1934, 631)
         Me.NavigasiPEEvent.SelectedPage = Me.NavPenawaran
-        Me.NavigasiPEEvent.Size = New System.Drawing.Size(2110, 631)
+        Me.NavigasiPEEvent.Size = New System.Drawing.Size(1934, 631)
         Me.NavigasiPEEvent.TabIndex = 2
         Me.NavigasiPEEvent.Text = "NavigasiPEEvent"
         '
@@ -1411,7 +1411,7 @@ Partial Public Class FrmPEEvn
         Me.NavPenawaran.Controls.Add(Me.ListPE)
         Me.NavPenawaran.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NavPenawaran.Name = "NavPenawaran"
-        Me.NavPenawaran.Size = New System.Drawing.Size(2036, 541)
+        Me.NavPenawaran.Size = New System.Drawing.Size(1860, 541)
         '
         'NavDetailBarang
         '
@@ -2026,7 +2026,7 @@ Partial Public Class FrmPEEvn
         Me.ToolbarFormControl1.Manager = Me.ToolbarFormManager1
         Me.ToolbarFormControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ToolbarFormControl1.Name = "ToolbarFormControl1"
-        Me.ToolbarFormControl1.Size = New System.Drawing.Size(2116, 0)
+        Me.ToolbarFormControl1.Size = New System.Drawing.Size(1940, 0)
         Me.ToolbarFormControl1.TabIndex = 9
         Me.ToolbarFormControl1.TabStop = False
         Me.ToolbarFormControl1.ToolbarForm = Me
@@ -2046,7 +2046,7 @@ Partial Public Class FrmPEEvn
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.ToolbarFormManager1
         Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.barDockControlTop.Size = New System.Drawing.Size(2116, 0)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1940, 0)
         '
         'barDockControlBottom
         '
@@ -2055,7 +2055,7 @@ Partial Public Class FrmPEEvn
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1101)
         Me.barDockControlBottom.Manager = Me.ToolbarFormManager1
         Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.barDockControlBottom.Size = New System.Drawing.Size(2116, 0)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1940, 0)
         '
         'barDockControlLeft
         '
@@ -2070,7 +2070,7 @@ Partial Public Class FrmPEEvn
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(2116, 0)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1940, 0)
         Me.barDockControlRight.Manager = Me.ToolbarFormManager1
         Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 1101)
@@ -2080,7 +2080,7 @@ Partial Public Class FrmPEEvn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
-        Me.ClientSize = New System.Drawing.Size(2116, 1101)
+        Me.ClientSize = New System.Drawing.Size(1940, 1101)
         Me.ControlBox = False
         Me.Controls.Add(Me.PanelAlasan)
         Me.Controls.Add(Me.PApproved)

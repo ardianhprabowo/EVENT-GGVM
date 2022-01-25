@@ -260,53 +260,6 @@ Public Class FrmPEEvent
             GGVM_conn_close()
         End Try
     End Sub
-    Private Sub CounterLoad()
-        GGVM_conn()
-        If DivUser = "2" Then
-            sql = " Select a.nope_event, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi = '" & DivUser & "' "
-        ElseIf DivUser = "17" Then
-            sql = " Select a.nope_exhibition, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi = '" & DivUser & "' "
-        ElseIf DivUser = "18" Then
-            sql = " Select a.nope_activation, a.thnpe_event, b.nama , b.id_divisi from counter a, divisi b where b.id_divisi ='" & DivUser & "'"
-        ElseIf DivUser = "0" Then
-            sql = "Select a.thnpe_event from counter a"
-        Else
-            Return
-        End If
-        cmd = New OdbcCommand(sql, conn)
-        dr = cmd.ExecuteReader
-        dr.Read()
-        If DivUser = "2" Then
-            TCounter.Text = dr.Item("nope_event")
-        ElseIf DivUser = "17" Then
-            TCounter.Text = dr.Item("nope_exhibition")
-        ElseIf DivUser = "18" Then
-            TCounter.Text = dr.Item("nope_activation")
-        ElseIf DivUser = "0" Then
-            TCounter.Text = dr.Item("thnpe_event")
-        Else
-            Return
-        End If
-        GGVM_conn_close()
-    End Sub
-    Private Sub EditCounter()
-        GGVM_conn()
-        If DivUser = "2" Then
-            c = " update counter set nope_event = '" & TCounter.Text & "'"
-        ElseIf DivUser = "17" Then
-            c = " update counter set nope_exhibition = '" & TCounter.Text & "'"
-        ElseIf DivUser = "18" Then
-            c = " update counter set nope_activation = '" & TCounter.Text & "'"
-        End If
-        Try
-            cmd = New OdbcCommand(c, conn)
-            cmd.ExecuteNonQuery()
-        Catch ex As Exception
-            MsgBox("Data Gagal", MsgBoxStyle.Critical, "Message !!")
-        Finally
-            GGVM_conn_close()
-        End Try
-    End Sub
     Private Sub CariPE()
         GGVM_conn()
         sql = ""
@@ -693,13 +646,8 @@ Public Class FrmPEEvent
         ListTampilDetail()
         TampilanAwal()
         ComboJenisPE()
-        CounterLoad()
         BacaPE()
         HitungBisnis()
-    End Sub
-
-    Private Sub BtnGantiNoPE_Click(sender As Object, e As EventArgs) Handles BtnGantiNoPE.Click
-        Call EditCounter()
     End Sub
 
     Private Sub BuatPE_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BuatPE.ItemClick
@@ -1359,7 +1307,7 @@ Public Class FrmPEEvent
 
             sql = ""
             sql = sql & " select max(revisike) as revisike ,max(idrevisi)as id  from evn_revisi_penawaran where idpe = '" & TidPE.Text & "'"
-            da = New Odbc.OdbcDataAdapter(sql, conn)
+            da = New OdbcDataAdapter(sql, conn)
             dt = New DataTable
             dt.Clear()
             da.Fill(dt)
@@ -1374,7 +1322,7 @@ Public Class FrmPEEvent
 
             c = ""
             c = c & "update evn_revisi_penawaran set revisike ='" & count & "' where idrevisi ='" & idrevisi.Text & "'"
-            cmd = New Odbc.OdbcCommand(c, conn)
+            cmd = New OdbcCommand(c, conn)
             cmd.ExecuteNonQuery()
 
             PanelAlasan.Visible = False
@@ -1419,7 +1367,6 @@ Public Class FrmPEEvent
             'ListPE.Enabled = True
 
             Call ComboJenisPE()
-            Call CounterLoad()
             Call TampilanAwal()
             Call HitungBisnis()
             Call BacaPE()
@@ -1933,6 +1880,101 @@ Public Class FrmPEEvent
             TampilDetail.Items.Clear()
         Else
             MsgBox("Terjadi kesalahan! ")
+        End If
+    End Sub
+
+    Private Sub BtnBatalPE_Click(sender As Object, e As EventArgs) Handles BtnBatalPE.Click
+        If Len(Me.TInputAlasanBatalPE.Text) < 10 Or Len(Me.TInputAlasanBatalPE.Text) > 150 Then
+            MsgBox("Alasan Terlalu Pendek, Minimal 10 Huruf !", MsgBoxStyle.Information, "Information !!")
+            Exit Sub
+        Else
+            Dim ada As Boolean
+            Dim brs, jmldt As Integer
+            ada = False
+            jmldt = 0
+            ListPE.BeginUpdate()
+            Dim I As Integer
+            For I = ListPE.Items.Count - 1 To 0 Step -1
+                If ListPE.Items(I).Checked = True Then
+                    ada = True
+                    brs = I
+                    jmldt = jmldt + 1
+                    For Each item As ListViewItem In ListPE.CheckedItems
+                        GGVM_conn()
+                        sql = " update evn_penawaran set userid_delete= '" & userid & "', timedelete=now() where idpe = '" & item.SubItems(10).Text & "'"
+                        cmd = New OdbcCommand(sql, conn)
+                        cmd.ExecuteNonQuery()
+
+                        Dim sql1, sql2, sql3, sql4 As String
+                        sql4 = ""
+                        sql4 = sql4 & " insert into evn_batal_penawaran (idpe,alasan,timebatal,userbatal)"
+                        sql4 = sql4 & "values ('" & item.SubItems(10).Text & "',"
+                        sql4 = sql4 & " '" & TInputAlasanBatalPE.Text & "',now(),'" & userid & "')"
+                        cmd = New OdbcCommand(sql4, conn)
+                        cmd.ExecuteNonQuery()
+
+                        sql1 = "insert into evn_buffer_penawaran select * from evn_penawaran where idpe = ? "
+                        cmd = New OdbcCommand
+                        With cmd
+                            .CommandText = (sql1)
+                            .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(10).Text)
+                            .Connection = conn
+                        End With
+                        dr = cmd.ExecuteReader
+                        Console.WriteLine(cmd.CommandText.ToString)
+                        While dr.Read
+                            Console.WriteLine(dr(0))
+                            Console.WriteLine()
+                        End While
+                        Console.ReadLine()
+
+
+                        'conn.Close()
+                        'dr = Nothing
+                        'cmd = Nothing
+
+                        sql3 = "insert into evn_tmp_dp select * from evn_detail_penawaran where idpe = ? "
+                        cmd = New OdbcCommand
+                        With cmd
+                            .CommandText = (sql3)
+                            .Parameters.Add("@idpe", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(10).Text)
+                            .Connection = conn
+                        End With
+                        dr = cmd.ExecuteReader
+                        Console.WriteLine(cmd.CommandText.ToString)
+                        While dr.Read
+                            Console.WriteLine(dr(0))
+                            Console.WriteLine()
+                        End While
+                        Console.ReadLine()
+
+                        sql2 = "DELETE FROM evn_penawaran WHERE idpe = ?"
+                        cmd = New OdbcCommand
+                        With cmd
+                            .CommandText = (sql2)
+                            .Parameters.Add("@iddetail", OdbcType.BigInt).Value = Convert.ToInt32(item.SubItems(10).Text)
+                            .Connection = conn
+                        End With
+                        dr = cmd.ExecuteReader
+                        Console.WriteLine(cmd.CommandText.ToString)
+                        While dr.Read
+                            Console.WriteLine(dr(0))
+                            Console.WriteLine()
+                        End While
+                        Console.ReadLine()
+                        conn.Close()
+                        dr = Nothing
+                        cmd = Nothing
+
+                        MsgBox("Penawaran Berhasil diHapus")
+                        Call BacaPE()
+                        'Call BersihPE()
+                        PanelBatalPE.Visible = False
+                        TInputAlasanBatalPE.Text = ""
+                    Next
+                End If
+            Next I
+            ListPE.EndUpdate()
         End If
     End Sub
 End Class
