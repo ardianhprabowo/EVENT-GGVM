@@ -571,6 +571,8 @@ Partial Public Class FrmPEEvn
         sql = sql & "update evn_penawaran set total = '" & TotalHargaEvent & "',rp_ppn = '" & NilaiPPN & "',grandtotal = '" & GrandTotal & "' where idpe = '" & TidPE.Text & "'"
         cmd = New OdbcCommand(sql, conn)
         cmd.ExecuteNonQuery()
+
+        GGVM_conn_close()
         'GGVM_conn()
         'conn.Dispose()
     End Sub

@@ -25,7 +25,7 @@ Partial Public Class FrmMaintPOFirst
     ''' </summary>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMaintPOFirst))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.ribbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BtnKeluar = New DevExpress.XtraBars.BarButtonItem()
@@ -130,7 +130,7 @@ Partial Public Class FrmMaintPOFirst
         '
         'ribbonStatusBar
         '
-        Me.ribbonStatusBar.Location = New System.Drawing.Point(0, 797)
+        Me.ribbonStatusBar.Location = New System.Drawing.Point(0, 759)
         Me.ribbonStatusBar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ribbonStatusBar.Name = "ribbonStatusBar"
         Me.ribbonStatusBar.Ribbon = Me.ribbonControl
@@ -744,7 +744,7 @@ Partial Public Class FrmMaintPOFirst
         '
         Me.LabelControl18.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl18.Appearance.Options.UseFont = True
-        Me.LabelControl18.Location = New System.Drawing.Point(1018, 159)
+        Me.LabelControl18.Location = New System.Drawing.Point(1018, 160)
         Me.LabelControl18.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl18.Name = "LabelControl18"
         Me.LabelControl18.Size = New System.Drawing.Size(4, 19)
@@ -867,7 +867,7 @@ Partial Public Class FrmMaintPOFirst
         '
         Me.CJudul.AutoSize = True
         Me.CJudul.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.CJudul.Location = New System.Drawing.Point(906, 121)
+        Me.CJudul.Location = New System.Drawing.Point(906, 122)
         Me.CJudul.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.CJudul.Name = "CJudul"
         Me.CJudul.Size = New System.Drawing.Size(101, 23)
@@ -907,7 +907,7 @@ Partial Public Class FrmMaintPOFirst
         Me.ListPO.Location = New System.Drawing.Point(0, 0)
         Me.ListPO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ListPO.Name = "ListPO"
-        Me.ListPO.Size = New System.Drawing.Size(1280, 253)
+        Me.ListPO.Size = New System.Drawing.Size(1280, 215)
         Me.ListPO.TabIndex = 63
         Me.ListPO.UseCompatibleStateImageBehavior = False
         '
@@ -935,14 +935,14 @@ Partial Public Class FrmMaintPOFirst
         'GridPanel
         '
         Me.GridPanel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 7.8!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridPanel.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 7.8!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(68, Byte), Integer))
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridPanel.DefaultCellStyle = DataGridViewCellStyle1
         Me.GridPanel.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.GridPanel.Location = New System.Drawing.Point(20, 22)
         Me.GridPanel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -964,7 +964,7 @@ Partial Public Class FrmMaintPOFirst
         Me.PAlasan.Location = New System.Drawing.Point(510, 167)
         Me.PAlasan.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PAlasan.Name = "PAlasan"
-        Me.PAlasan.Size = New System.Drawing.Size(520, 268)
+        Me.PAlasan.Size = New System.Drawing.Size(520, 267)
         Me.PAlasan.TabIndex = 67
         Me.PAlasan.Visible = False
         '
@@ -1123,7 +1123,7 @@ Partial Public Class FrmMaintPOFirst
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelSurvei)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.ListPO)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(1280, 601)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1280, 563)
         Me.SplitContainerControl1.SplitterPosition = 336
         Me.SplitContainerControl1.TabIndex = 70
         '
@@ -1190,7 +1190,7 @@ Partial Public Class FrmMaintPOFirst
         Me.TRpPPN.Border.Class = "TextBoxBorder"
         Me.TRpPPN.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TRpPPN.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.TRpPPN.Location = New System.Drawing.Point(621, 210)
+        Me.TRpPPN.Location = New System.Drawing.Point(621, 211)
         Me.TRpPPN.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TRpPPN.Name = "TRpPPN"
         Me.TRpPPN.PreventEnterBeep = True
@@ -1203,7 +1203,7 @@ Partial Public Class FrmMaintPOFirst
         '
         Me.LabelControl27.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl27.Appearance.Options.UseFont = True
-        Me.LabelControl27.Location = New System.Drawing.Point(501, 261)
+        Me.LabelControl27.Location = New System.Drawing.Point(500, 262)
         Me.LabelControl27.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LabelControl27.Name = "LabelControl27"
         Me.LabelControl27.Size = New System.Drawing.Size(98, 19)
@@ -1241,7 +1241,7 @@ Partial Public Class FrmMaintPOFirst
         Me.TPersenFee.Border.Class = "TextBoxBorder"
         Me.TPersenFee.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TPersenFee.Enabled = False
-        Me.TPersenFee.Location = New System.Drawing.Point(550, 135)
+        Me.TPersenFee.Location = New System.Drawing.Point(549, 135)
         Me.TPersenFee.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TPersenFee.Name = "TPersenFee"
         Me.TPersenFee.PreventEnterBeep = True
@@ -1327,7 +1327,7 @@ Partial Public Class FrmMaintPOFirst
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1280, 825)
+        Me.ClientSize = New System.Drawing.Size(1280, 787)
         Me.ControlBox = False
         Me.Controls.Add(Me.PAlasan)
         Me.Controls.Add(Me.SplitContainerControl1)
@@ -1357,7 +1357,6 @@ Partial Public Class FrmMaintPOFirst
 
 #End Region
     Private WithEvents ribbonStatusBar As DevExpress.XtraBars.Ribbon.RibbonStatusBar
-    Friend WithEvents TDivisi As DevComponents.DotNetBar.Controls.TextBoxX
     Private WithEvents ribbonControl As DevExpress.XtraBars.Ribbon.RibbonControl
     Private WithEvents BtnKeluar As DevExpress.XtraBars.BarButtonItem
     Private WithEvents bsiRecordsCount As DevExpress.XtraBars.BarStaticItem
@@ -1369,10 +1368,6 @@ Partial Public Class FrmMaintPOFirst
     Friend WithEvents BtnSimpan As DevExpress.XtraBars.BarButtonItem
     Private WithEvents ribbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
     Private WithEvents ribbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
-    Friend WithEvents TNoPE As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TKlien As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TSubdivisi As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TTitle As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents DTTanggal As DateTimePicker
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
@@ -1386,40 +1381,27 @@ Partial Public Class FrmMaintPOFirst
     Friend WithEvents BtnPE As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtnKlien As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtnSubdivisi As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents TIdPE As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TIdKlien As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TidDivisi As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TidSubdivisi As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents NOPE As CheckBox
     Friend WithEvents NOPO As CheckBox
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TNoPO As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TglCounter As DateTimePicker
-    Friend WithEvents TIdPO As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TNominal As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl14 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TReferensi As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Referensi As CheckBox
     Friend WithEvents LabelControl15 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl16 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl17 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TUsers As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelControl18 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl19 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TRevisi As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelControl20 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl21 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TKeterangan As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents RadioData As DevExpress.XtraEditors.RadioGroup
     Friend WithEvents CariPO As CheckBox
     Friend WithEvents LabelControl22 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TCariPO As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents CJudul As CheckBox
     Friend WithEvents LabelControl23 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TJudul As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents ListPO As ListView
     Friend WithEvents PanelSurvei As Panel
     Friend WithEvents BtnTutupPanel As DevExpress.XtraEditors.SimpleButton
@@ -1429,7 +1411,6 @@ Partial Public Class FrmMaintPOFirst
     Friend WithEvents BtnSimpanAls As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl24 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl25 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TAlasan As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LPanel As DevExpress.XtraEditors.LabelControl
     Friend WithEvents SplitContainerControl1 As DevExpress.XtraEditors.SplitContainerControl
     Friend WithEvents LabelControl26 As DevExpress.XtraEditors.LabelControl
@@ -1437,16 +1418,35 @@ Partial Public Class FrmMaintPOFirst
     Friend WithEvents LabelControl27 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents CFixedCost As System.Windows.Forms.CheckBox
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TPersenFee As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents CFee As System.Windows.Forms.CheckBox
-    Friend WithEvents TGrandTotal As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TFixedCost As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TFee As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelControl32 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl31 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl30 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl29 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl28 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TRpPPN As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents BtnHapusAlasan As DevExpress.XtraEditors.SimpleButton
+    Private WithEvents TDivisi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TNoPE As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TKlien As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TSubdivisi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TTitle As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TIdPE As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TIdKlien As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TidDivisi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TidSubdivisi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TNoPO As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TIdPO As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TNominal As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TReferensi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TUsers As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TRevisi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TKeterangan As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TCariPO As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TJudul As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TAlasan As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TPersenFee As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TGrandTotal As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TFixedCost As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TFee As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TRpPPN As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

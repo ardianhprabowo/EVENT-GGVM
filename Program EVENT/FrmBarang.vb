@@ -450,6 +450,8 @@ Public Class FrmBarang
                 s = s & "And b.idkelompok = '18' And a.barang = '" & TBarangInp.Text & "'"
             ElseIf DivUser = "18" Then
                 s = s & "And b.idkelompok = '20' and a.barang = '" & TBarangInp.Text & "'"
+            ElseIf DivUser = "2" Then
+                s = s & " and b.idkelompok ='7' and a.barang = '" & TBarangInp.Text & "'"
             ElseIf DivUser = "0" Then
                 s = s & "And b.idkelompok in (7,18,20) And a.barang = '" & TBarangInp.Text & "'"
             Else
@@ -843,8 +845,15 @@ Public Class FrmBarang
                 If TMaterial.Text <> "" Then
                     c = ""
                     c = c & " insert evn_material_aktual (idbarang_pe,barangmaterial)"
-                    c = c & "value ('" & TidBarangPE.Text & "', '" & TMaterial.Text & "')"
+                    c = c & "values ('" & TidBarangPE.Text & "', '" & TMaterial.Text & "')"
                     cmd = New Odbc.OdbcCommand(c, conn)
+                    cmd.ExecuteNonQuery()
+                End If
+                If DivUser = "2" Then
+                    s = ""
+                    s = s & " insert evn_material (idkontrak,idbarang,item_no,material_no,price) "
+                    s = s & " values ('1', '" & TidBarangPE.Text & "','0','0','" & THargaUnit.Text & "') "
+                    cmd = New OdbcCommand(s, conn)
                     cmd.ExecuteNonQuery()
                 End If
                 Call BersihBarang()

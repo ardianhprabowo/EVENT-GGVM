@@ -85,22 +85,22 @@ Partial Class MainMenu
         'FluentContainer
         '
         Me.FluentContainer.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FluentContainer.Location = New System.Drawing.Point(190, 39)
-        Me.FluentContainer.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.FluentContainer.Location = New System.Drawing.Point(163, 31)
+        Me.FluentContainer.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.FluentContainer.Name = "FluentContainer"
-        Me.FluentContainer.Size = New System.Drawing.Size(589, 654)
+        Me.FluentContainer.Size = New System.Drawing.Size(504, 499)
         Me.FluentContainer.TabIndex = 0
         '
         'AccordionControl1
         '
         Me.AccordionControl1.Dock = System.Windows.Forms.DockStyle.Left
         Me.AccordionControl1.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.M_Menu, Me.M_Penawaran, Me.M_PO, Me.M_Pengajuan, Me.M_LPJ, Me.M_Gudang, Me.BtnExit})
-        Me.AccordionControl1.Location = New System.Drawing.Point(0, 39)
-        Me.AccordionControl1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.AccordionControl1.Location = New System.Drawing.Point(0, 31)
+        Me.AccordionControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.AccordionControl1.Name = "AccordionControl1"
         Me.AccordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.[True]
         Me.AccordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch
-        Me.AccordionControl1.Size = New System.Drawing.Size(190, 654)
+        Me.AccordionControl1.Size = New System.Drawing.Size(163, 499)
         Me.AccordionControl1.TabIndex = 1
         Me.AccordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu
         '
@@ -148,7 +148,6 @@ Partial Class MainMenu
         '
         Me.Menu_Event.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.PE_OpsEvn, Me.PE_BoothEvn, Me.PE_Hapus})
         Me.Menu_Event.Enabled = False
-        Me.Menu_Event.Expanded = True
         Me.Menu_Event.Name = "Menu_Event"
         Me.Menu_Event.Text = "EVENT"
         '
@@ -323,10 +322,10 @@ Partial Class MainMenu
         Me.FluentDesignFormControl1.FluentDesignForm = Me
         Me.FluentDesignFormControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.LoginUser, Me.BarStaticItem2, Me.NmDiv, Me.BarStaticItem4})
         Me.FluentDesignFormControl1.Location = New System.Drawing.Point(0, 0)
-        Me.FluentDesignFormControl1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.FluentDesignFormControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.FluentDesignFormControl1.Name = "FluentDesignFormControl1"
         Me.FluentDesignFormControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemHypertextLabel1})
-        Me.FluentDesignFormControl1.Size = New System.Drawing.Size(824, 39)
+        Me.FluentDesignFormControl1.Size = New System.Drawing.Size(706, 31)
         Me.FluentDesignFormControl1.TabIndex = 2
         Me.FluentDesignFormControl1.TabStop = False
         Me.FluentDesignFormControl1.TitleItemLinks.Add(Me.LoginUser)
@@ -369,10 +368,9 @@ Partial Class MainMenu
         '
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(779, 39)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Panel1.Location = New System.Drawing.Point(667, 31)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(45, 654)
+        Me.Panel1.Size = New System.Drawing.Size(39, 499)
         Me.Panel1.TabIndex = 3
         '
         'Label1
@@ -380,9 +378,9 @@ Partial Class MainMenu
         Me.Label1.AutoSize = True
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1, 116)
+        Me.Label1.Location = New System.Drawing.Point(1, 89)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(163, 18)
+        Me.Label1.Size = New System.Drawing.Size(134, 15)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "SELAMAT BEKERJA"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -395,9 +393,9 @@ Partial Class MainMenu
         '
         'MainMenu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(824, 693)
+        Me.ClientSize = New System.Drawing.Size(706, 530)
         Me.ControlContainer = Me.FluentContainer
         Me.Controls.Add(Me.FluentContainer)
         Me.Controls.Add(Me.AccordionControl1)
@@ -405,7 +403,7 @@ Partial Class MainMenu
         Me.Controls.Add(Me.FluentDesignFormControl1)
         Me.FluentDesignFormControl = Me.FluentDesignFormControl1
         Me.IconOptions.Icon = CType(resources.GetObject("MainMenu.IconOptions.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "MainMenu"
         Me.NavigationControl = Me.AccordionControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

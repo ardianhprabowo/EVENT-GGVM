@@ -22,6 +22,7 @@ Partial Class FrmHistoryPE
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.TidPE = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.NavigasiPEEvent = New DevExpress.XtraBars.Navigation.NavigationPane()
+        Me.BtnClose = New DevExpress.XtraEditors.SimpleButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.NavPenawaran = New DevExpress.XtraBars.Navigation.NavigationPage()
         Me.ListPE = New System.Windows.Forms.ListView()
@@ -51,7 +52,6 @@ Partial Class FrmHistoryPE
         Me.TQty = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TCari = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TampilDetail = New System.Windows.Forms.ListView()
-        Me.BtnClose = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.NavigasiPEEvent, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -113,6 +113,16 @@ Partial Class FrmHistoryPE
         Me.NavigasiPEEvent.Text = "NavigasiPEEvent"
         Me.NavigasiPEEvent.TransitionType = DevExpress.Utils.Animation.Transitions.Dissolve
         '
+        'BtnClose
+        '
+        Me.BtnClose.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnClose.Appearance.Options.UseFont = True
+        Me.BtnClose.Location = New System.Drawing.Point(701, 9)
+        Me.BtnClose.Name = "BtnClose"
+        Me.BtnClose.Size = New System.Drawing.Size(75, 23)
+        Me.BtnClose.TabIndex = 5
+        Me.BtnClose.Text = "Tutup"
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -136,7 +146,7 @@ Partial Class FrmHistoryPE
         Me.NavPenawaran.Caption = "Daftar Penawaran"
         Me.NavPenawaran.Controls.Add(Me.ListPE)
         Me.NavPenawaran.Name = "NavPenawaran"
-        Me.NavPenawaran.Size = New System.Drawing.Size(916, 245)
+        Me.NavPenawaran.Size = New System.Drawing.Size(920, 245)
         '
         'ListPE
         '
@@ -144,7 +154,7 @@ Partial Class FrmHistoryPE
         Me.ListPE.HideSelection = False
         Me.ListPE.Location = New System.Drawing.Point(0, 0)
         Me.ListPE.Name = "ListPE"
-        Me.ListPE.Size = New System.Drawing.Size(916, 245)
+        Me.ListPE.Size = New System.Drawing.Size(920, 245)
         Me.ListPE.TabIndex = 0
         Me.ListPE.UseCompatibleStateImageBehavior = False
         '
@@ -501,16 +511,6 @@ Partial Class FrmHistoryPE
         Me.TampilDetail.Size = New System.Drawing.Size(916, 245)
         Me.TampilDetail.TabIndex = 1
         Me.TampilDetail.UseCompatibleStateImageBehavior = False
-        '
-        'BtnClose
-        '
-        Me.BtnClose.Appearance.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnClose.Appearance.Options.UseFont = True
-        Me.BtnClose.Location = New System.Drawing.Point(701, 9)
-        Me.BtnClose.Name = "BtnClose"
-        Me.BtnClose.Size = New System.Drawing.Size(75, 23)
-        Me.BtnClose.TabIndex = 5
-        Me.BtnClose.Text = "Tutup"
         '
         'FrmHistoryPE
         '

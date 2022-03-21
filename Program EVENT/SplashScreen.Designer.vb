@@ -58,7 +58,7 @@ Partial Class SplashScreen
         Me.labelCopyright.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.labelCopyright.Location = New System.Drawing.Point(23, 286)
         Me.labelCopyright.Name = "labelCopyright"
-        Me.labelCopyright.Size = New System.Drawing.Size(47, 13)
+        Me.labelCopyright.Size = New System.Drawing.Size(51, 13)
         Me.labelCopyright.TabIndex = 11
         Me.labelCopyright.Text = "Copyright"
         '

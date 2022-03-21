@@ -183,7 +183,7 @@ Partial Class FrmBarang
         Me.ItemPanel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ItemPanel1.Name = "ItemPanel1"
         Me.ItemPanel1.ReserveLeftSpace = False
-        Me.ItemPanel1.Size = New System.Drawing.Size(1079, 612)
+        Me.ItemPanel1.Size = New System.Drawing.Size(1079, 484)
         Me.ItemPanel1.TabIndex = 0
         Me.ItemPanel1.Text = "w"
         '
@@ -234,12 +234,13 @@ Partial Class FrmBarang
         '
         Me.TBarangPE.Border.Class = "TextBoxBorder"
         Me.TBarangPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TBarangPE.Location = New System.Drawing.Point(603, 2)
+        Me.TBarangPE.Location = New System.Drawing.Point(761, 4)
         Me.TBarangPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TBarangPE.Name = "TBarangPE"
         Me.TBarangPE.PreventEnterBeep = True
         Me.TBarangPE.Size = New System.Drawing.Size(201, 25)
         Me.TBarangPE.TabIndex = 10058
+        Me.TBarangPE.Visible = False
         '
         'TBarangInp
         '
@@ -248,12 +249,13 @@ Partial Class FrmBarang
         '
         Me.TBarangInp.Border.Class = "TextBoxBorder"
         Me.TBarangInp.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TBarangInp.Location = New System.Drawing.Point(100, 59)
+        Me.TBarangInp.Location = New System.Drawing.Point(117, 78)
         Me.TBarangInp.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TBarangInp.Name = "TBarangInp"
         Me.TBarangInp.PreventEnterBeep = True
         Me.TBarangInp.Size = New System.Drawing.Size(175, 25)
         Me.TBarangInp.TabIndex = 10057
+        Me.TBarangInp.Visible = False
         '
         'TKontrak
         '
@@ -262,12 +264,13 @@ Partial Class FrmBarang
         '
         Me.TKontrak.Border.Class = "TextBoxBorder"
         Me.TKontrak.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TKontrak.Location = New System.Drawing.Point(100, 178)
+        Me.TKontrak.Location = New System.Drawing.Point(117, 234)
         Me.TKontrak.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TKontrak.Name = "TKontrak"
         Me.TKontrak.PreventEnterBeep = True
         Me.TKontrak.Size = New System.Drawing.Size(175, 25)
         Me.TKontrak.TabIndex = 10058
+        Me.TKontrak.Visible = False
         '
         'TBAktual
         '
@@ -276,12 +279,13 @@ Partial Class FrmBarang
         '
         Me.TBAktual.Border.Class = "TextBoxBorder"
         Me.TBAktual.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TBAktual.Location = New System.Drawing.Point(100, 338)
+        Me.TBAktual.Location = New System.Drawing.Point(117, 443)
         Me.TBAktual.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TBAktual.Name = "TBAktual"
         Me.TBAktual.PreventEnterBeep = True
         Me.TBAktual.Size = New System.Drawing.Size(175, 25)
         Me.TBAktual.TabIndex = 10056
+        Me.TBAktual.Visible = False
         '
         'ItemContainer1
         '
@@ -320,7 +324,6 @@ Partial Class FrmBarang
         '
         Me.KdBarang.Name = "KdBarang"
         Me.KdBarang.TextBoxWidth = 90
-        Me.KdBarang.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'LabelItem3
         '
@@ -340,14 +343,12 @@ Partial Class FrmBarang
         Me.TidBarangPE.Name = "TidBarangPE"
         Me.TidBarangPE.TextBoxWidth = 30
         Me.TidBarangPE.Visible = False
-        Me.TidBarangPE.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'TBacaStatus
         '
         Me.TBacaStatus.Name = "TBacaStatus"
         Me.TBacaStatus.TextBoxWidth = 30
         Me.TBacaStatus.Visible = False
-        Me.TBacaStatus.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer2
         '
@@ -390,7 +391,6 @@ Partial Class FrmBarang
         Me.TidKel.Name = "TidKel"
         Me.TidKel.TextBoxWidth = 25
         Me.TidKel.Visible = False
-        Me.TidKel.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'LabelItem5
         '
@@ -415,7 +415,6 @@ Partial Class FrmBarang
         Me.TidSubkel.Name = "TidSubkel"
         Me.TidSubkel.TextBoxWidth = 25
         Me.TidSubkel.Visible = False
-        Me.TidSubkel.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer4
         '
@@ -458,7 +457,6 @@ Partial Class FrmBarang
         Me.TBacaSubkel.Name = "TBacaSubkel"
         Me.TBacaSubkel.TextBoxWidth = 25
         Me.TBacaSubkel.Visible = False
-        Me.TBacaSubkel.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer5
         '
@@ -493,14 +491,12 @@ Partial Class FrmBarang
         '
         Me.TMaterial.Name = "TMaterial"
         Me.TMaterial.TextBoxWidth = 150
-        Me.TMaterial.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'Tkodebarang
         '
         Me.Tkodebarang.Name = "Tkodebarang"
         Me.Tkodebarang.TextBoxWidth = 25
         Me.Tkodebarang.Visible = False
-        Me.Tkodebarang.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'DetailMaterials
         '
@@ -563,7 +559,6 @@ Partial Class FrmBarang
         'TP
         '
         Me.TP.Name = "TP"
-        Me.TP.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'LabelItem13
         '
@@ -585,7 +580,6 @@ Partial Class FrmBarang
         'TL
         '
         Me.TL.Name = "TL"
-        Me.TL.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'LabelItem16
         '
@@ -607,7 +601,6 @@ Partial Class FrmBarang
         'TT
         '
         Me.TT.Name = "TT"
-        Me.TT.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'LabelItem19
         '
@@ -624,7 +617,6 @@ Partial Class FrmBarang
         'HasilX
         '
         Me.HasilX.Name = "HasilX"
-        Me.HasilX.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'LabelItem21
         '
@@ -681,14 +673,12 @@ Partial Class FrmBarang
         Me.TidKontrak.Name = "TidKontrak"
         Me.TidKontrak.TextBoxWidth = 25
         Me.TidKontrak.Visible = False
-        Me.TidKontrak.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'idBaca
         '
         Me.idBaca.Name = "idBaca"
         Me.idBaca.TextBoxWidth = 25
         Me.idBaca.Visible = False
-        Me.idBaca.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer8
         '
@@ -723,7 +713,6 @@ Partial Class FrmBarang
         '
         Me.TKet.Name = "TKet"
         Me.TKet.TextBoxWidth = 150
-        Me.TKet.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'LabelItem33
         '
@@ -773,7 +762,6 @@ Partial Class FrmBarang
         Me.TidSatuan.Name = "TidSatuan"
         Me.TidSatuan.TextBoxWidth = 25
         Me.TidSatuan.Visible = False
-        Me.TidSatuan.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer3
         '
@@ -808,7 +796,6 @@ Partial Class FrmBarang
         '
         Me.THargaUnit.Name = "THargaUnit"
         Me.THargaUnit.TextBoxWidth = 150
-        Me.THargaUnit.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'SimpanBarangPE
         '
@@ -880,7 +867,6 @@ Partial Class FrmBarang
         Me.TidBarangA.Name = "TidBarangA"
         Me.TidBarangA.TextBoxWidth = 25
         Me.TidBarangA.Visible = False
-        Me.TidBarangA.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer11
         '
@@ -915,14 +901,12 @@ Partial Class FrmBarang
         '
         Me.TJumlah.Name = "TJumlah"
         Me.TJumlah.TextBoxWidth = 150
-        Me.TJumlah.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'TidAktual
         '
         Me.TidAktual.Name = "TidAktual"
         Me.TidAktual.TextBoxWidth = 25
         Me.TidAktual.Visible = False
-        Me.TidAktual.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer12
         '
@@ -957,14 +941,12 @@ Partial Class FrmBarang
         '
         Me.TPanjang.Name = "TPanjang"
         Me.TPanjang.TextBoxWidth = 150
-        Me.TPanjang.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'idKotaBK
         '
         Me.idKotaBK.Name = "idKotaBK"
         Me.idKotaBK.TextBoxWidth = 25
         Me.idKotaBK.Visible = False
-        Me.idKotaBK.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer13
         '
@@ -999,7 +981,6 @@ Partial Class FrmBarang
         '
         Me.TLebar.Name = "TLebar"
         Me.TLebar.TextBoxWidth = 150
-        Me.TLebar.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer14
         '
@@ -1034,7 +1015,6 @@ Partial Class FrmBarang
         '
         Me.TTinggi.Name = "TTinggi"
         Me.TTinggi.TextBoxWidth = 150
-        Me.TTinggi.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'ItemContainer15
         '
@@ -1122,7 +1102,6 @@ Partial Class FrmBarang
         '
         Me.TNominalBK.Name = "TNominalBK"
         Me.TNominalBK.TextBoxWidth = 150
-        Me.TNominalBK.WatermarkColor = System.Drawing.SystemColors.GrayText
         '
         'BtnTutup
         '
@@ -1243,7 +1222,7 @@ Partial Class FrmBarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1079, 884)
+        Me.ClientSize = New System.Drawing.Size(1079, 756)
         Me.Controls.Add(Me.ItemPanel1)
         Me.Controls.Add(Me.Panel1)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)

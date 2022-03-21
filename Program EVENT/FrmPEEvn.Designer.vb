@@ -65,9 +65,10 @@ Partial Public Class FrmPEEvn
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.ListPE = New System.Windows.Forms.ListView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TIdJenisPE = New System.Windows.Forms.TextBox()
         Me.PanelBatalPE = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.LabelX30 = New DevComponents.DotNetBar.LabelX()
         Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX30 = New DevComponents.DotNetBar.LabelX()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.BtnBatalPE = New DevExpress.XtraEditors.SimpleButton()
         Me.TInputAlasanBatalPE = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -78,17 +79,17 @@ Partial Public Class FrmPEEvn
         Me.Button1 = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelX25 = New DevComponents.DotNetBar.LabelX()
         Me.TCariPE = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
-        Me.TCounter = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TimeEnd = New System.Windows.Forms.DateTimePicker()
         Me.TimeStart = New System.Windows.Forms.DateTimePicker()
-        Me.TidKlien = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TidProject = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TidJenisPE = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TidPE = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.EndDate = New System.Windows.Forms.DateTimePicker()
         Me.StartDate = New System.Windows.Forms.DateTimePicker()
+        Me.TCounter = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TidKlien = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TidProject = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TidJenisPE2 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TidPE = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX21 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
         Me.TJabatan = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -159,8 +160,8 @@ Partial Public Class FrmPEEvn
         Me.TInputJabatan = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TInputApproved = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.PanelAlasan = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.TutupRevisi = New DevComponents.DotNetBar.LabelX()
         Me.idrevisi = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TutupRevisi = New DevComponents.DotNetBar.LabelX()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.BSimpanRevisi = New DevExpress.XtraEditors.SimpleButton()
         Me.TARevisi = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -502,7 +503,7 @@ Partial Public Class FrmPEEvn
         Me.RibbonStatusBar1.ItemLinks.Add(Me.PPN)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.TGrandTotal)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.CKontrak)
-        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 1073)
+        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 915)
         Me.RibbonStatusBar1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
         Me.RibbonStatusBar1.Ribbon = Me.mainRibbonControl
@@ -515,12 +516,13 @@ Partial Public Class FrmPEEvn
         Me.ListPE.Location = New System.Drawing.Point(0, 0)
         Me.ListPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ListPE.Name = "ListPE"
-        Me.ListPE.Size = New System.Drawing.Size(1860, 541)
+        Me.ListPE.Size = New System.Drawing.Size(1860, 435)
         Me.ListPE.TabIndex = 0
         Me.ListPE.UseCompatibleStateImageBehavior = False
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.TIdJenisPE)
         Me.Panel1.Controls.Add(Me.PanelBatalPE)
         Me.Panel1.Controls.Add(Me.DTTanggal)
         Me.Panel1.Controls.Add(Me.CJenisPE)
@@ -529,17 +531,17 @@ Partial Public Class FrmPEEvn
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.LabelX25)
         Me.Panel1.Controls.Add(Me.TCariPE)
-        Me.Panel1.Controls.Add(Me.LabelX27)
-        Me.Panel1.Controls.Add(Me.LabelX28)
-        Me.Panel1.Controls.Add(Me.TCounter)
         Me.Panel1.Controls.Add(Me.TimeEnd)
         Me.Panel1.Controls.Add(Me.TimeStart)
-        Me.Panel1.Controls.Add(Me.TidKlien)
-        Me.Panel1.Controls.Add(Me.TidProject)
-        Me.Panel1.Controls.Add(Me.TidJenisPE)
-        Me.Panel1.Controls.Add(Me.TidPE)
         Me.Panel1.Controls.Add(Me.EndDate)
         Me.Panel1.Controls.Add(Me.StartDate)
+        Me.Panel1.Controls.Add(Me.TCounter)
+        Me.Panel1.Controls.Add(Me.TidKlien)
+        Me.Panel1.Controls.Add(Me.TidProject)
+        Me.Panel1.Controls.Add(Me.TidJenisPE2)
+        Me.Panel1.Controls.Add(Me.TidPE)
+        Me.Panel1.Controls.Add(Me.LabelX27)
+        Me.Panel1.Controls.Add(Me.LabelX28)
         Me.Panel1.Controls.Add(Me.LabelX21)
         Me.Panel1.Controls.Add(Me.LabelX22)
         Me.Panel1.Controls.Add(Me.TJabatan)
@@ -577,15 +579,23 @@ Partial Public Class FrmPEEvn
         Me.Panel1.Location = New System.Drawing.Point(3, 4)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1934, 300)
+        Me.Panel1.Size = New System.Drawing.Size(1934, 248)
         Me.Panel1.TabIndex = 1
+        '
+        'TIdJenisPE
+        '
+        Me.TIdJenisPE.Location = New System.Drawing.Point(409, 118)
+        Me.TIdJenisPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TIdJenisPE.Name = "TIdJenisPE"
+        Me.TIdJenisPE.Size = New System.Drawing.Size(23, 25)
+        Me.TIdJenisPE.TabIndex = 55
         '
         'PanelBatalPE
         '
         Me.PanelBatalPE.CanvasColor = System.Drawing.SystemColors.Control
         Me.PanelBatalPE.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.PanelBatalPE.Controls.Add(Me.LabelX30)
         Me.PanelBatalPE.Controls.Add(Me.TextBoxX1)
+        Me.PanelBatalPE.Controls.Add(Me.LabelX30)
         Me.PanelBatalPE.Controls.Add(Me.Label4)
         Me.PanelBatalPE.Controls.Add(Me.BtnBatalPE)
         Me.PanelBatalPE.Controls.Add(Me.TInputAlasanBatalPE)
@@ -626,20 +636,6 @@ Partial Public Class FrmPEEvn
         Me.PanelBatalPE.Text = "Alasan Batal PE"
         Me.PanelBatalPE.Visible = False
         '
-        'LabelX30
-        '
-        Me.LabelX30.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX30.Location = New System.Drawing.Point(475, 101)
-        Me.LabelX30.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.LabelX30.Name = "LabelX30"
-        Me.LabelX30.Size = New System.Drawing.Size(38, 30)
-        Me.LabelX30.TabIndex = 4
-        Me.LabelX30.Text = "Tutup"
-        '
         'TextBoxX1
         '
         '
@@ -654,6 +650,20 @@ Partial Public Class FrmPEEvn
         Me.TextBoxX1.Size = New System.Drawing.Size(37, 25)
         Me.TextBoxX1.TabIndex = 3
         Me.TextBoxX1.Visible = False
+        '
+        'LabelX30
+        '
+        Me.LabelX30.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX30.Location = New System.Drawing.Point(475, 101)
+        Me.LabelX30.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelX30.Name = "LabelX30"
+        Me.LabelX30.Size = New System.Drawing.Size(38, 30)
+        Me.LabelX30.TabIndex = 4
+        Me.LabelX30.Text = "Tutup"
         '
         'Label4
         '
@@ -773,49 +783,6 @@ Partial Public Class FrmPEEvn
         Me.TCariPE.Size = New System.Drawing.Size(224, 25)
         Me.TCariPE.TabIndex = 47
         '
-        'LabelX27
-        '
-        '
-        '
-        '
-        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX27.Location = New System.Drawing.Point(1135, 8)
-        Me.LabelX27.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.LabelX27.Name = "LabelX27"
-        Me.LabelX27.Size = New System.Drawing.Size(12, 29)
-        Me.LabelX27.TabIndex = 46
-        Me.LabelX27.Text = ":"
-        Me.LabelX27.Visible = False
-        '
-        'LabelX28
-        '
-        '
-        '
-        '
-        Me.LabelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX28.Location = New System.Drawing.Point(1039, 8)
-        Me.LabelX28.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.LabelX28.Name = "LabelX28"
-        Me.LabelX28.Size = New System.Drawing.Size(87, 30)
-        Me.LabelX28.TabIndex = 45
-        Me.LabelX28.Text = "EDIT NO PE"
-        Me.LabelX28.Visible = False
-        '
-        'TCounter
-        '
-        '
-        '
-        '
-        Me.TCounter.Border.Class = "TextBoxBorder"
-        Me.TCounter.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TCounter.Location = New System.Drawing.Point(1154, 12)
-        Me.TCounter.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TCounter.Name = "TCounter"
-        Me.TCounter.PreventEnterBeep = True
-        Me.TCounter.Size = New System.Drawing.Size(91, 25)
-        Me.TCounter.TabIndex = 44
-        Me.TCounter.Visible = False
-        '
         'TimeEnd
         '
         Me.TimeEnd.CustomFormat = "HH:mm"
@@ -837,6 +804,41 @@ Partial Public Class FrmPEEvn
         Me.TimeStart.ShowUpDown = True
         Me.TimeStart.Size = New System.Drawing.Size(98, 25)
         Me.TimeStart.TabIndex = 42
+        '
+        'EndDate
+        '
+        Me.EndDate.CustomFormat = "dd/MM/yyyy"
+        Me.EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.EndDate.Location = New System.Drawing.Point(594, 82)
+        Me.EndDate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EndDate.Name = "EndDate"
+        Me.EndDate.Size = New System.Drawing.Size(96, 25)
+        Me.EndDate.TabIndex = 37
+        '
+        'StartDate
+        '
+        Me.StartDate.CustomFormat = "dd/MM/yyyy"
+        Me.StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.StartDate.Location = New System.Drawing.Point(477, 82)
+        Me.StartDate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.StartDate.Name = "StartDate"
+        Me.StartDate.Size = New System.Drawing.Size(98, 25)
+        Me.StartDate.TabIndex = 36
+        '
+        'TCounter
+        '
+        '
+        '
+        '
+        Me.TCounter.Border.Class = "TextBoxBorder"
+        Me.TCounter.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TCounter.Location = New System.Drawing.Point(1154, 12)
+        Me.TCounter.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TCounter.Name = "TCounter"
+        Me.TCounter.PreventEnterBeep = True
+        Me.TCounter.Size = New System.Drawing.Size(91, 25)
+        Me.TCounter.TabIndex = 44
+        Me.TCounter.Visible = False
         '
         'TidKlien
         '
@@ -868,20 +870,20 @@ Partial Public Class FrmPEEvn
         Me.TidProject.TabIndex = 40
         Me.TidProject.Visible = False
         '
-        'TidJenisPE
+        'TidJenisPE2
         '
         '
         '
         '
-        Me.TidJenisPE.Border.Class = "TextBoxBorder"
-        Me.TidJenisPE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TidJenisPE.Location = New System.Drawing.Point(71, 44)
-        Me.TidJenisPE.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TidJenisPE.Name = "TidJenisPE"
-        Me.TidJenisPE.PreventEnterBeep = True
-        Me.TidJenisPE.Size = New System.Drawing.Size(27, 25)
-        Me.TidJenisPE.TabIndex = 39
-        Me.TidJenisPE.Visible = False
+        Me.TidJenisPE2.Border.Class = "TextBoxBorder"
+        Me.TidJenisPE2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TidJenisPE2.Location = New System.Drawing.Point(71, 44)
+        Me.TidJenisPE2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TidJenisPE2.Name = "TidJenisPE2"
+        Me.TidJenisPE2.PreventEnterBeep = True
+        Me.TidJenisPE2.Size = New System.Drawing.Size(27, 25)
+        Me.TidJenisPE2.TabIndex = 39
+        Me.TidJenisPE2.Visible = False
         '
         'TidPE
         '
@@ -898,25 +900,33 @@ Partial Public Class FrmPEEvn
         Me.TidPE.TabIndex = 38
         Me.TidPE.Visible = False
         '
-        'EndDate
+        'LabelX27
         '
-        Me.EndDate.CustomFormat = "dd/MM/yyyy"
-        Me.EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.EndDate.Location = New System.Drawing.Point(594, 82)
-        Me.EndDate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EndDate.Name = "EndDate"
-        Me.EndDate.Size = New System.Drawing.Size(96, 25)
-        Me.EndDate.TabIndex = 37
         '
-        'StartDate
         '
-        Me.StartDate.CustomFormat = "dd/MM/yyyy"
-        Me.StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.StartDate.Location = New System.Drawing.Point(477, 82)
-        Me.StartDate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.StartDate.Name = "StartDate"
-        Me.StartDate.Size = New System.Drawing.Size(98, 25)
-        Me.StartDate.TabIndex = 36
+        '
+        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX27.Location = New System.Drawing.Point(1135, 8)
+        Me.LabelX27.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelX27.Name = "LabelX27"
+        Me.LabelX27.Size = New System.Drawing.Size(12, 29)
+        Me.LabelX27.TabIndex = 46
+        Me.LabelX27.Text = ":"
+        Me.LabelX27.Visible = False
+        '
+        'LabelX28
+        '
+        '
+        '
+        '
+        Me.LabelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX28.Location = New System.Drawing.Point(1039, 8)
+        Me.LabelX28.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LabelX28.Name = "LabelX28"
+        Me.LabelX28.Size = New System.Drawing.Size(87, 30)
+        Me.LabelX28.TabIndex = 45
+        Me.LabelX28.Text = "EDIT NO PE"
+        Me.LabelX28.Visible = False
         '
         'LabelX21
         '
@@ -1371,7 +1381,7 @@ Partial Public Class FrmPEEvn
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.52376!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.47624!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1940, 974)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1940, 816)
         Me.TableLayoutPanel1.TabIndex = 3
         '
         'NavigasiPEEvent
@@ -1384,16 +1394,16 @@ Partial Public Class FrmPEEvn
         Me.NavigasiPEEvent.Cursor = System.Windows.Forms.Cursors.Default
         Me.NavigasiPEEvent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.NavigasiPEEvent.ItemOrientation = System.Windows.Forms.Orientation.Vertical
-        Me.NavigasiPEEvent.Location = New System.Drawing.Point(3, 312)
+        Me.NavigasiPEEvent.Location = New System.Drawing.Point(3, 260)
         Me.NavigasiPEEvent.LookAndFeel.SkinName = "Office 2013 Dark Gray"
         Me.NavigasiPEEvent.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
         Me.NavigasiPEEvent.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NavigasiPEEvent.Name = "NavigasiPEEvent"
         Me.NavigasiPEEvent.PageProperties.AllowCustomHeaderButtonsGlyphSkinning = True
         Me.NavigasiPEEvent.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavPenawaran, Me.NavDetailBarang})
-        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(1934, 631)
+        Me.NavigasiPEEvent.RegularSize = New System.Drawing.Size(1934, 525)
         Me.NavigasiPEEvent.SelectedPage = Me.NavPenawaran
-        Me.NavigasiPEEvent.Size = New System.Drawing.Size(1934, 631)
+        Me.NavigasiPEEvent.Size = New System.Drawing.Size(1934, 525)
         Me.NavigasiPEEvent.TabIndex = 2
         Me.NavigasiPEEvent.Text = "NavigasiPEEvent"
         '
@@ -1411,7 +1421,7 @@ Partial Public Class FrmPEEvn
         Me.NavPenawaran.Controls.Add(Me.ListPE)
         Me.NavPenawaran.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NavPenawaran.Name = "NavPenawaran"
-        Me.NavPenawaran.Size = New System.Drawing.Size(1860, 541)
+        Me.NavPenawaran.Size = New System.Drawing.Size(1860, 435)
         '
         'NavDetailBarang
         '
@@ -1698,6 +1708,7 @@ Partial Public Class FrmPEEvn
         '
         Me.CSDay.DisplayMember = "Text"
         Me.CSDay.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CSDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CSDay.Font = New System.Drawing.Font("Segoe UI", 7.6!)
         Me.CSDay.FormattingEnabled = True
         Me.CSDay.ItemHeight = 16
@@ -1712,6 +1723,7 @@ Partial Public Class FrmPEEvn
         '
         Me.CSFreq.DisplayMember = "Text"
         Me.CSFreq.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CSFreq.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CSFreq.FormattingEnabled = True
         Me.CSFreq.ItemHeight = 20
         Me.CSFreq.Location = New System.Drawing.Point(391, 16)
@@ -1740,6 +1752,7 @@ Partial Public Class FrmPEEvn
         '
         Me.CSQty.DisplayMember = "Text"
         Me.CSQty.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CSQty.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CSQty.FormattingEnabled = True
         Me.CSQty.ItemHeight = 20
         Me.CSQty.Location = New System.Drawing.Point(260, 16)
@@ -1909,15 +1922,15 @@ Partial Public Class FrmPEEvn
         Me.TInputApproved.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TInputApproved.Name = "TInputApproved"
         Me.TInputApproved.PreventEnterBeep = True
-        Me.TInputApproved.Size = New System.Drawing.Size(306, 19)
+        Me.TInputApproved.Size = New System.Drawing.Size(306, 25)
         Me.TInputApproved.TabIndex = 0
         '
         'PanelAlasan
         '
         Me.PanelAlasan.CanvasColor = System.Drawing.SystemColors.Control
         Me.PanelAlasan.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.PanelAlasan.Controls.Add(Me.TutupRevisi)
         Me.PanelAlasan.Controls.Add(Me.idrevisi)
+        Me.PanelAlasan.Controls.Add(Me.TutupRevisi)
         Me.PanelAlasan.Controls.Add(Me.Label3)
         Me.PanelAlasan.Controls.Add(Me.BSimpanRevisi)
         Me.PanelAlasan.Controls.Add(Me.TARevisi)
@@ -1958,20 +1971,6 @@ Partial Public Class FrmPEEvn
         Me.PanelAlasan.Text = "Alasan Revisi"
         Me.PanelAlasan.Visible = False
         '
-        'TutupRevisi
-        '
-        Me.TutupRevisi.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.TutupRevisi.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TutupRevisi.Location = New System.Drawing.Point(475, 101)
-        Me.TutupRevisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TutupRevisi.Name = "TutupRevisi"
-        Me.TutupRevisi.Size = New System.Drawing.Size(38, 30)
-        Me.TutupRevisi.TabIndex = 4
-        Me.TutupRevisi.Text = "Tutup"
-        '
         'idrevisi
         '
         '
@@ -1986,6 +1985,20 @@ Partial Public Class FrmPEEvn
         Me.idrevisi.Size = New System.Drawing.Size(37, 25)
         Me.idrevisi.TabIndex = 3
         Me.idrevisi.Visible = False
+        '
+        'TutupRevisi
+        '
+        Me.TutupRevisi.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.TutupRevisi.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TutupRevisi.Location = New System.Drawing.Point(475, 101)
+        Me.TutupRevisi.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TutupRevisi.Name = "TutupRevisi"
+        Me.TutupRevisi.Size = New System.Drawing.Size(38, 30)
+        Me.TutupRevisi.TabIndex = 4
+        Me.TutupRevisi.Text = "Tutup"
         '
         'Label3
         '
@@ -2052,7 +2065,7 @@ Partial Public Class FrmPEEvn
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1101)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 943)
         Me.barDockControlBottom.Manager = Me.ToolbarFormManager1
         Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.barDockControlBottom.Size = New System.Drawing.Size(1940, 0)
@@ -2064,7 +2077,7 @@ Partial Public Class FrmPEEvn
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlLeft.Manager = Me.ToolbarFormManager1
         Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 1101)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 943)
         '
         'barDockControlRight
         '
@@ -2073,14 +2086,14 @@ Partial Public Class FrmPEEvn
         Me.barDockControlRight.Location = New System.Drawing.Point(1940, 0)
         Me.barDockControlRight.Manager = Me.ToolbarFormManager1
         Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 1101)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 943)
         '
         'FrmPEEvn
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
-        Me.ClientSize = New System.Drawing.Size(1940, 1101)
+        Me.ClientSize = New System.Drawing.Size(1940, 943)
         Me.ControlBox = False
         Me.Controls.Add(Me.PanelAlasan)
         Me.Controls.Add(Me.PApproved)
@@ -2115,6 +2128,7 @@ Partial Public Class FrmPEEvn
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemToggleSwitch1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.PanelBatalPE.ResumeLayout(False)
         Me.PanelBatalPE.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -2151,90 +2165,25 @@ Partial Public Class FrmPEEvn
     Friend WithEvents ListPE As ListView
     Friend WithEvents Panel1 As Panel
     Friend WithEvents CJenisPE As ComboBox
-    Friend WithEvents TidVenue As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Button1 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelX25 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TCariPE As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX27 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX28 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TCounter As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents TimeEnd As DateTimePicker
     Friend WithEvents TimeStart As DateTimePicker
-    Friend WithEvents TidKlien As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TidProject As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TidJenisPE As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TidPE As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents EndDate As DateTimePicker
     Friend WithEvents StartDate As DateTimePicker
-    Friend WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX22 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TJabatan As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX23 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX24 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TApprov As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX17 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents RpPPN As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TTotalEvent As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX9 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX10 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX11 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TPeserta As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX15 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX16 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TVenue As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX8 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TKlien As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TProject As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TNoPE As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents NavigasiPEEvent As DevExpress.XtraBars.Navigation.NavigationPane
     Friend WithEvents NavPenawaran As DevExpress.XtraBars.Navigation.NavigationPage
     Friend WithEvents NavDetailBarang As DevExpress.XtraBars.Navigation.NavigationPage
     Friend WithEvents TampilDetail As ListView
-    Friend WithEvents LabelX26 As DevComponents.DotNetBar.LabelX
     Friend WithEvents PInput As Panel
     Friend WithEvents BtnTutup As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtnOK As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelX29 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents NoItem As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents idInpBarang As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents iddetail As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents NoMaterial As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents idKontrak As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TMaterials As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents Remaks As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents SubTotal As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TUnitCost As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TTotal As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TDimensi As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents CSFreq As DevComponents.DotNetBar.Controls.ComboBoxEx
-    Friend WithEvents TFreq As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents CSQty As DevComponents.DotNetBar.Controls.ComboBoxEx
-    Friend WithEvents TQty As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TCari As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents RibbonDetailPE As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents TambahDetail As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents HapusDetail As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents SimpanDetail As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents SelesaiDetail As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents CSDay As DevComponents.DotNetBar.Controls.ComboBoxEx
-    Friend WithEvents TDay As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TInfoKlien As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TInfoKontrak As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
     Friend WithEvents RepositoryItemDateEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
     Friend WithEvents TotalEvent As DevExpress.XtraBars.BarEditItem
@@ -2247,20 +2196,12 @@ Partial Public Class FrmPEEvn
     Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents RepositoryItemToggleSwitch1 As DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch
-    Friend WithEvents PApproved As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents BDeal As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents TutupDeal As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TInputJabatan As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TInputApproved As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TARevisi As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents PanelAlasan As DevComponents.DotNetBar.Controls.GroupPanel
-    Friend WithEvents idrevisi As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label3 As Label
     Friend WithEvents BSimpanRevisi As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents DTTanggal As DateTimePicker
-    Friend WithEvents TutupRevisi As DevComponents.DotNetBar.LabelX
     Friend WithEvents CKontrak As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
     Friend WithEvents BtnKeluar As DevExpress.XtraBars.BarButtonItem
@@ -2272,10 +2213,84 @@ Partial Public Class FrmPEEvn
     Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents PanelBatalPE As DevComponents.DotNetBar.Controls.GroupPanel
-    Friend WithEvents LabelX30 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents BtnBatalPE As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents TInputAlasanBatalPE As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TidVenue As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX25 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TCariPE As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX27 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX28 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TCounter As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TidKlien As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TidProject As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TidJenisPE2 As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TidPE As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX22 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TJabatan As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX23 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX24 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TApprov As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX17 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
+    Private WithEvents RpPPN As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TTotalEvent As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX9 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX10 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX11 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TPeserta As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX15 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX16 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TVenue As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX8 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TKlien As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TProject As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TNoPE As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents LabelX26 As DevComponents.DotNetBar.LabelX
+    Private WithEvents LabelX29 As DevComponents.DotNetBar.LabelX
+    Private WithEvents NoItem As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents idInpBarang As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents iddetail As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents NoMaterial As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents idKontrak As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TMaterials As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents Remaks As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents SubTotal As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TUnitCost As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TTotal As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TDimensi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents CSFreq As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Private WithEvents TFreq As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents CSQty As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Private WithEvents TQty As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TCari As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents CSDay As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Private WithEvents TDay As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TInfoKlien As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TInfoKontrak As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents PApproved As DevComponents.DotNetBar.Controls.GroupPanel
+    Private WithEvents TutupDeal As DevComponents.DotNetBar.LabelX
+    Private WithEvents TInputJabatan As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TInputApproved As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TARevisi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents PanelAlasan As DevComponents.DotNetBar.Controls.GroupPanel
+    Private WithEvents idrevisi As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TutupRevisi As DevComponents.DotNetBar.LabelX
+    Private WithEvents PanelBatalPE As DevComponents.DotNetBar.Controls.GroupPanel
+    Private WithEvents LabelX30 As DevComponents.DotNetBar.LabelX
+    Private WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
+    Private WithEvents TInputAlasanBatalPE As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TIdJenisPE As System.Windows.Forms.TextBox
 End Class
